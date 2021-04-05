@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>人工智能入门-搜索</title>
+      <link href="2021/04/05/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%85%A5%E9%97%A8-%E6%90%9C%E7%B4%A2/"/>
+      <url>2021/04/05/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%85%A5%E9%97%A8-%E6%90%9C%E7%B4%A2/</url>
+      
+        <content type="html"><![CDATA[<p>众所周知，人工智能在近些年十分火爆，在各个领域的应用也是十分广泛，其中一个领域就是导航。<a id="more"></a></p><p>也许有人会说，导航不就是电子地图嘛？和人工智能有什么关系？但其实在导航中人工智能发挥了很重要的作用。“条条大路通罗马”，为什么导航会向你推荐这条路而不推荐另一条路？这其中就涉及到了人工智能中的搜索算法。</p><p><img src="https://www.helloimg.com/images/2021/04/05/B7S4Ln.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/04/05/B7S4Ln.png" srcset="data:image/png;base64,666" alt="B7S4Ln.png"></p><p>在搜索中，往往有初始状态(initial states)、目标状态(goal states)，而人工智能所做的，就是在众多情形中，找到众多解决方法的最优解，其中会涉及到循环和迭代，假如我们现在有一个初始状态，我们要怎样达到目标状态呢？</p><p>在这之前需要先了解一些概念：</p><ul>    <li>动作：通常是接受状态的函数，返回在此状态中应该做出的决策</li>    <li>迁移模型：通常是接受状态和动作的函数，返回在此状态下做出此种决策后的新状态</li>    <li>节点：数据结构，用来记录状态，父节点，动作和路径成本</li>    <li>边界：数据结构，用来区分已探索的部分和未探索的部分</li></ul><p>在了解了相关概念之后，我们开始讨论算法：</p><ul>    <li>首先将初始状态放入边界，然后进入循环</li>    <ul>        <li>如果边界为空，则无解</li>        <li>从边界中移去一个节点</li>        <li>如果此节点包含目标状态，则追踪父节点，然后返回解决方案</li>        <li>扩张节点并将其加入边界</li>    </ul></ul><p>下面举个例子：</p><img src="https://www.helloimg.com/images/2021/04/05/B7StR6.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/04/05/B7StR6.png" srcset="data:image/png;base64,666" alt="B7StR6.png" style="zoom: 33%;" /><p>假设我们现在的要求是找到从A到E的路径</p><ul>    <li>第一步我们将A（初始状态）放入边界，进入循环</li>    <li>因为A不是目标状态，将A移出边界并将B加入边界</li>    <li>因为B不是目标状态，将B移出边界并将C和D加入边界</li>    <li>因为C不是目标状态，将C移出边界并将E加入边界</li>    <li>因为E是目标状态，所以我们返回从A到E的路径，循环结束</li></ul><p>至此，我们就解决了一个非常简单的路径搜索问题，当然，这个算法还存在着许多问题，且适用的普遍性不强，但我认为拿来作为入门的话还是可以的。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Thanksgiving</title>
       <link href="2020/11/29/img_share/"/>
       <url>2020/11/29/img_share/</url>
