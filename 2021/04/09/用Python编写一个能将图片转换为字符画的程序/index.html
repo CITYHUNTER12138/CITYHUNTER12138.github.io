@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Markdown_Editor V1.0 - Uniqueland</title>
+  <title>用Python编写一个能将图片转换为字符画的程序 - Uniqueland</title>
   
     <meta name="keywords" content="Program">
   
@@ -349,7 +349,7 @@
     
     
       <h1 class="title">
-        Markdown_Editor V1.0
+        用Python编写一个能将图片转换为字符画的程序
       </h1>
       <div class='new-meta-box'>
         
@@ -373,7 +373,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年11月9日</p>
+    <p>发布于：2021年4月9日</p>
   </a>
 </div>
 
@@ -384,7 +384,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Markdown_Editor V1.0" data-path="/2020/11/09/Markdown_Editor%20V1.0/">
+      <div id="lc-pv" data-title="用Python编写一个能将图片转换为字符画的程序" data-path="/2021/04/09/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -401,9 +401,7 @@
 
 
   
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">\<span class="comment"># -*- coding=utf-8 -*- </span></span><br><span class="line">import tkinter</span><br><span class="line">import os</span><br><span class="line">from tkinter import filedialog</span><br><span class="line"></span><br><span class="line">win_size=<span class="string">&#x27;450x550&#x27;</span></span><br><span class="line">win = tkinter.Tk()</span><br><span class="line">win.geometry(win_size)</span><br><span class="line"></span><br><span class="line">win.title(<span class="string">&#x27;Markdown Editor V1.0 (hexo only)&#x27;</span>)</span><br><span class="line"></span><br><span class="line">def processandsave():</span><br><span class="line">   contents = <span class="string">&#x27;---\ntitle:&#x27;</span> + title.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>) + <span class="string">&#x27;tags:&#x27;</span> + tags.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>) + <span class="string">&#x27;---\n&#x27;</span> + content.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">   filename = filedialog.asksaveasfilename()</span><br><span class="line">   <span class="keyword">if</span> filename is not None:</span><br><span class="line">       with open(file=filename,mode=<span class="string">&#x27;w&#x27;</span>) as file:</span><br><span class="line">           file.write(str(contents))</span><br><span class="line">           title.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">           tags.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">           content.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line"></span><br><span class="line">def add_bash():</span><br><span class="line">    add_content=add_bash_text.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">    add_content=add_content.rstrip()</span><br><span class="line">    changing_content=<span class="string">&#x27;```bash\n&#x27;</span>+add_content+<span class="string">&#x27;\n```\n&#x27;</span></span><br><span class="line">    content.insert(<span class="string">&#x27;end&#x27;</span>,changing_content)</span><br><span class="line">    add_bash_text.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line"></span><br><span class="line">label1=tkinter.Label(text=<span class="string">&#x27;标题&#x27;</span>,padx=10,pady=10)</span><br><span class="line">label1.grid(row=0,column=0)</span><br><span class="line"></span><br><span class="line">title=tkinter.Text(width=40,height=2)</span><br><span class="line">title.grid(row=0,column=1,columnspan=2)</span><br><span class="line"></span><br><span class="line">label2=tkinter.Label(text=<span class="string">&#x27;标签&#x27;</span>,padx=5,pady=5)</span><br><span class="line">label2.grid(row=1,column=0)</span><br><span class="line"></span><br><span class="line">tags=tkinter.Text(width=30,height=1)</span><br><span class="line">tags.grid(row=1,column=1)</span><br><span class="line"></span><br><span class="line">label3=tkinter.Label(text=<span class="string">&#x27;正文&#x27;</span>,padx=5,pady=5)</span><br><span class="line">label3.grid(row=2,column=0)</span><br><span class="line"></span><br><span class="line">content=tkinter.Text(width=40,height=20)</span><br><span class="line">content.grid(row=2,column=1,rowspan=5)</span><br><span class="line"></span><br><span class="line">add_bash_button=tkinter.Button(win,text=<span class="string">&#x27;命令行&#x27;</span>,<span class="built_in">command</span>=add_bash)</span><br><span class="line">add_bash_button.grid(row=9,column=0)</span><br><span class="line"></span><br><span class="line">add_bash_text=tkinter.Text(width=40,height=5)</span><br><span class="line">add_bash_text.grid(row=9,column=1)</span><br><span class="line"></span><br><span class="line">save_button=tkinter.Button(win,text=<span class="string">&#x27;保存&#x27;</span>,<span class="built_in">command</span>=processandsave)</span><br><span class="line">save_button.grid(row=8,column=1)</span><br><span class="line"></span><br><span class="line">win.mainloop()</span><br></pre></td></tr></table></figure>
-
-
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">\<span class="comment"># -*- coding=utf-8 -*- </span></span><br><span class="line"></span><br><span class="line">from PIL import Image </span><br><span class="line"></span><br><span class="line">import argparse <span class="comment">#命令行输入参数处理 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser() </span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;file&#x27;</span>)     <span class="comment">#输入文件</span></span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;-o&#x27;</span>, <span class="string">&#x27;--output&#x27;</span>)   <span class="comment">#输出文件 </span></span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--width&#x27;</span>, <span class="built_in">type</span> = int, default = 80) <span class="comment">#输出字符画宽 </span></span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--height&#x27;</span>, <span class="built_in">type</span> = int, default = 80) <span class="comment">#输出字符画高 #获取参数 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">args = parser.parse_args() </span><br><span class="line"></span><br><span class="line">IMG = args.file</span><br><span class="line"></span><br><span class="line">WIDTH = args.width </span><br><span class="line"></span><br><span class="line">HEIGHT = args.height </span><br><span class="line"></span><br><span class="line">OUTPUT = args.output </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ascii_char = list(<span class="string">&quot;<span class="variable">$@B</span>%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1&#123;&#125;[]?-_+~&lt;&gt;i!lI;:,\&quot;^&#x27;. &quot;</span>) <span class="comment"># 将256灰度映射到70个字符上 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_char(r,g,b,alpha = 256):    </span><br><span class="line"></span><br><span class="line">​	<span class="keyword">if</span> alpha == 0:        </span><br><span class="line"></span><br><span class="line">​		<span class="built_in">return</span> <span class="string">&#x27; &#x27;</span>    </span><br><span class="line"></span><br><span class="line">​	length = len(ascii_char)    </span><br><span class="line"></span><br><span class="line">​	gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b)     </span><br><span class="line"></span><br><span class="line">​	unit = (256.0 + 1)/length    </span><br><span class="line"></span><br><span class="line">​	<span class="built_in">return</span> ascii_char[int(gray/unit)] </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:     </span><br><span class="line"></span><br><span class="line">​	im = Image.open(IMG)    </span><br><span class="line"></span><br><span class="line">​	im = im.resize((WIDTH,HEIGHT), Image.NEAREST)     </span><br><span class="line"></span><br><span class="line">​	txt = <span class="string">&quot;&quot;</span>     </span><br><span class="line"></span><br><span class="line">​	<span class="keyword">for</span> i <span class="keyword">in</span> range(HEIGHT):        </span><br><span class="line"></span><br><span class="line">​		<span class="keyword">for</span> j <span class="keyword">in</span> range(WIDTH):            </span><br><span class="line"></span><br><span class="line">​			txt += get_char(*im.getpixel((j,i)))        </span><br><span class="line"></span><br><span class="line">​			txt += <span class="string">&#x27;\n&#x27;</span>     </span><br><span class="line"></span><br><span class="line">​		<span class="built_in">print</span>(txt)     <span class="comment">#字符画输出到文件    </span></span><br><span class="line"></span><br><span class="line">​	<span class="keyword">if</span> OUTPUT:        </span><br><span class="line"></span><br><span class="line">​		with open(OUTPUT,<span class="string">&#x27;w&#x27;</span>) as f:            </span><br><span class="line"></span><br><span class="line">​			f.write(txt)    </span><br><span class="line"></span><br><span class="line">​	<span class="keyword">else</span>:        </span><br><span class="line"></span><br><span class="line">​		with open(<span class="string">&quot;output.txt&quot;</span>,<span class="string">&#x27;w&#x27;</span>) as f:           </span><br><span class="line"></span><br><span class="line">​		f.write(txt)</span><br></pre></td></tr></table></figure>
   
   
     
@@ -420,7 +418,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://uniqueland.top/2020/11/09/Markdown_Editor%20V1.0/>http://uniqueland.top/2020/11/09/Markdown_Editor%20V1.0/</a></p>
+                <p>本文永久链接是：<a href=http://uniqueland.top/2021/04/09/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/>http://uniqueland.top/2021/04/09/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/</a></p>
               
             
           </blockquote>
@@ -437,7 +435,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-10T10:56:29+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-10T10:54:55+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年11月10日</p>
@@ -462,7 +460,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2020/11/09/Markdown_Editor%20V1.0/&title=Markdown_Editor V1.0 - Uniqueland&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/04/09/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/&title=用Python编写一个能将图片转换为字符画的程序 - Uniqueland&summary="
           
           >
           
@@ -474,7 +472,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2020/11/09/Markdown_Editor%20V1.0/&title=Markdown_Editor V1.0 - Uniqueland&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/04/09/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/&title=用Python编写一个能将图片转换为字符画的程序 - Uniqueland&summary="
           
           >
           
@@ -486,7 +484,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2020/11/09/Markdown_Editor%20V1.0/&title=Markdown_Editor V1.0 - Uniqueland&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/04/09/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/&title=用Python编写一个能将图片转换为字符画的程序 - Uniqueland&summary="
           
           >
           
@@ -516,17 +514,11 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/11/09/Speech/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>来自班级组织演讲的一篇演讲稿</p>
-          <p class='content'>正文地狱空荡荡 恶魔在人间
-想必在座各位多少看过这句话，这就是我今天要说的有关Telegram N号房事件的一些东西；由于案情复杂，我就不再赘述，有兴趣的请自行百度主要人物介绍：赵主彬：现年25...</p>
-        </a>
       
-      
-        <a class='next' href='/2020/03/22/0/'>
-          <p class='title'>0<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Hello,World！说人话 我终于有自己的网站啦 虽然只是部署在github上的先做个测试 下回在看看要弄啥peach..啊不…peace～～
-</p>
+        <a class='next' href='/2021/04/09/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%85%A5%E9%97%A8-%E6%90%9C%E7%B4%A2/'>
+          <p class='title'>人工智能入门-搜索<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>众所周知，人工智能在近些年十分火爆，在各个领域的应用也是十分广泛，其中一个领域就是导航。
+也许有人会说，导航不就是电子地图嘛？和人工智能有什么关系？但其实在导航中人工智能发挥了很重要的作用。“条...</p>
         </a>
       
     </div>
@@ -575,7 +567,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Markdown_Editor V1.0";
+  pdata.postTitle="用Python编写一个能将图片转换为字符画的程序";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 

@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>用Python编写一个能将图片转换为字符画的程序 - Uniqueland</title>
+  <title>HTML笔记 - Uniqueland</title>
   
     <meta name="keywords" content="Program">
   
@@ -349,7 +349,7 @@
     
     
       <h1 class="title">
-        用Python编写一个能将图片转换为字符画的程序
+        HTML笔记
       </h1>
       <div class='new-meta-box'>
         
@@ -373,7 +373,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年11月10日</p>
+    <p>发布于：2021年4月9日</p>
   </a>
 </div>
 
@@ -384,7 +384,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="用Python编写一个能将图片转换为字符画的程序" data-path="/2020/11/10/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/">
+      <div id="lc-pv" data-title="HTML笔记" data-path="/2021/04/09/HTML_notes/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -401,7 +401,11 @@
 
 
   
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">\<span class="comment"># -*- coding=utf-8 -*- </span></span><br><span class="line"></span><br><span class="line">from PIL import Image </span><br><span class="line"></span><br><span class="line">import argparse <span class="comment">#命令行输入参数处理 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser() </span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;file&#x27;</span>)     <span class="comment">#输入文件</span></span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;-o&#x27;</span>, <span class="string">&#x27;--output&#x27;</span>)   <span class="comment">#输出文件 </span></span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--width&#x27;</span>, <span class="built_in">type</span> = int, default = 80) <span class="comment">#输出字符画宽 </span></span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&#x27;--height&#x27;</span>, <span class="built_in">type</span> = int, default = 80) <span class="comment">#输出字符画高 #获取参数 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">args = parser.parse_args() </span><br><span class="line"></span><br><span class="line">IMG = args.file</span><br><span class="line"></span><br><span class="line">WIDTH = args.width </span><br><span class="line"></span><br><span class="line">HEIGHT = args.height </span><br><span class="line"></span><br><span class="line">OUTPUT = args.output </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ascii_char = list(<span class="string">&quot;<span class="variable">$@B</span>%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1&#123;&#125;[]?-_+~&lt;&gt;i!lI;:,\&quot;^&#x27;. &quot;</span>) <span class="comment"># 将256灰度映射到70个字符上 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def get_char(r,g,b,alpha = 256):    </span><br><span class="line"></span><br><span class="line">​	<span class="keyword">if</span> alpha == 0:        </span><br><span class="line"></span><br><span class="line">​		<span class="built_in">return</span> <span class="string">&#x27; &#x27;</span>    </span><br><span class="line"></span><br><span class="line">​	length = len(ascii_char)    </span><br><span class="line"></span><br><span class="line">​	gray = int(0.2126 * r + 0.7152 * g + 0.0722 * b)     </span><br><span class="line"></span><br><span class="line">​	unit = (256.0 + 1)/length    </span><br><span class="line"></span><br><span class="line">​	<span class="built_in">return</span> ascii_char[int(gray/unit)] </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:     </span><br><span class="line"></span><br><span class="line">​	im = Image.open(IMG)    </span><br><span class="line"></span><br><span class="line">​	im = im.resize((WIDTH,HEIGHT), Image.NEAREST)     </span><br><span class="line"></span><br><span class="line">​	txt = <span class="string">&quot;&quot;</span>     </span><br><span class="line"></span><br><span class="line">​	<span class="keyword">for</span> i <span class="keyword">in</span> range(HEIGHT):        </span><br><span class="line"></span><br><span class="line">​		<span class="keyword">for</span> j <span class="keyword">in</span> range(WIDTH):            </span><br><span class="line"></span><br><span class="line">​			txt += get_char(*im.getpixel((j,i)))        </span><br><span class="line"></span><br><span class="line">​			txt += <span class="string">&#x27;\n&#x27;</span>     </span><br><span class="line"></span><br><span class="line">​		<span class="built_in">print</span>(txt)     <span class="comment">#字符画输出到文件    </span></span><br><span class="line"></span><br><span class="line">​	<span class="keyword">if</span> OUTPUT:        </span><br><span class="line"></span><br><span class="line">​		with open(OUTPUT,<span class="string">&#x27;w&#x27;</span>) as f:            </span><br><span class="line"></span><br><span class="line">​			f.write(txt)    </span><br><span class="line"></span><br><span class="line">​	<span class="keyword">else</span>:        </span><br><span class="line"></span><br><span class="line">​		with open(<span class="string">&quot;output.txt&quot;</span>,<span class="string">&#x27;w&#x27;</span>) as f:           </span><br><span class="line"></span><br><span class="line">​		f.write(txt)</span><br></pre></td></tr></table></figure>
+  <pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;h1&gt; to &lt;/h6&gt;: 一到六号标题</span><br><span class="line">2 &lt;p&gt;段落&lt;/p&gt;</span><br><span class="line">3 &lt;body style=<span class="string">&quot;background-color:PowderBlue;&quot;</span>&gt;</span><br><span class="line">  &lt;p style=<span class="string">&quot;font-family:verdana;color:red&quot;</span>&gt;对段落样式进行修改&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">4 &lt;br /&gt;&lt;hr /&gt;&lt;!这是注释，前面的是换行和分割线&gt;</span><br><span class="line">5 &lt;b&gt;被加粗的内容&lt;/b&gt;</span><br><span class="line">6 &lt;strong&gt;被...加粗的内容...吧&lt;/strong&gt;</span><br><span class="line">7 &lt;big&gt;被加大的内容&lt;/big&gt;</span><br><span class="line">8 &lt;em&gt;被强调(加斜)的内容&lt;/em&gt;</span><br><span class="line">9 &lt;i&gt;被...意大利式加斜的内容&lt;/i&gt;</span><br><span class="line">10 &lt;small&gt;被减小的内容&lt;/small&gt;</span><br><span class="line">11 &lt;sub&gt;位于右下角的小字部分&lt;/sub&gt;</span><br><span class="line">12 &lt;sup&gt;位于右上角的小字部分&lt;/sup&gt;</span><br><span class="line">13 &lt;pre&gt;预格式文本(保留了空格和换行)&lt;/pre&gt;</span><br><span class="line">14 &lt;code&gt;用于&lt;/code&gt;,&lt;kbd&gt;显示&lt;/kbd&gt;,&lt;samp&gt;代码&lt;/samp&gt;,&lt;var&gt;这个加大加粗了一点&lt;/var&gt;</span><br><span class="line">15 &lt;address&gt;用于书写地址，其中记得手动添加换行标签&lt;/address&gt;</span><br><span class="line">16 &lt;abbr title=<span class="string">&quot;etcetera&quot;</span>&gt;etc.&lt;/abbr&gt;</span><br><span class="line">17 &lt;acronym title=<span class="string">&quot;World Wide Web&quot;</span>&gt;WWW&lt;/acronym&gt;</span><br><span class="line">18 &lt;bdo dir=<span class="string">&quot;rtl&quot;</span>&gt;印打序倒&lt;/bdo&gt;</span><br><span class="line">19 &lt;blockquote&gt;块引用&lt;/blockquote&gt;,&lt;q&gt;短引用&lt;/q&gt;</span><br><span class="line">20 &lt;p&gt;你看&lt;del&gt;我被划掉了&lt;/del&gt;&lt;ins&gt;又被加下划线了&lt;/ins&gt;&lt;/p&gt;</span><br><span class="line">21 &lt;a name=<span class="string">&quot;tips&quot;</span>&gt;基本的注意事项 - 有用的提示&lt;/a&gt; &lt;a href=<span class="string">&quot;#tips&quot;</span>&gt;有用的提示&lt;/a&gt;</span><br><span class="line">22 &lt;img src=<span class="string">&quot;url&quot;</span> width=xx height=xx align=xxx /&gt;</span><br><span class="line">23 &lt;table border=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">     &lt;tr&gt;</span><br><span class="line">     &lt;th&gt;Heading&lt;/th&gt;</span><br><span class="line">     &lt;th&gt;Another Heading&lt;/th&gt;</span><br><span class="line">     &lt;/tr&gt;</span><br><span class="line">     &lt;tr&gt;</span><br><span class="line">     &lt;td&gt;row 1, cell 1&lt;/td&gt;</span><br><span class="line">     &lt;td&gt;row 1, cell 2&lt;/td&gt;</span><br><span class="line">     &lt;/tr&gt;</span><br><span class="line">     &lt;tr&gt;</span><br><span class="line">     &lt;td&gt;row 2, cell 1&lt;/td&gt;</span><br><span class="line">     &lt;td&gt;row 2, cell 2&lt;/td&gt;</span><br><span class="line">     &lt;/tr&gt;</span><br><span class="line">     &lt;/table&gt;</span><br><span class="line">24 &lt;ul&gt;&lt;!unsorted list&gt;</span><br><span class="line">     &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">     &lt;li&gt;Milk&lt;/li&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line">25 &lt;ol&gt;&lt;!ordered list&gt;</span><br><span class="line">     &lt;li&gt;Coffee&lt;/li&gt;</span><br><span class="line">     &lt;li&gt;Milk&lt;/li&gt;</span><br><span class="line">     &lt;/ol&gt;</span><br><span class="line">26 &lt;dl&gt;&lt;!defined list&gt;</span><br><span class="line">     &lt;dt&gt;Coffee&lt;/dt&gt;</span><br><span class="line">     &lt;dd&gt;Black hot drink&lt;/dd&gt;</span><br><span class="line">     &lt;dt&gt;Milk&lt;/dt&gt;</span><br><span class="line">     &lt;dd&gt;White cold drink&lt;/dd&gt;</span><br><span class="line">     &lt;/dl&gt;</span><br><span class="line">27 &lt;head&gt;</span><br><span class="line">     &lt;style&gt;</span><br><span class="line">     .cities &#123;</span><br><span class="line">         background-color:black;</span><br><span class="line">         color:white;</span><br><span class="line">         margin:20px;</span><br><span class="line">         padding:20px;</span><br><span class="line">     &#125; </span><br><span class="line">     &lt;/style&gt;</span><br><span class="line">     &lt;/head&gt;</span><br><span class="line">28 &lt;!DOCTYPE html&gt;</span><br><span class="line">     &lt;html&gt;</span><br><span class="line">     &lt;head&gt;</span><br><span class="line">     &lt;style&gt;</span><br><span class="line">       span.red &#123;color:red;&#125;</span><br><span class="line">     &lt;/style&gt;</span><br><span class="line">     &lt;/head&gt;</span><br><span class="line">     &lt;body&gt;</span><br><span class="line"></span><br><span class="line">     &lt;h1&gt;My &lt;span class=<span class="string">&quot;red&quot;</span>&gt;Important&lt;/span&gt; Heading&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">     &lt;/body&gt;</span><br><span class="line">     &lt;/html&gt;</span><br><span class="line">29 &lt;iframe src=<span class="string">&quot;demo_iframe.htm&quot;</span> width=<span class="string">&quot;200&quot;</span> height=<span class="string">&quot;200&quot;</span>&gt;&lt;/iframe&gt;</span><br><span class="line">30 &lt;body background=<span class="string">&quot;http://www.w3school.com.cn/clouds.gif&quot;</span>&gt;</span><br><span class="line">31 &lt;script <span class="built_in">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">     document.write(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">     &lt;/script&gt;</span><br><span class="line">     &lt;noscript&gt;Your browser does not support JavaScript!&lt;/noscript&gt;</span><br></pre></td></tr></table></figure>
+</pre>
+<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/html/html_quick.asp">Quick Search</a></p>
+
   
   
     
@@ -418,7 +422,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://uniqueland.top/2020/11/10/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/>http://uniqueland.top/2020/11/10/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/</a></p>
+                <p>本文永久链接是：<a href=http://uniqueland.top/2021/04/09/HTML_notes/>http://uniqueland.top/2021/04/09/HTML_notes/</a></p>
               
             
           </blockquote>
@@ -435,10 +439,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-10T10:54:55+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-01-18T23:02:48+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年11月10日</p>
+    <p>更新于：2021年1月18日</p>
   </a>
 </div>
 
@@ -460,7 +464,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2020/11/10/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/&title=用Python编写一个能将图片转换为字符画的程序 - Uniqueland&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/04/09/HTML_notes/&title=HTML笔记 - Uniqueland&summary="
           
           >
           
@@ -472,7 +476,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2020/11/10/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/&title=用Python编写一个能将图片转换为字符画的程序 - Uniqueland&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/04/09/HTML_notes/&title=HTML笔记 - Uniqueland&summary="
           
           >
           
@@ -484,7 +488,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2020/11/10/%E7%94%A8Python%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E8%83%BD%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E7%94%BB%E7%9A%84%E7%A8%8B%E5%BA%8F/&title=用Python编写一个能将图片转换为字符画的程序 - Uniqueland&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/04/09/HTML_notes/&title=HTML笔记 - Uniqueland&summary="
           
           >
           
@@ -514,16 +518,17 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2020/11/10/Operations%20between%20flash%20disk%20and%20linux%20os/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Linux下利用命令行对U盘和电脑中的文件进行操作</p>
-          <p class='content'>123456fdisk -l			#查看接入设备名称mount /dev/sda1 /mnt 	#挂载U盘ls /mnt			#查看U盘文件cp file directory		#复制指定文件f...</p>
+        <a class='prev' href='/2021/04/09/img_share/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Thanksgiving</p>
+          <p class='content'>
+</p>
         </a>
       
       
-        <a class='next' href='/2020/11/09/Speech/'>
-          <p class='title'>来自班级组织演讲的一篇演讲稿<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>正文地狱空荡荡 恶魔在人间
-想必在座各位多少看过这句话，这就是我今天要说的有关Telegram N号房事件的一些东西；由于案情复杂，我就不再赘述，有兴趣的请自行百度主要人物介绍：赵主彬：现年25...</p>
+        <a class='next' href='/2020/03/22/0/'>
+          <p class='title'>0<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Hello,World！说人话 我终于有自己的网站啦 虽然只是部署在github上的先做个测试 下回在看看要弄啥peach..啊不…peace～～
+</p>
         </a>
       
     </div>
@@ -572,7 +577,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="用Python编写一个能将图片转换为字符画的程序";
+  pdata.postTitle="HTML笔记";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
