@@ -19,11 +19,18 @@
 
   <!-- 页面元数据 -->
   
-  <title>Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland</title>
+  <title>使用C语言实现栈 - Uniqueland</title>
   
-    <meta name="keywords" content="Program">
+    <meta name="keywords" content="Program,知识输出">
   
 
+  
+    <meta name="description" content="说明
+
+
+
+
+    作为栈顶的节点不存储数据">
   
 
   <!-- feed -->
@@ -344,12 +351,18 @@
 
 
   
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://www.helloimg.com/images/2021/09/05/CHI2pm.jpg'/>
+      </a>
+    </div>
+  
   <div class="article-meta" id="top">
     
     
     
       <h1 class="title">
-        Linux下利用命令行对U盘和电脑中的文件进行操作
+        使用C语言实现栈
       </h1>
       <div class='new-meta-box'>
         
@@ -373,7 +386,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年4月9日</p>
+    <p>发布于：2021年9月5日</p>
   </a>
 </div>
 
@@ -384,7 +397,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Linux下利用命令行对U盘和电脑中的文件进行操作" data-path="/2021/04/09/Operations%20between%20flash%20disk%20and%20linux%20os/">
+      <div id="lc-pv" data-title="使用C语言实现栈" data-path="/2021/09/05/stack_by_C/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -401,9 +414,95 @@
 
 
   
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l			<span class="comment">#查看接入设备名称</span></span><br><span class="line">mount /dev/sda1 /mnt 	<span class="comment">#挂载U盘</span></span><br><span class="line">ls /mnt			<span class="comment">#查看U盘文件</span></span><br><span class="line">cp file directory		<span class="comment">#复制指定文件file至指定目录directory</span></span><br><span class="line">ls /mnt			<span class="comment">#再次查看U盘文件</span></span><br><span class="line">umount /mnt		<span class="comment">#卸载U盘</span></span><br></pre></td></tr></table></figure>
-<div class="note "><p><strong>标题（可选）</strong></p><p>提示：<br>若操作中出现错误，请查看权限是否正确，或在每次操作前加’sudo’<br>cp后的文件和路径需带路径(个人推荐绝对路径)</p></div>
+  <h2>说明</h2>
 
+
+
+<ul>
+    <li>作为栈顶的节点不存储数据<a id="more"></a>，仅作定位功能</li>
+    <li>数据项的类型可自行定义</li>
+    <li>在push和pop时，并不改变栈顶节点的位置，仅仅是将待操作节点加入或删除并改变指针指向而已</li>
+    <li>栈顶节点的数据项可用来存储当前栈的节点数，这点在push函数的定义中可以体现</li>
+    <li>主函数仅作各函数的演示使用，可自定义</li>
+</ul>
+
+
+
+
+
+<h2>定义相应结构</h2>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;node;</span><br></pre></td></tr></table></figure>
+
+<p>该结构由一个整型和一个指向此结构的指针组成。</p>
+<h2>定义push函数</h2>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">push</span><span class="params">(node *top, <span class="keyword">int</span> data)</span></span>&#123;</span><br><span class="line">	node *temp = (node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">	temp-&gt;data = data;</span><br><span class="line">	temp-&gt;next = top-&gt;next;</span><br><span class="line">	top-&gt;next = temp;</span><br><span class="line">    top-&gt;data++;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+    <li>第一步：分配空间</li>
+    <li>第二步：存储数据</li>
+    <li>第三步：改变栈顶和新增项的next指针，递增top节点的data项</li>
+</ul>
+
+
+
+<h2>定义pop函数</h2>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(node *top)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!top-&gt;next)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Stack is empty now.&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> pop_data = top-&gt;next-&gt;data;</span><br><span class="line">	node *temp = top-&gt;next;</span><br><span class="line">	top-&gt;next = top-&gt;next-&gt;next;</span><br><span class="line">	temp = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="built_in">free</span>(temp);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> pop_data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+    <li>第一步：判断栈是否为空</li>
+    <li>第二步：定义变量存储待弹出的数据和待删除节点</li>
+    <li>第三步：改变栈顶的next指针</li>
+    <li>释放待删除节点空间，删除节点</li>
+</ul>
+
+
+
+<h2>定义初始化函数</h2>
+
+
+
+<ul>
+    <li>为栈顶节点分配空间并初始化指针为空</li>
+</ul>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">node* <span class="title">stack_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	node *temp = (node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">	temp-&gt;data = <span class="number">0</span>;</span><br><span class="line">	temp-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2>定义遍历显示函数</h2>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(node *current)</span></span>&#123;</span><br><span class="line">	current = current-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(current)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,current-&gt;data);</span><br><span class="line">		current = current-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+    <li>将当前节点指向栈顶的下一个节点</li>
+    <li>当前节点不为空时进入遍历循环</li>
+    <li>打印当前节点的数据项</li>
+    <li>将当前节点指向下一个节点</li>
+</ul>
+
+
+<h2>源代码</h2>
+
+
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;node;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">push</span><span class="params">(node *top, <span class="keyword">int</span> data)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(node *top)</span></span>;</span><br><span class="line"><span class="function">node* <span class="title">stack_init</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(node *current)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">push</span><span class="params">(node *top, <span class="keyword">int</span> data)</span></span>&#123;</span><br><span class="line">	node *temp = (node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">	temp-&gt;data = data;</span><br><span class="line">	temp-&gt;next = top-&gt;next;</span><br><span class="line">	top-&gt;next = temp;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">(node *top)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!top-&gt;next)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Stack is empty now.&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> pop_data = top-&gt;next-&gt;data;</span><br><span class="line">	node *temp = top-&gt;next;</span><br><span class="line">	top-&gt;next = top-&gt;next-&gt;next;</span><br><span class="line">	temp = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="built_in">free</span>(temp);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> pop_data;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">node* <span class="title">stack_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	node *temp = (node *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(node));</span><br><span class="line">	temp-&gt;data = <span class="number">0</span>;</span><br><span class="line">	temp-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(node *current)</span></span>&#123;</span><br><span class="line">	current = current-&gt;next;</span><br><span class="line">	<span class="keyword">while</span>(current)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,current-&gt;data);</span><br><span class="line">		current = current-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> first_input;</span><br><span class="line">	<span class="keyword">int</span> pop_input, pop_data;</span><br><span class="line">	node *top = stack_init();</span><br><span class="line">	<span class="keyword">int</span> status;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Enter strings, Ctrl+Z to quit.\n&quot;</span>);</span><br><span class="line">	status = <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;first_input);</span><br><span class="line">	<span class="keyword">while</span>(status!=EOF)&#123;</span><br><span class="line">		push(top, first_input);</span><br><span class="line">		status = <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;first_input);</span><br><span class="line">	&#125;</span><br><span class="line">	display(top);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Now enter 1 to pop data, 0 to quit.\n&quot;</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;pop_input);</span><br><span class="line">	<span class="keyword">while</span>(pop_input==<span class="number">1</span>)&#123;</span><br><span class="line">		pop_data = pop(top);</span><br><span class="line">		<span class="keyword">if</span>(pop_data==<span class="number">-1</span>)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;pop_data: %d\n&quot;</span>,pop_data);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;pop_input);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\nDone\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   
   
     
@@ -420,7 +519,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://uniqueland.top/2021/04/09/Operations%20between%20flash%20disk%20and%20linux%20os/>http://uniqueland.top/2021/04/09/Operations%20between%20flash%20disk%20and%20linux%20os/</a></p>
+                <p>本文永久链接是：<a href=http://uniqueland.top/2021/09/05/stack_by_C/>http://uniqueland.top/2021/09/05/stack_by_C/</a></p>
               
             
           </blockquote>
@@ -437,10 +536,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-10T11:52:41+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-09-05T23:09:46+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年11月10日</p>
+    <p>更新于：2021年9月5日</p>
   </a>
 </div>
 
@@ -449,7 +548,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Program/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Program</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Program/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Program</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>知识输出</p></a></div>
 
 
         
@@ -462,7 +561,12 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/04/09/Operations%20between%20flash%20disk%20and%20linux%20os/&title=Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/09/05/stack_by_C/&title=使用C语言实现栈 - Uniqueland&summary=说明
+
+
+
+
+    作为栈顶的节点不存储数据"
           
           >
           
@@ -474,7 +578,12 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/04/09/Operations%20between%20flash%20disk%20and%20linux%20os/&title=Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/09/05/stack_by_C/&title=使用C语言实现栈 - Uniqueland&summary=说明
+
+
+
+
+    作为栈顶的节点不存储数据"
           
           >
           
@@ -486,7 +595,12 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/04/09/Operations%20between%20flash%20disk%20and%20linux%20os/&title=Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/09/05/stack_by_C/&title=使用C语言实现栈 - Uniqueland&summary=说明
+
+
+
+
+    作为栈顶的节点不存储数据"
           
           >
           
@@ -516,16 +630,15 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/04/09/Speech/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>来自班级组织演讲的一篇演讲稿</p>
-          <p class='content'>正文地狱空荡荡 恶魔在人间
-想必在座各位多少看过这句话，这就是我今天要说的有关Telegram N号房事件的一些东西；由于案情复杂，我就不再赘述，有兴趣的请自行百度主要人物介绍：赵主彬：现年25...</p>
-        </a>
       
-      
-        <a class='next' href='/2021/04/09/Markdown_Editor%20V1.0/'>
-          <p class='title'>Markdown_Editor V1.0<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253...</p>
+        <a class='next' href='/2021/05/02/link_list_by_C/'>
+          <p class='title'>使用C语言实现链表<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>第一步：定义相应结构
+
+
+
+由于实现链表的编程语言为C，不能够使用类，故使用结构来实现链表中的节点；
+12345typedef struct LinkList &#123;	char name[...</p>
         </a>
       
     </div>
@@ -558,6 +671,20 @@
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">定义相应结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">定义push函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">定义pop函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">定义初始化函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">定义遍历显示函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-text">源代码</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -574,7 +701,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Linux下利用命令行对U盘和电脑中的文件进行操作";
+  pdata.postTitle="使用C语言实现栈";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 

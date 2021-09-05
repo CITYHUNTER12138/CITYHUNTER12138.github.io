@@ -19,7 +19,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>Markdown_Editor V1.0 - Uniqueland</title>
+  <title>Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland</title>
   
     <meta name="keywords" content="Program">
   
@@ -349,7 +349,7 @@
     
     
       <h1 class="title">
-        Markdown_Editor V1.0
+        Linux下利用命令行对U盘和电脑中的文件进行操作
       </h1>
       <div class='new-meta-box'>
         
@@ -373,7 +373,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年4月9日</p>
+    <p>发布于：2021年4月10日</p>
   </a>
 </div>
 
@@ -384,7 +384,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="Markdown_Editor V1.0" data-path="/2021/04/09/Markdown_Editor%20V1.0/">
+      <div id="lc-pv" data-title="Linux下利用命令行对U盘和电脑中的文件进行操作" data-path="/2021/04/10/Operations%20between%20flash%20disk%20and%20linux%20os/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -401,8 +401,8 @@
 
 
   
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">\<span class="comment"># -*- coding=utf-8 -*- </span></span><br><span class="line">import tkinter</span><br><span class="line">import os</span><br><span class="line">from tkinter import filedialog</span><br><span class="line"></span><br><span class="line">win_size=<span class="string">&#x27;450x550&#x27;</span></span><br><span class="line">win = tkinter.Tk()</span><br><span class="line">win.geometry(win_size)</span><br><span class="line"></span><br><span class="line">win.title(<span class="string">&#x27;Markdown Editor V1.0 (hexo only)&#x27;</span>)</span><br><span class="line"></span><br><span class="line">def processandsave():</span><br><span class="line">   contents = <span class="string">&#x27;---\ntitle:&#x27;</span> + title.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>) + <span class="string">&#x27;tags:&#x27;</span> + tags.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>) + <span class="string">&#x27;---\n&#x27;</span> + content.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">   filename = filedialog.asksaveasfilename()</span><br><span class="line">   <span class="keyword">if</span> filename is not None:</span><br><span class="line">       with open(file=filename,mode=<span class="string">&#x27;w&#x27;</span>) as file:</span><br><span class="line">           file.write(str(contents))</span><br><span class="line">           title.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">           tags.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">           content.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line"></span><br><span class="line">def add_bash():</span><br><span class="line">    add_content=add_bash_text.get(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line">    add_content=add_content.rstrip()</span><br><span class="line">    changing_content=<span class="string">&#x27;```bash\n&#x27;</span>+add_content+<span class="string">&#x27;\n```\n&#x27;</span></span><br><span class="line">    content.insert(<span class="string">&#x27;end&#x27;</span>,changing_content)</span><br><span class="line">    add_bash_text.delete(<span class="string">&#x27;0.0&#x27;</span>,<span class="string">&#x27;end&#x27;</span>)</span><br><span class="line"></span><br><span class="line">label1=tkinter.Label(text=<span class="string">&#x27;标题&#x27;</span>,padx=10,pady=10)</span><br><span class="line">label1.grid(row=0,column=0)</span><br><span class="line"></span><br><span class="line">title=tkinter.Text(width=40,height=2)</span><br><span class="line">title.grid(row=0,column=1,columnspan=2)</span><br><span class="line"></span><br><span class="line">label2=tkinter.Label(text=<span class="string">&#x27;标签&#x27;</span>,padx=5,pady=5)</span><br><span class="line">label2.grid(row=1,column=0)</span><br><span class="line"></span><br><span class="line">tags=tkinter.Text(width=30,height=1)</span><br><span class="line">tags.grid(row=1,column=1)</span><br><span class="line"></span><br><span class="line">label3=tkinter.Label(text=<span class="string">&#x27;正文&#x27;</span>,padx=5,pady=5)</span><br><span class="line">label3.grid(row=2,column=0)</span><br><span class="line"></span><br><span class="line">content=tkinter.Text(width=40,height=20)</span><br><span class="line">content.grid(row=2,column=1,rowspan=5)</span><br><span class="line"></span><br><span class="line">add_bash_button=tkinter.Button(win,text=<span class="string">&#x27;命令行&#x27;</span>,<span class="built_in">command</span>=add_bash)</span><br><span class="line">add_bash_button.grid(row=9,column=0)</span><br><span class="line"></span><br><span class="line">add_bash_text=tkinter.Text(width=40,height=5)</span><br><span class="line">add_bash_text.grid(row=9,column=1)</span><br><span class="line"></span><br><span class="line">save_button=tkinter.Button(win,text=<span class="string">&#x27;保存&#x27;</span>,<span class="built_in">command</span>=processandsave)</span><br><span class="line">save_button.grid(row=8,column=1)</span><br><span class="line"></span><br><span class="line">win.mainloop()</span><br></pre></td></tr></table></figure>
-
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l			<span class="comment">#查看接入设备名称</span></span><br><span class="line">mount /dev/sda1 /mnt 	<span class="comment">#挂载U盘</span></span><br><span class="line">ls /mnt			<span class="comment">#查看U盘文件</span></span><br><span class="line">cp file directory		<span class="comment">#复制指定文件file至指定目录directory</span></span><br><span class="line">ls /mnt			<span class="comment">#再次查看U盘文件</span></span><br><span class="line">umount /mnt		<span class="comment">#卸载U盘</span></span><br></pre></td></tr></table></figure>
+<div class="note "><p><strong>标题（可选）</strong></p><p>提示：<br>若操作中出现错误，请查看权限是否正确，或在每次操作前加’sudo’<br>cp后的文件和路径需带路径(个人推荐绝对路径)</p></div>
 
   
   
@@ -420,7 +420,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://uniqueland.top/2021/04/09/Markdown_Editor%20V1.0/>http://uniqueland.top/2021/04/09/Markdown_Editor%20V1.0/</a></p>
+                <p>本文永久链接是：<a href=http://uniqueland.top/2021/04/10/Operations%20between%20flash%20disk%20and%20linux%20os/>http://uniqueland.top/2021/04/10/Operations%20between%20flash%20disk%20and%20linux%20os/</a></p>
               
             
           </blockquote>
@@ -437,7 +437,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-10T10:56:29+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-11-10T11:52:41+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年11月10日</p>
@@ -462,7 +462,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/04/09/Markdown_Editor%20V1.0/&title=Markdown_Editor V1.0 - Uniqueland&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/04/10/Operations%20between%20flash%20disk%20and%20linux%20os/&title=Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland&summary="
           
           >
           
@@ -474,7 +474,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/04/09/Markdown_Editor%20V1.0/&title=Markdown_Editor V1.0 - Uniqueland&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/04/10/Operations%20between%20flash%20disk%20and%20linux%20os/&title=Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland&summary="
           
           >
           
@@ -486,7 +486,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/04/09/Markdown_Editor%20V1.0/&title=Markdown_Editor V1.0 - Uniqueland&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/04/10/Operations%20between%20flash%20disk%20and%20linux%20os/&title=Linux下利用命令行对U盘和电脑中的文件进行操作 - Uniqueland&summary="
           
           >
           
@@ -516,16 +516,16 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/04/09/Operations%20between%20flash%20disk%20and%20linux%20os/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Linux下利用命令行对U盘和电脑中的文件进行操作</p>
-          <p class='content'>123456fdisk -l			#查看接入设备名称mount /dev/sda1 /mnt 	#挂载U盘ls /mnt			#查看U盘文件cp file directory		#复制指定文件f...</p>
+        <a class='prev' href='/2021/04/10/Speech/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>来自班级组织演讲的一篇演讲稿</p>
+          <p class='content'>正文地狱空荡荡 恶魔在人间
+想必在座各位多少看过这句话，这就是我今天要说的有关Telegram N号房事件的一些东西；由于案情复杂，我就不再赘述，有兴趣的请自行百度主要人物介绍：赵主彬：现年25...</p>
         </a>
       
       
-        <a class='next' href='/2021/04/09/img_share/'>
-          <p class='title'>Thanksgiving<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>
-</p>
+        <a class='next' href='/2021/04/10/Markdown_Editor%20V1.0/'>
+          <p class='title'>Markdown_Editor V1.0<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253...</p>
         </a>
       
     </div>
@@ -574,7 +574,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="Markdown_Editor V1.0";
+  pdata.postTitle="Linux下利用命令行对U盘和电脑中的文件进行操作";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
