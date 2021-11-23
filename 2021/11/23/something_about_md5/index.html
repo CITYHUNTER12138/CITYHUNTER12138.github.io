@@ -19,13 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>HCTF 2018WarmUp 1 - Uniqueland</title>
+  <title>有关md5的一些信息 - Uniqueland</title>
   
-    <meta name="keywords" content="web">
+    <meta name="keywords" content="CTF">
   
 
   
-    <meta name="description" content="一上来便是一张天真无邪的笑脸">
+    <meta name="description" content="在ctf比赛中常常见到md5的身影，对于md5，常见的利用方式有以下几种">
   
 
   <!-- feed -->
@@ -348,7 +348,7 @@
   
     <div class='headimg-div'>
       <a class='headimg-a'>
-        <img class='headimg' src='https://www.helloimg.com/images/2021/11/07/ChnZJD.png'/>
+        <img class='headimg' src='https://www.helloimg.com/images/2021/11/24/GZEXFq.jpg'/>
       </a>
     </div>
   
@@ -357,7 +357,7 @@
     
     
       <h1 class="title">
-        HCTF 2018WarmUp 1
+        有关md5的一些信息
       </h1>
       <div class='new-meta-box'>
         
@@ -381,7 +381,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2021年11月7日</p>
+    <p>发布于：2021年11月23日</p>
   </a>
 </div>
 
@@ -392,7 +392,7 @@
   <div class="new-meta-item browse leancloud">
     <a class='notlink'>
       
-      <div id="lc-pv" data-title="HCTF 2018WarmUp 1" data-path="/2021/11/07/%5BHCTF%202018%5DWarmUp%201/">
+      <div id="lc-pv" data-title="有关md5的一些信息" data-path="/2021/11/23/something_about_md5/">
         <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
         <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
         次浏览
@@ -409,24 +409,41 @@
 
 
   
-  <p>一上来便是一张天真无邪的笑脸<a id="more"></a><br><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/ChSkgt"><img src="https://www.helloimg.com/images/2021/11/07/ChSkgt.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/07/ChSkgt.png" srcset="data:image/png;base64,666" alt="ChSkgt.png"></a><br>无头绪，f12查源码，发现source.php</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    highlight_file(<span class="keyword">__FILE__</span>);</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">emmm</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params">&amp;$page</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            $whitelist = [<span class="string">&quot;source&quot;</span>=&gt;<span class="string">&quot;source.php&quot;</span>,<span class="string">&quot;hint&quot;</span>=&gt;<span class="string">&quot;hint.php&quot;</span>];</span><br><span class="line">            <span class="keyword">if</span> (! <span class="keyword">isset</span>($page) || !is_string($page)) &#123;</span><br><span class="line">                <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (in_array($page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($page . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            $_page = urldecode($page);</span><br><span class="line">            $_page = mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($_page . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;you can&#x27;t see it&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (! <span class="keyword">empty</span>($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; emmm::checkFile($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> $_REQUEST[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+  <p>在ctf比赛中常常见到md5的身影，对于md5，常见的利用方式有以下几种<a id="more"></a></p>
+<h3>在sql注入中</h3>
 
-<p>开始代码审计</p>
-<p>网页通过对传入的参数进行过滤后进行文件包含</p>
-<p>一开始我以为是需要满足所有的条件，但根据下文包含文件的代码发现只需要满足其中一个就足够了</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (! <span class="keyword">empty</span>($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; is_string($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">        &amp;&amp; emmm::checkFile($_REQUEST[<span class="string">&#x27;file&#x27;</span>])</span><br><span class="line">    ) &#123;</span><br><span class="line">        <span class="keyword">include</span> $_REQUEST[<span class="string">&#x27;file&#x27;</span>];</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&lt;img src=\&quot;https://i.loli.net/2018/11/01/5bdb0d93dc794.jpg\&quot; /&gt;&quot;</span>;</span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
+<p>若遇到了类似以下的情况</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$password=$_POST[<span class="string">&#x27;password&#x27;</span>];</span><br><span class="line">$sql = <span class="string">&quot;SELECT * FROM admin WHERE username = &#x27;admin&#x27; and password = &#x27;&quot;</span>.md5($password,<span class="literal">true</span>).<span class="string">&quot;&#x27;&quot;</span>;</span><br><span class="line">$result=mysqli_query($link,$sql);</span><br></pre></td></tr></table></figure>
+
+<p>可以传入ffifdyop或者129581926211651571912466741651878684928，这两者md5加密后的结果都包含 ‘ OR ‘ 的字样，可用于引号逃逸</p>
+<h3>在弱类型比较中</h3>
+
+<p>若存在对两个md5加密后的字符串进行比较时，可传入类似s1502113478a、s1836677006a的字符串，加密后都是以0e开头，比较时都为零</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="string">&quot;s1502113478a&quot;</span>;</span><br><span class="line">$b = <span class="string">&quot;s1836677006a&quot;</span>;</span><br><span class="line"></span><br><span class="line">$a_1 = md5($a);</span><br><span class="line">$b_1 = md5($b);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> $a_1.<span class="string">&quot;\n&quot;</span>.$b_1.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Documents]</span><br><span class="line">└─$ php md5.php </span><br><span class="line">0e861580163291561247404381396064</span><br><span class="line">0e481036490867661113260034900752</span><br></pre></td></tr></table></figure>
 
 
 
-<p>在尝试了许久之后我发现重点在于最后一个判断，即从解码函数开始的判断；在解码之后出现了新的变量$_page，然后对该变量进行分割，取出变量中问号之前的部分，覆盖原来的变量，再判断该变量是否位于白名单内。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$_page = mb_substr(</span><br><span class="line">                $_page,</span><br><span class="line">                <span class="number">0</span>,</span><br><span class="line">                mb_strpos($_page . <span class="string">&#x27;?&#x27;</span>, <span class="string">&#x27;?&#x27;</span>)</span><br><span class="line">            );</span><br><span class="line">            <span class="keyword">if</span> (in_array($_page, $whitelist)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<h3>在允许传递数组时</h3>
+
+<p>可以传入两个空数组，由于md5无法对数组进行加密，故返回null，而 null = null 为 true</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$a = <span class="keyword">array</span>();</span><br><span class="line">$b = <span class="keyword">array</span>();</span><br><span class="line"></span><br><span class="line">$a_1 = md5($a);</span><br><span class="line">$b_1 = md5($b);</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> $a_1.<span class="string">&quot;\n&quot;</span>.$b_1.<span class="string">&quot;\n&quot;</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">┌──(kali㉿kali)-[~/Documents]</span><br><span class="line">└─$ php em_array.php </span><br><span class="line">PHP Warning:  md5() expects parameter 1 to be string, array given <span class="keyword">in</span> /home/kali/Documents/em_array.php on line 5</span><br><span class="line">PHP Warning:  md5() expects parameter 1 to be string, array given <span class="keyword">in</span> /home/kali/Documents/em_array.php on line 6</span><br></pre></td></tr></table></figure>
+
+<p>虽然转换失败，但是返回了 null ，需要注意的是，在传递数组时应使用如下形式：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[]=<span class="number">1</span> &amp; b[<span class="number">1</span>]=<span class="string">&quot;b&quot;</span> &amp; c[]</span><br></pre></td></tr></table></figure>
 
 
 
-<p>判断通过后对文件进行包含，这时遍历文件目录就能找到flag了，文件名称在hint.php里</p>
-<p>最终payload：</p>
-<p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Chigu0"><img src="https://www.helloimg.com/images/2021/11/07/Chigu0.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/07/Chigu0.png" srcset="data:image/png;base64,666" alt="Chigu0.png"></a></p>
+<h3>md5碰撞</h3>
+
+<p>当上述方法都不奏效时：可以使用md5算法本身的漏洞；md5碰撞指的是不同的输入进行md5加密后得到同样的输出，网上有许多算法可以实现，需要注意的是，由于输入需上传服务器，故需要对输出进行url编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!coding:utf-8</span></span><br><span class="line">hexString1 = <span class="string">&#x27;4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa200a8284bf36e8e4b55b35f427593d849676da0d1555d8360fb5f07fea2&#x27;</span></span><br><span class="line">hexString2 = <span class="string">&#x27;4dc968ff0ee35c209572d4777b721587d36fa7b21bdc56b74a3dc0783e7b9518afbfa202a8284bf36e8e4b55b35f427593d849676da0d1d55d8360fb5f07fea2&#x27;</span></span><br><span class="line"></span><br><span class="line">hexList1 = []</span><br><span class="line">intList1 = []</span><br><span class="line">asciiString1 =<span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    intString1 = hexString1[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">    hexString1 = hexString1[<span class="number">2</span>:]</span><br><span class="line">    hexList1.append(intString1)</span><br><span class="line">    <span class="keyword">if</span> (hexString1 == <span class="string">&#x27;&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> hexList1:</span><br><span class="line">    intList1.append(<span class="built_in">int</span>(i,<span class="number">16</span>))</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> intList1:</span><br><span class="line">    asciiString1 += <span class="built_in">chr</span>(<span class="built_in">int</span>(j))</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;1.bin&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">f.write(asciiString1)</span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line">hexList2 = []</span><br><span class="line">intList2 = []</span><br><span class="line">asciiString2 =<span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    intString2 = hexString2[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">    hexString2 = hexString2[<span class="number">2</span>:]</span><br><span class="line">    hexList2.append(intString2)</span><br><span class="line">    <span class="keyword">if</span> (hexString2 == <span class="string">&#x27;&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> hexList2:</span><br><span class="line">    intList2.append(<span class="built_in">int</span>(i,<span class="number">16</span>))</span><br><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> intList2:</span><br><span class="line">    asciiString2 += <span class="built_in">chr</span>(<span class="built_in">int</span>(j))</span><br><span class="line"></span><br><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;2.bin&#x27;</span>,<span class="string">&#x27;w&#x27;</span>)</span><br><span class="line">f.write(asciiString2)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"></span><br><span class="line">urlString1=<span class="string">&#x27;&#x27;</span></span><br><span class="line">urlString2 = <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">&#x27;1.bin&#x27;</span>):</span><br><span class="line">    urlString1 +=  urllib.parse.quote(line)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(<span class="string">&#x27;2.bin&#x27;</span>):</span><br><span class="line">    urlString2 +=  urllib.parse.quote(line)</span><br><span class="line"></span><br><span class="line">print(urlString1)</span><br><span class="line">print(urlString2)</span><br></pre></td></tr></table></figure>
+
 
   
   
@@ -444,7 +461,7 @@
               
             
               
-                <p>本文永久链接是：<a href=http://uniqueland.top/2021/11/07/[HCTF%202018]WarmUp%201/>http://uniqueland.top/2021/11/07/[HCTF%202018]WarmUp%201/</a></p>
+                <p>本文永久链接是：<a href=http://uniqueland.top/2021/11/23/something_about_md5/>http://uniqueland.top/2021/11/23/something_about_md5/</a></p>
               
             
           </blockquote>
@@ -461,10 +478,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-07T23:57:44+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-24T00:35:02+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年11月7日</p>
+    <p>更新于：2021年11月24日</p>
   </a>
 </div>
 
@@ -473,7 +490,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTF/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>CTF</p></a></div>
 
 
         
@@ -486,7 +503,7 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/11/07/[HCTF%202018]WarmUp%201/&title=HCTF 2018WarmUp 1 - Uniqueland&summary=一上来便是一张天真无邪的笑脸"
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/11/23/something_about_md5/&title=有关md5的一些信息 - Uniqueland&summary=在ctf比赛中常常见到md5的身影，对于md5，常见的利用方式有以下几种"
           
           >
           
@@ -498,7 +515,7 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/11/07/[HCTF%202018]WarmUp%201/&title=HCTF 2018WarmUp 1 - Uniqueland&summary=一上来便是一张天真无邪的笑脸"
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/11/23/something_about_md5/&title=有关md5的一些信息 - Uniqueland&summary=在ctf比赛中常常见到md5的身影，对于md5，常见的利用方式有以下几种"
           
           >
           
@@ -510,7 +527,7 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/11/07/[HCTF%202018]WarmUp%201/&title=HCTF 2018WarmUp 1 - Uniqueland&summary=一上来便是一张天真无邪的笑脸"
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/11/23/something_about_md5/&title=有关md5的一些信息 - Uniqueland&summary=在ctf比赛中常常见到md5的身影，对于md5，常见的利用方式有以下几种"
           
           >
           
@@ -540,26 +557,11 @@
   
     <div class="prev-next">
       
-        <a class='prev' href='/2021/11/23/something_about_md5/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>有关md5的一些信息</p>
-          <p class='content'>在ctf比赛中常常见到md5的身影，对于md5，常见的利用方式有以下几种
-在sql注入中
-
-若遇到了类似以下的情况
-123$password=$_POST[&#x27;password&#x27...</p>
-        </a>
       
-      
-        <a class='next' href='/2021/09/05/stack_by_C/'>
-          <p class='title'>使用C语言实现栈<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>说明
-
-
-
-
-    作为栈顶的节点不存储数据，仅作定位功能
-    数据项的类型可自行定义
-    在push和pop时，并不改变栈顶节点的位置，仅仅是将待操作节点加入或删除并改变指针指向而已...</p>
+        <a class='next' href='/2021/11/07/%5BHCTF%202018%5DWarmUp%201/'>
+          <p class='title'>HCTF 2018WarmUp 1<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>一上来便是一张天真无邪的笑脸无头绪，f12查源码，发现source.php
+12345678910111213141516171819202122232425262728293031323334...</p>
         </a>
       
     </div>
@@ -592,6 +594,20 @@
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">在sql注入中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">在弱类型比较中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">在允许传递数组时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">md5碰撞</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -608,7 +624,7 @@
 <script>
   window.pdata={}
   pdata.ispage=true;
-  pdata.postTitle="HCTF 2018WarmUp 1";
+  pdata.postTitle="有关md5的一些信息";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
