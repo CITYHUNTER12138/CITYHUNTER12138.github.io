@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Deep Learning from Scratch 2</title>
+      <link href="2021/11/29/deep_learning_from_scratch_2/"/>
+      <url>2021/11/29/deep_learning_from_scratch_2/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h2 id="在”手写数字识别”中"><a href="#在”手写数字识别”中" class="headerlink" title="在”手写数字识别”中"></a>在”手写数字识别”中</h2><ul><li><p>了解到了mnist数据集</p></li><li><p>对运算过程中运算的具体对象有点问题</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys, os</span><br><span class="line"></span><br><span class="line">sys.path.append(os.pardir)</span><br><span class="line"><span class="keyword">from</span> dataset.mnist <span class="keyword">import</span> load_mnist</span><br><span class="line"></span><br><span class="line">(x_train, t_train), (x_test, t_test) = load_mnist(flatten=<span class="literal">True</span>, normalize=<span class="literal">False</span>) <span class="comment">#一开始不知道这是什么意思</span></span><br><span class="line"></span><br><span class="line">print(x_train.shape)</span><br><span class="line">print(t_train.shape)</span><br><span class="line">print(x_test.shape)</span><br><span class="line">print(t_test.shape)</span><br></pre></td></tr></table></figure></li></ul><p>对于代码中出现的两个元组，一开始不知道 t_train t_test 代表什么，在纠结了一段时间后终于明白了</p><p>x_train 是训练用的图像数据</p><p>t_train 是训练图像的解，即每个图像对应的数字</p><p>x_test 是用于测试的图像数据</p><p>t_test 是测试图像的解，即每个图像对应的数字</p><ul><li><p>认识了正规化、预处理和 one-hot 表示法</p><p>正规化指的是将数据进行转化，如对图像的每个像素数值除以256，使其数值在0到1之间，方便后续运算</p><p>预处理，顾名思义，就是在运算之前对数据进行转换，如正规化等</p><p>one-hot 表示法是指对运算结果只将 解 所对应的值设为1，即将 解 作为索引，设置该索引的值为1；在对图像进行预测的脚本中，获取解的过程便是基于one-hot表示法的，如下 p= np.argmax(y)</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(x)):</span><br><span class="line">    y = predict(network, x[i])</span><br><span class="line">    p= np.argmax(y) <span class="comment"># 获取概率最高的元素的索引</span></span><br><span class="line">    <span class="keyword">if</span> p == t[i]:</span><br><span class="line">        accuracy_cnt += <span class="number">1</span></span><br></pre></td></tr></table></figure><ul><li><p>另外，在阅读到设计神经网络时，学到了有关输入层和输出层与数据之间的关系</p><p>输入层为待训练数据的大小，如训练手写数字识别时输入层为784，即为训练图像的大小</p><p>输出层为分类数目，如训练的手写数字结果只有0到9十种可能，故将输出层设为十</p></li></ul><h2 id="在“从数据中学习”中"><a href="#在“从数据中学习”中" class="headerlink" title="在“从数据中学习”中"></a>在“从数据中学习”中</h2><ul><li><p>认识了许多概念</p><h3 id="特征量"><a href="#特征量" class="headerlink" title="特征量"></a>特征量</h3></li></ul><blockquote><p>特征量是指可以从输入数据中准确地提取本质数据的转换器，通常表示为向量形式</p></blockquote><p>特征量是由人设计的</p><p>不同问题对应不同特征量</p><p>深度学习中特征量是由机器来学习的</p><h3 id="泛化能力"><a href="#泛化能力" class="headerlink" title="泛化能力"></a>泛化能力</h3><blockquote><p>泛化能力是指处理未被观察过的数据（不包含在训练数据中的数据）的能力</p></blockquote><h3 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h3><blockquote><p>只对某个数据集过度拟合的状态称为过拟合</p></blockquote><p>可以理解为训练的模型只对某个数据集起作用</p><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><blockquote><p>损失函数是表示神经网络性能的“恶劣程度”的指标，即当前的神经网络对监督数据在多大程度上不拟合，在多大程度上不一致</p></blockquote><h3 id="均方误差"><a href="#均方误差" class="headerlink" title="均方误差"></a>均方误差</h3><p>$$<br>E=\frac{1}{2}\Sigma_k(y_k-t_k)^2<br>$$</p><p>这里y_k表示神经网络的输出，t_k表示监督数据，k表示数据维数</p><h3 id="交叉熵误差"><a href="#交叉熵误差" class="headerlink" title="交叉熵误差"></a>交叉熵误差</h3><p>$$<br>E=-\Sigma_kt_k\log{y_k}<br>$$</p><h3 id="损失函数的意义"><a href="#损失函数的意义" class="headerlink" title="损失函数的意义"></a>损失函数的意义</h3><p>个人认为，损失函数存在的意义是作为模型调参结果的重要指标，由于测试精度的变化是不连续的（因为测试数据有限，测试结果的精度就取决于测试数据的多少），故无法体现模型调参后微小的变化，而损失函数是连续的，任何微小的改动都可能改变损失函数的结果（可以认为损失函数的精度比测试结果的精度高得多），故需要损失函数来衡量调参后的结果</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 知识输出、AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CTFd搭建</title>
       <link href="2021/11/28/ctf_contest_platform_build/"/>
       <url>2021/11/28/ctf_contest_platform_build/</url>
