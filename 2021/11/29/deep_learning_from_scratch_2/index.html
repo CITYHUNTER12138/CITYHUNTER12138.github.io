@@ -465,6 +465,58 @@
 <p>这里y_k表示神经网络的输出，t_k表示监督数据，k表示数据维数</p>
 <h3 id="交叉熵误差"><a href="#交叉熵误差" class="headerlink" title="交叉熵误差"></a>交叉熵误差</h3><p>$$<br>E=-\Sigma_kt_k\log{y_k}<br>$$</p>
 <h3 id="损失函数的意义"><a href="#损失函数的意义" class="headerlink" title="损失函数的意义"></a>损失函数的意义</h3><p>个人认为，损失函数存在的意义是作为模型调参结果的重要指标，由于测试精度的变化是不连续的（因为测试数据有限，测试结果的精度就取决于测试数据的多少），故无法体现模型调参后微小的变化，而损失函数是连续的，任何微小的改动都可能改变损失函数的结果（可以认为损失函数的精度比测试结果的精度高得多），故需要损失函数来衡量调参后的结果</p>
+<h3 id="数值微分"><a href="#数值微分" class="headerlink" title="数值微分"></a>数值微分</h3><blockquote>
+<p>利用某个给定的微小值的差分求导数的过程，称为数值微分</p>
+</blockquote>
+<ul>
+<li><p>导数与偏导数的定义</p>
+</li>
+<li><p>梯度及梯度法</p>
+<blockquote>
+<p><strong>梯度法</strong>：函数的取值从当前位置沿着梯度方向前进一段距离，然后在新的地方重新求梯度，再沿着新梯度方向前进，逐渐减小函数值</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="学习算法（随机梯度下降法）的实现"><a href="#学习算法（随机梯度下降法）的实现" class="headerlink" title="学习算法（随机梯度下降法）的实现"></a>学习算法（随机梯度下降法）的实现</h3><p>神经网络的学习步骤：</p>
+<ul>
+<li><p>前提</p>
+<p>神经网络存在合适的权重和偏置，调整权重和偏置以便拟合训练数据的过程称为“学习”</p>
+</li>
+<li><p>步骤1（mini-batch）</p>
+<p>从训练数据中随机选出一部分数据，这部分数据称为mini-batch。我们的目标是减小mini-batch的损失函数的值</p>
+</li>
+<li><p>步骤2（计算梯度）</p>
+<p>为了减小mini-batch的损失函数的值，需要求出各个权重参数的梯度。梯度表示损失函数的值减小最多的方向</p>
+</li>
+<li><p>步骤3（更新参数）</p>
+<p>将权重参数沿梯度方向进行微小更新</p>
+</li>
+<li><p>步骤4（重复）</p>
+<p>重复步骤1、步骤2、步骤3</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>epoch</strong>： epoch是一个单位，一个epoch表示学习中所有训练数据均被使用过一次时的更新次数</p>
+</blockquote>
+<h2 id="误差方向传播法"><a href="#误差方向传播法" class="headerlink" title="误差方向传播法"></a>误差方向传播法</h2><h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p>了解正向传播、反向传播及局部计算的定义</p>
+<h3 id="链式法则"><a href="#链式法则" class="headerlink" title="链式法则"></a>链式法则</h3><p>复合函数导数的定义</p>
+<blockquote>
+<p>如果某个函数由复合函数表示，则该复合函数的导数可以用构成复合函数的各个函数的导数的乘积表示</p>
+</blockquote>
+<p>链式法则是关于复合函数的导数的性质</p>
+<h3 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h3><p>反向传播的计算顺序</p>
+<blockquote>
+<p>先将节点的输入信号乘以节点的局部导数（偏导数），然后传递给下一个节点</p>
+</blockquote>
+<ul>
+<li>加法节点的反向传播</li>
+</ul>
+<p>加法节点的反向传播只乘以1</p>
+<ul>
+<li>乘法节点的反向传播</li>
+</ul>
+<p>乘法节点的反向传播会将上游的值乘以正向传播时的输入信号的“翻转值”后传递给下游</p>
+<p>对翻转值的理解：书上说的是“表示一种翻转关系”，个人认为是参与运算的另一个值，以乘法为例：乘法涉及到两个值，则传播到某一个方向的值为上游的值乘以参与运算的另一个对象的值</p>
 
   
   
@@ -499,10 +551,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-30T23:05:58+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-05T10:56:57+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年11月30日</p>
+    <p>更新于：2021年12月5日</p>
   </a>
 </div>
 
@@ -642,7 +694,7 @@ payload：http://8ac8c2ec-ac49-4043-98a6-...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E2%80%9D%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E2%80%9D%E4%B8%AD"><span class="toc-text">在”手写数字识别”中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E2%80%9C%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%AD%A6%E4%B9%A0%E2%80%9D%E4%B8%AD"><span class="toc-text">在“从数据中学习”中</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E9%87%8F"><span class="toc-text">特征量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B"><span class="toc-text">泛化能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">过拟合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE"><span class="toc-text">均方误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%86%B5%E8%AF%AF%E5%B7%AE"><span class="toc-text">交叉熵误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">损失函数的意义</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E2%80%9D%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E2%80%9D%E4%B8%AD"><span class="toc-text">在”手写数字识别”中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E2%80%9C%E4%BB%8E%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%AD%A6%E4%B9%A0%E2%80%9D%E4%B8%AD"><span class="toc-text">在“从数据中学习”中</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E9%87%8F"><span class="toc-text">特征量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B"><span class="toc-text">泛化能力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-text">过拟合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE"><span class="toc-text">均方误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E7%86%B5%E8%AF%AF%E5%B7%AE"><span class="toc-text">交叉熵误差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">损失函数的意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E5%BE%AE%E5%88%86"><span class="toc-text">数值微分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%EF%BC%88%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%EF%BC%89%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">学习算法（随机梯度下降法）的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AE%E6%96%B9%E5%90%91%E4%BC%A0%E6%92%AD%E6%B3%95"><span class="toc-text">误差方向传播法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E5%9B%BE"><span class="toc-text">计算图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99"><span class="toc-text">链式法则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="toc-text">反向传播</span></a></li></ol></li></ol>
     </div>
   </section>
 
