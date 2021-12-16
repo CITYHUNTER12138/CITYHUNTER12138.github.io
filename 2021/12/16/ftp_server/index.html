@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：AI - Uniqueland</title>
+  <title>ftp文件服务器搭建 - Uniqueland</title>
+  
+    <meta name="keywords" content="linux">
   
 
+  
+    <meta name="description" content="第一步：更新软件列表">
   
 
   <!-- feed -->
@@ -275,7 +277,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -338,79 +340,232 @@
       <div class='body-wrapper' id="pjax-container">
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://www.helloimg.com/images/2021/12/16/G9aPoR.jpg'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        ftp文件服务器搭建
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2021年12月16日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="ftp文件服务器搭建" data-path="/2021/12/16/ftp_server/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="第一步：更新软件列表"><a href="#第一步：更新软件列表" class="headerlink" title="第一步：更新软件列表"></a>第一步：更新软件列表</h2><a id="more"></a>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">zh@ubuntu:~$ sudo apt update</span><br><span class="line">[sudo] password for zh: </span><br><span class="line">Hit:1 http://cn.archive.ubuntu.com/ubuntu focal InRelease</span><br><span class="line">Get:2 http://cn.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]</span><br><span class="line">Get:3 http://cn.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]</span><br><span class="line">Get:4 http://cn.archive.ubuntu.com/ubuntu focal-security InRelease [114 kB]</span><br><span class="line">Get:5 http://cn.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [1,397 kB]</span><br><span class="line">Get:6 http://cn.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [883 kB]                                       </span><br><span class="line">Fetched 2,615 kB in 10s (271 kB/s)                                                                                             </span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">49 packages can be upgraded. Run &#x27;apt list --upgradable&#x27; to see them.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：安装vsftpd"><a href="#第二步：安装vsftpd" class="headerlink" title="第二步：安装vsftpd"></a>第二步：安装vsftpd</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">zh@ubuntu:~$ sudo apt install vsftpd</span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">The following additional packages will be installed:</span><br><span class="line">  ssl-cert</span><br><span class="line">Suggested packages:</span><br><span class="line">  openssl-blacklist</span><br><span class="line">The following NEW packages will be installed:</span><br><span class="line">  ssl-cert vsftpd</span><br><span class="line">0 upgraded, 2 newly installed, 0 to remove and 49 not upgraded.</span><br><span class="line">Need to get 132 kB of archives.</span><br><span class="line">After this operation, 402 kB of additional disk space will be used.</span><br><span class="line">Do you want to continue? [Y/n] y</span><br><span class="line">Get:1 http://cn.archive.ubuntu.com/ubuntu focal/main amd64 ssl-cert all 1.0.39 [17.0 kB]</span><br><span class="line">Get:2 http://cn.archive.ubuntu.com/ubuntu focal/main amd64 vsftpd amd64 3.0.3-12 [115 kB]</span><br><span class="line">Fetched 132 kB in 3s (50.0 kB/s) </span><br><span class="line">Preconfiguring packages ...</span><br><span class="line">Selecting previously unselected package ssl-cert.</span><br><span class="line">(Reading database ... 71512 files and directories currently installed.)</span><br><span class="line">Preparing to unpack .../ssl-cert_1.0.39_all.deb ...</span><br><span class="line">Unpacking ssl-cert (1.0.39) </span><br><span class="line">Selecting previously unselected package vsftpd..............................................................................] </span><br><span class="line">Preparing to unpack .../vsftpd_3.0.3-12_amd64.deb ...</span><br><span class="line">Unpacking vsftpd (3.0.3-12) ...######################.......................................................................] </span><br><span class="line">Setting up ssl-cert (1.0.39) ...#################################...........................................................] </span><br><span class="line">Progress: [ 56%] [##########################################################................................................] </span><br><span class="line">Setting up vsftpd (3.0.3-12) ...########################################################....................................] </span><br><span class="line">Created symlink /etc/systemd/system/multi-user.target.wants/vsftpd.service → /lib/systemd/system/vsftpd.service.............] </span><br><span class="line">Processing triggers for man-db (2.9.1-1) </span><br><span class="line">Processing triggers for systemd (245.4-4ubuntu3.11) ...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：添加用户"><a href="#第三步：添加用户" class="headerlink" title="第三步：添加用户"></a>第三步：添加用户</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zh@ubuntu:~$ sudo nano /etc/vsftpd.conf</span><br><span class="line">zh@ubuntu:~$ sudo useradd -m ftpuser</span><br><span class="line">zh@ubuntu:~$ sudo passwd ftpuser</span><br><span class="line">New password: </span><br><span class="line">Retype new password: </span><br><span class="line">passwd: password updated successfully</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四步：测试"><a href="#第四步：测试" class="headerlink" title="第四步：测试"></a>第四步：测试</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@ubuntu:/home/zh# echo &quot;TEST&quot; &gt; ../ftpuser/test.txt</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/G9PfZv"><img src="https://www.helloimg.com/images/2021/12/16/G9PfZv.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/16/G9PfZv.png" srcset="data:image/png;base64,666" alt="G9PfZv.png"></a></p>
+
+  
   
     
+    <div class='footer'>
       
-  <section class="post-list">
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2021/12/16/ftp_server/>http://uniqueland.top/2021/12/16/ftp_server/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
     
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-12-16T23:15:51+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2021年12月16日</p>
+  </a>
+</div>
+
+        
       
         
           
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
   
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/04/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%85%A5%E9%97%A8-%E6%90%9C%E7%B4%A2/">
-        <img class='headimg' src='https://cdn.pixabay.com/photo/2016/03/25/01/21/abstract-1278017__480.jpg'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2021/04/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%85%A5%E9%97%A8-%E6%90%9C%E7%B4%A2/">
-        人工智能入门-查找
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <h2>概述</h2>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/linux/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>linux</p></a></div>
 
-<p>众所周知，人工智能在近些年十分火爆，在各个领域的应用也是十分广泛，其中一个领域就是导航。
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2021/12/16/ftp_server/&title=ftp文件服务器搭建 - Uniqueland&summary=第一步：更新软件列表"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2021/12/16/ftp_server/&title=ftp文件服务器搭建 - Uniqueland&summary=第一步：更新软件列表"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2021/12/16/ftp_server/&title=ftp文件服务器搭建 - Uniqueland&summary=第一步：更新软件列表"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2021-04-10</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2021/04/10/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%85%A5%E9%97%A8-%E6%90%9C%E7%B4%A2/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/12/11/deep_learning_from_scratch_3/'>
+          <p class='title'>Deep Learning from Scratch 3<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>误差反向传播法
+
+Affine 层（仿射变换）
+神经网络的正向传播中进行的矩阵的乘积运算在几何学领域被称为“仿射变换”
+
+​    注：在affine层的反向传播过程中要注意矩阵形状
+梯度确认(...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -418,103 +573,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://www.helloimg.com/images/2020/11/23/4e7864d477d67c39935da89f36cbec59a35354d2_raw15e58b0ae77ce6c5.md.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Uniqueland</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/CTF/" style="font-size: 14px; color: #999">CTF</a> <a href="/tags/Program/" style="font-size: 24px; color: #555">Program</a> <a href="/tags/ctf/" style="font-size: 14px; color: #999">ctf</a> <a href="/tags/ctf%E3%80%81web/" style="font-size: 14px; color: #999">ctf、web</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/web/" style="font-size: 14px; color: #999">web</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA/" style="font-size: 19px; color: #777">知识输出</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA%E3%80%81AI/" style="font-size: 19px; color: #777">知识输出、AI</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%9B%B4%E6%96%B0%E8%BD%AF%E4%BB%B6%E5%88%97%E8%A1%A8"><span class="toc-text">第一步：更新软件列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85vsftpd"><span class="toc-text">第二步：安装vsftpd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-text">第三步：添加用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E6%B5%8B%E8%AF%95"><span class="toc-text">第四步：测试</span></a></li></ol>
     </div>
   </section>
 
 
   
 
-  
-
 
 </aside>
+
 
 
         
@@ -524,8 +604,8 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="ftp文件服务器搭建";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
