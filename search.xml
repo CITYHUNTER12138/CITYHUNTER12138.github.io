@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Deep Learning from Scratch 4</title>
+      <link href="2021/12/18/deep_learning_from_scratch_4/"/>
+      <url>2021/12/18/deep_learning_from_scratch_4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="卷积神经网络与普通机器学习的区别"><a href="#卷积神经网络与普通机器学习的区别" class="headerlink" title="卷积神经网络与普通机器学习的区别"></a>卷积神经网络与普通机器学习的区别</h3><a id="more"></a><blockquote><p>CNN中新出现了卷积层和池化层</p></blockquote><h3 id="全连接层存在的问题"><a href="#全连接层存在的问题" class="headerlink" title="全连接层存在的问题"></a>全连接层存在的问题</h3><p>在全连接层中，传入的图像的形状信息被破坏了；由于在全连接层中，数据是以一维的形式传入的，故忽略了图像中诸如相邻像素之间的关系</p><h3 id="特征图"><a href="#特征图" class="headerlink" title="特征图"></a>特征图</h3><p>卷积层的输入输出数据。根据输入和输出分为输入特征图和输出特征图</p><h3 id="卷积运算"><a href="#卷积运算" class="headerlink" title="卷积运算"></a>卷积运算</h3><p>卷积运算是以一定的间隔滑动滤波器的窗口并对输入数据应用滤波器，应用的方式有乘积累加，偏置和求和等</p><h3 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h3><p>向输入数据的周围填入固定的数值；“幅度为1的填充”指的是向输入数据周围1个单位的范围内填充0</p><p>作用：调整输出的大小，由于在卷积运算中空间不断缩小，为了在保持输出大小不变的前提下进行卷积运算甚至深度卷积，就需要<strong>填充</strong>来调整数据空间大小</p><h3 id="步幅"><a href="#步幅" class="headerlink" title="步幅"></a>步幅</h3><blockquote><p>应用滤波器的位置间隔</p></blockquote><h3 id="3维数据的卷积运算"><a href="#3维数据的卷积运算" class="headerlink" title="3维数据的卷积运算"></a>3维数据的卷积运算</h3><p>与2维数据的卷积运算不同的是，3维数据的卷积运算同时进行多通道的卷积并将结果相加</p><h3 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h3><p>池化是缩小高、长方向上的空间的运算；包含Max池化和Average池化等</p><p>特征</p><ul><li>没有要学习的参数</li><li>通道数不发生变化</li><li>对微小的位置变化具有鲁棒性（健壮）</li></ul><h3 id="具有代表性的CNN"><a href="#具有代表性的CNN" class="headerlink" title="具有代表性的CNN"></a>具有代表性的CNN</h3><ul><li><p>LeNet</p><p>是进行手写数字识别的网络，具有连续的卷积层和池化层，最后经全连接层输出结果</p><p>不同点</p><ul><li><p>激活函数不同</p><p>LeNet使用sigmoid函数，而现在的CNN主要使用ReLU函数</p></li><li><p>在缩小中间数据的大小时采用的方法不同</p><p>原始的LeNet中使用子采样(subsampling)，而现在的CNN大多使用Max池化</p></li></ul></li><li><p>AlexNet</p><p>在结构上与LeNet基本没有什么不同</p><p>与LeNet的差异</p><ul><li>激活函数使用ReLU</li><li>使用进行局部正规化的LRN(Local Response Normalization)层</li><li>使用Dropout</li></ul></li></ul><h3 id="Data-Augmentation-数据扩充"><a href="#Data-Augmentation-数据扩充" class="headerlink" title="Data Augmentation(数据扩充)"></a>Data Augmentation(数据扩充)</h3><p>基于算法“人为地”扩充输入图像（训练图像），如施加旋转、垂直或水平方向上的移动等微小变化，以此增加图像的数量</p><h3 id="加深层的好处"><a href="#加深层的好处" class="headerlink" title="加深层的好处"></a>加深层的好处</h3><ul><li><p>减少网络的参数数量</p><p>与没有加深层的网络相比，加深了层的网络可以用更少的参数达到同等水平（或者更强）的表现力</p></li><li><p>使学习更加高效</p><p>随着层的加深，神经元会对更复杂的东西有响应</p></li><li><p>可以分层次地分解需要学习的问题</p></li><li><p>可以分层次地传递信息</p></li></ul><h3 id="感受野-receptive-field"><a href="#感受野-receptive-field" class="headerlink" title="感受野(receptive field)"></a>感受野(receptive field)</h3><p>给神经元施加变化的某个局部空间区域</p><h3 id="ImageNet"><a href="#ImageNet" class="headerlink" title="ImageNet"></a>ImageNet</h3><p>一个拥有超过100万张图像的数据集</p><h3 id="在深度学习中比较知名的网络"><a href="#在深度学习中比较知名的网络" class="headerlink" title="在深度学习中比较知名的网络"></a>在深度学习中比较知名的网络</h3><ul><li>VGG</li><li>GoogLeNet</li><li>ResNet</li></ul><h3 id="深度学习中高速化的问题"><a href="#深度学习中高速化的问题" class="headerlink" title="深度学习中高速化的问题"></a>深度学习中高速化的问题</h3><p>在深度学习中大部分时间都耗费在卷积层上</p><h3 id="基于GPU的高速化"><a href="#基于GPU的高速化" class="headerlink" title="基于GPU的高速化"></a>基于GPU的高速化</h3><p>深度学习中需要进行大量的乘积累加计算，而这正是GPU所擅长的，故可使用GPU来进行深度学习的运算以提高学习速度</p><h3 id="分布式学习"><a href="#分布式学习" class="headerlink" title="分布式学习"></a>分布式学习</h3><p>为了进一步提高深度学习所需的计算的速度，可以考虑在多个GPU或者多台机器上进行分布式计算</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 知识输出、AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ftp文件服务器搭建</title>
       <link href="2021/12/16/ftp_server/"/>
       <url>2021/12/16/ftp_server/</url>
