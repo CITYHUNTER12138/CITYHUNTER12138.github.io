@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：CTF - Uniqueland</title>
+  <title>ftp,sftp与ssh之间的关系 - Uniqueland</title>
+  
+    <meta name="keywords" content="web">
   
 
+  
+    <meta name="description" content="ftp和sftp的区别这两种协议都是用于传输文件的，其中sftp是基于ssh的原理">
   
 
   <!-- feed -->
@@ -275,7 +277,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -338,77 +340,254 @@
       <div class='body-wrapper' id="pjax-container">
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://www.helloimg.com/images/2022/03/06/Gh2PB9.png'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        ftp,sftp与ssh之间的关系
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年3月6日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="ftp,sftp与ssh之间的关系" data-path="/2022/03/06/ftp_sftp_ssh/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="ftp和sftp的区别"><a href="#ftp和sftp的区别" class="headerlink" title="ftp和sftp的区别"></a>ftp和sftp的区别</h2><p>这两种协议都是用于传输文件的，其中sftp是基于ssh的原理<a id="more"></a>开发的</p>
+<blockquote>
+<p>ftp: File Transfer Protocol<br>stfp: Secure File Transfer Protocol / SSH File Transfer Protocol<br>ssh: Secure Shell</p>
+</blockquote>
+<h3 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h3><p><img src="https://www.helloimg.com/images/2021/12/16/G9aPoR.jpg" class="lazyload" data-srcset="https://www.helloimg.com/images/2021/12/16/G9aPoR.jpg" srcset="data:image/png;base64,666"><br>ftp是明文传输，有两种模式：主动模式和被动模式</p>
+<h4 id="主动模式-Positive-Mode-："><a href="#主动模式-Positive-Mode-：" class="headerlink" title="主动模式(Positive Mode)："></a>主动模式(Positive Mode)：</h4><p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh2qT6"><img src="https://www.helloimg.com/images/2022/03/06/Gh2qT6.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh2qT6.png" srcset="data:image/png;base64,666" alt="Gh2qT6.png"></a><br><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh2s7A"><img src="https://www.helloimg.com/images/2022/03/06/Gh2s7A.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh2s7A.png" srcset="data:image/png;base64,666" alt="Gh2s7A.png"></a><br>在该模式下，服务端开放21，20端口；21端口用于接收用户名和密码，20端口用于传输数据<br>客户端登录ftp服务器后随机开放一个端口，再将这个端口的信息发送给服务端，服务端再通过用于传输数据的20端口连接至用户提供的端口</p>
+<h4 id="被动模式-Passive-Mode-："><a href="#被动模式-Passive-Mode-：" class="headerlink" title="被动模式(Passive Mode)："></a>被动模式(Passive Mode)：</h4><p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh2mnz"><img src="https://www.helloimg.com/images/2022/03/06/Gh2mnz.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh2mnz.png" srcset="data:image/png;base64,666" alt="Gh2mnz.png"></a><br><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh2JPR"><img src="https://www.helloimg.com/images/2022/03/06/Gh2JPR.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh2JPR.png" srcset="data:image/png;base64,666" alt="Gh2JPR.png"></a><br>在该模式下，服务端开放用于客户端连接的21端口以及一个随机端口，而客户端在登录ftp服务器后接收服务端提供的随机端口的信息，再连接至服务端的该端口以传输数据</p>
+<h3 id="stfp"><a href="#stfp" class="headerlink" title="stfp"></a>stfp</h3><p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh2eqP"><img src="https://www.helloimg.com/images/2022/03/06/Gh2eqP.jpg" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh2eqP.jpg" srcset="data:image/png;base64,666" alt="Gh2eqP.jpg"></a></p>
+<blockquote>
+<p>首先要明确的一点是，stfp是ssh的一个子服务</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh24C5"><img src="https://www.helloimg.com/images/2022/03/06/Gh24C5.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh24C5.png" srcset="data:image/png;base64,666" alt="Gh24C5.png"></a><br>sftp是基于ssh的技术进行文件的传输的，而ssh是通过22端口进行通信的，也就是说sftp也是通过22端口进行通信以及数据传输的，与ftp协议相比，除了通信端口的不同，由于ssh的通信过程是加密的，所以sftp中文件的传输也是加密的，但实际的安全性还取决于ssh的连接方式；且在ssh服务器与通信主机（服务器）分开时还分有半安全模式(Less Secure Connection)和安全模式(Full Secure Connection)</p>
+<blockquote>
+<p>半安全模式指用户通过ssh连接ssh服务器时所有的数据都是加密的，而ssh服务器与主机间通信的数据是未加密的</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh2xUn"><img src="https://www.helloimg.com/images/2022/03/06/Gh2xUn.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh2xUn.png" srcset="data:image/png;base64,666" alt="Gh2xUn.png"></a></p>
+<blockquote>
+<p>安全模式指用户与ssh服务器以及ssh服务器与主机间的通信都是加密的</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/Gh2At0"><img src="https://www.helloimg.com/images/2022/03/06/Gh2At0.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/06/Gh2At0.png" srcset="data:image/png;base64,666" alt="Gh2At0.png"></a><br>而当ssh服务运行于目标主机上时便不存在半安全模式和安全模式之分了</p>
+<h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>作为远程连接主机的常用方式，ssh有两种连接方式，一种是通过用户名和密码进行通信，这种方式非常方便，只需要任意一台能够接入互联网的常用设备就能够连接上远程主机，但是这种方式存在收到中间人攻击的可能；另一种方式是通过密钥分发的方式，即在服务端生成一份私钥存于服务器，再生成一份公钥分发给需要通信的主机，这种方式不需要用户名和密码，并且通信时需要进行密钥与公钥的验证，基本杜绝了中间人攻击的可能，但是由于需要提前准备好公钥，故便携性不如第一种方式</p>
+<blockquote>
+<p>quote<br><a target="_blank" rel="noopener" href="https://network.51cto.com/article/603552.html">https://network.51cto.com/article/603552.html</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20402010">https://www.zhihu.com/question/20402010</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/cuker919/article/details/6403925">https://blog.csdn.net/cuker919/article/details/6403925</a></p>
+</blockquote>
+
+  
   
     
+    <div class='footer'>
       
-  <section class="post-list">
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2022/03/06/ftp_sftp_ssh/>http://uniqueland.top/2022/03/06/ftp_sftp_ssh/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
     
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-06T11:57:01+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年3月6日</p>
+  </a>
+</div>
+
+        
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div>
+
+
         
       
-    
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2021/11/23/something_about_md5/">
-        <img class='headimg' src='https://www.helloimg.com/images/2021/11/24/GZEXFq.jpg'/>
-      </a>
-    </div>
-  
-  
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2022/03/06/ftp_sftp_ssh/&title=ftp,sftp与ssh之间的关系 - Uniqueland&summary=ftp和sftp的区别这两种协议都是用于传输文件的，其中sftp是基于ssh的原理"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
     
-    <h2 class="article-title" >
-      <a href="/2021/11/23/something_about_md5/">
-        有关md5的一些信息
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2022/03/06/ftp_sftp_ssh/&title=ftp,sftp与ssh之间的关系 - Uniqueland&summary=ftp和sftp的区别这两种协议都是用于传输文件的，其中sftp是基于ssh的原理"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
     
-      <p>在ctf比赛中常常见到md5的身影，对于md5，常见的利用方式有以下几种
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2022/03/06/ftp_sftp_ssh/&title=ftp,sftp与ssh之间的关系 - Uniqueland&summary=ftp和sftp的区别这两种协议都是用于传输文件的，其中sftp是基于ssh的原理"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2021-11-23</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2021/11/23/something_about_md5/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2021/12/25/deep_learning_from_scratch_5/'>
+          <p class='title'>Deep Learning from Scratch 5<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>深度学习应用案例
+
+
+物体检测 – R-CNN
+
+图像分割 – FCN
+
+图像标题的生成 – NIC (CNN+RNN)
+
+图像风格变换
+
+图像的生成 – DCGAN
+
+自动驾驶
+
+Dep Q-...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -416,103 +595,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://www.helloimg.com/images/2020/11/23/4e7864d477d67c39935da89f36cbec59a35354d2_raw15e58b0ae77ce6c5.md.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Uniqueland</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/CTF/" style="font-size: 14px; color: #999">CTF</a> <a href="/tags/Program/" style="font-size: 24px; color: #555">Program</a> <a href="/tags/ctf/" style="font-size: 14px; color: #999">ctf</a> <a href="/tags/ctf%E3%80%81web/" style="font-size: 14px; color: #999">ctf、web</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/web/" style="font-size: 16.5px; color: #888">web</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA/" style="font-size: 19px; color: #777">知识输出</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA%E3%80%81AI/" style="font-size: 21.5px; color: #666">知识输出、AI</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ftp%E5%92%8Csftp%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">ftp和sftp的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ftp"><span class="toc-text">ftp</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%8A%A8%E6%A8%A1%E5%BC%8F-Positive-Mode-%EF%BC%9A"><span class="toc-text">主动模式(Positive Mode)：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E5%8A%A8%E6%A8%A1%E5%BC%8F-Passive-Mode-%EF%BC%9A"><span class="toc-text">被动模式(Passive Mode)：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stfp"><span class="toc-text">stfp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssh"><span class="toc-text">ssh</span></a></li></ol></li></ol>
     </div>
   </section>
 
 
   
 
-  
-
 
 </aside>
+
 
 
         
@@ -522,8 +626,8 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="ftp,sftp与ssh之间的关系";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
@@ -1338,14 +1442,6 @@ document.addEventListener("pjax:success", listennSidebarTOC);
     document.addEventListener('pjax:error', function (e) {
 	  
       window.location.href = e.triggerElement.href;
-    });
-</script>
-
-    
-  </div>
-</body>
-</html>
-t.href;
     });
 </script>
 
