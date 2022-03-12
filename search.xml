@@ -5,6 +5,25 @@
     
     <entry>
       <title>ftp,sftp与ssh之间的关系</title>
+      <link href="2022/03/12/curl/"/>
+      <url>2022/03/12/curl/</url>
+      
+        <content type="html"><![CDATA[<p>```<br>curl用法：<br>GET请求：<br>curl <a href="https://www.xxx.com/">https://www.xxx.com</a><br>POST请求：<br>curl -d key=value <a href="https://www.xxx.com/">https://www.xxx.com</a><br>填写表单：<br>curl -F key1=value1 -F key2=value2 <a href="https://www.xxx.com/xxx.cgi">https://www.xxx.com/xxx.cgi</a><br>显示信息：<br>curl -i <a href="https://www.xxx.com/">https://www.xxx.com</a><br>指定USER-AGENT<br>curl -A “Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36 Edg/99.0.1150.39” <a href="https://www.xxx.com/">https://www.xxx.com</a><br>注：若留空则移除User-Agent标头<br>跟随重定向：<br>curl -L <a href="https://www.xxx.com/">https://www.xxx.com</a><br>注：curl默认不跟随重定向<br>发送cookie：<br>curl -b “foo=bar” <a href="https://www.xxx.com/">https://www.xxx.com</a><br>url编码：<br>curl –data-urlencode “xxxxxxx” <a href="https://www.xxx.com/">https://www.xxx.com</a><br>注：该方式与-d相近，区别在于是否编码<br>保存网页(与wget相似)：<br>curl -o xxx.html <a href="https://www.xxx.com/">https://www.xxx.com</a><br>用户认证：<br>curl -u “user:passwd” <a href="https://www.xxx.com/login">https://www.xxx.com/login</a><br>输出通信过程：<br>curl -v <a href="https://www.xxx.com/">https://www.xxx.com</a><br>输出二进制数据：<br>curl –trace - <a href="https://www.xxx.com/">https://www.xxx.com</a><br>注：可配合-o导出</p><p>```bash</p><blockquote><p>quote<br><a href="https://www.jianshu.com/p/fc0eb6c60816">https://www.jianshu.com/p/fc0eb6c60816</a><br><a href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">https://www.ruanyifeng.com/blog/2019/09/curl-reference.html</a></p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> tool </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ftp,sftp与ssh之间的关系</title>
       <link href="2022/03/06/ftp_sftp_ssh/"/>
       <url>2022/03/06/ftp_sftp_ssh/</url>
       
