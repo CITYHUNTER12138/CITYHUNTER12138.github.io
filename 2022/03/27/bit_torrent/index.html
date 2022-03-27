@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,14 @@
 
   <!-- 页面元数据 -->
   
-  <title>标签：tool - Uniqueland</title>
+  <title>有关BT种子的一些事 - Uniqueland</title>
+  
+    <meta name="keywords" content="web">
   
 
+  
+    <meta name="description" content="Bit Torrent (BT种子)是什么？
+BitTorrent(简称BT)是一个文件分发协议，每个">
   
 
   <!-- feed -->
@@ -277,7 +280,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper  dock' style="display: none;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -340,77 +343,244 @@
       <div class='body-wrapper' id="pjax-container">
         
 
-
 <div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://www.helloimg.com/images/2022/03/27/RexUZM.jpg'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        有关BT种子的一些事
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2022年3月27日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="有关BT种子的一些事" data-path="/2022/03/27/bit_torrent/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="Bit-Torrent-BT种子-是什么？"><a href="#Bit-Torrent-BT种子-是什么？" class="headerlink" title="Bit Torrent (BT种子)是什么？"></a>Bit Torrent (BT种子)是什么？</h2><blockquote>
+<p>BitTorrent(简称BT)是一个文件分发协议，每个<a id="more"></a>下载者在下载的同时不断向其他下载者上传已下载的数据。而在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/FTP/13839">FTP</a>,<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTTP">HTTP</a>协议中，每个下载者在下载自己所需文件的同时，各个下载者之间没有交互。当非常多的用户同时访问和下载服务器上的文件时，由于FTP服务器处理能力和带宽的限制，下载速度会急剧下降，有的用户可能访问不了服务器。BT协议与FTP协议不同，特点是下载的人越多，下载速度越快，原因在于每个下载者将已下载的数据提供给其他下载者下载，充分利用了用户的上载带宽。通过一定的策略保证上传速度越快，下载速度也越快。在很短时间内，BitTorrent协议成为一种新的变革技术。</p>
+</blockquote>
+<p>以上说明来自百度百科</p>
+<p><a target="_blank" rel="noopener" href="https://www.helloimg.com/image/RexTrb"><img src="https://www.helloimg.com/images/2022/03/27/RexTrb.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/03/27/RexTrb.png" srcset="data:image/png;base64,666" alt="RexTrb.png"></a></p>
+<p>用通俗的话讲，BT种子（以下简称 种子 ）技术其实就是将一个比较大的文件（比如电影或镜像）按照一定的规范分成多个块，当用户通过.torrent文件下载时，会连接上种子文件中记录的tracker服务器，而tracker服务器并不提供文件本身，而是通过查询返回当前同在下载该文件的其他客户端的地址，而主机接收到该地址后，会逐个逐个尝试连接，连接成功的便通过点对点（P2P）的方式获取对方计算机上的另一部分文件，然后再连接其他的客户端，获取文件的其他部分</p>
+<h2 id="Bit-Torrent-与其他下载方式相比，有什么优势？"><a href="#Bit-Torrent-与其他下载方式相比，有什么优势？" class="headerlink" title="Bit Torrent 与其他下载方式相比，有什么优势？"></a>Bit Torrent 与其他下载方式相比，有什么优势？</h2><p>不同于传统的 C/S ( Client / Server )模式，P2P的下载方式避免了单个服务器提供多个客户端的服务时带宽负载大的问题；在P2P下载时，每一台计算机，既是客户端，又是服务端，在下载的过程中，也向其他有需要的客户端上传自己的文件，有效节省了带宽；</p>
+<p>另外，由于P2P去中心化的特点，每个处于BT网络中的文件，其存在与否不再取决于文件的提供者或服务商，在一定程度上避免了文件因个人过失而永久消失的情况</p>
+<h2 id="Bit-Torrent-与其他下载方式相比，有什么劣势？"><a href="#Bit-Torrent-与其他下载方式相比，有什么劣势？" class="headerlink" title="Bit Torrent 与其他下载方式相比，有什么劣势？"></a>Bit Torrent 与其他下载方式相比，有什么劣势？</h2><p>有优势就肯定有劣势，如上文所说，BT下载是通过同在下载该文件的其他客户端提供的服务来获取文件的，那么，当同时在下载该文件的客户端很少，甚至我们可以假设一种极端情况：整个网络就只有你一台计算机在下载该文件，那么你将不会得到你想要的文件，因为没有其他节点给你提供你想要的文件</p>
+<p>另一方面，同样由于BT技术中文件无法轻易清除的特点，文件一旦上传，想永久抹去的可能性不大，那么万一有不法分子上传了本不该出现在网络上的文件（比如有关国家机密或者个人隐私，有或者未上映的电影之类的），其后果不堪设想</p>
+<h2 id="torrent文件都记录了什么？"><a href="#torrent文件都记录了什么？" class="headerlink" title="torrent文件都记录了什么？"></a>torrent文件都记录了什么？</h2><p>A）这个文件（文件夹）中数据的SHA1值，比如一个1G的文件，如果按1M每块进行分块，则会被分为了1000块，torrent中就会有这1000个数据块的指纹值（SHA1的<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=hash%E5%80%BC&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:160765176%7D">hash值</a>），这个占据了torrent文件的绝大部分空间。这些值的目的是为了下载的过程中进行数据校验，确保数据收到的和当时源头制作torrent时的源文件100%一致，防止恶意数据攻击。</p>
+<p>B）一般制作torrent文件时，还会要指定一个或者多个Tracker的地址，比如<a href="https://link.zhihu.com/?target=http://www.a.com:8080/announce">http://www.a.com:8080/announce</a>这种地址。torrent里面一般也会存储了这个信息，这个其实也尤为重要。相当于记录了一个问询服务器的地址，这个问询服务器的作用，后面我再解释。</p>
+<p>C）文件或者文件夹内每个文件的名字，方便下载文件时，磁盘上直接命名好跟原始数据一样的目录结构、文件名。    </p>
+<p>D）其它一些辅助和可扩展的信息，比如可以配置一个P2SP的http地址辅助下载，比如制作软件的名字、备注……。      E）上面信息生成后，torrent会把A）里面的这些信息，以及torrent里面的文件名等关键信息，再进行一次Hash，生成一个新的SHA1值，作为torrent的HASH值，也就是我们经常看到的下载软件里面对这个种子命名的一个唯一的hash值，也有的在magnet这种磁力链接中可以看到这个值，这就是torrent的唯一标记。</p>
+<p>以上就是.torrent文件的内容，可以用记事本打开，但可能看到乱码。这个文件的编码遵循了bencode编码规则。但实际内容就主要是上面这些。所以，torrent可以理解为对原始数据的一些记录。</p>
+<h2 id="如果下载时没有其他节点在线。又没有http服务器，是不是就不能进行下载了呢？"><a href="#如果下载时没有其他节点在线。又没有http服务器，是不是就不能进行下载了呢？" class="headerlink" title="如果下载时没有其他节点在线。又没有http服务器，是不是就不能进行下载了呢？"></a>如果下载时没有其他节点在线。又没有http服务器，是不是就不能进行下载了呢？</h2><p>不一定，BT发明者提出了DHT（Distributed Hash Table）的概念，就算Tracker连不上了，也可以通过分布式哈希表DHT技术，通过DHT网络慢慢的寻找志同道合的邻居节点，只是没有Tracker那么直接那么快速，但慢一些总还是有机会找到邻居的</p>
+<h2 id="有关下载过程中的一些事"><a href="#有关下载过程中的一些事" class="headerlink" title="有关下载过程中的一些事"></a>有关下载过程中的一些事</h2><p>文件下载时，若存在提供下载服务的http服务器，那么就算没有其他的客户端在线，下载仍然可以进行</p>
+<p>下载过程中出现卡在99.99%的原因是因为当所有分块都下载完毕时，电脑会对下载的文件进行文件校验（类似于哈希检验），而当文件校验不通过时，电脑就会对组成文件的所有分块逐个逐个进行检验，发现校验值不对的文件分块再重新下载，这就是为什么有时候下载卡住的原因</p>
+<p>当文件下载完毕时，如果你没有关闭下载文件的客户端，那么如果有其他人需要你的文件，即使你没有在下载文件，你所拥有的文件分块依然可以上传给其他客户端，成为一名崇高的传递者</p>
+<p>文件下载时，影响下载速度的，除了你的电脑当前的网速，其实还有你的电脑当前的上传速度；在BT网络的带宽分配中，上传速度快的客户端能够获得的下载速度会相对比较快</p>
+<p>某些运营商会对BT下载时的通信进行拦截，它们会对通信过程中传输的内容进行分析，由于早期的下载传输的是明文，故很容易就能够被运营商截取；当然，道高一尺，魔高一丈，如今的下载过程传输的内容大部分都进行过加密</p>
+<blockquote>
+<p>quote<br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/BitTorrent/142795">BitTorrent_百度百科 (baidu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/49829233/answer/160765176">https://www.zhihu.com/question/49829233/answer/160765176</a></p>
+</blockquote>
+
+  
   
     
+    <div class='footer'>
       
-  <section class="post-list">
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2022/03/27/bit_torrent/>http://uniqueland.top/2022/03/27/bit_torrent/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
     
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-27T21:23:03+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2022年3月27日</p>
+  </a>
+</div>
+
+        
       
         
           
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/web/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>web</p></a></div>
+
+
         
       
-    
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
     
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2022/03/12/curl/">
-        <img class='headimg' src='https://www.helloimg.com/images/2022/03/12/RFS2Rc.jpg'/>
-      </a>
-    </div>
-  
-  
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2022/03/27/bit_torrent/&title=有关BT种子的一些事 - Uniqueland&summary=Bit Torrent (BT种子)是什么？
+BitTorrent(简称BT)是一个文件分发协议，每个"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
     
-    <h2 class="article-title" >
-      <a href="/2022/03/12/curl/">
-        curl的常见用法
-      </a>
-    </h2>
-  
-  <div class='md'>
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2022/03/27/bit_torrent/&title=有关BT种子的一些事 - Uniqueland&summary=Bit Torrent (BT种子)是什么？
+BitTorrent(简称BT)是一个文件分发协议，每个"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
     
-      <p>curl用法：</p>
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2022/03/27/bit_torrent/&title=有关BT种子的一些事 - Uniqueland&summary=Bit Torrent (BT种子)是什么？
+BitTorrent(简称BT)是一个文件分发协议，每个"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
+</div>
+
+
+
         
-        <time>2022-03-12</time>
-        
-      </div>
       
-        <div>
-          <a class='readmore' href='/2022/03/12/curl/'>
-            阅读全文
-          </a>
-        </div>
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2022/03/20/cdn/'>
+          <p class='title'>有关cdn和真实ip的一些事<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>CDN是什么？
+CDN(Content Delivery Network)是指内容分发网络，也称为内容传送网络，这个概念始于1996年，是美国麻省理工学院的一个研究小组为改善互联网的服务质量而提...</p>
+        </a>
       
     </div>
   
+</article>
 
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
 </div>
 
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
+  </article>
 
 
-    
-  
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -418,103 +588,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://www.helloimg.com/images/2020/11/23/4e7864d477d67c39935da89f36cbec59a35354d2_raw15e58b0ae77ce6c5.md.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Uniqueland</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/CTF/" style="font-size: 14px; color: #999">CTF</a> <a href="/tags/Program/" style="font-size: 24px; color: #555">Program</a> <a href="/tags/ctf/" style="font-size: 14px; color: #999">ctf</a> <a href="/tags/ctf%E3%80%81web/" style="font-size: 14px; color: #999">ctf、web</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/web/" style="font-size: 19px; color: #777">web</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA/" style="font-size: 16.5px; color: #888">知识输出</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA%E3%80%81AI/" style="font-size: 21.5px; color: #666">知识输出、AI</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bit-Torrent-BT%E7%A7%8D%E5%AD%90-%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Bit Torrent (BT种子)是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bit-Torrent-%E4%B8%8E%E5%85%B6%E4%BB%96%E4%B8%8B%E8%BD%BD%E6%96%B9%E5%BC%8F%E7%9B%B8%E6%AF%94%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E5%8A%BF%EF%BC%9F"><span class="toc-text">Bit Torrent 与其他下载方式相比，有什么优势？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bit-Torrent-%E4%B8%8E%E5%85%B6%E4%BB%96%E4%B8%8B%E8%BD%BD%E6%96%B9%E5%BC%8F%E7%9B%B8%E6%AF%94%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%A3%E5%8A%BF%EF%BC%9F"><span class="toc-text">Bit Torrent 与其他下载方式相比，有什么劣势？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#torrent%E6%96%87%E4%BB%B6%E9%83%BD%E8%AE%B0%E5%BD%95%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">torrent文件都记录了什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%8B%E8%BD%BD%E6%97%B6%E6%B2%A1%E6%9C%89%E5%85%B6%E4%BB%96%E8%8A%82%E7%82%B9%E5%9C%A8%E7%BA%BF%E3%80%82%E5%8F%88%E6%B2%A1%E6%9C%89http%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E6%98%AF%E4%B8%8D%E6%98%AF%E5%B0%B1%E4%B8%8D%E8%83%BD%E8%BF%9B%E8%A1%8C%E4%B8%8B%E8%BD%BD%E4%BA%86%E5%91%A2%EF%BC%9F"><span class="toc-text">如果下载时没有其他节点在线。又没有http服务器，是不是就不能进行下载了呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E4%B8%8B%E8%BD%BD%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B"><span class="toc-text">有关下载过程中的一些事</span></a></li></ol>
     </div>
   </section>
 
 
   
 
-  
-
 
 </aside>
+
 
 
         
@@ -524,8 +619,8 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="有关BT种子的一些事";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
