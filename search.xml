@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>Sqlmap基本操作</title>
+      <link href="2022/03/29/sqlmap/"/>
+      <url>2022/03/29/sqlmap/</url>
+      
+        <content type="html"><![CDATA[<p>sqlmap对于各位CTF的web人应该是必备工具了<a id="more"></a></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="Linux-Mac-OS"><a href="#Linux-Mac-OS" class="headerlink" title="Linux / Mac OS"></a>Linux / Mac OS</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev</span><br></pre></td></tr></table></figure><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>安装git-bash之后在选定目录下右键打开git-bash窗口运行上述命令即可</p><p>下载地址：</p><p><a href="https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe">https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe</a></p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -h<span class="comment"># 获取常见选项</span></span><br><span class="line">python sqlmap.py -hh<span class="comment"># 获取所有选项</span></span><br><span class="line">python sqlmap.py -u www.example.com <span class="comment"># 检测GET注入</span></span><br><span class="line">python sqlmap.py -u www.example.com --batch  <span class="comment"># 使用默认选项（不用手动选择y/n）</span></span><br><span class="line">python sqlmap.py -u www.example.com --batch --dbs --tables --columns<span class="comment"># 返回数据库/表/列</span></span><br><span class="line">python sqlmap.py -u www.example.com --batch -D xxx -T xxx -C xxx<span class="comment"># 指定数据库/表/列</span></span><br><span class="line">python sqlmap.py -u www.example.com --batch --dump   <span class="comment"># 直接返回数据库内容</span></span><br></pre></td></tr></table></figure><p><strong>注：如果是在Linux系统下，python命令可能调用的是python2，如果报错可将python换为python3</strong></p><p>​        <strong>如果有其他报错，尝试将网址等参数用双引号包裹</strong></p><p>​        <strong>Windows下可在命令提示符或powershell下运行</strong></p><ul>    <li>在返回数据库/表/列时，可只指定一项</li>    <li>在指定数据库/表/列时，也可只指定一项</li>    <li>一般将dump选项和上述命令结合，直接返回注入结果</li></ul><h2 id="更多玩法"><a href="#更多玩法" class="headerlink" title="更多玩法"></a>更多玩法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -m 1.txt<span class="comment"># 从文件中导入url</span></span><br><span class="line">python sqlmap.py -r res.txt<span class="comment"># 从文件中导入http响应</span></span><br><span class="line">python sqlmap.py -l burp.txt<span class="comment"># 从文件中导入burp抓包文件</span></span><br><span class="line">python sqlmap.py -u www.example.com  --data=<span class="string">&quot;id=1&quot;</span>  <span class="comment"># 使用POST注入</span></span><br><span class="line">python sqlmap.py -u www.example.com --level 2  <span class="comment"># 使用2级注入，检测cookie注入</span></span><br><span class="line">python sqlmap.py -u www.example.com --level 3  <span class="comment"># 使用3级注入，检测referer注入和USER-AGENT注入</span></span><br><span class="line">python sqlmap.py -u www.example.com --level 5  <span class="comment"># 使用5级注入，检测host注入</span></span><br><span class="line">python sqlmap.py -u www.example.com --random-agent     <span class="comment"># 使用随机代理</span></span><br><span class="line">python sqlmap.py -u www.example.com --tor  <span class="comment"># 使用匿名tor网络</span></span><br><span class="line">python sqlmap.py -u www.example.com --hpp  <span class="comment"># 检测http污染</span></span><br></pre></td></tr></table></figure><p>level默认为1，范围为 1 - 5</p><p><strong>更多用法和命令可参照官网文档：<a href="http://sqlmap.org/">http://sqlmap.org/</a></strong></p><blockquote><p>quote<br><a href="https://github.com/sqlmapproject/sqlmap">GitHub - sqlmapproject/sqlmap: Automatic SQL injection and database takeover tool</a></p><p><a href="https://blog.csdn.net/smli_ng/article/details/106026901">sqlmap详细使用教程_星落.的博客-CSDN博客_sqlmap</a></p><p><a href="https://www.freebuf.com/sectool/164608.html">超详细SQLMap使用攻略及技巧分享 - FreeBuf网络安全行业门户</a></p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> ctf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>有关BT种子的一些事</title>
       <link href="2022/03/27/bit_torrent/"/>
       <url>2022/03/27/bit_torrent/</url>
