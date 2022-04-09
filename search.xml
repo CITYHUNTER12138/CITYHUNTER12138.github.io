@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>GoogleHacking</title>
+      <link href="2022/04/09/google_hacking/"/>
+      <url>2022/04/09/google_hacking/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Google-Hacking"><a href="#Google-Hacking" class="headerlink" title="Google Hacking"></a>Google Hacking</h2><p>Google hacking是一系列<a id="more"></a>用于高效运用搜索引擎的技巧，也可以用于测试漏洞等用处</p><p>A and B</p><p>逻辑与，用于查找同时包含A和B的内容</p><p>A or B</p><p>逻辑或，用于查找包含A或包含B或同时包含A和B的内容</p><p>A -B</p><p>逻辑非，用于查找A但不包含B的内容</p><p>“xxx yyy”</p><p>完整匹配，用于查找带有完整xxx yyy的内容</p><p>site:xxx.com yyy</p><p>指定搜索范围，用于搜索特定范围（xxx.com）内有关yyy的内容</p><p>filetype:txt xxx</p><p>指定搜索文件类型，用于搜索有关xxx的txt文件</p><p>inurl:aaa</p><p>搜索匹配网址中带aaa的内容</p><p>allinurl: aaa bbb</p><p>与inurl相似，只不过可以指定多个关键词</p><p>intext:aaa xxx</p><p>搜索匹配网页正文中带aaa的且有关xxx的内容</p><p>intitle:xxx</p><p>搜索匹配网页的标题中包含xxx的内容</p><p>xxx*</p><p>使用通配符*搜索有关以xxx为前缀的内容</p><p>link:xxx.com</p><p>返回所有指向xxx.com的网页</p><p>related:xxx.com</p><p>返回所有与xxx.com相似的网页（指布局相似）</p><p>cache:xxx.com [yyy]</p><p>返回搜索引擎有关xxx.com的缓存，如果加上关键词，则网页中的关键词会被高亮</p><p>info:<a href="http://www.xxx.com/">www.xxx.com</a></p><p>返回有关站点<a href="http://www.xxx.com的相关信息/">www.xxx.com的相关信息</a></p><p>define:xxx</p><p>返回有关xxx的定义</p><p>Index of /xxx</p><p>返回允许当作目录访问的网页</p><h2 id="一些技巧："><a href="#一些技巧：" class="headerlink" title="一些技巧："></a>一些技巧：</h2><h3 id="查找网站后台"><a href="#查找网站后台" class="headerlink" title="查找网站后台"></a>查找网站后台</h3><p>site:xx.com intext:管理</p><p>site:xx.com inurl:login</p><p>site:xx.com intitle:后台</p><h3 id="查看服务器使用的程序"><a href="#查看服务器使用的程序" class="headerlink" title="查看服务器使用的程序"></a>查看服务器使用的程序</h3><p>site:xx.com filetype:asp</p><p>site:xx.com filetype:php</p><p>site:xx.com filetype:jsp</p><p>site:xx.com filetype:aspx</p><h3 id="查看上传漏洞"><a href="#查看上传漏洞" class="headerlink" title="查看上传漏洞"></a>查看上传漏洞</h3><p>site:xx.com inurl:file</p><p>site:xx.com inurl:load</p><h3 id="查看可访问目录"><a href="#查看可访问目录" class="headerlink" title="查看可访问目录"></a>查看可访问目录</h3><p>index of /admin</p><p>index of /passwd</p><p>index of /password</p><p>index of /mail</p><p>“index of /“ +passwd</p><p>“index of /“ +password.txt</p><p>“index of /“ +.htaccess</p><p>“index of /root”</p><p>“index of /cgi-bin”</p><p>“index of /logs”</p><p>“index of /config”</p><blockquote><p>quote<br><a href="https://blog.csdn.net/weixin_51339377/article/details/124005136">Google-Hacking 语法笔记_Simon_Smith的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/qq_35733751/article/details/105258082">2-信息收集—Google hacking_songly_的博客-CSDN博客</a></p><p><a href="https://blog.csdn.net/qq_36119192/article/details/84029809">信息收集之Google Hacking的简单用法_谢公子的博客-CSDN博客_google hacking</a></p><p><a href="https://blog.csdn.net/huweiliyi/article/details/105442118">Google Hacking使用详解_Teacher.Hu的博客-CSDN博客_google hacking</a></p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Internet </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>arp欺骗初次尝试</title>
       <link href="2022/04/03/arp_cheat/"/>
       <url>2022/04/03/arp_cheat/</url>
