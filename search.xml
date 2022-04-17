@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>DNS重绑定</title>
+      <link href="2022/04/17/dns_rebinding_attack/"/>
+      <url>2022/04/17/dns_rebinding_attack/</url>
+      
+        <content type="html"><![CDATA[<h2 id="DNS重绑定"><a href="#DNS重绑定" class="headerlink" title="DNS重绑定"></a>DNS重绑定</h2><p>DNS重绑定指的是在用户访问域名时<a id="more"></a>更改域名指向的IP从而令用户访问指定IP的攻击手法</p><hr><p><strong>DNS</strong>：由于网络传输需要IP地址，故需要DNS（Domian Name Server）用于查询给定域名指向的IP</p><p><strong>同源策略</strong>（The Same-origin Policy）：</p><blockquote><p>The same-origin policy restricts which network messages one origin can send to another. For example, the same-origin policy allows inter-origin HTTP requests with GET and POST methods but denies inter-origin PUT and DELETE requests. Additionally, origins can use custom HTTP headers when sending requests to themselves but cannot use custom headers when sending requests to other origins.</p><p>The restrictions on reading information received from other origins is also somewhat subtle. For example, the HTML &lt;script&gt; element can execute content retrieved from foreign origins, which means web sites should not rely on the same-origin policy to protect the confidentiality of information in a format that happens to parse as script (e.g., JavaScript source files, JSON format, JSONP services, or <a href="http://www.thinkfu.com/blog/?p=15">JavaScript/gif polyglots</a>). For all such resources, no loss of security would result (and much flexibility would be gained) from adding the Access-Control-Allow-Origin:* header to all responses.</p></blockquote><p>以上解释来自于<a href="https://www.w3.org/Security/wiki/Same_Origin_Policy">Same Origin Policy - Web Security (w3.org)</a></p><p><a href="https://www.helloimg.com/image/RnPgwo"><img src="https://www.helloimg.com/images/2022/04/17/RnPgwo.png" class="lazyload" data-srcset="https://www.helloimg.com/images/2022/04/17/RnPgwo.png" srcset="data:image/png;base64,666" alt="RnPgwo.png"></a></p><p>简单来说，为了防止淘宝网带着你的账户信息访问京东，需要同源策略来限制不同网站之间的访问规范</p><hr><p>​    可以看出同源的要求是“协议+端口+域名/ip”，而如果以域名访问网站（通常的做法）时同源策略就变成了“协议+端口+域名”这就给了DNS重绑定攻击实现的可能</p><p>要实现DNS重绑定攻击，攻击者需要具备以下条件：</p><ul>    <li>诱使用户点击给定链接（钓鱼邮件、钓鱼短信、社工等）</li>    <li>可控的DNS服务器（自己搭建一个或者抢一个）</li></ul><p>​    DNS重绑定攻击会诱使用户访问一个域名，在用户第一次访问时以正常的IP进行通信，并且在返回的DNS查询结果中将TTL设置为1或其他比较小的数字，在诱使用户以点击等行为构造好恶意请求时，攻击者一般会修改DNS服务器上该域名指向的IP，从而将恶意请求发送至攻击者指定的IP；</p><blockquote><p>TTL（Time To Live）指的是dns查询结果的有效时间，通过修改TTL为一个较小的值从而实现受害者与DNS服务器的频繁通信，从而保证在修改域名指向的IP时能立即生效</p></blockquote><hr><p>​    易受攻击的设备：一般是位于内网的智能家居设备，由于攻击者无法从外网访问受害者的内网，故以此种攻击伪造身份访问内网（SSRF）；比如恒温器，若在一个只有老人的场所中，这种攻击往往是致命的</p><blockquote><p>quote<br><a href="https://www.w3.org/Security/wiki/Same_Origin_Policy">Same Origin Policy - Web Security (w3.org)</a><br><a href="https://zhuanlan.zhihu.com/p/45583472">利用DNS重绑定攻击专用网络 - 知乎 (zhihu.com)</a><br><a href="https://xz.aliyun.com/t/7495">从0到1认识DNS重绑定攻击 - 先知社区 (aliyun.com)</a></p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Internet </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>GoogleHacking</title>
       <link href="2022/04/09/google_hacking/"/>
       <url>2022/04/09/google_hacking/</url>
