@@ -376,35 +376,63 @@
   <div class='md'>
     
       
-        第一步：定义相应结构
+        <h2>第一步：定义相应结构</h2>
 
 
 
-由于实现链表的编程语言为C，不能够使用类，故使用结构来实现链表中的节点；
-12345typedef struct LinkList &#123;	char name[MAX_INPUT];	long number;	LinkList* next;&#125;Link;
+<p>由于实现链表的编程语言为C，不能够使用类，故使用结构来实现链表中的节点；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkList</span> &#123;</span></span><br><span class="line">	<span class="keyword">char</span> name[MAX_INPUT];</span><br><span class="line">	<span class="keyword">long</span> number;</span><br><span class="line">	LinkList* next;</span><br><span class="line">&#125;Link;</span><br></pre></td></tr></table></figure>
 
-该结构由一个字符数组，一项编号和一个指向此结构的指针组成。
-第二步：定义输入函数
+<p>该结构由一个字符数组，一项编号和一个指向此结构的指针组成。</p>
+<h2>第二步：定义输入函数</h2>
 
-为了更容易...
+<p>为了更容易、更准确的获取输入，在程序中重新定义输入函数，在原有fgets()函数的基础上略作修改，得到新的输入函数s_gets()；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">s_gets</span><span class="params">(<span class="keyword">char</span>* st, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span>* ret_val;</span><br><span class="line">	<span class="keyword">char</span>* find;</span><br><span class="line">	ret_val = fgets(st, n, <span class="built_in">stdin</span>);</span><br><span class="line">	<span class="keyword">if</span> (ret_val) &#123;</span><br><span class="line">		find = <span class="built_in">strchr</span>(st, <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">		<span class="keyword">if</span> (find) &#123;</span><br><span class="line">			*find = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">while</span> (getchar() != <span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret_val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该函数为返回类型为字符指针、接受参数为一个字符指针和一个整数的输入函数，其中字符指针就是字符数组名称，因为数组名称本质上就是数组首元素的地址，而该数组为字符数组，故该字符数组名称本质上就是字符指针；</p>
+<p>在函数内部，我声明了两个字符指针，一个用来接受<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/fgets">fgets</a>函数的返回值，一个用来接受查找字符函数(<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/strchr">strchr</a>)的返回值；</p>
+<p>关于fgets()函数：</p>
+<ul>
+    <li>如果接受输入的字符数量超过字符数组的大小(MAX_INPUT)，fgets()函数会返回先前传入的地址，即字符数组的名称，并且把末尾的字符换为空字符('\0')，使之成为一个字符串；</li>
+    <li>如果接收输入的字符数量在字符数组的大小以内，那么fgets()函数会将空字符放置在换行符之前，然后同样返回先前传入的地址；</li>
+    <li>需要注意的是：fgets()函数在遇到文件结尾(EOF End Of File)时将会返回一个空指针；</li>
+</ul>
+
+
+
+<p>关于strchr()函数：</p>
+<ul>
+    <li>在某个字符数组中查找某字符，并返回指向该字符的指针</li>
+    <li>r如果字符串中不包含该字符，则返回一个空指针</li>
+</ul>
+
+
+
+<p>经过重写，修改如下：</p>
+<p>首先使用fgets()函数接收输入，并将返回值存储在指针ret_val中，然后对该指针进行判断，如果不为空指针，则使用字符查找函数查找换行符，并将该换行符替换为空字符，如果查找换行符失败，说明输入的字符数量超过了字符数组的大小，这时使用一个while循环接收其余的输入并抛弃；如果ret_val为空指针，说明遇到文件结尾；最后返回ret_val；</p>
+<h2>第三步：编写主函数进行测试</h2>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> input[MAX_INPUT];</span><br><span class="line">	Link* p = (Link*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Link*));</span><br><span class="line">	Link* temp = p;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Now start recording: \n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Name  : &quot;</span>);</span><br><span class="line">	<span class="keyword">while</span> (s_gets(input,MAX_INPUT) != <span class="literal">NULL</span> &amp;&amp; input[<span class="number">0</span>] != <span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">		Link* a = (Link*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Link));</span><br><span class="line">		a-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">		temp-&gt;next = a;</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">		<span class="built_in">strcpy</span>(a-&gt;name, input);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Number: &quot;</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%ld&quot;</span>, &amp;(a-&gt;number));</span><br><span class="line">		getchar();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Name  : &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	temp = p-&gt;next;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Recorded Data: \n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span> (temp) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Name: %s\tNumber: %ld\n&quot;</span>, temp-&gt;name, temp-&gt;number);</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+    <li>首先声明一个字符数组用来储存输入，然后声明一个节点类型的指针作为头节点，并为其分配内存，接着再声明一个同样的临时指针指向该头指针，这里使用临时指针的目的是作为当前指针与下一个指针的过渡指针，同时保持头指针指向的内容不变，方便最后的输出；</li>
+    <li>在输出提示信息之后进入循环，退出条件为输入空行；在循环中，首先声明指向当前节点的指针并为其分配内存，接着将该指针指向的结构中的指针声明为NULL，然后将当前节点的指针赋给临时指针指向的结构的指针，使其与上一个节点相连，然后再将临时指针指向的指针赋给自身(其实就相当于使临时指针指向下一个节点)；接着将刚刚接收的输入复制到当前节点的name变量中，然后再接收编号的输入并存储到当前节点的number变量中；值得注意的是，在使用scanf()函数接收输入后该函数似乎会将换行符留在缓存区中，所以这里需要使用getchar()函数来将该换行符从缓存区中去除；</li>
+    <li>在循环结束之后，我将临时指针指向了头节点的下一个节点(请注意，头节点中并没有储存除下一个节点的地址之外的任何信息，故此处从头节点的下一个节点开始)；然后进入下一个while循环，退出条件为临时指针为空指针(因为在上一个while循环中已经将当前节点中的指针声明为NULL了，所以一旦第一个循环结束，最后一个节点中的指针必为NULL)，然后打印出当前节点的信息并将临时指针指向下一个节点。</li>
+</ul>
+
+
+
+<h2>源代码</h2>
+
+<p>最后附上源代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_INPUT 20</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">s_gets</span><span class="params">(<span class="keyword">char</span>* st, <span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">s_gets</span><span class="params">(<span class="keyword">char</span>* st, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span>* ret_val;</span><br><span class="line">	<span class="keyword">char</span>* find;</span><br><span class="line">	ret_val = fgets(st, n, <span class="built_in">stdin</span>);</span><br><span class="line">	<span class="keyword">if</span> (ret_val) &#123;</span><br><span class="line">		find = <span class="built_in">strchr</span>(st, <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">		<span class="keyword">if</span> (find) &#123;</span><br><span class="line">			*find = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">while</span> (getchar() != <span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret_val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkList</span> &#123;</span></span><br><span class="line">	<span class="keyword">char</span> name[MAX_INPUT];</span><br><span class="line">	<span class="keyword">long</span> number;</span><br><span class="line">	LinkList* next;</span><br><span class="line">&#125;Link;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> input[MAX_INPUT];</span><br><span class="line">	Link* p = (Link*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Link*));</span><br><span class="line">	Link* temp = p;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Now start recording: \n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Name  : &quot;</span>);</span><br><span class="line">	<span class="keyword">while</span> (s_gets(input,MAX_INPUT) != <span class="literal">NULL</span> &amp;&amp; input[<span class="number">0</span>] != <span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">		Link* a = (Link*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Link));</span><br><span class="line">		a-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">		temp-&gt;next = a;</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">		<span class="built_in">strcpy</span>(a-&gt;name, input);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Number: &quot;</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%ld&quot;</span>, &amp;(a-&gt;number));</span><br><span class="line">		getchar();</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Name  : &quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	temp = p-&gt;next;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;Recorded Data: \n&quot;</span>);</span><br><span class="line">	<span class="keyword">while</span> (temp) &#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Name: %s\tNumber: %ld\n&quot;</span>, temp-&gt;name, temp-&gt;number);</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2021-05-02</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2021/05/02/link_list_by_C/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
   
 
 </div>
