@@ -5,8 +5,6 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
-    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -21,9 +19,13 @@
 
   <!-- 页面元数据 -->
   
-  <title>归档：2022/4 - Uniqueland</title>
+  <title>Windows异常处理机制深度解析 - Uniqueland</title>
+  
+    <meta name="keywords" content="Windows">
   
 
+  
+    <meta name="description" content="Windows异常的处理是怎么进行的，为什么会弹窗报错，为什么会蓝屏">
   
 
   <!-- feed -->
@@ -58,7 +60,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -277,7 +279,7 @@
     <div id="l_cover">
   
     
-        <div id="half" class='cover-wrapper  dock' style="display: ;">
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
           
             <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
           
@@ -341,171 +343,231 @@
         
 
 <div class='l_main'>
-	
-		
-  <section class="post-list">
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://s2.loli.net/2025/04/01/Srv4qcXLCgZI1Rn.webp'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
     
-      
+    
+    
+      <h1 class="title">
+        Windows异常处理机制深度解析
+      </h1>
+      <div class='new-meta-box'>
         
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
           
         
           
-        
+            
+
           
         
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2022/04/17/dns_rebinding_attack/">
-        <img class='headimg' src='https://www.helloimg.com/images/2022/04/17/RnP671.jpg'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2022/04/17/dns_rebinding_attack/">
-        DNS重绑定
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>DNS重绑定指的是在用户访问域名时更改域名指向的IP从而令用户访问指定IP的攻击手法</p>
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2022-04-17</time>
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2022/04/17/dns_rebinding_attack/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年3月31日</p>
+  </a>
 </div>
 
-          </div>
+          
         
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2022/04/09/google_hacking/">
-        <img class='headimg' src='https://www.helloimg.com/images/2022/04/09/RsgxNM.jpg'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2022/04/09/google_hacking/">
-        GoogleHacking
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>Google hacking是一系列用于高效运用搜索引擎的技巧，也可以用于测试漏洞等用处</p>
-    
+      <div id="lc-pv" data-title="Windows异常处理机制深度解析" data-path="/2025/03/31/windows_exception/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2022-04-09</time>
+
+
+          
         
       </div>
-      
-        <div>
-          <a class='readmore' href='/2022/04/09/google_hacking/'>
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow">
-  
-  
-  
-    <div class='headimg-div'>
-      <a class='headimg-a' href="/2022/04/03/arp_cheat/">
-        <img class='headimg' src='https://www.helloimg.com/images/2022/04/03/RJkrTE.png'/>
-      </a>
-    </div>
-  
-  
-    
-    <h2 class="article-title" >
-      <a href="/2022/04/03/arp_cheat/">
-        arp欺骗初次尝试
-      </a>
-    </h2>
-  
-  <div class='md'>
-    
-      <p>ARP攻击是针对以太网地址解析协议（ARP）的一种攻击技术</p>
     
   </div>
+
+
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time>2022-04-03</time>
-        
-      </div>
+  <h2 id="什么是Windows异常"><a href="#什么是Windows异常" class="headerlink" title="什么是Windows异常"></a>什么是Windows异常</h2><p>Windows异常是指在程序执行过程中遇到的非正常情况，这些情况会中断程序正常的执行流程。Windows操作系统提供了完善的异常处理机制来应对这些情况，使程序能够优雅地处理错误并尽可能恢复正常运行。</p>
+<p>从本质上看，Windows异常可分为两大类：硬件异常和软件异常。硬件异常由CPU直接产生，如内存访问违规、除零错误等；而软件异常则是由程序代码主动触发，如C++的throw语句、Windows API中的RaiseException函数等。</p>
+<h2 id="常见的异常触发情况及现象"><a href="#常见的异常触发情况及现象" class="headerlink" title="常见的异常触发情况及现象"></a>常见的异常触发情况及现象</h2><p>在日常编程和系统使用中，异常可能由多种情况触发。内存访问违规是一种常见情况，包括访问空指针（0x00000000）、访问已释放的内存或尝试写入只读内存区域。计算异常也时有发生，如除零操作、整数溢出或浮点运算错误。非法指令异常则可能源于执行无效或特权指令，或是错误地执行数据区域的内容。此外，还有程序通过RaiseException API、C++的throw语句或.NET中的throw指令主动抛出的异常。</p>
+<p><img src="https://s2.loli.net/2025/03/31/Zv4nF21k9QtxNm5.jpg" class="lazyload" data-srcset="https://s2.loli.net/2025/03/31/Zv4nF21k9QtxNm5.jpg" srcset="data:image/png;base64,666" alt="exception.jpg"></p>
+<p>这些异常触发时，用户可能会看到不同的现象：应用程序崩溃并显示”XXX已停止工作”的对话框；Windows错误报告工具弹出；程序无预警地终止运行；在调试环境中触发断点；甚至在严重的内核模式异常情况下导致系统蓝屏。这些现象都是Windows异常处理机制工作的外在表现。</p>
+<h2 id="Windows异常处理流程"><a href="#Windows异常处理流程" class="headerlink" title="Windows异常处理流程"></a>Windows异常处理流程</h2><p>当异常发生时，Windows会按照一个严格的顺序尝试处理异常。首先是异常的触发，CPU检测到异常条件并生成中断。如果程序在调试器下运行，调试器拥有第一优先权来处理这个异常，这使开发人员能够在异常发生的第一时间分析问题。</p>
+<p>若无调试器或调试器选择不处理，系统会调用已注册的向量化异常处理函数（Vectored Exception Handlers，VEH）。接下来，如果异常仍未被处理，系统会遍历当前线程的结构化异常处理（Structured Exception Handling，SEH）链，查找能够处理该异常的处理器。</p>
+<p>当SEH链中没有合适的处理器时，系统会调用顶层异常过滤器（UnhandledExceptionFilter函数）作为最后的应用程序级防线。如果所有这些机制都无法处理异常，系统将接管并执行默认处理：显示错误对话框并终止进程。这种层层递进的设计确保了异常能够在最适当的层次被处理，同时提供了多重保障机制。</p>
+<p>即：<code>异常触发 -- 调试器（若存在） -- 已注册的VEH处理函数（影响整个进程） -- 遍历线程的SEH链（影响单个线程） -- 顶层异常过滤器（兜底） -- 系统默认处理</code></p>
+<h2 id="异常处理各环节的作用及区别"><a href="#异常处理各环节的作用及区别" class="headerlink" title="异常处理各环节的作用及区别"></a>异常处理各环节的作用及区别</h2><p>调试器处理是异常处理流程的第一关卡。调试器拥有处理异常的最高优先级，可以在异常发生的第一时间捕获并暂停程序执行。这一环节的独特之处在于它能够展示异常发生时的完整上下文，允许开发者修改程序状态后继续执行。异常在调试器中分为一次机会和二次机会异常，为调试提供了灵活性。</p>
+<p>向量化异常处理（VEH）提供了一种全局性的异常处理机制，其最大特点是不受函数调用堆栈的限制。开发者可以通过AddVectoredExceptionHandler API注册处理函数，系统会按注册顺序或反序调用所有处理函数。VEH特别适合全局错误监控、日志记录等场景，且不需要在代码中添加特殊的语言结构（如try/except）。</p>
+<p>结构化异常处理（SEH）是Windows传统的核心异常处理方式，提供了基于调用栈的异常保护机制。它通过<code>__try/__except/__finally</code>块实现，采用链表结构并与函数调用堆栈紧密关联。SEH遵循”先注册后使用”的LIFO原则，这意味着最近设置的异常处理器会首先被调用。值得一提的是，C++异常处理机制在Windows平台的底层实现也是基于SEH的。</p>
+<p>顶层异常过滤器作为应用程序级别的最后防线，负责处理所有未被捕获的异常。通过SetUnhandledExceptionFilter API，每个进程可以设置一个顶层异常过滤器。这一机制常用于实现崩溃转储功能，是构建自定义应用程序错误报告系统的理想选择。</p>
+<p>当所有用户定义的异常处理器都无法处理异常时，操作系统的默认处理机制接管。系统会显示应用程序错误对话框，可能生成错误报告发送到Microsoft，并终止发生异常的进程，释放其占用的资源。这是保证系统稳定性的最后一道防线。</p>
+<p>通过这种分层的异常处理机制，Windows提供了强大而灵活的错误处理能力，既适合开发人员进行调试，也能为最终用户提供较好的错误恢复体验。对于安全研究人员来说，深入理解这套机制对于漏洞分析和利用同样具有重要意义。</p>
+
+  
+  
+    
+    <div class='footer'>
       
-        <div>
-          <a class='readmore' href='/2022/04/03/arp_cheat/'>
-            阅读全文
-          </a>
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2025/03/31/windows_exception/>http://uniqueland.top/2025/03/31/windows_exception/</a></p>
+              
+            
+          </blockquote>
         </div>
+      
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2025-04-01T00:19:42+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2025年4月1日</p>
+  </a>
 </div>
 
-          </div>
         
       
-    
-  </section>
+        
+          
   
-    
-  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Windows/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Windows</p></a></div>
 
 
-	
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2025/03/31/windows_exception/&title=Windows异常处理机制深度解析 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2025/03/31/windows_exception/&title=Windows异常处理机制深度解析 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2025/03/31/windows_exception/&title=Windows异常处理机制深度解析 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/03/31/virus_defence/'>
+          <p class='title'>病毒扫描背后的秘密：从特征码到智能防御的技术揭秘<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>在数字世界中，病毒与杀毒软件的对抗从未停歇。要实现精准的病毒查杀，核心依赖于三大技术：病毒特征码识别、行为监控以及启发式分析。本文将解析这些技术的原理与实现方式，揭开病毒扫描背后的原理。
+
+病毒...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside class='l_side'>
   
@@ -513,103 +575,28 @@
     
     
 
-<section class="widget blogger shadow desktop mobile">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://www.helloimg.com/images/2020/11/23/4e7864d477d67c39935da89f36cbec59a35354d2_raw15e58b0ae77ce6c5.md.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Uniqueland</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fas fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fas fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
 
-  
 
-  
-    
-    
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow desktop mobile">
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
     
   <header>
     
-      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
     
   </header>
 
 
     <div class='content'>
-      <a href="/tags/AI/" style="font-size: 14px; color: #999">AI</a> <a href="/tags/CTF/" style="font-size: 14px; color: #999">CTF</a> <a href="/tags/CyberSecurity/" style="font-size: 14px; color: #999">CyberSecurity</a> <a href="/tags/Internet/" style="font-size: 16.5px; color: #888">Internet</a> <a href="/tags/Program/" style="font-size: 24px; color: #555">Program</a> <a href="/tags/Windows/" style="font-size: 14px; color: #999">Windows</a> <a href="/tags/ctf/" style="font-size: 19px; color: #777">ctf</a> <a href="/tags/ctf%E3%80%81web/" style="font-size: 14px; color: #999">ctf、web</a> <a href="/tags/linux/" style="font-size: 14px; color: #999">linux</a> <a href="/tags/other/" style="font-size: 14px; color: #999">other</a> <a href="/tags/tool/" style="font-size: 14px; color: #999">tool</a> <a href="/tags/web/" style="font-size: 21.5px; color: #666">web</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA/" style="font-size: 16.5px; color: #888">知识输出</a> <a href="/tags/%E7%9F%A5%E8%AF%86%E8%BE%93%E5%87%BA%E3%80%81AI/" style="font-size: 21.5px; color: #666">知识输出、AI</a>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFWindows%E5%BC%82%E5%B8%B8"><span class="toc-text">什么是Windows异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%BC%82%E5%B8%B8%E8%A7%A6%E5%8F%91%E6%83%85%E5%86%B5%E5%8F%8A%E7%8E%B0%E8%B1%A1"><span class="toc-text">常见的异常触发情况及现象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B"><span class="toc-text">Windows异常处理流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%90%84%E7%8E%AF%E8%8A%82%E7%9A%84%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%8C%BA%E5%88%AB"><span class="toc-text">异常处理各环节的作用及区别</span></a></li></ol>
     </div>
   </section>
 
 
   
 
-  
-
 
 </aside>
+
 
 
         
@@ -619,14 +606,14 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
-  pdata.postTitle="";
+  pdata.ispage=true;
+  pdata.postTitle="Windows异常处理机制深度解析";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.remove("show");
+  l_header.classList.add("show");
   
 </script>
 
