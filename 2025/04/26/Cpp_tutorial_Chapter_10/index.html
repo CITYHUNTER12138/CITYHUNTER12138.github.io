@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>Chapter 10 对象和类 - Uniqueland</title>
+  
+    <meta name="keywords" content="Program,C++">
+  
+
+  
+    <meta name="description" content="C++ tutorial">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    <link rel="shortcut icon" type='image/x-icon' href="https://www.helloimg.com/images/2022/03/27/ReozOM.png">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Uniqueland</p>
+    
+    
+      <p class="subtitle">--XR's personal Blog</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/categories/"
+              
+              
+              id="categories">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>分类</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>帮助</p>
+            </a>
+          
+            <a href="/tags/"
+              
+              
+              id="tags">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg'><p>标签</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>博客</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://s2.loli.net/2025/04/26/9F74KMasiN1YwQW.png'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        Chapter 10 对象和类
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年4月26日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Chapter 10 对象和类" data-path="/2025/04/26/Cpp_tutorial_Chapter_10/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="10-1-过程性编程和面向对象编程"><a href="#10-1-过程性编程和面向对象编程" class="headerlink" title="10.1 过程性编程和面向对象编程"></a>10.1 过程性编程和面向对象编程</h2><p>在深入学习C++的类之前，了解两种主要的编程范式（Programming Paradigms）——过程性编程和面向对象编程——之间的区别是很有帮助的。C++ 语言同时支持这两种范式，但其强大的面向对象特性是其核心优势之一。</p>
+<h3 id="过程性编程-Procedural-Programming"><a href="#过程性编程-Procedural-Programming" class="headerlink" title="过程性编程 (Procedural Programming)"></a>过程性编程 (Procedural Programming)</h3><p>过程性编程是最早期的编程范式之一，像C语言就是典型的过程性语言。它的核心思想是将程序看作是一系列要执行的<strong>过程</strong>或<strong>函数</strong>。</p>
+<ul>
+<li>  <strong>关注点：</strong> 主要关注点在于<strong>算法</strong>和<strong>执行步骤</strong>。程序被分解为一系列的函数调用。</li>
+<li>  <strong>数据处理：</strong> 数据通常是独立于函数存在的（例如全局变量），或者作为参数在函数之间传递。数据和操作数据的函数是分离的。</li>
+<li>  <strong>组织方式：</strong> 程序通过函数的层次结构来组织。一个主函数调用其他函数，这些函数又可能调用更底层的函数。</li>
+<li>  <strong>示例语言：</strong> C, Pascal, Fortran。</li>
+</ul>
+<p><strong>过程性编程的思维方式：</strong> “程序需要执行哪些步骤？需要哪些函数来实现这些步骤？”</p>
+<p><strong>例子（概念性）：</strong><br>假设要管理一个银行账户。在过程性方法中，你可能会有：</p>
+<ul>
+<li>  一个数据结构（比如 <code>struct</code>）来存储账户信息（账号、余额）。</li>
+<li>  一系列函数来操作这个数据结构：<code>deposit(account, amount)</code>, <code>withdraw(account, amount)</code>, <code>check_balance(account)</code>。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C 语言示例 (过程性)</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BankAccount</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> accountNumber;</span><br><span class="line">    <span class="keyword">double</span> balance;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">deposit</span><span class="params">(struct BankAccount* acc, <span class="keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (amount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        acc-&gt;balance += amount;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">withdraw</span><span class="params">(struct BankAccount* acc, <span class="keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (amount &gt; <span class="number">0</span> &amp;&amp; acc-&gt;balance &gt;= amount) &#123;</span><br><span class="line">        acc-&gt;balance -= amount;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 处理错误</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">double</span> check_balance(struct BankAccount* acc) &#123;</span><br><span class="line">    <span class="keyword">return</span> acc-&gt;balance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BankAccount</span> <span class="title">myAccount</span> =</span> &#123;<span class="number">12345</span>, <span class="number">1000.0</span>&#125;;</span><br><span class="line">    deposit(&amp;myAccount, <span class="number">500.0</span>);</span><br><span class="line">    withdraw(&amp;myAccount, <span class="number">200.0</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这种模式下，数据（<code>myAccount</code>）和操作（<code>deposit</code>, <code>withdraw</code>）是分开定义的。</p>
+<h3 id="面向对象编程-Object-Oriented-Programming-OOP"><a href="#面向对象编程-Object-Oriented-Programming-OOP" class="headerlink" title="面向对象编程 (Object-Oriented Programming - OOP)"></a>面向对象编程 (Object-Oriented Programming - OOP)</h3><p>面向对象编程（OOP）是一种不同的思考方式。它将程序看作是由相互交互的<strong>对象 (Objects)</strong> 组成的。</p>
+<ul>
+<li>  <strong>关注点：</strong> 主要关注点在于<strong>数据</strong>以及与数据相关的<strong>操作</strong>。程序的核心是对象。</li>
+<li>  <strong>对象：</strong> 对象是现实世界实体的抽象，它<strong>封装 (Encapsulates)</strong> 了<strong>数据（属性/状态）</strong>和可以对这些数据执行的<strong>操作（方法/行为）</strong>。</li>
+<li>  <strong>组织方式：</strong> 程序通过创建对象并让这些对象相互发送消息（调用方法）来组织。</li>
+<li><strong>核心概念：</strong><ul>
+<li>  <strong>封装 (Encapsulation):</strong> 将数据和操作数据的函数捆绑在一起（形成类），并对外部隐藏对象的内部实现细节（数据隐藏）。</li>
+<li>  <strong>继承 (Inheritance):</strong> 允许创建一个新类（派生类），该类继承现有类（基类）的属性和方法，从而实现代码重用和层次结构。</li>
+<li>  <strong>多态 (Polymorphism):</strong> 允许不同类的对象对相同的消息（方法调用）做出不同的响应。这通常通过虚函数实现。</li>
+<li>  <strong>抽象 (Abstraction):</strong> 关注对象的本质特征，忽略不重要的细节。类就是一种抽象。</li>
+</ul>
+</li>
+<li>  <strong>示例语言：</strong> C++, Java, C#, Python, Smalltalk。</li>
+</ul>
+<p><strong>面向对象编程的思维方式：</strong> “程序涉及哪些‘事物’（对象）？每个‘事物’有哪些特征（数据）？它可以做什么（方法）？这些‘事物’之间如何交互？”</p>
+<p><strong>例子（概念性）：</strong><br>对于银行账户，OOP方法会创建一个 <code>BankAccount</code> <strong>类</strong>：</p>
+<ul>
+<li>  <strong>数据成员（属性）：</strong> <code>accountNumber</code>, <code>balance</code> (通常设为私有 <code>private</code>，以实现数据隐藏)。</li>
+<li>  <strong>成员函数（方法）：</strong> <code>deposit(amount)</code>, <code>withdraw(amount)</code>, <code>check_balance()</code> (这些函数直接操作对象内部的数据)。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++ 示例 (面向对象)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BankAccount</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>: <span class="comment">// 数据隐藏</span></span><br><span class="line">    <span class="keyword">int</span> accountNumber;</span><br><span class="line">    <span class="keyword">double</span> balance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>: <span class="comment">// 公共接口</span></span><br><span class="line">    <span class="comment">// 构造函数 (用于创建对象)</span></span><br><span class="line">    BankAccount(<span class="keyword">int</span> accNum, <span class="keyword">double</span> initialBalance) &#123;</span><br><span class="line">        accountNumber = accNum;</span><br><span class="line">        balance = (initialBalance &gt;= <span class="number">0</span>) ? initialBalance : <span class="number">0.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">deposit</span><span class="params">(<span class="keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (amount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            balance += amount;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">withdraw</span><span class="params">(<span class="keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (amount &gt; <span class="number">0</span> &amp;&amp; balance &gt;= amount) &#123;</span><br><span class="line">            balance -= amount;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 处理错误</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> check_balance() <span class="keyword">const</span> &#123; <span class="comment">// const 表示此方法不修改对象状态</span></span><br><span class="line">        <span class="keyword">return</span> balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getAccountNumber</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> accountNumber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;; <span class="comment">// 注意类定义末尾的分号</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建 BankAccount 对象</span></span><br><span class="line">    <span class="function">BankAccount <span class="title">myAccount</span><span class="params">(<span class="number">12345</span>, <span class="number">1000.0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通过对象调用方法</span></span><br><span class="line">    myAccount.deposit(<span class="number">500.0</span>);</span><br><span class="line">    myAccount.withdraw(<span class="number">200.0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Balance: &quot;</span> &lt;&lt; myAccount.check_balance() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里，数据 (<code>accountNumber</code>, <code>balance</code>) 和操作 (<code>deposit</code>, <code>withdraw</code>, <code>check_balance</code>) 被紧密地捆绑在 <code>BankAccount</code> 类中。你通过 <code>myAccount</code> 这个对象来调用它的方法。</p>
+<h3 id="总结对比"><a href="#总结对比" class="headerlink" title="总结对比"></a>总结对比</h3><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">过程性编程</th>
+<th align="left">面向对象编程 (OOP)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>核心</strong></td>
+<td align="left">函数/过程</td>
+<td align="left">对象 (数据 + 方法)</td>
+</tr>
+<tr>
+<td align="left"><strong>数据</strong></td>
+<td align="left">通常与函数分离</td>
+<td align="left">封装在对象内部</td>
+</tr>
+<tr>
+<td align="left"><strong>访问控制</strong></td>
+<td align="left">有限 (主要靠作用域)</td>
+<td align="left">强 (public, private, protected)</td>
+</tr>
+<tr>
+<td align="left"><strong>主要优势</strong></td>
+<td align="left">简单直接，适合小型或中型项目</td>
+<td align="left">模块化、重用性、可维护性、扩展性好</td>
+</tr>
+<tr>
+<td align="left"><strong>设计方法</strong></td>
+<td align="left">自顶向下 (Top-down)</td>
+<td align="left">自底向上 (Bottom-up) 或混合</td>
+</tr>
+<tr>
+<td align="left"><strong>代码重用</strong></td>
+<td align="left">主要通过函数库</td>
+<td align="left">主要通过继承和组合</td>
+</tr>
+<tr>
+<td align="left"><strong>适合场景</strong></td>
+<td align="left">算法密集型、顺序执行任务</td>
+<td align="left">大型复杂系统、模拟、GUI</td>
+</tr>
+</tbody></table>
+<p>C++ 最初是从 C 语言发展而来的，因此它完全兼容过程性编程。然而，C++ 的真正威力在于其强大的面向对象特性，它允许开发者构建更大型、更复杂、更易于维护和扩展的软件系统。接下来的章节将深入探讨 OOP 的核心——类和对象。</p>
+<h2 id="10-2-抽象和类"><a href="#10-2-抽象和类" class="headerlink" title="10.2 抽象和类"></a>10.2 抽象和类</h2><p>面向对象编程（OOP）的核心思想之一是**抽象 (Abstraction)**。在编程中，抽象意味着关注事物的本质特征和行为，而忽略其不重要的内部细节。我们每天都在使用抽象：当你开车时，你只需要知道如何使用方向盘、油门和刹车（接口），而不需要了解引擎内部复杂的机械原理（实现细节）。</p>
+<h3 id="10-2-1-类型是什么"><a href="#10-2-1-类型是什么" class="headerlink" title="10.2.1 类型是什么"></a>10.2.1 类型是什么</h3><p>在编程语言中，“类型”（Type）定义了一组可能的值以及可以对这些值执行的操作。</p>
+<ul>
+<li>  <strong>内置类型 (Built-in Types):</strong> C++ 提供了像 <code>int</code>, <code>float</code>, <code>char</code>, <code>bool</code> 这样的基本类型。我们知道 <code>int</code> 可以存储整数，并且可以对它们执行加、减、乘、除等运算。编译器知道如何表示这些类型的数据以及如何执行这些操作。</li>
+<li>  <strong>用户定义类型 (User-Defined Types - UDT):</strong> C++ 允许程序员创建自己的类型来模拟现实世界或特定问题域中的概念。这就是<strong>类 (Class)</strong> 发挥作用的地方。类是一种将数据（属性）和操作这些数据的函数（方法）捆绑在一起的机制，从而创建新的数据类型。</li>
+</ul>
+<p>例如，如果你在编写一个股票交易程序，你可能需要一个表示“股票”的类型。这个类型应该包含哪些数据（如股票名称、持有数量、单价）？可以对它执行哪些操作（如购买、出售、更新价格、显示信息）？类允许你精确地定义这些。</p>
+<h3 id="10-2-2-C-中的类"><a href="#10-2-2-C-中的类" class="headerlink" title="10.2.2 C++中的类"></a>10.2.2 C++中的类</h3><p>类是创建对象的蓝图或模板。它定义了：</p>
+<ol>
+<li> <strong>数据成员 (Data Members):</strong> 对象将存储的数据（也称为属性、状态）。</li>
+<li> <strong>成员函数 (Member Functions):</strong> 可以对对象的数据执行的操作（也称为方法、行为）。</li>
+</ol>
+<p><strong>类声明的基本语法:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 私有数据成员和成员函数</span></span><br><span class="line">    <span class="comment">// 通常将数据成员放在这里，实现数据隐藏</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 公有数据成员和成员函数</span></span><br><span class="line">    <span class="comment">// 这是类的公共接口，外部代码通过它们与对象交互</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="comment">// 保护成员 (将在继承中讨论)</span></span><br><span class="line">&#125;; <span class="comment">// 注意末尾的分号</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <strong><code>class</code> 关键字:</strong> 表明你正在定义一个类。</li>
+<li>  <strong><code>ClassName</code>:</strong> 你为新类型指定的名称（遵循变量命名规则，通常首字母大写）。</li>
+<li><strong>访问说明符 (Access Specifiers):</strong><ul>
+<li>  <code>private</code>: 私有成员只能被<strong>类的内部成员函数</strong>访问。这是实现<strong>数据隐藏 (Data Hiding)</strong> 的关键，保护数据不被外部代码随意修改，是封装的重要体现。默认情况下，类成员是 <code>private</code> 的。</li>
+<li>  <code>public</code>: 公有成员可以被程序中的<strong>任何地方</strong>访问（通过类的对象）。它们构成了类的**公共接口 (Public Interface)**。</li>
+<li>  <code>protected</code>: 与继承相关，现在可以暂时将其视为与 <code>private</code> 类似。</li>
+</ul>
+</li>
+<li>  <strong>成员:</strong> 类定义的花括号 <code>&#123;&#125;</code> 内部声明的变量（数据成员）和函数（成员函数）。</li>
+</ul>
+<p><strong>示例：定义一个简单的 <code>Stock</code> 类</strong></p>
+<p>假设我们要创建一个表示股票持有的类。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通常放在头文件 (e.g., stock.h) 中</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; // 为了使用 std::string</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>: <span class="comment">// 数据成员通常是私有的</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> company;</span><br><span class="line">    <span class="keyword">long</span> shares;</span><br><span class="line">    <span class="keyword">double</span> share_val;</span><br><span class="line">    <span class="keyword">double</span> total_val;</span><br><span class="line">    <span class="comment">// 一个私有辅助函数，只能在类内部调用</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set_tot</span><span class="params">()</span> </span>&#123; total_val = shares * share_val; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>: <span class="comment">// 成员函数通常是公有的，构成接口</span></span><br><span class="line">    <span class="comment">// 函数原型 (声明)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;co, <span class="keyword">long</span> n, <span class="keyword">double</span> pr)</span></span>; <span class="comment">// 买入股票</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;                      <span class="comment">// 增持股票</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;                     <span class="comment">// 卖出股票</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">double</span> price)</span></span>;                             <span class="comment">// 更新股价</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// 显示股票信息 (const表明此函数不修改对象)</span></span><br><span class="line">&#125;; <span class="comment">// 类定义结束</span></span><br></pre></td></tr></table></figure>
+
+<p>这个 <code>Stock</code> 类定义了一个新的数据类型。它封装了股票相关的数据 (<code>company</code>, <code>shares</code>, <code>share_val</code>, <code>total_val</code>) 和操作这些数据的函数 (<code>acquire</code>, <code>buy</code>, <code>sell</code>, <code>update</code>, <code>show</code>)。数据成员被设为 <code>private</code>，外部代码不能直接访问它们，只能通过 <code>public</code> 的成员函数来交互。<code>set_tot()</code> 是一个内部辅助函数，也被设为 <code>private</code>。</p>
+<h3 id="10-2-3-实现类成员函数"><a href="#10-2-3-实现类成员函数" class="headerlink" title="10.2.3 实现类成员函数"></a>10.2.3 实现类成员函数</h3><p>类定义通常只包含成员函数的<strong>声明（原型）</strong>。函数的<strong>定义（实现）</strong>可以放在类声明的内部（如果函数很简单，可以作为内联函数），或者更常见地，放在类声明的外部（通常在对应的源文件 <code>.cpp</code> 中）。</p>
+<p>当在类外部定义成员函数时，你需要使用<strong>作用域解析运算符 <code>::</code></strong> 来指明这个函数属于哪个类。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ReturnType <span class="title">ClassName::FunctionName</span><span class="params">(ParameterList)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：实现 <code>Stock</code> 类的成员函数</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通常放在源文件 (e.g., stock.cpp) 中</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span> <span class="comment">// 包含类定义的头文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用作用域解析运算符 :: 指明函数属于 Stock 类</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::acquire</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;co, <span class="keyword">long</span> n, <span class="keyword">double</span> pr)</span> </span>&#123;</span><br><span class="line">    company = co;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of shares can&#x27;t be negative; &quot;</span></span><br><span class="line">                  &lt;&lt; company &lt;&lt; <span class="string">&quot; shares set to 0.\n&quot;</span>;</span><br><span class="line">        shares = <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares = n;</span><br><span class="line">    &#125;</span><br><span class="line">    share_val = pr;</span><br><span class="line">    set_tot(); <span class="comment">// 调用私有成员函数计算总值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of shares purchased can&#x27;t be negative. &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares += num;</span><br><span class="line">        share_val = price; <span class="comment">// 假设按新价格计算</span></span><br><span class="line">        set_tot();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of shares sold can&#x27;t be negative. &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num &gt; shares) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;You can&#x27;t sell more than you have! &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares -= num;</span><br><span class="line">        share_val = price; <span class="comment">// 假设按新价格计算</span></span><br><span class="line">        set_tot();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::update</span><span class="params">(<span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    share_val = price;</span><br><span class="line">    set_tot();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意 const 关键字在函数定义和声明中都要有</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::show</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 设置输出格式</span></span><br><span class="line">    <span class="built_in">std</span>::ios_base::fmtflags orig =</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::ios_base::fixed, <span class="built_in">std</span>::ios_base::floatfield);</span><br><span class="line">    <span class="built_in">std</span>::streamsize prec = <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Company: &quot;</span> &lt;&lt; company</span><br><span class="line">              &lt;&lt; <span class="string">&quot;  Shares: &quot;</span> &lt;&lt; shares &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  Share Price: $&quot;</span> &lt;&lt; share_val;</span><br><span class="line">    <span class="comment">// 设置精度为2位小数显示总价</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  Total Worth: $&quot;</span> &lt;&lt; total_val &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 恢复原始格式</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.setf(orig, <span class="built_in">std</span>::ios_base::floatfield);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(prec);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意：私有成员函数 set_tot() 也可以在类外部定义，</span></span><br><span class="line"><span class="comment">// 但因为它很简单，通常会直接在类定义内部实现（如上所示），</span></span><br><span class="line"><span class="comment">// 这样它就可能被编译器视为内联函数。</span></span><br><span class="line"><span class="comment">// 如果在外部定义：</span></span><br><span class="line"><span class="comment">// void Stock::set_tot() &#123;</span></span><br><span class="line"><span class="comment">//     total_val = shares * share_val;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><code>const</code> 成员函数:</strong><br>在 <code>show()</code> 函数声明和定义的末尾都有 <code>const</code> 关键字。这表明 <code>show()</code> 是一个<strong>常量成员函数</strong>，它承诺不会修改调用它的对象的数据成员。这是一个好习惯，可以提高代码的可读性和安全性，并允许对 <code>const</code> 对象调用此函数。</p>
+<h3 id="10-2-4-使用类"><a href="#10-2-4-使用类" class="headerlink" title="10.2.4 使用类"></a>10.2.4 使用类</h3><p>一旦定义了类（蓝图），你就可以创建该类的<strong>对象 (Objects)</strong> 或**实例 (Instances)**。创建对象就像声明一个基本类型的变量一样。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 main() 函数或其他函数中</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span> <span class="comment">// 需要包含类定义</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 创建两个 Stock 对象 (实例)</span></span><br><span class="line">    Stock stock1;</span><br><span class="line">    Stock stock2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用点号 . (成员访问运算符) 调用对象的公有成员函数</span></span><br><span class="line">    stock1.acquire(<span class="string">&quot;NanoSmart&quot;</span>, <span class="number">20</span>, <span class="number">12.50</span>);</span><br><span class="line">    stock1.show(); <span class="comment">// 显示 stock1 的信息</span></span><br><span class="line"></span><br><span class="line">    stock2.acquire(<span class="string">&quot;Boffo Objects&quot;</span>, <span class="number">2</span>, <span class="number">180.0</span>);</span><br><span class="line">    stock2.show(); <span class="comment">// 显示 stock2 的信息</span></span><br><span class="line"></span><br><span class="line">    stock2.buy(<span class="number">5</span>, <span class="number">190.0</span>); <span class="comment">// 增持 stock2</span></span><br><span class="line">    stock2.show();</span><br><span class="line"></span><br><span class="line">    stock1.sell(<span class="number">10</span>, <span class="number">15.75</span>); <span class="comment">// 卖出部分 stock1</span></span><br><span class="line">    stock1.show();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误！不能直接访问私有成员</span></span><br><span class="line">    <span class="comment">// stock1.shares = 50; // 编译错误</span></span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; stock1.company; // 编译错误</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>Stock stock1;</code> 创建了一个名为 <code>stock1</code> 的 <code>Stock</code> 类型的对象。</li>
+<li>  使用<strong>成员访问运算符（点号 <code>.</code>）</strong>来调用对象的公有成员函数，例如 <code>stock1.acquire(...)</code> 或 <code>stock2.show()</code>。</li>
+<li>  每个对象都有自己的一套数据成员。<code>stock1</code> 的 <code>shares</code> 和 <code>stock2</code> 的 <code>shares</code> 是相互独立的。</li>
+<li>  你不能从对象外部直接访问 <code>private</code> 成员，这强制你必须通过类提供的公共接口（<code>public</code> 函数）来与对象交互。</li>
+</ul>
+<h3 id="10-2-5-修改实现"><a href="#10-2-5-修改实现" class="headerlink" title="10.2.5 修改实现"></a>10.2.5 修改实现</h3><p>将类的接口（头文件中的声明）和实现（源文件中的定义）分开的一个主要好处是<strong>封装</strong>带来的灵活性。</p>
+<ul>
+<li>  <strong>接口 (Interface):</strong> 头文件 (<code>stock.h</code>) 定义了如何<strong>使用</strong>这个类（公共成员函数）。使用类的代码（如 <code>main()</code> 函数）只需要包含头文件。</li>
+<li>  <strong>实现 (Implementation):</strong> 源文件 (<code>stock.cpp</code>) 包含了成员函数具体如何工作。</li>
+</ul>
+<p>只要类的<strong>公共接口保持不变</strong>（函数名、参数、返回类型不变），你就可以自由地修改源文件中的<strong>实现细节</strong>（例如，改进 <code>set_tot</code> 的计算方式，或者改变内部数据的存储方式），而<strong>不需要修改或重新编译</strong>使用该类的其他代码文件（如包含 <code>main()</code> 的文件）。只需要重新编译实现文件 (<code>stock.cpp</code>) 并重新链接即可。</p>
+<p>这大大降低了维护成本，并使得代码库更容易更新和改进。用户只关心“能做什么”（接口），而不必关心“怎么做”（实现）。</p>
+<h3 id="10-2-6-小结"><a href="#10-2-6-小结" class="headerlink" title="10.2.6 小结"></a>10.2.6 小结</h3><ul>
+<li>  <strong>抽象</strong>是关注本质、忽略细节的编程思想。</li>
+<li>  <strong>类</strong>是C++实现抽象和创建用户定义类型的主要机制。</li>
+<li>  类将<strong>数据（成员变量）</strong>和<strong>操作数据的函数（成员函数）</strong>捆绑在一起。</li>
+<li>  <strong>访问说明符</strong>（<code>public</code>, <code>private</code>, <code>protected</code>）控制对类成员的访问。</li>
+<li>  <strong>数据隐藏</strong>（通常将数据设为 <code>private</code>）是封装的关键，保护数据并隐藏实现细节。</li>
+<li>  <strong>公共接口</strong>（<code>public</code> 成员函数）定义了如何与类的对象交互。</li>
+<li>  成员函数通常在类外部使用<strong>作用域解析运算符 <code>::</code></strong> 来定义。</li>
+<li>  使用<strong>点号 <code>.</code></strong> 访问对象的公有成员。</li>
+<li>  将接口和实现分离（头文件/源文件）可以提高代码的模块化和可维护性。</li>
+</ul>
+<h2 id="10-3-类的构造函数和析构函数"><a href="#10-3-类的构造函数和析构函数" class="headerlink" title="10.3 类的构造函数和析构函数"></a>10.3 类的构造函数和析构函数</h2><p>在上一节中，我们定义了一个 <code>Stock</code> 类，并通过 <code>acquire()</code> 成员函数来设置其初始状态。然而，C++ 提供了一种更自动化、更专门化的方式来处理对象的初始化和清理工作：<strong>构造函数 (Constructor)</strong> 和 **析构函数 (Destructor)**。</p>
+<h3 id="10-3-1-声明和定义构造函数"><a href="#10-3-1-声明和定义构造函数" class="headerlink" title="10.3.1 声明和定义构造函数"></a>10.3.1 声明和定义构造函数</h3><p><strong>构造函数</strong>是一种特殊的成员函数，它的主要目的是在创建类的对象时<strong>初始化</strong>该对象的数据成员。</p>
+<p><strong>特点与规则:</strong></p>
+<ol>
+<li> <strong>名称与类名相同:</strong> 构造函数的名称必须与它所属的类的名称完全一样。</li>
+<li> <strong>没有返回类型:</strong> 构造函数没有声明返回类型，连 <code>void</code> 也没有。</li>
+<li> <strong>自动调用:</strong> 当创建类的对象时，程序会自动调用相应的构造函数。</li>
+<li> <strong>可以重载:</strong> 一个类可以有多个构造函数，只要它们的参数列表不同（参数个数、类型或顺序不同）。这允许以不同的方式初始化对象。</li>
+</ol>
+<p><strong>声明语法 (在类定义内):</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数声明 (无参数)</span></span><br><span class="line">    ClassName();</span><br><span class="line">    <span class="comment">// 构造函数声明 (带参数)</span></span><br><span class="line">    ClassName(ParameterList);</span><br><span class="line">    <span class="comment">// ... 其他成员 ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>定义语法 (在类外部):</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无参数构造函数定义</span></span><br><span class="line">ClassName::ClassName() &#123;</span><br><span class="line">    <span class="comment">// 初始化代码</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带参数构造函数定义</span></span><br><span class="line">ClassName::ClassName(ParameterList) &#123;</span><br><span class="line">    <span class="comment">// 使用参数进行初始化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：为 <code>Stock</code> 类添加构造函数</strong></p>
+<p>我们可以为 <code>Stock</code> 类添加构造函数来替代之前的 <code>acquire()</code> 函数的部分功能，确保对象在创建时就被赋予有意义的初始值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 stock.h 的类定义中声明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> company;</span><br><span class="line">    <span class="keyword">long</span> shares;</span><br><span class="line">    <span class="keyword">double</span> share_val;</span><br><span class="line">    <span class="keyword">double</span> total_val;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set_tot</span><span class="params">()</span> </span>&#123; total_val = shares * share_val; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数声明 (两个版本)</span></span><br><span class="line">    Stock(); <span class="comment">// 默认构造函数 (无参数)</span></span><br><span class="line">    Stock(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;co, <span class="keyword">long</span> n = <span class="number">0</span>, <span class="keyword">double</span> pr = <span class="number">0.0</span>); <span class="comment">// 带参数的构造函数 (使用默认参数)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不再需要 acquire()，因为构造函数处理了初始设置</span></span><br><span class="line">    <span class="comment">// void acquire(const std::string &amp;co, long n, double pr);</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 stock.cpp 中定义构造函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认构造函数定义</span></span><br><span class="line">Stock::Stock() &#123; <span class="comment">// 默认构造函数</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Default constructor called\n&quot;</span>; <span class="comment">// 只是为了演示</span></span><br><span class="line">    company = <span class="string">&quot;no name&quot;</span>;</span><br><span class="line">    shares = <span class="number">0</span>;</span><br><span class="line">    share_val = <span class="number">0.0</span>;</span><br><span class="line">    total_val = <span class="number">0.0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 带参数的构造函数定义</span></span><br><span class="line">Stock::Stock(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;co, <span class="keyword">long</span> n, <span class="keyword">double</span> pr) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Constructor using &quot;</span> &lt;&lt; co &lt;&lt; <span class="string">&quot; called\n&quot;</span>; <span class="comment">// 只是为了演示</span></span><br><span class="line">    company = co;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of shares can&#x27;t be negative; &quot;</span></span><br><span class="line">                  &lt;&lt; company &lt;&lt; <span class="string">&quot; shares set to 0.\n&quot;</span>;</span><br><span class="line">        shares = <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares = n;</span><br><span class="line">    &#125;</span><br><span class="line">    share_val = pr;</span><br><span class="line">    set_tot();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... buy(), sell(), update(), show() 的定义保持不变 ...</span></span><br><span class="line"><span class="comment">// (注意：buy, sell, update 内部的 set_tot() 调用仍然需要)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of shares purchased can&#x27;t be negative. &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares += num;</span><br><span class="line">        share_val = price;</span><br><span class="line">        set_tot();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Number of shares sold can&#x27;t be negative. &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num &gt; shares) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;You can&#x27;t sell more than you have! &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares -= num;</span><br><span class="line">        share_val = price;</span><br><span class="line">        set_tot();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::update</span><span class="params">(<span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    share_val = price;</span><br><span class="line">    set_tot();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::show</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios_base::fmtflags orig =</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::ios_base::fixed, <span class="built_in">std</span>::ios_base::floatfield);</span><br><span class="line">    <span class="built_in">std</span>::streamsize prec = <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Company: &quot;</span> &lt;&lt; company</span><br><span class="line">              &lt;&lt; <span class="string">&quot;  Shares: &quot;</span> &lt;&lt; shares &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  Share Price: $&quot;</span> &lt;&lt; share_val;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  Total Worth: $&quot;</span> &lt;&lt; total_val &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.setf(orig, <span class="built_in">std</span>::ios_base::floatfield);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(prec);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3-2-使用构造函数"><a href="#10-3-2-使用构造函数" class="headerlink" title="10.3.2 使用构造函数"></a>10.3.2 使用构造函数</h3><p>当创建对象时，编译器会自动选择匹配的构造函数来执行。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span> <span class="comment">// 包含 Stock 类定义</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 调用带参数的构造函数 Stock(const std::string &amp;co, long n, double pr)</span></span><br><span class="line">    <span class="function">Stock <span class="title">stock1</span><span class="params">(<span class="string">&quot;NanoSmart&quot;</span>, <span class="number">12</span>, <span class="number">20.0</span>)</span></span>; <span class="comment">// 显式提供所有参数</span></span><br><span class="line">    stock1.show();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用带参数的构造函数，利用了 n 和 pr 的默认值 (n=0, pr=0.0)</span></span><br><span class="line">    <span class="function">Stock <span class="title">stock2</span><span class="params">(<span class="string">&quot;Boffo Objects&quot;</span>)</span></span>; <span class="comment">// 等同于 Stock(&quot;Boffo Objects&quot;, 0, 0.0)</span></span><br><span class="line">    stock2.show();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用默认构造函数 Stock()</span></span><br><span class="line">    Stock stock3; <span class="comment">// 注意：这里不能写 stock3()</span></span><br><span class="line">    stock3.show();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 也可以使用 C++11 的列表初始化</span></span><br><span class="line">    Stock stock4 = &#123;<span class="string">&quot;Fleep Enterprises&quot;</span>, <span class="number">100</span>, <span class="number">1.25</span>&#125;; <span class="comment">// 调用带参数构造函数</span></span><br><span class="line">    stock4.show();</span><br><span class="line"></span><br><span class="line">    Stock stock5&#123;<span class="string">&quot;Dummy Corp&quot;</span>&#125;; <span class="comment">// 调用带参数构造函数 (利用默认值)</span></span><br><span class="line">    stock5.show();</span><br><span class="line"></span><br><span class="line">    Stock stock6&#123;&#125;; <span class="comment">// 调用默认构造函数 Stock()</span></span><br><span class="line">    stock6.show();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 动态分配对象时也会调用构造函数</span></span><br><span class="line">    Stock *p_stock = <span class="keyword">new</span> Stock(<span class="string">&quot;Electroshock Games&quot;</span>, <span class="number">18</span>, <span class="number">19.0</span>);</span><br><span class="line">    p_stock-&gt;show();</span><br><span class="line">    <span class="keyword">delete</span> p_stock; <span class="comment">// 稍后会看到 delete 会调用析构函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出可能包含 (取决于编译器和优化):</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Constructor using NanoSmart called</span><br><span class="line">Company: NanoSmart  Shares: 12</span><br><span class="line">  Share Price: $20.000  Total Worth: $240.00</span><br><span class="line">Constructor using Boffo Objects called</span><br><span class="line">Company: Boffo Objects  Shares: 0</span><br><span class="line">  Share Price: $0.000  Total Worth: $0.00</span><br><span class="line">Default constructor called</span><br><span class="line">Company: no name  Shares: 0</span><br><span class="line">  Share Price: $0.000  Total Worth: $0.00</span><br><span class="line">Constructor using Fleep Enterprises called</span><br><span class="line">Company: Fleep Enterprises  Shares: 100</span><br><span class="line">  Share Price: $1.250  Total Worth: $125.00</span><br><span class="line">Constructor using Dummy Corp called</span><br><span class="line">Company: Dummy Corp  Shares: 0</span><br><span class="line">  Share Price: $0.000  Total Worth: $0.00</span><br><span class="line">Default constructor called</span><br><span class="line">Company: no name  Shares: 0</span><br><span class="line">  Share Price: $0.000  Total Worth: $0.00</span><br><span class="line">Constructor using Electroshock Games called</span><br><span class="line">Company: Electroshock Games  Shares: 18</span><br><span class="line">  Share Price: $19.000  Total Worth: $342.00</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3-3-默认构造函数"><a href="#10-3-3-默认构造函数" class="headerlink" title="10.3.3 默认构造函数"></a>10.3.3 默认构造函数</h3><p><strong>默认构造函数 (Default Constructor)</strong> 是指<strong>不接受任何参数</strong>的构造函数。</p>
+<ul>
+<li>  <strong>编译器生成的默认构造函数:</strong> 如果你<strong>没有</strong>为类定义<strong>任何</strong>构造函数，编译器会自动为你生成一个默认构造函数。这个合成的构造函数什么也不做（对于内置类型成员不会初始化，对于类类型成员会调用其默认构造函数）。</li>
+<li>  <strong>用户定义的默认构造函数:</strong> 如果你定义了一个无参数的构造函数（如上面 <code>Stock::Stock()</code>），那么它就是默认构造函数。</li>
+<li>  <strong>重要规则:</strong> 如果你为类定义了<strong>任何</strong>构造函数（即使是带参数的），编译器就<strong>不会</strong>再自动生成默认构造函数了。如果你还需要一个无参数的构造函数（例如，为了能创建 <code>Stock stock3;</code> 这样的对象），你就必须<strong>显式地定义</strong>它。</li>
+</ul>
+<p>在我们的 <code>Stock</code> 示例中，因为我们定义了 <code>Stock(const std::string &amp;co, ...)</code>，编译器就不会自动生成默认构造函数。因此，我们必须自己提供 <code>Stock::Stock()</code>，否则 <code>Stock stock3;</code> 这样的声明将导致编译错误。</p>
+<p><strong>C++11 <code>= default</code>:</strong> 如果你定义了其他构造函数，但仍希望编译器为你生成默认的、行为简单的默认构造函数，可以使用 <code>= default</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Example(<span class="keyword">int</span> v) : value(v) &#123;&#125; <span class="comment">// 用户定义的带参构造函数</span></span><br><span class="line">    Example() = <span class="keyword">default</span>; <span class="comment">// 显式要求编译器生成默认构造函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3-4-析构函数"><a href="#10-3-4-析构函数" class="headerlink" title="10.3.4 析构函数"></a>10.3.4 析构函数</h3><p><strong>析构函数 (Destructor)</strong> 是另一种特殊的成员函数，它的主要目的是在对象<strong>生命周期结束</strong>时执行清理工作。</p>
+<p><strong>用途:</strong></p>
+<ul>
+<li>  释放对象在生命周期内分配的资源（例如，通过 <code>new</code> 分配的内存）。</li>
+<li>  执行任何必要的关闭操作（例如，关闭文件、断开网络连接）。</li>
+</ul>
+<p><strong>特点与规则:</strong></p>
+<ol>
+<li> <strong>名称:</strong> 析构函数的名称是在类名前加上波浪号 <code>~</code>（例如 <code>~Stock</code>）。</li>
+<li> <strong>没有返回类型:</strong> 和构造函数一样，析构函数也没有返回类型，连 <code>void</code> 也没有。</li>
+<li> <strong>没有参数:</strong> 析构函数不能接受任何参数，因此不能被重载。一个类最多只有一个析构函数。</li>
+<li><strong>自动调用:</strong> 当对象被销毁时，析构函数会自动被调用。这发生在：<ul>
+<li>  对象的<strong>作用域结束</strong>时（对于自动存储对象，如函数内的局部对象）。</li>
+<li>  当对指向对象的指针调用 <code>delete</code> 时（对于动态存储对象）。</li>
+<li>  当包含该对象的对象被销毁时。</li>
+</ul>
+</li>
+</ol>
+<p><strong>声明语法 (在类定义内):</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... 构造函数和其他成员 ...</span></span><br><span class="line">    <span class="comment">// 析构函数声明</span></span><br><span class="line">    ~ClassName();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>定义语法 (在类外部):</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassName::~ClassName() &#123;</span><br><span class="line">    <span class="comment">// 清理代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例：为 <code>Stock</code> 类添加析构函数</strong></p>
+<p>对于我们当前的 <code>Stock</code> 类，它并没有在内部使用 <code>new</code> 分配内存，所以析构函数不是严格必需的。但为了演示，我们可以添加一个简单的析构函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 stock.h 的类定义中声明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... private members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... constructors ...</span></span><br><span class="line">    <span class="comment">// ... other public methods ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 析构函数声明</span></span><br><span class="line">    ~Stock();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 stock.cpp 中定义析构函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... constructor definitions ...</span></span><br><span class="line"><span class="comment">// ... other method definitions ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 析构函数定义</span></span><br><span class="line">Stock::~Stock() &#123;</span><br><span class="line">    <span class="comment">// 对于这个简单的 Stock 类，没什么需要显式清理的</span></span><br><span class="line">    <span class="comment">// 但我们可以加一条打印语句来观察它何时被调用</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Bye, &quot;</span> &lt;&lt; company &lt;&lt; <span class="string">&quot;!\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>观察析构函数的调用:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#123; <span class="comment">// 创建一个内部作用域</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;--- Entering inner block ---\n&quot;</span>;</span><br><span class="line">        <span class="function">Stock <span class="title">stock1</span><span class="params">(<span class="string">&quot;Smart Comp&quot;</span>, <span class="number">50</span>, <span class="number">5.0</span>)</span></span>;</span><br><span class="line">        <span class="function">Stock <span class="title">stock2</span><span class="params">(<span class="string">&quot;Great Gadgets&quot;</span>, <span class="number">10</span>, <span class="number">12.0</span>)</span></span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;--- Exiting inner block ---\n&quot;</span>;</span><br><span class="line">        <span class="comment">// 当离开这个作用域时，stock2 和 stock1 (按相反顺序创建) 会被销毁</span></span><br><span class="line">    &#125; <span class="comment">// stock2 的析构函数先调用，然后是 stock1 的</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;--- Creating dynamic stock ---\n&quot;</span>;</span><br><span class="line">    Stock *p_stock = <span class="keyword">new</span> Stock(<span class="string">&quot;Dynamic Duo&quot;</span>, <span class="number">25</span>, <span class="number">2.5</span>);</span><br><span class="line">    p_stock-&gt;show();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;--- Deleting dynamic stock ---\n&quot;</span>;</span><br><span class="line">    <span class="keyword">delete</span> p_stock; <span class="comment">// 调用析构函数，然后释放内存</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;--- main() is ending ---\n&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>可能的输出:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">--- Entering inner block ---</span><br><span class="line">Constructor using Smart Comp called</span><br><span class="line">Constructor using Great Gadgets called</span><br><span class="line">--- Exiting inner block ---</span><br><span class="line">Bye, Great Gadgets!</span><br><span class="line">Bye, Smart Comp!</span><br><span class="line">--- Creating dynamic stock ---</span><br><span class="line">Constructor using Dynamic Duo called</span><br><span class="line">Company: Dynamic Duo  Shares: 25</span><br><span class="line">  Share Price: $2.500  Total Worth: $62.50</span><br><span class="line">--- Deleting dynamic stock ---</span><br><span class="line">Bye, Dynamic Duo!</span><br><span class="line">--- main() is ending ---</span><br></pre></td></tr></table></figure>
+
+<p>注意析构函数调用的时机和顺序（对于局部对象，与构造顺序相反）。</p>
+<h3 id="10-3-5-改进-Stock-类"><a href="#10-3-5-改进-Stock-类" class="headerlink" title="10.3.5 改进 Stock 类"></a>10.3.5 改进 Stock 类</h3><p>现在，我们可以整合构造函数和析构函数，得到一个更完善（虽然在这个例子中析构函数作用不大）的 <code>Stock</code> 类。</p>
+<p><strong>stock.h (最终版本)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\stock.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> STOCK_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STOCK_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> company;</span><br><span class="line">    <span class="keyword">long</span> shares;</span><br><span class="line">    <span class="keyword">double</span> share_val;</span><br><span class="line">    <span class="keyword">double</span> total_val;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set_tot</span><span class="params">()</span> </span>&#123; total_val = shares * share_val; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    Stock(); <span class="comment">// 默认构造函数</span></span><br><span class="line">    Stock(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;co, <span class="keyword">long</span> n = <span class="number">0</span>, <span class="keyword">double</span> pr = <span class="number">0.0</span>);</span><br><span class="line">    <span class="comment">// 析构函数</span></span><br><span class="line">    ~Stock();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 其他成员函数</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">double</span> price)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// STOCK_H_</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>stock.cpp (最终版本)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\stock.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数定义</span></span><br><span class="line">Stock::Stock() &#123;</span><br><span class="line">    company = <span class="string">&quot;no name&quot;</span>;</span><br><span class="line">    shares = <span class="number">0</span>;</span><br><span class="line">    share_val = <span class="number">0.0</span>;</span><br><span class="line">    total_val = <span class="number">0.0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Stock::Stock(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;co, <span class="keyword">long</span> n, <span class="keyword">double</span> pr) &#123;</span><br><span class="line">    company = co;</span><br><span class="line">    <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Error: Number of shares can&#x27;t be negative. &quot;</span></span><br><span class="line">                  &lt;&lt; company &lt;&lt; <span class="string">&quot; shares set to 0.\n&quot;</span>; <span class="comment">// 使用 cerr 输出错误</span></span><br><span class="line">        shares = <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares = n;</span><br><span class="line">    &#125;</span><br><span class="line">    share_val = pr;</span><br><span class="line">    set_tot();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 析构函数定义</span></span><br><span class="line">Stock::~Stock() &#123;</span><br><span class="line">    <span class="comment">// 在这个简单类中，析构函数体可以为空</span></span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; &quot;Destructor called for &quot; &lt;&lt; company &lt;&lt; &quot;\n&quot;; // 可以取消注释来观察</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他成员函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Error: Number of shares purchased can&#x27;t be negative. &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares += num;</span><br><span class="line">        share_val = price;</span><br><span class="line">        set_tot();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::sell</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Error: Number of shares sold can&#x27;t be negative. &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (num &gt; shares) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Error: You can&#x27;t sell more than you have! &quot;</span></span><br><span class="line">                  &lt;&lt; <span class="string">&quot;Transaction aborted.\n&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        shares -= num;</span><br><span class="line">        share_val = price;</span><br><span class="line">        set_tot();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::update</span><span class="params">(<span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    share_val = price;</span><br><span class="line">    set_tot();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::show</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用 iomanip 来设置格式可能更清晰</span></span><br><span class="line">    <span class="built_in">std</span>::ios_base::fmtflags orig =</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::ios_base::fixed, <span class="built_in">std</span>::ios_base::floatfield);</span><br><span class="line">    <span class="built_in">std</span>::streamsize prec = <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Company: &quot;</span> &lt;&lt; company</span><br><span class="line">              &lt;&lt; <span class="string">&quot;  Shares: &quot;</span> &lt;&lt; shares &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  Share Price: $&quot;</span> &lt;&lt; share_val;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(<span class="number">2</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;  Total Worth: $&quot;</span> &lt;&lt; total_val &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.setf(orig, <span class="built_in">std</span>::ios_base::floatfield);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(prec);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-3-6-构造函数和析构函数小结"><a href="#10-3-6-构造函数和析构函数小结" class="headerlink" title="10.3.6 构造函数和析构函数小结"></a>10.3.6 构造函数和析构函数小结</h3><ul>
+<li><strong>构造函数:</strong><ul>
+<li>  与类同名，无返回类型。</li>
+<li>  在创建对象时自动调用，用于初始化对象。</li>
+<li>  可以重载（提供不同的参数列表）。</li>
+<li>  如果没有定义任何构造函数，编译器会生成一个默认构造函数（无参数，什么也不做）。</li>
+<li>  如果定义了任何构造函数，编译器不再生成默认构造函数；如果需要无参数构造，必须自己定义。</li>
+</ul>
+</li>
+<li><strong>析构函数:</strong><ul>
+<li>  类名前加 <code>~</code>，无返回类型，无参数。</li>
+<li>  在对象销毁时自动调用，用于清理资源。</li>
+<li>  不能重载，一个类只有一个析构函数。</li>
+<li>  如果类中使用了 <code>new</code> 分配资源，通常需要在析构函数中使用 <code>delete</code> 来释放。</li>
+</ul>
+</li>
+</ul>
+<p>构造函数和析构函数是 C++ 类机制的重要组成部分，它们确保了对象的正确初始化和资源的安全释放，是实现<strong>资源获取即初始化 (RAII - Resource Acquisition Is Initialization)</strong> 这一重要 C++ 编程范式的基石。</p>
+<h2 id="10-4-this-指针"><a href="#10-4-this-指针" class="headerlink" title="10.4 this 指针"></a>10.4 this 指针</h2><p>在 C++ 类的成员函数内部，你有时可能需要引用<strong>调用该函数的对象本身</strong>。例如，当你在 <code>stock1.show()</code> 的实现代码中，如何明确地指代 <code>stock1</code> 这个对象？C++ 为此提供了一个特殊的指针，称为 <code>this</code> 指针。</p>
+<h3 id="this-指针是什么？"><a href="#this-指针是什么？" class="headerlink" title="this 指针是什么？"></a><code>this</code> 指针是什么？</h3><p><code>this</code> 是一个隐含的指针，它存在于每个<strong>非静态成员函数</strong>（non-static member function）内部。它指向<strong>调用该成员函数的那个对象</strong>。</p>
+<ul>
+<li>  当你调用 <code>stock1.show()</code> 时，在 <code>show()</code> 函数的内部，<code>this</code> 指针就指向 <code>stock1</code> 对象。</li>
+<li>  当你调用 <code>stock2.buy(..)</code> 时，在 <code>buy()</code> 函数的内部，<code>this</code> 指针就指向 <code>stock2</code> 对象。</li>
+</ul>
+<p>编译器在调用成员函数时，会隐式地将对象的地址传递给该函数，这个地址就被 <code>this</code> 指针所持有。</p>
+<p><strong>关键点：</strong></p>
+<ol>
+<li> <strong>隐含参数:</strong> <code>this</code> 指针是作为隐含参数传递给非静态成员函数的。你不需要在函数参数列表中显式声明它。</li>
+<li> <strong>指向调用对象:</strong> 它总是指向当前正在执行其成员函数的那个对象。</li>
+<li> <strong>类型:</strong> <code>this</code> 指针的类型是 <code>ClassName * const</code>（对于非 <code>const</code> 成员函数）或 <code>const ClassName * const</code>（对于 <code>const</code> 成员函数）。这意味着 <code>this</code> 指针本身是一个常量指针（不能让它指向其他对象），并且对于 <code>const</code> 成员函数，它指向一个 <code>const</code> 对象（不能通过 <code>this</code> 修改对象的数据成员）。</li>
+<li> <strong>访问成员:</strong> 在成员函数内部，当你直接访问数据成员（如 <code>shares</code>）或调用其他成员函数（如 <code>set_tot()</code>）时，实际上是编译器隐式地使用了 <code>this</code> 指针，等同于 <code>this-&gt;shares</code> 或 <code>this-&gt;set_tot()</code>。</li>
+</ol>
+<h3 id="使用-this-指针"><a href="#使用-this-指针" class="headerlink" title="使用 this 指针"></a>使用 <code>this</code> 指针</h3><p>大多数情况下，你不需要显式地使用 <code>this</code> 指针，因为编译器会自动处理。例如，在 <code>Stock::buy</code> 函数中：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stock::buy</span><span class="params">(<span class="keyword">long</span> num, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// shares += num;       // 隐式使用 this-&gt;shares</span></span><br><span class="line">        <span class="comment">// share_val = price; // 隐式使用 this-&gt;share_val</span></span><br><span class="line">        <span class="comment">// set_tot();         // 隐式调用 this-&gt;set_tot()</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 下面是显式使用 this 的等效写法：</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;shares += num;</span><br><span class="line">        <span class="keyword">this</span>-&gt;share_val = price;</span><br><span class="line">        <span class="keyword">this</span>-&gt;set_tot();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然而，在某些特定场景下，显式使用 <code>this</code> 指针是必要的或有用的：</p>
+<ol>
+<li><p><strong>区分同名参数和成员:</strong> 当成员函数的参数名与数据成员名相同时，需要使用 <code>this-&gt;</code> 来明确指定访问的是数据成员。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 参数名 value 与数据成员 value 相同</span></span><br><span class="line">    Example(<span class="keyword">int</span> value) &#123;</span><br><span class="line">        <span class="comment">// 必须使用 this-&gt;value 来引用数据成员</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;value = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125; <span class="comment">// 这里访问的是成员 value</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Example <span class="title">ex</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">// 调用构造函数</span></span><br><span class="line">    ex.print();     <span class="comment">// 输出 10</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <em>(虽然这种命名方式有时会用到，但一些编码规范建议避免参数名和成员名完全相同，例如使用 <code>m_value</code> 或 <code>value_</code> 作为成员名)</em></p>
+</li>
+<li><p><strong>返回对象自身的引用或指针:</strong> 当成员函数需要返回调用该函数的对象本身时（通常是为了支持**方法链式调用 (Method Chaining)**）。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Counter</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Counter&amp; <span class="title">increment</span><span class="params">()</span> </span>&#123; <span class="comment">// 返回类型是 Counter&amp;</span></span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>; <span class="comment">// 返回调用对象自身的引用</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Counter&amp; <span class="title">add</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123; <span class="comment">// 返回类型是 Counter&amp;</span></span><br><span class="line">        count += val;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>; <span class="comment">// 返回调用对象自身的引用</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Count: &quot;</span> &lt;&lt; count &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Counter c;</span><br><span class="line">    c.display(); <span class="comment">// Output: Count: 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法链式调用</span></span><br><span class="line">    c.increment().add(<span class="number">5</span>).increment(); <span class="comment">// 先调用 increment(), 返回 c 的引用；</span></span><br><span class="line">                                      <span class="comment">// 再对 c 调用 add(5), 返回 c 的引用；</span></span><br><span class="line">                                      <span class="comment">// 最后对 c 调用 increment()</span></span><br><span class="line"></span><br><span class="line">    c.display(); <span class="comment">// Output: Count: 7</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 在 <code>increment()</code> 和 <code>add()</code> 中，<code>return *this;</code> 返回的是调用对象（<code>c</code>）的引用，使得可以在其后继续调用该对象的其他成员函数。</p>
+</li>
+<li><p> <strong>在友元函数或独立函数中传递对象:</strong> 虽然 <code>this</code> 本身只在成员函数内可用，但你可以将 <code>*this</code>（对象本身）或 <code>this</code>（对象地址）传递给需要操作该对象的其他函数。</p>
+</li>
+</ol>
+<h3 id="this-与-Stock-类"><a href="#this-与-Stock-类" class="headerlink" title="this 与 Stock 类"></a><code>this</code> 与 <code>Stock</code> 类</h3><p>让我们看看 <code>this</code> 如何应用于之前的 <code>Stock</code> 类。假设我们想添加一个方法，用于比较两个 <code>Stock</code> 对象的总价值，并返回总价值较高的那个对象的引用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在 stock.h 的类定义中添加声明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... private members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... constructors, destructor, buy, sell, update, show ...</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 新增方法：比较总价值，返回价值更高的对象的引用</span></span><br><span class="line">    <span class="comment">// 第一个const（返回值前）：表示返回的引用是常量，不能被修改</span></span><br><span class="line">    <span class="comment">// 第二个const（参数中）  ：表示参数是常量引用，函数内不能修改参数</span></span><br><span class="line">    <span class="comment">// 第三个const（函数末尾）：表示这是一个常量成员函数，不能修改调用对象的成员变量</span></span><br><span class="line">    <span class="function"><span class="keyword">const</span> Stock&amp; <span class="title">topval</span><span class="params">(<span class="keyword">const</span> Stock&amp; s)</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 stock.cpp 中添加定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 其他定义 ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 topval 方法</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> Stock&amp; <span class="title">Stock::topval</span><span class="params">(<span class="keyword">const</span> Stock&amp; s)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="comment">// this-&gt;total_val 是调用该方法的对象 (e.g., stock1) 的总价值</span></span><br><span class="line">    <span class="comment">// s.total_val 是传入的参数对象 (e.g., stock2) 的总价值</span></span><br><span class="line">    <span class="keyword">if</span> (s.total_val &gt; <span class="keyword">this</span>-&gt;total_val) &#123;</span><br><span class="line">        <span class="keyword">return</span> s; <span class="comment">// 返回传入的对象 s</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>; <span class="comment">// 返回调用该方法的对象自身 (*this)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 注意：函数声明和定义末尾的 const 表示此函数不会修改任何 Stock 对象，</span></span><br><span class="line">    <span class="comment">// 因此 this 的类型是 const Stock* const，*this 的类型是 const Stock&amp;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Stock <span class="title">stock1</span><span class="params">(<span class="string">&quot;Company A&quot;</span>, <span class="number">100</span>, <span class="number">10.0</span>)</span></span>; <span class="comment">// total_val = 1000.0</span></span><br><span class="line">    <span class="function">Stock <span class="title">stock2</span><span class="params">(<span class="string">&quot;Company B&quot;</span>, <span class="number">50</span>, <span class="number">25.0</span>)</span></span>;  <span class="comment">// total_val = 1250.0</span></span><br><span class="line"></span><br><span class="line">    stock1.show();</span><br><span class="line">    stock2.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> Stock&amp; top = stock1.topval(stock2); <span class="comment">// 调用 stock1.topval，传入 stock2</span></span><br><span class="line">                                              <span class="comment">// 内部比较 s(stock2).total_val 和 this(stock1)-&gt;total_val</span></span><br><span class="line">                                              <span class="comment">// 因为 stock2 价值更高，返回 stock2 的引用</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\nTop value stock:\n&quot;</span>;</span><br><span class="line">    top.show(); <span class="comment">// 显示的是 stock2 的信息</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>this-&gt;total_val</code> 明确表示访问的是调用 <code>topval</code> 函数的那个对象（<code>stock1</code>）的 <code>total_val</code> 成员，而 <code>s.total_val</code> 访问的是作为参数传递进来的对象（<code>stock2</code>）的 <code>total_val</code>。<code>return *this;</code> 则返回了调用对象 <code>stock1</code> 本身的引用。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>  <code>this</code> 是一个指向<strong>调用对象</strong>的指针，在非静态成员函数内部可用。</li>
+<li>  它使得成员函数能够访问和操作调用它的那个特定对象的数据成员和成员函数。</li>
+<li>  大多数情况下，<code>this</code> 的使用是隐式的。</li>
+<li>显式使用 <code>this</code> 主要用于：<ul>
+<li>  区分同名的参数和数据成员。</li>
+<li>  从成员函数中返回调用对象自身的引用或指针（常用于方法链）。</li>
+</ul>
+</li>
+<li>  <code>this</code> 指针的类型取决于成员函数是否为 <code>const</code>。</li>
+</ul>
+<h2 id="10-5-对象数组"><a href="#10-5-对象数组" class="headerlink" title="10.5 对象数组"></a>10.5 对象数组</h2><p>就像可以创建 <code>int</code>、<code>double</code> 或 <code>char</code> 的数组一样，你也可以创建<strong>类对象</strong>的数组。数组的每个元素都是一个该类的对象。</p>
+<h3 id="声明对象数组"><a href="#声明对象数组" class="headerlink" title="声明对象数组"></a>声明对象数组</h3><p>声明对象数组的语法与声明基本类型数组类似：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ClassName arrayName[numberOfElements];</span><br></pre></td></tr></table></figure>
+
+<p>例如，要创建一个包含 4 个 <code>Stock</code> 对象的数组：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span> <span class="comment">// 假设 Stock 类定义在此</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STKS = <span class="number">4</span>;</span><br><span class="line">Stock myStocks[STKS]; <span class="comment">// 创建一个包含 4 个 Stock 对象的数组</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="构造函数的调用"><a href="#构造函数的调用" class="headerlink" title="构造函数的调用"></a>构造函数的调用</h3><p>当程序创建对象数组时，它需要为数组中的<strong>每个元素（对象）</strong>调用构造函数。</p>
+<ul>
+<li><p><strong>默认构造函数:</strong> 如果在声明数组时<strong>没有</strong>为元素提供显式的初始化值，程序将为数组中的<strong>每个元素</strong>调用类的**默认构造函数 (Default Constructor)**。</p>
+<ul>
+<li>  在上面的例子 <code>Stock myStocks[STKS];</code> 中，<code>Stock::Stock()</code> 这个默认构造函数将被调用 4 次，为 <code>myStocks[0]</code>, <code>myStocks[1]</code>, <code>myStocks[2]</code>, <code>myStocks[3]</code> 这四个对象进行初始化。</li>
+<li>  <strong>重要:</strong> 如果类<strong>没有</strong>默认构造函数（例如，你只定义了带参数的构造函数，而没有定义无参数的构造函数或使用 <code>= default</code>），那么尝试创建像 <code>Stock myStocks[STKS];</code> 这样的未初始化数组将导致<strong>编译错误</strong>。</li>
+</ul>
+</li>
+<li><p><strong>带参数的构造函数:</strong> 你可以在声明数组时使用初始化列表来为数组元素指定不同的构造函数调用。</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STKS = <span class="number">2</span>;</span><br><span class="line">Stock portfolio[STKS] = &#123;</span><br><span class="line">    Stock(<span class="string">&quot;NanoSmart&quot;</span>, <span class="number">12</span>, <span class="number">20.0</span>), <span class="comment">// 调用 Stock(const string&amp;, long, double)</span></span><br><span class="line">    Stock(<span class="string">&quot;Boffo Objects&quot;</span>, <span class="number">200</span>, <span class="number">2.0</span>) <span class="comment">// 调用 Stock(const string&amp;, long, double)</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11 及以后版本可以使用更简洁的列表初始化</span></span><br><span class="line">Stock investments[] = &#123; <span class="comment">// 编译器会自动计算数组大小 (3)</span></span><br><span class="line">    Stock(<span class="string">&quot;Fleep Co&quot;</span>, <span class="number">5</span>, <span class="number">15.5</span>),</span><br><span class="line">    Stock(), <span class="comment">// 调用默认构造函数 Stock()</span></span><br><span class="line">    Stock(<span class="string">&quot;MacroHard&quot;</span>, <span class="number">18</span>, <span class="number">75.0</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>  在 <code>portfolio</code> 数组的例子中，<code>portfolio[0]</code> 使用提供的参数调用 <code>Stock(const string&amp;, long, double)</code> 构造函数，<code>portfolio[1]</code> 也一样。</p>
+</li>
+<li><p>  在 <code>investments</code> 数组的例子中，<code>investments[0]</code> 和 <code>investments[2]</code> 调用带参数的构造函数，而 <code>investments[1]</code> 则显式调用了默认构造函数 <code>Stock()</code>。</p>
+</li>
+<li><p>如果初始化列表提供的初始值数量<strong>少于</strong>数组大小，则剩余的元素将使用<strong>默认构造函数</strong>进行初始化。如果类没有默认构造函数，这将导致编译错误。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stock funds[<span class="number">4</span>] = &#123;</span><br><span class="line">    Stock(<span class="string">&quot;A Corp&quot;</span>, <span class="number">10</span>, <span class="number">1.0</span>),</span><br><span class="line">    Stock(<span class="string">&quot;B Ltd&quot;</span>, <span class="number">20</span>, <span class="number">2.0</span>)</span><br><span class="line">    <span class="comment">// funds[2] 和 funds[3] 将使用默认构造函数 Stock() 初始化</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="访问对象数组成员"><a href="#访问对象数组成员" class="headerlink" title="访问对象数组成员"></a>访问对象数组成员</h3><p>访问数组中对象的成员与访问基本类型数组元素类似，先用索引 <code>[]</code> 选择数组中的特定对象，然后使用点号 <code>.</code> 访问该对象的公有成员（数据或函数）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stock.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> STKS = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用初始化列表创建并初始化数组</span></span><br><span class="line">    Stock stocks[STKS] = &#123;</span><br><span class="line">        Stock(<span class="string">&quot;NanoSmart&quot;</span>, <span class="number">12</span>, <span class="number">20.0</span>),</span><br><span class="line">        Stock(<span class="string">&quot;Boffo Objects&quot;</span>, <span class="number">200</span>, <span class="number">2.0</span>),</span><br><span class="line">        Stock(<span class="string">&quot;Monolithic Obelisks&quot;</span>, <span class="number">130</span>, <span class="number">3.25</span>),</span><br><span class="line">        Stock(<span class="string">&quot;Fleep Enterprises&quot;</span>, <span class="number">60</span>, <span class="number">6.5</span>)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Stock holdings:\n&quot;</span>;</span><br><span class="line">    <span class="keyword">int</span> st;</span><br><span class="line">    <span class="keyword">for</span> (st = <span class="number">0</span>; st &lt; STKS; st++) &#123;</span><br><span class="line">        stocks[st].show(); <span class="comment">// 调用数组中第 st 个对象的 show() 方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 找到价值最高的股票 (使用上一节的 topval 假设它已添加)</span></span><br><span class="line">    <span class="comment">// 注意：topval 需要添加到 Stock 类中才能编译</span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    const Stock* top = &amp;stocks[0]; // 假设第一个是最高的</span></span><br><span class="line"><span class="comment">    for (st = 1; st &lt; STKS; st++) &#123;</span></span><br><span class="line"><span class="comment">        top = &amp;top-&gt;topval(stocks[st]); // 比较并更新 top 指针</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    std::cout &lt;&lt; &quot;\nMost valuable holding:\n&quot;;</span></span><br><span class="line"><span class="comment">    top-&gt;show(); // 显示价值最高的股票信息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 修改数组中某个对象的状态</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\nBuying more Boffo Objects...\n&quot;</span>;</span><br><span class="line">    stocks[<span class="number">1</span>].buy(<span class="number">50</span>, <span class="number">2.5</span>); <span class="comment">// 调用 stocks[1] 对象的 buy() 方法</span></span><br><span class="line">    stocks[<span class="number">1</span>].show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>输出示例 (假设 <code>topval</code> 部分被注释掉):</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Constructor using NanoSmart called</span><br><span class="line">Constructor using Boffo Objects called</span><br><span class="line">Constructor using Monolithic Obelisks called</span><br><span class="line">Constructor using Fleep Enterprises called</span><br><span class="line">Stock holdings:</span><br><span class="line">Company: NanoSmart  Shares: 12</span><br><span class="line">  Share Price: $20.000  Total Worth: $240.00</span><br><span class="line">Company: Boffo Objects  Shares: 200</span><br><span class="line">  Share Price: $2.000  Total Worth: $400.00</span><br><span class="line">Company: Monolithic Obelisks  Shares: 130</span><br><span class="line">  Share Price: $3.250  Total Worth: $422.50</span><br><span class="line">Company: Fleep Enterprises  Shares: 60</span><br><span class="line">  Share Price: $6.500  Total Worth: $390.00</span><br><span class="line"></span><br><span class="line">Buying more Boffo Objects...</span><br><span class="line">Company: Boffo Objects  Shares: 250</span><br><span class="line">  Share Price: $2.500  Total Worth: $625.00</span><br><span class="line">Bye, Fleep Enterprises!</span><br><span class="line">Bye, Monolithic Obelisks!</span><br><span class="line">Bye, Boffo Objects!</span><br><span class="line">Bye, NanoSmart!</span><br></pre></td></tr></table></figure>
+<p>注意：程序结束时，数组 <code>stocks</code> 中的每个对象的析构函数都会被调用（按与构造相反的顺序）。</p>
+<h3 id="动态对象数组"><a href="#动态对象数组" class="headerlink" title="动态对象数组"></a>动态对象数组</h3><p>你也可以使用 <code>new</code> 来创建动态的对象数组。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> size = <span class="number">5</span>;</span><br><span class="line">Stock *portfolio = <span class="keyword">new</span> Stock[size]; <span class="comment">// 创建包含 5 个 Stock 对象的动态数组</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>  <strong>默认构造函数要求:</strong> 使用 <code>new ClassName[size]</code> 这种形式时，<strong>必须</strong>要求类具有可访问的<strong>默认构造函数</strong>，因为它会为数组中的每个元素调用默认构造函数。</p>
+</li>
+<li><p><strong>C++11 列表初始化 (可选):</strong> C++11 允许在使用 <code>new</code> 创建数组时提供初始化列表，这样可以调用特定的构造函数，并且如果提供了所有元素的初始化值，则不强制要求默认构造函数。</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++11 or later</span></span><br><span class="line">Stock *p_list = <span class="keyword">new</span> Stock[<span class="number">3</span>] &#123;</span><br><span class="line">    Stock(<span class="string">&quot;X Inc&quot;</span>, <span class="number">1</span>, <span class="number">1.0</span>),</span><br><span class="line">    Stock(<span class="string">&quot;Y Ltd&quot;</span>, <span class="number">2</span>, <span class="number">2.0</span>),</span><br><span class="line">    Stock(<span class="string">&quot;Z LLC&quot;</span>, <span class="number">3</span>, <span class="number">3.0</span>)</span><br><span class="line">&#125;;</span><br><span class="line">Stock *p_partial = <span class="keyword">new</span> Stock[<span class="number">4</span>] &#123;</span><br><span class="line">    Stock(<span class="string">&quot;A&quot;</span>, <span class="number">1</span>, <span class="number">1.0</span>),</span><br><span class="line">    Stock(<span class="string">&quot;B&quot;</span>, <span class="number">2</span>, <span class="number">2.0</span>)</span><br><span class="line">    <span class="comment">// p_partial[2] 和 p_partial[3] 需要默认构造函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>  <strong>访问:</strong> 访问动态数组成员可以使用数组表示法 <code>portfolio[i].member</code> 或指针表示法 <code>(portfolio + i)-&gt;member</code>。</p>
+</li>
+<li><p><strong>释放内存:</strong> 必须使用 <code>delete []</code> 来释放动态分配的对象数组，以确保每个对象的析构函数都被正确调用。</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> [] portfolio; <span class="comment">// 调用 5 次析构函数，然后释放内存</span></span><br><span class="line"><span class="keyword">delete</span> [] p_list;</span><br><span class="line"><span class="keyword">delete</span> [] p_partial;</span><br></pre></td></tr></table></figure>
+<p>  <strong>错误:</strong> 使用 <code>delete portfolio;</code> 只会调用第一个元素的析构函数，并可能导致内存泄漏或未定义行为。</p>
+</li>
+</ul>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>  可以像创建基本类型数组一样创建对象数组。</li>
+<li>  创建对象数组时，会为每个元素调用构造函数。</li>
+<li>  如果未提供显式初始化，则调用默认构造函数。因此，对于未初始化的数组或使用 <code>new ClassName[size]</code> 创建的动态数组，类必须有可访问的默认构造函数。</li>
+<li>  可以使用初始化列表为数组成员指定不同的构造函数。</li>
+<li>  通过 <code>arrayName[index].member</code> 的方式访问数组成员。</li>
+<li>  动态对象数组使用 <code>new ClassName[size]</code> 创建，并必须使用 <code>delete [] arrayPtr</code> 释放。</li>
+</ul>
+<h2 id="10-6-类作用域"><a href="#10-6-类作用域" class="headerlink" title="10.6 类作用域"></a>10.6 类作用域</h2><p>我们已经知道，在函数内部或代码块内部定义的变量具有局部作用域（块作用域）。类似地，在类中定义的名称（数据成员、成员函数、嵌套类型、枚举等）也有其特定的作用域，称为**类作用域 (Class Scope)**。</p>
+<p><strong>类作用域的规则:</strong></p>
+<ol>
+<li> <strong>内部可见性:</strong> 在类声明或成员函数定义内部，可以直接访问类的成员（数据成员、成员函数、枚举等），无需特殊限定。</li>
+<li> <strong>外部访问限制:</strong> 在类的外部，不能直接访问类的成员。必须通过对象（使用点号 <code>.</code> 或箭头 <code>-&gt;</code>）或者通过类名和作用域解析运算符 <code>::</code>（对于静态成员、嵌套类型或枚举）来访问。</li>
+<li> <strong>名称隔离:</strong> 类作用域意味着在一个类内部定义的名称不会与在另一个类或全局作用域中定义的同名名称冲突。例如，两个不同的类可以都有一个名为 <code>count</code> 的数据成员。</li>
+</ol>
+<p><strong>示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> count; <span class="comment">// ClassA 的 count</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">()</span> </span>&#123; value = <span class="number">10</span>; &#125; <span class="comment">// 可以直接访问 value</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> value; <span class="comment">// ClassA 的 value</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassB</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> count; <span class="comment">// ClassB 的 count (与 ClassA::count 不冲突)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">calculate</span><span class="params">()</span> </span>&#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> global_count = <span class="number">100</span>; <span class="comment">// 全局变量</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ClassA objA;</span><br><span class="line">    ClassB objB;</span><br><span class="line"></span><br><span class="line">    objA.count = <span class="number">1</span>; <span class="comment">// 访问 ClassA 对象的 count 成员</span></span><br><span class="line">    objB.count = <span class="number">2.5</span>; <span class="comment">// 访问 ClassB 对象的 count 成员</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误！不能直接访问类内部的名称</span></span><br><span class="line">    <span class="comment">// count = 5; // 访问哪个 count？ </span></span><br><span class="line">    <span class="comment">// value = 20; // 错误！value 在类作用域内</span></span><br><span class="line"></span><br><span class="line">    objA.process(); <span class="comment">// 通过对象调用成员函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>作用域解析运算符 <code>::</code></strong></p>
+<p>当我们需要在类外部引用类作用域内的名称时（例如，在定义成员函数或访问静态成员时），就需要使用类名和作用域解析运算符 <code>::</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在类外部定义成员函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClassA::process</span><span class="params">()</span> </span>&#123; <span class="comment">// 使用 ClassA:: 指明 process 属于 ClassA</span></span><br><span class="line">    value = <span class="number">10</span>; <span class="comment">// 在成员函数内部，可以直接访问其他成员</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;count = <span class="number">5</span>; <span class="comment">// 也可以显式使用 this</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-6-1-作用域为类的常量"><a href="#10-6-1-作用域为类的常量" class="headerlink" title="10.6.1 作用域为类的常量"></a>10.6.1 作用域为类的常量</h3><p>有时，我们希望在类中定义一个常量，这个常量对于该类的所有对象来说都是一样的，并且可能在编译时就需要知道它的值（例如，用于指定数组大小）。</p>
+<p>有几种方法可以在类作用域内创建常量：</p>
+<ol>
+<li><p><strong><code>static const</code> 成员 (整型或枚举类型 - C++11 前常用):</strong><br> 对于整型（<code>int</code>, <code>char</code>, <code>bool</code> 等）或枚举类型的常量，可以在类定义内部使用 <code>static const</code> 直接初始化。<code>static</code> 意味着这个常量属于类本身，而不是任何特定对象（所有对象共享同一个常量），<code>const</code> 意味着它的值不能被修改。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bakery</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 这个常量属于类，所有对象共享</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> Months = <span class="number">12</span>; <span class="comment">// 声明并初始化静态常量成员</span></span><br><span class="line">    <span class="keyword">double</span> costs[Months];</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意：如果需要在类外部获取该常量的地址，</span></span><br><span class="line"><span class="comment">// 或者编译器要求（较旧的编译器可能需要），</span></span><br><span class="line"><span class="comment">// 可能还需要在源文件中提供一个定义（不带初始值）：</span></span><br><span class="line"><span class="comment">// const int Bakery::Months; // 可选的定义</span></span><br></pre></td></tr></table></figure>
+<p> 这种方式不能用于初始化非整型或非枚举类型的静态常量。</p>
+</li>
+<li><p><strong><code>static constexpr</code> 成员 (C++11 及以后):</strong><br> C++11 引入了 <code>constexpr</code>，它允许在编译时计算常量表达式。使用 <code>static constexpr</code> 可以定义各种类型的类作用域常量，只要初始化表达式是常量表达式即可。这是现代 C++ 中定义类常量的推荐方式。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">int</span> MaxUsers = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">double</span> Rate = <span class="number">1.5</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keyword">const</span> <span class="keyword">char</span>* DefaultMsg = <span class="string">&quot;Welcome&quot;</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> userLimit = Config::MaxUsers; <span class="comment">// 直接使用类名访问</span></span><br><span class="line">    <span class="keyword">double</span> currentRate = Config::Rate;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <code>static constexpr</code> 成员默认是内联的，通常不需要在类外部再次定义。</p>
+</li>
+<li><p><strong>枚举技巧 (Enum Hack - C++11 前的变通方法):</strong><br> 在 C++11 之前，如果想在类中定义一个非整型的常量（或者只是想避免 <code>static const</code> 可能需要的外部定义），有时会使用匿名枚举。</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LegacyBox</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> &#123;</span> MaxSize = <span class="number">100</span> &#125;; <span class="comment">// 枚举技巧</span></span><br><span class="line">    <span class="keyword">int</span> items[MaxSize]; <span class="comment">// 使用枚举量作为数组大小</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p> <code>MaxSize</code> 就像一个值为 100 的整型常量，但它是一个枚举量。这种方法现在已不常用，<code>static constexpr</code> 是更好的选择。</p>
+</li>
+</ol>
+<h3 id="10-6-2-作用域内枚举-Scoped-Enumerations-C-11"><a href="#10-6-2-作用域内枚举-Scoped-Enumerations-C-11" class="headerlink" title="10.6.2 作用域内枚举 (Scoped Enumerations - C++11)"></a>10.6.2 作用域内枚举 (Scoped Enumerations - C++11)</h3><p>传统的 C++ 枚举（<code>enum</code>）存在一些问题：</p>
+<ul>
+<li>  <strong>名称冲突:</strong> 枚举量（enumerators）被放置在与枚举定义相同的作用域中，容易与其他名称（包括其他枚举的枚举量）发生冲突。</li>
+<li>  <strong>隐式转换:</strong> 枚举量可以隐式地转换为整型，有时这可能导致逻辑错误或降低类型安全性。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">OldColor</span> &#123;</span> RED, GREEN, BLUE &#125;;</span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">StopLight</span> &#123;</span> RED, YELLOW, GREEN &#125;; <span class="comment">// 错误！RED 和 GREEN 重定义</span></span><br><span class="line"></span><br><span class="line">OldColor myColor = RED; <span class="comment">// OK</span></span><br><span class="line"><span class="keyword">int</span> colorValue = myColor; <span class="comment">// OK, 隐式转换为 int (值为 0)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (myColor == <span class="number">0</span>) &#123; <span class="comment">/* ... */</span> &#125; <span class="comment">// 可以和整数比较</span></span><br></pre></td></tr></table></figure>
+
+<p>为了解决这些问题，C++11 引入了**作用域内枚举 (Scoped Enumerations)**，使用 <code>enum class</code> 或 <code>enum struct</code> 关键字定义。</p>
+<p><strong>特点:</strong></p>
+<ol>
+<li> <strong>作用域限制:</strong> 枚举量的作用域被限制在枚举本身内部。访问枚举量必须使用枚举名称和作用域解析运算符 <code>::</code>。</li>
+<li> <strong>无隐式转换:</strong> 作用域内枚举类型不能隐式地转换为整型或其他类型。如果需要转换，必须使用显式类型转换（如 <code>static_cast</code>）。</li>
+<li> <strong>类型安全:</strong> 增强了类型安全性，不同作用域枚举类型的值不能直接比较（除非重载了比较运算符）。</li>
+<li> <strong>可指定底层类型:</strong> 可以显式指定枚举使用的底层整数类型（默认为 <code>int</code>）。</li>
+</ol>
+<p><strong>语法:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="title">EnumName</span> :</span> UnderlyingType &#123; Enumerator1, Enumerator2, ... &#125;;</span><br><span class="line"><span class="comment">// 或者 enum struct (功能相同)</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">struct</span> <span class="title">EnumName</span> :</span> UnderlyingType &#123; Enumerator1, Enumerator2, ... &#125;;</span><br><span class="line"><span class="comment">// : UnderlyingType 是可选的</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 enum class 定义作用域内枚举</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="title">Color</span> :</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> &#123; <span class="comment">// 指定底层类型为 unsigned char</span></span><br><span class="line">    RED,    <span class="comment">// Color::RED</span></span><br><span class="line">    GREEN,  <span class="comment">// Color::GREEN</span></span><br><span class="line">    BLUE    <span class="comment">// Color::BLUE</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="keyword">class</span> <span class="title">TrafficLight</span> &#123;</span></span><br><span class="line">    RED,    <span class="comment">// TrafficLight::RED (与 Color::RED 不冲突)</span></span><br><span class="line">    YELLOW,</span><br><span class="line">    GREEN</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Color myColor = Color::RED; <span class="comment">// 必须使用作用域解析符</span></span><br><span class="line">    TrafficLight light = TrafficLight::GREEN;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误！枚举量不在当前作用域</span></span><br><span class="line">    <span class="comment">// Color anotherColor = RED;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误！不能隐式转换为 int</span></span><br><span class="line">    <span class="comment">// int colorCode = myColor;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 需要显式转换</span></span><br><span class="line">    <span class="keyword">int</span> colorCode = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(myColor);</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> underlyingValue = <span class="keyword">static_cast</span>&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;(myColor);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Color code: &quot;</span> &lt;&lt; colorCode &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 0</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Underlying value: &quot;</span> &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(underlyingValue) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 0 (需要再次转换才能打印为数字)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误！不同枚举类型不能直接比较</span></span><br><span class="line">    <span class="comment">// if (myColor == light) &#123; /* ... */ &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以与相同类型的枚举量比较</span></span><br><span class="line">    <span class="keyword">if</span> (myColor == Color::RED) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The color is red.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (light == TrafficLight::GREEN) &#123;</span><br><span class="line">         <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The light is green.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>作用域内枚举是现代 C++ 中定义枚举类型的首选方式，因为它更安全、更不容易出错，并且避免了名称污染。</p>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>  类成员（数据、函数、类型、常量、枚举）具有<strong>类作用域</strong>。</li>
+<li>  在类外部访问类成员需要通过对象（<code>.</code> 或 <code>-&gt;</code>）或类名（<code>::</code>）。</li>
+<li>  类作用域可以隔离名称，防止与全局或其他类中的名称冲突。</li>
+<li>  可以使用 <code>static const</code> (整型/枚举) 或 <code>static constexpr</code> (C++11, 推荐) 在类内部定义常量。</li>
+<li>  C++11 引入了**作用域内枚举 (<code>enum class</code> 或 <code>enum struct</code>)**，其枚举量作用域限制在枚举内，且不能隐式转换为整型，提高了代码的安全性和清晰度。</li>
+</ul>
+<h2 id="10-7-抽象数据类型"><a href="#10-7-抽象数据类型" class="headerlink" title="10.7 抽象数据类型"></a>10.7 抽象数据类型</h2><p>我们在本章中学习的类是 C++ 实现<strong>抽象数据类型 (Abstract Data Type, ADT)</strong> 的一种方式。ADT 是一种计算机科学的概念，它是一种<strong>数学模型</strong>，用于描述具有特定行为（语义）的数据类型，重点在于<strong>可以对数据执行的操作</strong>，而不是这些操作的具体实现方式或数据的内部表示。</p>
+<p><strong>ADT 的核心思想:</strong></p>
+<ol>
+<li> <strong>数据封装:</strong> ADT 将数据以及对这些数据进行操作的函数捆绑在一起。</li>
+<li> <strong>接口与实现分离:</strong> ADT 定义了一个<strong>公共接口 (Interface)**，即一组可以对数据执行的操作。用户通过这个接口与数据交互，而不需要知道数据是如何存储的，或者操作是如何实现的（</strong>实现细节隐藏**）。</li>
+</ol>
+<p>可以把 ADT 想象成一个“黑盒子”。你知道你可以给这个盒子提供什么输入（通过接口调用操作），以及你会得到什么输出或结果，但你不需要（也不能）看到盒子内部的构造。</p>
+<p><strong>与内置类型的类比:</strong></p>
+<p>想想 C++ 的内置类型 <code>int</code>。</p>
+<ul>
+<li>  <strong>数据:</strong> 它可以表示整数。</li>
+<li>  <strong>操作:</strong> 你可以对 <code>int</code> 执行加、减、乘、除、比较等操作。</li>
+<li>  <strong>抽象:</strong> 你使用这些操作时，并不需要关心 <code>int</code> 在内存中是如何用二进制位表示的，或者加法操作在 CPU 层面是如何执行的。你只关心操作的<strong>效果</strong>。</li>
+</ul>
+<p>ADT 将这种思想扩展到了用户自定义的数据类型。</p>
+<p><strong>C++ 类如何实现 ADT:</strong></p>
+<p>C++ 类天然地支持 ADT 的概念：</p>
+<ul>
+<li>  <strong>数据表示:</strong> 类的数据成员（通常是 <code>private</code>）用于存储 ADT 的数据。</li>
+<li>  <strong>操作接口:</strong> 类的公有成员函数（<code>public</code> methods）定义了 ADT 的公共接口，即允许外部代码执行的操作。</li>
+<li>  <strong>实现隐藏:</strong> 将数据成员设为 <code>private</code>，并将实现细节（如私有辅助函数、成员函数的具体代码）与接口（类定义中的公有声明）分离，实现了数据隐藏和封装。</li>
+</ul>
+<p><strong>以 <code>Stock</code> 类为例:</strong></p>
+<p>我们可以将 <code>Stock</code> 类视为一个“股票持有” ADT。</p>
+<ul>
+<li>  <strong>ADT 描述:</strong> 一个表示某公司股票持有情况的类型。</li>
+<li>  <strong>数据 (概念上):</strong> 公司名称、持有股数、当前股价、总价值。</li>
+<li><strong>操作 (接口):</strong><ul>
+<li>  创建一个股票持有记录（构造函数）。</li>
+<li>  买入指定数量的股票（<code>buy</code> 方法）。</li>
+<li>  卖出指定数量的股票（<code>sell</code> 方法）。</li>
+<li>  更新股票价格（<code>update</code> 方法）。</li>
+<li>  显示股票持有信息（<code>show</code> 方法）。</li>
+<li>  (可能还有) 获取总价值、获取公司名称等。</li>
+</ul>
+</li>
+<li><strong>实现 (隐藏细节):</strong><ul>
+<li>  数据成员 <code>company</code>, <code>shares</code>, <code>share_val</code>, <code>total_val</code> 的具体类型（<code>std::string</code>, <code>long</code>, <code>double</code>）。</li>
+<li>  私有辅助函数 <code>set_tot()</code> 的存在及其实现。</li>
+<li>  <code>buy</code>, <code>sell</code>, <code>update</code>, <code>show</code> 等函数的具体代码逻辑。</li>
+</ul>
+</li>
+</ul>
+<p>使用 <code>Stock</code> 类的程序员（客户端代码）只需要了解其公共接口（<code>public</code> 方法）。他们可以创建 <code>Stock</code> 对象，调用 <code>buy()</code>, <code>sell()</code>, <code>show()</code> 等方法来完成任务，而无需关心 <code>total_val</code> 是如何计算和更新的，或者 <code>company</code> 是用 <code>std::string</code> 还是 C 风格字符串存储的。如果类的设计者决定改变内部实现（例如，优化 <code>set_tot</code> 的计算），只要公共接口保持不变，客户端代码就无需修改。</p>
+<p><strong>ADT 的好处:</strong></p>
+<ul>
+<li>  <strong>抽象:</strong> 简化复杂性，让用户关注“做什么”而非“怎么做”。</li>
+<li>  <strong>封装:</strong> 保护数据不被意外破坏，隐藏实现细节。</li>
+<li>  <strong>模块化:</strong> 将程序分解为独立的、功能明确的单元（类/ADT）。</li>
+<li>  <strong>可维护性:</strong> 修改一个 ADT 的内部实现不会影响使用该 ADT 的其他代码（只要接口不变）。</li>
+<li>  <strong>可重用性:</strong> 设计良好的 ADT 可以在不同的程序中重复使用。</li>
+</ul>
+<p>因此，在设计 C++ 类时，以 ADT 的思维方式进行思考——明确这个类代表什么概念，它应该提供哪些操作（公共接口），以及需要隐藏哪些内部细节——是非常有益的。这有助于创建出结构清晰、易于使用和维护的代码。</p>
+<h2 id="10-8-总结"><a href="#10-8-总结" class="headerlink" title="10.8 总结"></a>10.8 总结</h2><p>本章介绍了面向对象编程（OOP）的核心概念，并深入探讨了 C++ 实现 OOP 的主要机制——**类 (Class)**。类是用户定义类型的基础，它允许我们将数据和操作数据的函数封装在一起。</p>
+<p>主要内容回顾：</p>
+<ol>
+<li><p> <strong>过程性编程 vs. 面向对象编程:</strong> 过程性编程关注执行步骤和函数，而面向对象编程关注数据及其相关操作，将它们封装在<strong>对象 (Object)</strong> 中。OOP 的核心思想包括封装、抽象、继承和多态。</p>
+</li>
+<li><p><strong>抽象和类:</strong></p>
+<ul>
+<li>  <strong>抽象</strong>是关注本质特征、忽略实现细节的过程。</li>
+<li>  <strong>类</strong>是创建对象的蓝图，定义了对象的<strong>数据成员（属性）</strong>和<strong>成员函数（方法）</strong>。</li>
+<li>  <strong>访问说明符</strong>（<code>public</code>, <code>private</code>, <code>protected</code>）控制对类成员的访问。<code>public</code> 成员构成类的<strong>公共接口</strong>，而 <code>private</code> 成员（通常是数据）实现了<strong>数据隐藏</strong>，是<strong>封装</strong>的关键。</li>
+<li>  类的成员函数通常在类定义中声明，在单独的源文件中使用<strong>作用域解析运算符 <code>::</code></strong> 定义。</li>
+<li>  通过类的对象使用**点号 <code>.</code>**（或指针使用箭头 <code>-&gt;</code>）访问其公有成员。</li>
+</ul>
+</li>
+<li><p><strong>构造函数和析构函数:</strong></p>
+<ul>
+<li>  <strong>构造函数</strong>是与类同名的特殊成员函数，在创建对象时自动调用，用于初始化对象。它可以被重载。如果用户未定义任何构造函数，编译器会生成一个默认构造函数（无参）。如果用户定义了任何构造函数，编译器就不再生成默认构造函数。</li>
+<li>  <strong>析构函数</strong>是类名前加 <code>~</code> 的特殊成员函数，在对象生命周期结束时自动调用，用于执行清理工作（如释放 <code>new</code> 分配的内存）。它没有参数，不能重载。</li>
+</ul>
+</li>
+<li><p><strong><code>this</code> 指针:</strong></p>
+<ul>
+<li>  每个非静态成员函数都有一个隐含的 <code>this</code> 指针，指向调用该函数的对象。</li>
+<li>  通常隐式使用，但在需要区分同名参数和成员、或需要返回对象自身引用/指针（如链式调用）时显式使用 <code>this</code> 或 <code>*this</code>。</li>
+</ul>
+</li>
+<li><p><strong>对象数组:</strong></p>
+<ul>
+<li>  可以创建类对象的数组。</li>
+<li>  创建数组时，会为每个元素调用构造函数（通常是默认构造函数，除非使用初始化列表）。</li>
+<li>  访问方式为 <code>arrayName[index].member</code>。</li>
+<li>  动态对象数组使用 <code>new ClassName[size]</code> 创建，需要默认构造函数，并用 <code>delete [] ptr</code> 释放。</li>
+</ul>
+</li>
+<li><p><strong>类作用域:</strong></p>
+<ul>
+<li>  类成员（数据、函数、类型、常量、枚举）具有类作用域，在类外部访问需要限定。</li>
+<li>  可以使用 <code>static const</code> 或 <code>static constexpr</code> (C++11 推荐) 定义类范围内的常量。</li>
+<li>  C++11 引入了**作用域内枚举 (<code>enum class</code>)**，提高了枚举的类型安全性和作用域控制。</li>
+</ul>
+</li>
+<li><p><strong>抽象数据类型 (ADT):</strong></p>
+<ul>
+<li>  ADT 是一个侧重于操作接口而非内部实现的数学模型。</li>
+<li>  C++ 类是实现 ADT 的强大工具，通过公共接口提供操作，通过私有成员隐藏实现细节，体现了封装和抽象的原则。</li>
+</ul>
+</li>
+</ol>
+<p>通过使用类，我们可以创建模块化、可重用、易于维护的复杂程序，更好地模拟现实世界的问题。掌握类的设计和使用是精通 C++ 的关键一步。</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_10/>http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_10/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2025-04-26T20:02:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2025年4月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Program/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Program</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C++</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_10/&title=Chapter 10 对象和类 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_10/&title=Chapter 10 对象和类 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_10/&title=Chapter 10 对象和类 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2025/04/26/Cpp_tutorial_Chapter_2/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Chapter 2 开始学习C++</p>
+          <p class='content'>2.1 进入C++本节将引导你编写第一个C++程序，并介绍一些基本概念。
+2.1.1 main()函数每个C++程序都必须包含一个名为 main 的函数。操作系统通过调用 main 函数来启动C...</p>
+        </a>
+      
+      
+        <a class='next' href='/2025/04/26/Cpp_tutorial_Chapter_9/'>
+          <p class='title'>Chapter 9 内存模型和名称空间<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>9.1 单独编译随着程序变得越来越大，将所有代码都放在一个巨大的 main.cpp 文件中会变得难以管理和维护。C++ 支持**单独编译 (Separate Compilation)**，允许我...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E8%BF%87%E7%A8%8B%E6%80%A7%E7%BC%96%E7%A8%8B%E5%92%8C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B"><span class="toc-text">10.1 过程性编程和面向对象编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B%E6%80%A7%E7%BC%96%E7%A8%8B-Procedural-Programming"><span class="toc-text">过程性编程 (Procedural Programming)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B-Object-Oriented-Programming-OOP"><span class="toc-text">面向对象编程 (Object-Oriented Programming - OOP)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94"><span class="toc-text">总结对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E6%8A%BD%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="toc-text">10.2 抽象和类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-1-%E7%B1%BB%E5%9E%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">10.2.1 类型是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-2-C-%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="toc-text">10.2.2 C++中的类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-3-%E5%AE%9E%E7%8E%B0%E7%B1%BB%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-text">10.2.3 实现类成员函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-4-%E4%BD%BF%E7%94%A8%E7%B1%BB"><span class="toc-text">10.2.4 使用类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-5-%E4%BF%AE%E6%94%B9%E5%AE%9E%E7%8E%B0"><span class="toc-text">10.2.5 修改实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-6-%E5%B0%8F%E7%BB%93"><span class="toc-text">10.2.6 小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">10.3 类的构造函数和析构函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-1-%E5%A3%B0%E6%98%8E%E5%92%8C%E5%AE%9A%E4%B9%89%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">10.3.1 声明和定义构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-2-%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">10.3.2 使用构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-3-%E9%BB%98%E8%AE%A4%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">10.3.3 默认构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-4-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">10.3.4 析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-5-%E6%94%B9%E8%BF%9B-Stock-%E7%B1%BB"><span class="toc-text">10.3.5 改进 Stock 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-6-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E5%B0%8F%E7%BB%93"><span class="toc-text">10.3.6 构造函数和析构函数小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-this-%E6%8C%87%E9%92%88"><span class="toc-text">10.4 this 指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#this-%E6%8C%87%E9%92%88%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">this 指针是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-this-%E6%8C%87%E9%92%88"><span class="toc-text">使用 this 指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this-%E4%B8%8E-Stock-%E7%B1%BB"><span class="toc-text">this 与 Stock 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-5-%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84"><span class="toc-text">10.5 对象数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84"><span class="toc-text">声明对象数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-text">构造函数的调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E6%88%90%E5%91%98"><span class="toc-text">访问对象数组成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84"><span class="toc-text">动态对象数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-6-%E7%B1%BB%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-text">10.6 类作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-1-%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%BA%E7%B1%BB%E7%9A%84%E5%B8%B8%E9%87%8F"><span class="toc-text">10.6.1 作用域为类的常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-6-2-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%86%85%E6%9E%9A%E4%B8%BE-Scoped-Enumerations-C-11"><span class="toc-text">10.6.2 作用域内枚举 (Scoped Enumerations - C++11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-7-%E6%8A%BD%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">10.7 抽象数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-8-%E6%80%BB%E7%BB%93"><span class="toc-text">10.8 总结</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Chapter 10 对象和类";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='playlist'
+      id='5043500508'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6" target="_blank" class="codename">Volantis</a>
+        作为主题
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '5043500508';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+
+  loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
+
+
+</script>
+
+
+
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/valine.min.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/app.min.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/search/hexo.min.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://uniqueland.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+       
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+	 
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+	  
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>

@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>Chapter 3 处理数据 - Uniqueland</title>
+  
+    <meta name="keywords" content="Program,C++">
+  
+
+  
+    <meta name="description" content="C++ tutorial">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    <link rel="shortcut icon" type='image/x-icon' href="https://www.helloimg.com/images/2022/03/27/ReozOM.png">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Uniqueland</p>
+    
+    
+      <p class="subtitle">--XR's personal Blog</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/categories/"
+              
+              
+              id="categories">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>分类</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>帮助</p>
+            </a>
+          
+            <a href="/tags/"
+              
+              
+              id="tags">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg'><p>标签</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>博客</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://s2.loli.net/2025/04/26/9F74KMasiN1YwQW.png'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        Chapter 3 处理数据
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年4月26日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Chapter 3 处理数据" data-path="/2025/04/26/Cpp_tutorial_Chapter_3/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="3-1-简单变量"><a href="#3-1-简单变量" class="headerlink" title="3.1 简单变量"></a>3.1 简单变量</h2><p>在第2章中，我们已经接触了变量的声明和使用。本章将深入探讨C++的基本数据类型，首先从用于存储数字和字符的简单变量开始。简单变量是C++中存储数据的基本单元。</p>
+<h3 id="3-1-1-变量名"><a href="#3-1-1-变量名" class="headerlink" title="3.1.1 变量名"></a>3.1.1 变量名</h3><p>变量名是赋予内存位置的标识符，用于访问存储在该位置的数据。在C++中，选择有意义的变量名是良好编程实践的一部分。</p>
+<p><strong>命名规则:</strong></p>
+<ol>
+<li> <strong>字符集:</strong> 变量名只能包含字母（大小写）、数字和下划线 <code>_</code>。</li>
+<li> <strong>首字符:</strong> 名称的第一个字符不能是数字。</li>
+<li> <strong>区分大小写:</strong> C++是大小写敏感的，<code>myVariable</code> 和 <code>myvariable</code> 是两个不同的变量名。</li>
+<li> <strong>不能是关键字:</strong> 不能使用C++关键字（如 <code>int</code>, <code>double</code>, <code>return</code>, <code>if</code>, <code>class</code> 等）作为变量名。</li>
+<li> <strong>长度限制:</strong> C++对名称的长度没有硬性规定，但长名称可能会在某些旧编译器或链接器上遇到问题。通常，有意义且不过于冗长的名称是最好的。</li>
+<li><strong>下划线的使用:</strong><ul>
+<li>  以两个下划线 <code>__</code> 开头或以下划线和大写字母 <code>_A</code> 到 <code>_Z</code> 开头的名称被保留给编译器及其使用的资源使用。</li>
+<li>  以下划线 <code>_</code> 开头的名称被保留用作全局标识符。</li>
+<li>  虽然在某些情况下可以使用以下划线开头的名称（例如在函数内部），但最好避免这种用法，以防与系统使用的名称冲突。</li>
+</ul>
+</li>
+</ol>
+<p><strong>命名约定 (非强制，但推荐):</strong></p>
+<ul>
+<li>  <strong>有意义:</strong> 变量名应反映其存储的数据或用途（例如 <code>numberOfStudents</code>, <code>userName</code>, <code>totalScore</code>）。</li>
+<li>  <strong>驼峰命名法 (Camel Case):</strong> 从第二个单词开始，每个单词的首字母大写（例如 <code>myVariableName</code>, <code>studentAge</code>）。这是C++中常见的风格。</li>
+<li>  <strong>下划线分隔 (Snake Case):</strong> 使用下划线分隔单词（例如 <code>my_variable_name</code>, <code>student_age</code>）。这也是一种常见的风格。</li>
+<li>  选择一种风格并保持一致。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 合法的变量名</span></span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">double</span> accountBalance;</span><br><span class="line">    <span class="keyword">char</span> first_initial;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> populationOfEarth;</span><br><span class="line">    <span class="keyword">int</span> _internal_counter; <span class="comment">// 合法，但不推荐在全局使用</span></span><br><span class="line">    <span class="keyword">int</span> value2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 非法的变量名</span></span><br><span class="line">    <span class="comment">// int 1stPlace;      // 不能以数字开头</span></span><br><span class="line">    <span class="comment">// double account Balance; // 不能包含空格</span></span><br><span class="line">    <span class="comment">// int return;        // 不能是关键字</span></span><br><span class="line">    <span class="comment">// char my-char;      // 不能包含连字符 &#x27;-&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 区分大小写</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> Count = <span class="number">20</span>; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;count: &quot;</span> &lt;&lt; count &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 10</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Count: &quot;</span> &lt;&lt; Count &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 20</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-2-整型"><a href="#3-1-2-整型" class="headerlink" title="3.1.2 整型"></a>3.1.2 整型</h3><p><strong>整型 (Integer)</strong> 是没有小数部分的数字。C++提供了多种整型类型来存储整数，它们的主要区别在于占用的内存空间大小以及能够表示的数值范围。</p>
+<p>计算机内存由称为<strong>位 (bit)</strong> 的单元组成。8个位组成一个**字节 (byte)**。每个位可以表示两种状态（通常是0或1）。字节是内存中最小的可寻址单元，意味着每个字节都有一个唯一的地址。</p>
+<p>不同的整型类型使用不同数量的字节来存储值。使用的字节数越多，可以表示的整数范围就越大。</p>
+<p><strong>基本整型类型:</strong></p>
+<ul>
+<li>  <code>short</code></li>
+<li>  <code>int</code></li>
+<li>  <code>long</code></li>
+<li>  <code>long long</code> (C++11 新增)</li>
+</ul>
+<p>我们将在下一节详细讨论这些类型。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 声明不同类型的整型变量</span></span><br><span class="line">    <span class="keyword">short</span> smallNumber;</span><br><span class="line">    <span class="keyword">int</span> standardInteger;</span><br><span class="line">    <span class="keyword">long</span> largeInteger;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> veryLargeInteger; <span class="comment">// 需要 C++11 或更高版本</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 赋值</span></span><br><span class="line">    smallNumber = <span class="number">10</span>;</span><br><span class="line">    standardInteger = <span class="number">10000</span>;</span><br><span class="line">    largeInteger = <span class="number">1000000</span>;</span><br><span class="line">    veryLargeInteger = <span class="number">10000000000L</span>L; <span class="comment">// LL 后缀表示 long long</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;short: &quot;</span> &lt;&lt; smallNumber &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;int: &quot;</span> &lt;&lt; standardInteger &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;long: &quot;</span> &lt;&lt; largeInteger &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;long long: &quot;</span> &lt;&lt; veryLargeInteger &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-3-整型short、int、long和long-long"><a href="#3-1-3-整型short、int、long和long-long" class="headerlink" title="3.1.3 整型short、int、long和long long"></a>3.1.3 整型short、int、long和long long</h3><p>C++标准规定了各种整型类型的最小尺寸（占用的内存位数），但具体尺寸可能因编译器和操作系统而异。</p>
+<p><strong>标准规定的最小尺寸:</strong></p>
+<ul>
+<li>  <code>short</code>: 至少16位。</li>
+<li>  <code>int</code>: 至少和 <code>short</code> 一样大，通常是系统处理效率最高的整数长度（例如，在32位系统上通常是32位，64位系统上可能是32位或64位）。</li>
+<li>  <code>long</code>: 至少32位，且至少和 <code>int</code> 一样大。</li>
+<li>  <code>long long</code>: 至少64位，且至少和 <code>long</code> 一样大。</li>
+</ul>
+<p><strong>如何查看具体尺寸:</strong></p>
+<p>可以使用 <code>sizeof</code> 运算符来查看特定类型在你的系统上占用的字节数。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt; // 包含整型限制信息 (如 INT_MAX)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 使用 sizeof 查看各种类型占用的字节数</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of short: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">short</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of int: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">int</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of long: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of long long: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span> <span class="keyword">long</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查看 int 类型的最大值 (需要 &lt;climits&gt;)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Maximum value for int: &quot;</span> &lt;&lt; INT_MAX &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">// 类似地，有 SHRT_MAX, LONG_MAX, LLONG_MAX 等</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明和初始化</span></span><br><span class="line">    <span class="keyword">short</span> s_value = <span class="number">32767</span>; <span class="comment">// 通常是 short 的最大值 (如果 short 是 16 位)</span></span><br><span class="line">    <span class="keyword">int</span> i_value = <span class="number">2000000000</span>; </span><br><span class="line">    <span class="keyword">long</span> l_value = <span class="number">1000000000L</span>; <span class="comment">// L 后缀表示 long (可选，但有时有助于清晰)</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ll_value = <span class="number">50000000000L</span>L; <span class="comment">// LL 后缀表示 long long</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;short value: &quot;</span> &lt;&lt; s_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;int value: &quot;</span> &lt;&lt; i_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;long value: &quot;</span> &lt;&lt; l_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;long long value: &quot;</span> &lt;&lt; ll_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 溢出示例 (行为是未定义的或回绕)</span></span><br><span class="line">    <span class="keyword">short</span> max_short = SHRT_MAX;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Max short: &quot;</span> &lt;&lt; max_short &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    max_short = max_short + <span class="number">1</span>; <span class="comment">// 尝试超出最大值</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Max short + 1: &quot;</span> &lt;&lt; max_short &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 可能变成负数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong> 当一个整数值超出了其类型所能表示的最大范围时，会发生<strong>溢出 (Overflow)**。对于有符号整数溢出，C++标准规定其行为是</strong>未定义的 (Undefined Behavior)**，这意味着任何事情都可能发生（程序崩溃、得到奇怪的结果等）。对于无符号整数溢出，行为是定义好的（通常是回绕，即从0重新开始）。</p>
+<h3 id="3-1-4-无符号类型"><a href="#3-1-4-无符号类型" class="headerlink" title="3.1.4 无符号类型"></a>3.1.4 无符号类型</h3><p>对于每种整型（<code>short</code>, <code>int</code>, <code>long</code>, <code>long long</code>），都存在一个对应的<strong>无符号 (unsigned)</strong> 版本。无符号类型只能存储非负整数（0和正数）。</p>
+<p>通过在类型名前加上 <code>unsigned</code> 关键字来声明无符号类型。</p>
+<p><strong>特点:</strong></p>
+<ul>
+<li>  <strong>范围:</strong> 在相同的字节数下，无符号类型可以表示的最大值大约是有符号类型的两倍，因为它们不需要用一位来表示正负号。范围从 0 开始。</li>
+<li>  <strong>用途:</strong> 当你知道一个变量永远不会是负数时（例如，计数器、数组索引、人口数量等），使用无符号类型可以增大其可表示的正数范围。</li>
+<li>  <strong>回绕 (Wrap Around):</strong> 当无符号整数的值超出其最大范围时，它会从0重新开始（模运算）。例如，如果一个 <code>unsigned short</code> 的最大值是 65535，那么 <code>65535 + 1</code> 会变成 <code>0</code>。同样，<code>0 - 1</code> 会变成 <code>65535</code>。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;climits&gt; // 包含 UINT_MAX 等</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 声明无符号类型</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> us_value;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> ui_value;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ul_value;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull_value;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查看大小和范围</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of unsigned int: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">int</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Maximum value for unsigned int: &quot;</span> &lt;&lt; UINT_MAX &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 赋值</span></span><br><span class="line">    us_value = <span class="number">65535</span>; <span class="comment">// 通常是 unsigned short 的最大值 (如果 short 是 16 位)</span></span><br><span class="line">    ui_value = <span class="number">4000000000U</span>; <span class="comment">// U 后缀表示 unsigned int</span></span><br><span class="line">    ul_value = <span class="number">8000000000U</span>L; <span class="comment">// UL 后缀</span></span><br><span class="line">    ull_value = <span class="number">18000000000000000000U</span>LL; <span class="comment">// ULL 后缀</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;unsigned short: &quot;</span> &lt;&lt; us_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;unsigned int: &quot;</span> &lt;&lt; ui_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;unsigned long: &quot;</span> &lt;&lt; ul_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;unsigned long long: &quot;</span> &lt;&lt; ull_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 回绕示例</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> test_wrap = USHRT_MAX;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Max unsigned short: &quot;</span> &lt;&lt; test_wrap &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    test_wrap = test_wrap + <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Max unsigned short + 1: &quot;</span> &lt;&lt; test_wrap &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 变为 0</span></span><br><span class="line"></span><br><span class="line">    test_wrap = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Unsigned short = 0&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    test_wrap = test_wrap - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Unsigned short - 1: &quot;</span> &lt;&lt; test_wrap &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 变为 USHRT_MAX</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong> 混合使用有符号和无符号整数进行运算时要特别小心，因为有符号数可能会被隐式转换为无符号数，导致意外的结果，尤其是在比较运算中。</p>
+<h3 id="3-1-5-选择整型类型"><a href="#3-1-5-选择整型类型" class="headerlink" title="3.1.5 选择整型类型"></a>3.1.5 选择整型类型</h3><p>在选择使用哪种整型类型时，应考虑以下因素：</p>
+<ol>
+<li> <strong>数值范围:</strong> 确保所选类型能够容纳你程序中需要存储的最大（和最小，如果是有符号）整数值。如果数值可能很大，优先考虑 <code>long</code> 或 <code>long long</code>。如果数值永远非负，可以考虑 <code>unsigned</code> 版本以获得更大的正数范围。</li>
+<li> <strong>内存消耗:</strong> 如果内存非常宝贵（例如在嵌入式系统或处理大量数据时），并且确定数值范围较小，可以使用 <code>short</code> 来节省内存。</li>
+<li> <strong>性能:</strong> <code>int</code> 通常被认为是计算机处理效率最高的整数类型。除非有明确的范围或内存需求，否则 <code>int</code> 是一个不错的默认选择。</li>
+<li> <strong>可移植性:</strong> <code>int</code> 的大小可能因系统而异。如果需要确保在不同系统上具有固定的大小，可以使用 C++11 引入的固定宽度整数类型（在 <code>&lt;cstdint&gt;</code> 头文件中定义），例如 <code>int16_t</code>, <code>uint32_t</code>, <code>int64_t</code> 等。</li>
+<li> <strong>代码清晰度:</strong> 选择最能自然表达意图的类型。如果变量代表一个永远不会为负的计数，<code>unsigned int</code> 可能比 <code>int</code> 更能表达这个意图。</li>
+</ol>
+<p><strong>一般建议:</strong></p>
+<ul>
+<li>  如果不需要存储负数，且需要更大的正数范围，或者变量逻辑上就是无符号的（如计数），使用 <code>unsigned</code>。</li>
+<li>  如果数值范围不大，且没有特殊内存或性能要求，<code>int</code> 是最常用的选择。</li>
+<li>  如果 <code>int</code> 可能不够大，使用 <code>long long</code>。<code>long</code> 在某些系统上可能和 <code>int</code> 大小相同，而 <code>long long</code> 保证至少64位。</li>
+<li>  只有在内存非常受限且确定数值很小时才使用 <code>short</code>。</li>
+<li>  为了明确性和跨平台兼容性，可以考虑使用 <code>&lt;cstdint&gt;</code> 中的固定宽度类型。</li>
+</ul>
+<p><strong>用法与示例 (选择):</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdint&gt; // 包含固定宽度整数类型</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 场景 1: 存储学生年龄 (通常不大，非负)</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> studentAge = <span class="number">20</span>; <span class="comment">// unsigned int 或 int 都可以，unsigned 更明确非负</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 2: 循环计数器 (通常用 int)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 3: 存储文件大小 (可能非常大，非负)</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> fileSize = <span class="number">5000000000U</span>LL; <span class="comment">// 需要大范围，非负</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 4: 需要精确 32 位有符号整数 (跨平台)</span></span><br><span class="line">    <span class="keyword">int32_t</span> preciseCounter = <span class="number">-123456789</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 5: 内存受限，存储少量选项 (0-100)</span></span><br><span class="line">    <span class="comment">// short optionCode = 5; // 如果 short 足够且内存关键</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Age: &quot;</span> &lt;&lt; studentAge &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;File Size: &quot;</span> &lt;&lt; fileSize &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Precise Counter: &quot;</span> &lt;&lt; preciseCounter &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-6-整型字面值"><a href="#3-1-6-整型字面值" class="headerlink" title="3.1.6 整型字面值"></a>3.1.6 整型字面值</h3><p><strong>整型字面值 (Integer Literal)</strong> 是直接写在代码中的整数常量，例如 <code>10</code>, <code>0</code>, <code>-5</code>, <code>42</code>。C++允许以不同的进制（基数）书写整型字面值：</p>
+<ol>
+<li> <strong>十进制 (Decimal):</strong> 最常见的形式，以非零数字开头（除非是数字0本身）。例如：<code>10</code>, <code>255</code>, <code>0</code>, <code>12345</code>。</li>
+<li> <strong>八进制 (Octal):</strong> 以 <code>0</code> 开头。只包含数字 0-7。例如：<code>012</code> (等于十进制的 10)，<code>077</code> (等于十进制的 63)。现代C++中应谨慎使用，容易与十进制混淆。</li>
+<li> <strong>十六进制 (Hexadecimal):</strong> 以 <code>0x</code> 或 <code>0X</code> 开头。包含数字 0-9 和字母 a-f (或 A-F)，大小写不敏感。例如：<code>0xA</code> (等于十进制的 10)，<code>0xFF</code> (等于十进制的 255)，<code>0x1a2b</code>。常用于表示内存地址或位模式。</li>
+<li> <strong>二进制 (Binary) (C++14):</strong> 以 <code>0b</code> 或 <code>0B</code> 开头。只包含数字 0 和 1。例如：<code>0b1010</code> (等于十进制的 10)，<code>0b11111111</code> (等于十进制的 255)。</li>
+</ol>
+<p><strong>后缀 (Suffixes):</strong></p>
+<p>可以通过在字面值后面添加后缀来显式指定其类型：</p>
+<ul>
+<li>  <code>u</code> 或 <code>U</code>: 表示 <code>unsigned</code> 类型 (<code>unsigned int</code>, <code>unsigned long</code>, <code>unsigned long long</code>)。</li>
+<li>  <code>l</code> 或 <code>L</code>: 表示 <code>long</code> 或 <code>unsigned long</code> 类型。</li>
+<li>  <code>ll</code> 或 <code>LL</code>: 表示 <code>long long</code> 或 <code>unsigned long long</code> 类型 (C++11)。</li>
+</ul>
+<p>后缀可以组合使用，例如 <code>ul</code>, <code>UL</code>, <code>ull</code>, <code>ULL</code>, <code>lu</code>, <code>llu</code> 等（顺序和大小写不重要）。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> decimal_val = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">int</span> octal_val = <span class="number">0144</span>;   <span class="comment">// 1*64 + 4*8 + 4*1 = 64 + 32 + 4 = 100 (十进制)</span></span><br><span class="line">    <span class="keyword">int</span> hex_val = <span class="number">0x64</span>;     <span class="comment">// 6*16 + 4*1 = 96 + 4 = 100 (十进制)</span></span><br><span class="line">    <span class="comment">// int binary_val = 0b1100100; // C++14: 64 + 32 + 4 = 100 (十进制)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Decimal: &quot;</span> &lt;&lt; decimal_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Octal (0144): &quot;</span> &lt;&lt; octal_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Hexadecimal (0x64): &quot;</span> &lt;&lt; hex_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; &quot;Binary (0b1100100): &quot; &lt;&lt; binary_val &lt;&lt; std::endl; // 需要 C++14 编译器</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用后缀</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> u_val = <span class="number">100U</span>;</span><br><span class="line">    <span class="keyword">long</span> l_val = <span class="number">200000L</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ul_val = <span class="number">300000U</span>L;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ll_val = <span class="number">4000000000L</span>L;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull_val = <span class="number">5000000000U</span>LL;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Unsigned int: &quot;</span> &lt;&lt; u_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Long: &quot;</span> &lt;&lt; l_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Unsigned long: &quot;</span> &lt;&lt; ul_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Long long: &quot;</span> &lt;&lt; ll_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Unsigned long long: &quot;</span> &lt;&lt; ull_val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-7-C-如何确定常量的类型"><a href="#3-1-7-C-如何确定常量的类型" class="headerlink" title="3.1.7 C++如何确定常量的类型"></a>3.1.7 C++如何确定常量的类型</h3><p>当你写下一个整型字面值（常量）而没有指定后缀时，C++编译器会根据其值来推断其类型。</p>
+<p><strong>规则:</strong></p>
+<ol>
+<li><strong>十进制常量:</strong> 编译器会选择能容纳该值的最小的有符号类型，依次尝试：<code>int</code>, <code>long</code>, <code>long long</code> (C++11)。例如：<ul>
+<li>  <code>100</code> 会被认为是 <code>int</code> (如果 <code>int</code> 能容纳)。</li>
+<li>  <code>3000000000</code> 会被认为是 <code>long</code> (如果 <code>int</code> 不能容纳但 <code>long</code> 可以)，或者 <code>long long</code> (如果 <code>int</code> 和 <code>long</code> 都不能容纳但 <code>long long</code> 可以)。</li>
+</ul>
+</li>
+<li> <strong>八进制或十六进制常量:</strong> 编译器会选择能容纳该值的最小类型，依次尝试：<code>int</code>, <code>unsigned int</code>, <code>long</code>, <code>unsigned long</code>, <code>long long</code> (C++11), <code>unsigned long long</code> (C++11)。注意这里包含了 <code>unsigned</code> 类型。</li>
+</ol>
+<p><strong>为什么要知道这个?</strong></p>
+<p>这在涉及类型转换和函数重载时可能很重要。如果你传递一个常量给函数，它的默认类型可能会影响哪个重载版本被调用。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;typeinfo&gt; // 用于 typeid (仅作演示)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Processing int: &quot;</span> &lt;&lt; n &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Processing unsigned int: &quot;</span> &lt;&lt; n &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Processing long: &quot;</span> &lt;&lt; n &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Processing unsigned long: &quot;</span> &lt;&lt; n &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> n)</span> </span>&#123; <span class="comment">// C++11</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Processing long long: &quot;</span> &lt;&lt; n &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> n)</span> </span>&#123; <span class="comment">// C++11</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Processing unsigned long long: &quot;</span> &lt;&lt; n &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 100: &quot;</span>;</span><br><span class="line">    process(<span class="number">100</span>); <span class="comment">// 通常调用 process(int)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 假设 int 是 32 位，最大值约 21 亿</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 3000000000: &quot;</span>; </span><br><span class="line">    <span class="comment">// 如果 int 是 32 位，这个值超出了 int 范围</span></span><br><span class="line">    <span class="comment">// 编译器会尝试 long 或 long long</span></span><br><span class="line">    process(<span class="number">3000000000</span>); <span class="comment">// 可能调用 process(long) 或 process(long long)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 0xFFFFFFFF: &quot;</span>; </span><br><span class="line">    <span class="comment">// 这个十六进制数 (等于 4294967295)</span></span><br><span class="line">    <span class="comment">// 如果 int 是 32 位，它超出了有符号 int 的范围</span></span><br><span class="line">    <span class="comment">// 编译器会尝试 unsigned int, long, unsigned long...</span></span><br><span class="line">    process(<span class="number">0xFFFFFFFF</span>); <span class="comment">// 可能调用 process(unsigned int) 或 process(unsigned long)等</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用后缀明确类型</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 150L: &quot;</span>;</span><br><span class="line">    process(<span class="number">150L</span>); <span class="comment">// 明确调用 process(long)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 200U: &quot;</span>;</span><br><span class="line">    process(<span class="number">200U</span>); <span class="comment">// 明确调用 process(unsigned int)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 5000000000LL: &quot;</span>;</span><br><span class="line">    process(<span class="number">5000000000L</span>L); <span class="comment">// 明确调用 process(long long)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键点:</strong> 如果不确定常量会被推断成什么类型，或者想要确保它是特定类型，最好使用后缀。</p>
+<h3 id="3-1-8-char类型：字符和小整数"><a href="#3-1-8-char类型：字符和小整数" class="headerlink" title="3.1.8 char类型：字符和小整数"></a>3.1.8 char类型：字符和小整数</h3><p><code>char</code> 类型是另一种整型类型，它被设计用来存储**字符 (character)**，例如字母、数字、标点符号等。</p>
+<p><strong>特点:</strong></p>
+<ul>
+<li>  <strong>大小:</strong> <code>char</code> 通常占用 1 个字节（8位）的内存。这是C++标准保证的 (<code>sizeof(char)</code> 总是 1)。</li>
+<li>  <strong>字符表示:</strong> 计算机内部使用数值编码（如 ASCII 或 Unicode 的子集）来表示字符。<code>char</code> 变量存储的是这些字符对应的整数编码。</li>
+<li>  <strong>字符字面值:</strong> 使用单引号 <code>&#39; &#39;</code> 括起来表示单个字符字面值，例如 <code>&#39;A&#39;</code>, <code>&#39;a&#39;</code>, <code>&#39;5&#39;</code>, <code>&#39;?&#39;</code>, <code>&#39;\n&#39;</code> (换行符)。</li>
+<li>  <strong>整数类型:</strong> <code>char</code> 本质上仍然是一个整数类型。它可以参与算术运算。</li>
+<li><strong>有符号 vs 无符号:</strong> <code>char</code> 类型具体是有符号 (<code>signed char</code>) 还是无符号 (<code>unsigned char</code>) 取决于编译器实现。如果你需要明确，可以直接使用 <code>signed char</code> 或 <code>unsigned char</code>。<ul>
+<li>  <code>signed char</code>: 范围通常是 -128 到 127。</li>
+<li>  <code>unsigned char</code>: 范围通常是 0 到 255。</li>
+</ul>
+</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> grade = <span class="string">&#x27;A&#x27;</span>; <span class="comment">// 存储字符 &#x27;A&#x27;</span></span><br><span class="line">    <span class="keyword">char</span> initial = <span class="string">&#x27;J&#x27;</span>;</span><br><span class="line">    <span class="keyword">char</span> symbol = <span class="string">&#x27;$&#x27;</span>;</span><br><span class="line">    <span class="keyword">char</span> newline = <span class="string">&#x27;\n&#x27;</span>; <span class="comment">// 存储换行符 (转义序列)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Your grade is: &quot;</span> &lt;&lt; grade &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Initial: &quot;</span> &lt;&lt; initial &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Symbol: &quot;</span> &lt;&lt; symbol &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Printing a newline:&quot;</span> &lt;&lt; newline; <span class="comment">// 输出一个换行</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;After newline.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// cout 会将 char 类型解释为字符进行打印</span></span><br><span class="line">    <span class="comment">// 如果想看到字符对应的整数编码，需要进行类型转换</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The integer code for &#x27;A&#x27; is: &quot;</span> &lt;&lt; <span class="keyword">int</span>(grade) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The integer code for &#x27;$&#x27; is: &quot;</span> &lt;&lt; <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(symbol) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// char 作为小整数使用</span></span><br><span class="line">    <span class="keyword">char</span> small_num = <span class="number">65</span>; <span class="comment">// 65 是 ASCII 码中 &#x27;A&#x27; 的值</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Character with code 65: &quot;</span> &lt;&lt; small_num &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 &#x27;A&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 算术运算</span></span><br><span class="line">    <span class="keyword">char</span> next_char = grade + <span class="number">1</span>; <span class="comment">// &#x27;A&#x27; 的编码加 1 得到 &#x27;B&#x27; 的编码</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Character after &#x27;A&#x27;: &quot;</span> &lt;&lt; next_char &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 &#x27;B&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输入字符</span></span><br><span class="line">    <span class="keyword">char</span> response;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter a character: &quot;</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; response; <span class="comment">// 读取一个字符</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;You entered: &quot;</span> &lt;&lt; response &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Its code is: &quot;</span> &lt;&lt; <span class="keyword">int</span>(response) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 明确使用 signed/unsigned char</span></span><br><span class="line">    <span class="keyword">signed</span> <span class="keyword">char</span> sc = <span class="number">-5</span>;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> uc = <span class="number">250</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Signed char: &quot;</span> &lt;&lt; <span class="keyword">int</span>(sc) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 转换为 int 打印数值</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Unsigned char: &quot;</span> &lt;&lt; <span class="keyword">int</span>(uc) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>转义序列 (Escape Sequence):</strong><br>以反斜杠 <code>\</code> 开头的特殊字符序列，用于表示无法直接输入的字符或具有特殊含义的字符。常用转义序列包括：</p>
+<ul>
+<li>  <code>\n</code>: 换行符</li>
+<li>  <code>\t</code>: 水平制表符 (Tab)</li>
+<li>  <code>\r</code>: 回车符</li>
+<li>  <code>\\</code>: 反斜杠本身</li>
+<li>  <code>\&#39;</code>: 单引号</li>
+<li>  <code>\&quot;</code>: 双引号</li>
+<li>  <code>\?</code>: 问号</li>
+<li>  <code>\0</code>: 空字符 (Null character)</li>
+<li>  <code>\xhh</code>: 用两位十六进制数 hh 表示字符</li>
+<li>  <code>\ooo</code>: 用最多三位八进制数 ooo 表示字符</li>
+</ul>
+<h3 id="3-1-9-bool类型"><a href="#3-1-9-bool类型" class="headerlink" title="3.1.9 bool类型"></a>3.1.9 bool类型</h3><p><code>bool</code> 类型是C++中的<strong>布尔 (Boolean)</strong> 类型，用于表示逻辑值：<strong>真 (true)</strong> 或 **假 (false)**。</p>
+<p><strong>特点:</strong></p>
+<ul>
+<li>  <strong>取值:</strong> <code>bool</code> 变量只能存储两个值：<code>true</code> 和 <code>false</code>。这两个是C++关键字。</li>
+<li><strong>整数转换:</strong><ul>
+<li>  在需要整数的地方，<code>true</code> 会被转换为 <code>1</code>，<code>false</code> 会被转换为 <code>0</code>。</li>
+<li>  在需要布尔值的地方，任何非零整数值会被转换为 <code>true</code>，零值会被转换为 <code>false</code>。指针类型也可以转换为 <code>bool</code>（空指针为 <code>false</code>，非空指针为 <code>true</code>）。</li>
+</ul>
+</li>
+<li>  <strong>大小:</strong> <code>bool</code> 类型的大小没有严格规定，但通常是 1 个字节，即使它只需要 1 位来存储信息。</li>
+<li>  <strong>用途:</strong> 主要用于存储条件判断（如 <code>if</code> 语句、循环条件）的结果。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> isReady = <span class="literal">true</span>; <span class="comment">// 声明并初始化为 true</span></span><br><span class="line">    <span class="keyword">bool</span> hasError = <span class="literal">false</span>; <span class="comment">// 声明并初始化为 false</span></span><br><span class="line">    <span class="keyword">bool</span> isEmpty; <span class="comment">// 未初始化 (值不确定)</span></span><br><span class="line"></span><br><span class="line">    isEmpty = <span class="literal">false</span>; <span class="comment">// 赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;isReady (default output): &quot;</span> &lt;&lt; isReady &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 通常输出 1</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;hasError (default output): &quot;</span> &lt;&lt; hasError &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 通常输出 0</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;isEmpty (default output): &quot;</span> &lt;&lt; isEmpty &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 std::boolalpha 控制符以 &quot;true&quot;/&quot;false&quot; 形式输出</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::boolalpha; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;isReady (boolalpha): &quot;</span> &lt;&lt; isReady &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 true</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;hasError (boolalpha): &quot;</span> &lt;&lt; hasError &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 false</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;isEmpty (boolalpha): &quot;</span> &lt;&lt; isEmpty &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 false</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::noboolalpha; <span class="comment">// 关闭 boolalpha 格式</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// bool 和整数转换</span></span><br><span class="line">    <span class="keyword">int</span> ready_int = isReady; <span class="comment">// ready_int 变为 1</span></span><br><span class="line">    <span class="keyword">int</span> error_int = hasError; <span class="comment">// error_int 变为 0</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;isReady as int: &quot;</span> &lt;&lt; ready_int &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;hasError as int: &quot;</span> &lt;&lt; error_int &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> from_int_non_zero = <span class="number">100</span>; <span class="comment">// 100 (非零) 转换为 true</span></span><br><span class="line">    <span class="keyword">bool</span> from_int_zero = <span class="number">0</span>;     <span class="comment">// 0 转换为 false</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::boolalpha;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Bool from 100: &quot;</span> &lt;&lt; from_int_non_zero &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 true</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Bool from 0: &quot;</span> &lt;&lt; from_int_zero &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出 false</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在条件语句中使用</span></span><br><span class="line">    <span class="keyword">if</span> (isReady) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;System is ready.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;System is not ready.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!hasError) &#123; <span class="comment">// ! 是逻辑非运算符</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;No errors detected.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;An error occurred.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-const限定符"><a href="#3-2-const限定符" class="headerlink" title="3.2 const限定符"></a>3.2 const限定符</h2><p>现在我们来探讨一种在C++中创建<strong>常量 (Constant)</strong> 的更可靠的方法：使用 <code>const</code> 限定符。常量是指在程序运行期间其值不能被修改的量。</p>
+<p><code>const</code> 是一个**类型限定符 (Type Qualifier)**，它用于修改变量的声明，使其成为只读。</p>
+<p><strong>作用:</strong></p>
+<ul>
+<li>  <strong>创建符号常量:</strong> <code>const</code> 允许你为常量值（如圆周率、最大尝试次数等）赋予一个有意义的名称，提高代码的可读性和可维护性。</li>
+<li>  <strong>防止意外修改:</strong> 一旦变量被声明为 <code>const</code> 并初始化后，编译器会阻止任何试图修改该变量值的代码。这有助于防止因意外赋值而导致的错误。</li>
+<li>  <strong>类型安全:</strong> 与使用 <code>#define</code> 创建宏常量相比，<code>const</code> 常量具有明确的数据类型，编译器可以对其进行类型检查，更加安全。</li>
+<li>  <strong>作用域:</strong> <code>const</code> 常量遵循标准的作用域规则（例如，在函数内部定义的 <code>const</code> 常量只在该函数内有效），而 <code>#define</code> 宏是全局替换。</li>
+</ul>
+<p><strong>声明和初始化:</strong></p>
+<p>声明 <code>const</code> 变量的语法是在类型名前或类型名后加上 <code>const</code> 关键字。<strong>关键在于，<code>const</code> 变量必须在声明时进行初始化</strong>，因为之后就不能再给它赋值了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> type variableName = value; </span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">type <span class="keyword">const</span> variableName = value; <span class="comment">// 两种写法等效，第一种更常见</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 声明并初始化 const 变量</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> MONTHS_IN_YEAR = <span class="number">12</span>; <span class="comment">// 常量，表示一年中的月份数</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="number">3.14159</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* GREETING = <span class="string">&quot;Hello, world!&quot;</span>; <span class="comment">// 指向常量字符串的常量指针 (更复杂，后续章节详解)</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 尝试修改 const 变量会导致编译错误</span></span><br><span class="line">    <span class="comment">// MONTHS_IN_YEAR = 13; // 错误! 不能给 const 变量赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Months in a year: &quot;</span> &lt;&lt; MONTHS_IN_YEAR &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">double</span> radius = <span class="number">5.0</span>;</span><br><span class="line">    <span class="keyword">double</span> circumference = <span class="number">2</span> * PI * radius; <span class="comment">// 使用 const 常量 PI</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Circumference: &quot;</span> &lt;&lt; circumference &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// const 常量也遵循作用域规则</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">int</span> MAX_TRIES = <span class="number">3</span>; <span class="comment">// 只在 if 块内有效</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Max tries inside block: &quot;</span> &lt;&lt; MAX_TRIES &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; MAX_TRIES; // 错误! MAX_TRIES 在此作用域外不可见</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 必须在声明时初始化</span></span><br><span class="line">    <span class="comment">// const int DAYS_IN_WEEK; // 错误! const 变量需要初始化</span></span><br><span class="line">    <span class="comment">// DAYS_IN_WEEK = 7; </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>const</code> 与 <code>#define</code> 的比较:</strong></p>
+<p>在 C 语言中，通常使用 <code>#define</code> 预处理器指令来创建符号常量：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MONTHS_IN_YEAR 12 <span class="comment">// C 风格宏定义</span></span></span><br></pre></td></tr></table></figure>
+
+<p>虽然 <code>#define</code> 也能达到类似目的，但 <code>const</code> 在 C++ 中通常是更好的选择：</p>
+<ol>
+<li> <strong>类型安全:</strong> <code>const</code> 常量有明确的数据类型，编译器会进行类型检查。<code>#define</code> 只是简单的文本替换，没有类型信息，可能导致意外错误。</li>
+<li> <strong>作用域:</strong> <code>const</code> 常量遵循 C++ 的作用域规则，可以创建局部常量。<code>#define</code> 宏通常是全局的（从定义点到文件尾），容易造成命名冲突。</li>
+<li> <strong>调试:</strong> <code>const</code> 常量在调试器中通常可见，有符号名。<code>#define</code> 宏在编译前就被替换掉了，调试时可能只能看到替换后的字面值。</li>
+<li> <strong>类作用域:</strong> <code>const</code> 可以用于定义类作用域内的常量（类成员），而 <code>#define</code> 不能直接做到这一点。</li>
+</ol>
+<p><strong>一般建议:</strong> 在 C++ 中，优先使用 <code>const</code> 来定义符号常量，而不是 <code>#define</code>。</p>
+<h2 id="3-3-浮点数"><a href="#3-3-浮点数" class="headerlink" title="3.3 浮点数"></a>3.3 浮点数</h2><p>浮点数是C++中用于表示带小数部分的数字（实数）的类型。它们可以表示非常大或非常小的数值，以及整数无法表示的小数。</p>
+<h3 id="3-3-1-书写浮点数"><a href="#3-3-1-书写浮点数" class="headerlink" title="3.3.1 书写浮点数"></a>3.3.1 书写浮点数</h3><p>C++允许使用两种方式来书写浮点字面值（常量）：</p>
+<ol>
+<li><p><strong>标准小数点表示法 (Standard Decimal Point Notation):</strong></p>
+<ul>
+<li>  包含一个小数点。</li>
+<li>  例如：<code>12.34</code>, <code>0.0</code>, <code>99.</code>, <code>.5</code> (等同于 0.5), <code>-1.67</code>。</li>
+</ul>
+</li>
+<li><p><strong>E表示法 (E Notation) 或科学记数法 (Scientific Notation):</strong></p>
+<ul>
+<li>  用于表示非常大或非常小的数。</li>
+<li>  格式为：<code>mantissaEexponent</code> 或 <code>mantissaeexponent</code>。</li>
+<li>  <code>mantissa</code> (尾数) 是一个数字（可以带小数点）。</li>
+<li>  <code>E</code> 或 <code>e</code> 表示 “乘以10的…次幂”。</li>
+<li>  <code>exponent</code> (指数) 是一个整数（可以为负）。</li>
+<li>例如：<ul>
+<li>  <code>3.45E6</code> 表示 3.45 * 10<sup>6</sup> (即 3,450,000)。</li>
+<li>  <code>2.5e-4</code> 表示 2.5 * 10<sup>-4</sup> (即 0.00025)。</li>
+<li>  <code>9E12</code> 表示 9 * 10<sup>12</sup>。</li>
+<li>  <code>-1.23e+3</code> 表示 -1.23 * 10<sup>3</sup> (即 -1230)。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>注意:</strong></p>
+<ul>
+<li>  E表示法中，<code>E</code> 或 <code>e</code> 前后不能有空格。</li>
+<li>  指数必须是整数。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 标准小数点表示法</span></span><br><span class="line">    <span class="keyword">double</span> price = <span class="number">99.99</span>;</span><br><span class="line">    <span class="keyword">double</span> temperature = <span class="number">-15.5</span>;</span><br><span class="line">    <span class="keyword">double</span> small_fraction = <span class="number">.25</span>; <span class="comment">// 等同于 0.25</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// E 表示法</span></span><br><span class="line">    <span class="keyword">double</span> earth_mass = <span class="number">5.972E24</span>; <span class="comment">// 地球质量 (kg)</span></span><br><span class="line">    <span class="keyword">double</span> electron_charge = <span class="number">-1.602e-19</span>; <span class="comment">// 电子电荷 (库仑)</span></span><br><span class="line">    <span class="keyword">double</span> large_number = <span class="number">1.0e9</span>; <span class="comment">// 10 亿</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Price: &quot;</span> &lt;&lt; price &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Temperature: &quot;</span> &lt;&lt; temperature &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Small fraction: &quot;</span> &lt;&lt; small_fraction &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 默认情况下，cout 可能对非常大或小的数自动使用科学记数法输出</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Earth mass: &quot;</span> &lt;&lt; earth_mass &lt;&lt; <span class="string">&quot; kg&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Electron charge: &quot;</span> &lt;&lt; electron_charge &lt;&lt; <span class="string">&quot; C&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Large number: &quot;</span> &lt;&lt; large_number &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 可以使用 &lt;iomanip&gt; 控制输出格式 (后续章节会详细介绍)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.setf(<span class="built_in">std</span>::ios_base::fixed, <span class="built_in">std</span>::ios_base::floatfield); <span class="comment">// 设置为定点表示法</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Large number (fixed): &quot;</span> &lt;&lt; large_number &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-2-浮点类型"><a href="#3-3-2-浮点类型" class="headerlink" title="3.3.2 浮点类型"></a>3.3.2 浮点类型</h3><p>C++提供了三种浮点类型，它们在精度（有效位数）和存储范围上有所不同：</p>
+<ol>
+<li> <strong><code>float</code>:</strong> 单精度浮点数。通常占用 4 个字节 (32位)。精度较低，范围较小。</li>
+<li> <strong><code>double</code>:</strong> 双精度浮点数。通常占用 8 个字节 (64位)。精度和范围比 <code>float</code> 大很多。这是C++中最常用的浮点类型，浮点常量（如 <code>3.14</code>）默认就是 <code>double</code> 类型。</li>
+<li> <strong><code>long double</code>:</strong> 扩展精度浮点数。通常占用 8、10、12 或 16 个字节，具体取决于编译器和系统。提供最高的精度和最大的范围。</li>
+</ol>
+<p><strong>精度和范围:</strong></p>
+<ul>
+<li><strong>精度 (Precision):</strong> 指的是可以表示的有效数字的位数。<ul>
+<li>  <code>float</code> 通常保证至少 6 位有效数字。</li>
+<li>  <code>double</code> 通常保证至少 15 位有效数字。</li>
+<li>  <code>long double</code> 通常提供比 <code>double</code> 更高的精度。</li>
+</ul>
+</li>
+<li>  <strong>范围 (Range):</strong> 指的是可以表示的最小和最大数值。<code>double</code> 的范围远大于 <code>float</code>，<code>long double</code> 的范围通常更大。</li>
+</ul>
+<p>可以使用 <code>&lt;cfloat&gt;</code> (或 C 语言的 <code>&lt;float.h&gt;</code>) 头文件中的常量来查看具体系统的精度和范围限制（例如 <code>FLT_DIG</code>, <code>DBL_DIG</code>, <code>LDBL_DIG</code> 表示有效位数）。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cfloat&gt; // 包含浮点数限制信息</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 查看各种类型占用的字节数</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of float: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">float</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of double: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">double</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Size of long double: &quot;</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span> <span class="keyword">double</span>) &lt;&lt; <span class="string">&quot; bytes&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查看精度 (有效位数)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Digits of precision for float: &quot;</span> &lt;&lt; FLT_DIG &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Digits of precision for double: &quot;</span> &lt;&lt; DBL_DIG &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Digits of precision for long double: &quot;</span> &lt;&lt; LDBL_DIG &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明和初始化</span></span><br><span class="line">    <span class="keyword">float</span> f_pi = <span class="number">3.14159265f</span>; <span class="comment">// f 后缀表示 float</span></span><br><span class="line">    <span class="keyword">double</span> d_pi = <span class="number">3.141592653589793</span>; <span class="comment">// 默认是 double</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> ld_pi = <span class="number">3.14159265358979323846L</span>; <span class="comment">// L 后缀表示 long double</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>.precision(<span class="number">20</span>); <span class="comment">// 设置 cout 输出精度以便观察差异</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;float pi:       &quot;</span> &lt;&lt; f_pi &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;double pi:      &quot;</span> &lt;&lt; d_pi &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;long double pi: &quot;</span> &lt;&lt; ld_pi &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>选择建议:</strong></p>
+<ul>
+<li>  除非有特别的内存或性能考虑，并且确定 <code>float</code> 的精度足够，否则**优先使用 <code>double</code>**。它是C++浮点计算的常用类型。</li>
+<li>  当需要极高的精度或非常大的数值范围时，使用 <code>long double</code>。</li>
+</ul>
+<h3 id="3-3-3-浮点常量"><a href="#3-3-3-浮点常量" class="headerlink" title="3.3.3 浮点常量"></a>3.3.3 浮点常量</h3><p>浮点常量（字面值）就是直接写在代码中的浮点数值，例如 <code>3.14</code>, <code>1.0</code>, <code>-2.5e8</code>。</p>
+<p><strong>默认类型:</strong><br>默认情况下，C++将不带后缀的浮点常量视为 <code>double</code> 类型。</p>
+<p><strong>后缀 (Suffixes):</strong><br>可以通过添加后缀来显式指定浮点常量的类型：</p>
+<ul>
+<li>  <code>f</code> 或 <code>F</code>: 表示 <code>float</code> 类型。</li>
+<li>  <code>l</code> 或 <code>L</code>: 表示 <code>long double</code> 类型。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;typeinfo&gt; // 用于 typeid (仅作演示)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 默认类型是 double</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 3.14: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(<span class="number">3.14</span>).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 1.0e-5: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(<span class="number">1.0e-5</span>).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用后缀指定类型</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 3.14f: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(<span class="number">3.14f</span>).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// float</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 3.14F: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(<span class="number">3.14F</span>).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// float</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 3.14l: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(<span class="number">3.14l</span>).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// long double</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of 3.14L: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(<span class="number">3.14L</span>).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// long double</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 赋值时的类型匹配</span></span><br><span class="line">    <span class="keyword">float</span> price = <span class="number">99.99f</span>; <span class="comment">// 使用 f 后缀避免从 double 到 float 的可能精度损失警告</span></span><br><span class="line">    <span class="keyword">double</span> weight = <span class="number">75.5</span>; <span class="comment">// 75.5 是 double, 赋值给 double 变量</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">double</span> distance = <span class="number">1.23e10</span>L; <span class="comment">// 使用 L 后缀</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Price: &quot;</span> &lt;&lt; price &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Weight: &quot;</span> &lt;&lt; weight &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Distance: &quot;</span> &lt;&lt; distance &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>(注意: <code>typeid().name()</code> 的输出可能因编译器而异，但可以大致看出类型)</em></p>
+<p>在将常量赋给 <code>float</code> 变量时，使用 <code>f</code> 或 <code>F</code> 后缀是一个好习惯，可以避免编译器产生关于从 <code>double</code> 转换到 <code>float</code> 可能丢失精度的警告。</p>
+<h3 id="3-3-4-浮点数的优缺点"><a href="#3-3-4-浮点数的优缺点" class="headerlink" title="3.3.4 浮点数的优缺点"></a>3.3.4 浮点数的优缺点</h3><p>浮点数在表示实数方面非常有用，但也存在一些固有的限制和需要注意的地方。</p>
+<p><strong>优点:</strong></p>
+<ol>
+<li> <strong>表示范围广:</strong> 可以表示比整型大得多或小得多的数值。</li>
+<li> <strong>表示小数:</strong> 可以表示整数无法表示的小数部分。</li>
+<li> <strong>标准化:</strong> 大多数现代计算机都遵循 IEEE 754 标准来表示和处理浮点数，这提高了可移植性。</li>
+</ol>
+<p><strong>缺点:</strong></p>
+<ol>
+<li> <strong>精度限制:</strong> 浮点数只能<strong>近似</strong>地表示大多数实数。由于内部使用二进制表示，某些在十进制下看起来很精确的小数（如 0.1）在二进制浮点表示中可能是无限循环小数，只能存储一个近似值。这会导致微小的**舍入误差 (Rounding Error)**。</li>
+<li> <strong>比较困难:</strong> 由于精度限制，直接使用 <code>==</code> 来比较两个浮点数是否相等通常是不可靠的。微小的舍入误差可能导致逻辑上应该相等的两个数在内部表示上略有不同。比较浮点数时，通常应该检查它们的差值是否在一个很小的<strong>容差 (Tolerance)</strong> 范围内。</li>
+<li> <strong>运算速度:</strong> 浮点运算通常比整型运算慢（尽管现代处理器有专门的浮点单元来优化）。</li>
+<li> <strong>特殊值:</strong> IEEE 754 标准定义了一些特殊值，如 <code>NaN</code> (Not a Number，例如 0.0/0.0 的结果) 和无穷大 (<code>Infinity</code>，例如 1.0/0.0 的结果)，需要在使用时注意处理。</li>
+</ol>
+<p><strong>用法与示例 (精度问题和比较):</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;   // 为了 fabs (计算绝对值)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt; // 为了 setprecision</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 精度问题示例</span></span><br><span class="line">    <span class="keyword">double</span> a = <span class="number">0.1</span>;</span><br><span class="line">    <span class="keyword">double</span> b = <span class="number">0.2</span>;</span><br><span class="line">    <span class="keyword">double</span> sum = a + b; <span class="comment">// 理论上应该是 0.3</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::setprecision(<span class="number">20</span>); <span class="comment">// 显示更多小数位</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;b = &quot;</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;a + b = &quot;</span> &lt;&lt; sum &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出可能不是精确的 0.3</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (sum == <span class="number">0.3</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Comparison (==): sum is equal to 0.3&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Comparison (==): sum is NOT equal to 0.3&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 很可能执行这里</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 正确的比较方法：检查差值是否在容差范围内</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">double</span> TOLERANCE = <span class="number">1e-9</span>; <span class="comment">// 定义一个很小的容差值</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">std</span>::<span class="built_in">fabs</span>(sum - <span class="number">0.3</span>) &lt; TOLERANCE) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Comparison (tolerance): sum is close enough to 0.3&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 应该执行这里</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Comparison (tolerance): sum is NOT close enough to 0.3&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 另一个例子</span></span><br><span class="line">    <span class="keyword">float</span> x = <span class="number">1.0f</span> / <span class="number">3.0f</span>;</span><br><span class="line">    <span class="keyword">float</span> y = <span class="number">3.0f</span> * x;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;y = 3.0f * (1.0f / 3.0f) = &quot;</span> &lt;&lt; y &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 可能不是精确的 1.0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong> 在使用浮点数时，要意识到它们是近似值，并避免直接进行相等性比较。在需要精确计算（如金融计算）的场合，可能需要使用专门的库或定点数表示法。对于大多数科学和工程计算，<code>double</code> 提供了足够的精度和范围。</p>
+<h2 id="3-4-C-算术运算符"><a href="#3-4-C-算术运算符" class="headerlink" title="3.4 C++算术运算符"></a>3.4 C++算术运算符</h2><p>C++提供了丰富的运算符来执行算术计算。本节将介绍基本的算术运算符、它们的优先级和结合性、整数除法和求模运算、类型转换以及 C++11 引入的 <code>auto</code> 类型推断。</p>
+<p><strong>基本算术运算符:</strong></p>
+<ul>
+<li>  <code>+</code>: 加法 (Addition)</li>
+<li>  <code>-</code>: 减法 (Subtraction)</li>
+<li>  <code>*</code>: 乘法 (Multiplication)</li>
+<li>  <code>/</code>: 除法 (Division)</li>
+<li>  <code>%</code>: 求模 (Modulo) 或求余 (Remainder)</li>
+</ul>
+<p>这些运算符可以用于 C++ 的所有数值类型（整型和浮点型），但求模运算符 <code>%</code> 通常只用于整数类型。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span> price = <span class="number">15.50</span>;</span><br><span class="line">    <span class="keyword">double</span> tax_rate = <span class="number">0.08</span>;</span><br><span class="line">    <span class="keyword">int</span> quantity = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> total_items = <span class="number">17</span>;</span><br><span class="line">    <span class="keyword">int</span> items_per_box = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加法</span></span><br><span class="line">    <span class="keyword">double</span> total_price = price * quantity + <span class="number">5.0</span>; <span class="comment">// 假设有 5 元附加费</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Total price (with fee): &quot;</span> &lt;&lt; total_price &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 减法</span></span><br><span class="line">    <span class="keyword">double</span> price_before_tax = price / (<span class="number">1</span> + tax_rate); <span class="comment">// 假设 price 已含税</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Price before tax: &quot;</span> &lt;&lt; price_before_tax &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 乘法</span></span><br><span class="line">    <span class="keyword">double</span> tax_amount = price_before_tax * tax_rate;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Tax amount: &quot;</span> &lt;&lt; tax_amount &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 除法 (浮点数)</span></span><br><span class="line">    <span class="keyword">double</span> average_price = total_price / quantity;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Average price per item: &quot;</span> &lt;&lt; average_price &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 除法 (整数) - 见 3.4.2</span></span><br><span class="line">    <span class="keyword">int</span> full_boxes = total_items / items_per_box; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Full boxes: &quot;</span> &lt;&lt; full_boxes &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 3</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 求模 - 见 3.4.3</span></span><br><span class="line">    <span class="keyword">int</span> remaining_items = total_items % items_per_box;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Remaining items: &quot;</span> &lt;&lt; remaining_items &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 2</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 一元减法 (取负)</span></span><br><span class="line">    <span class="keyword">double</span> discount = <span class="number">-10.0</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Discount: &quot;</span> &lt;&lt; discount &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 一元加法 (通常无效果)</span></span><br><span class="line">    <span class="keyword">double</span> positive_value = +price;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Positive value: &quot;</span> &lt;&lt; positive_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-1-运算符优先级和结合性"><a href="#3-4-1-运算符优先级和结合性" class="headerlink" title="3.4.1 运算符优先级和结合性"></a>3.4.1 运算符优先级和结合性</h3><p>当一个表达式中包含多个运算符时，<strong>优先级 (Precedence)</strong> 和 <strong>结合性 (Associativity)</strong> 决定了运算的执行顺序。</p>
+<ul>
+<li>  <strong>优先级:</strong> 哪个运算符先执行。优先级高的运算符先于优先级低的运算符执行。例如，乘法和除法的优先级高于加法和减法。</li>
+<li><strong>结合性:</strong> 当多个具有相同优先级的运算符连续出现时，它们的执行顺序。<ul>
+<li>  <strong>左结合性 (Left-to-Right):</strong> 运算从左向右执行。大多数二元算术运算符（<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>）都是左结合的。例如 <code>a - b + c</code> 等价于 <code>(a - b) + c</code>。</li>
+<li>  <strong>右结合性 (Right-to-Left):</strong> 运算从右向左执行。赋值运算符 <code>=</code> 和一元运算符（如取负 <code>-</code>）是右结合的。例如 <code>a = b = c</code> 等价于 <code>a = (b = c)</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>常见算术运算符优先级 (由高到低):</strong></p>
+<ol>
+<li> 一元运算符: <code>+</code> (正号), <code>-</code> (负号) - (右结合)</li>
+<li> 乘法、除法、求模: <code>*</code>, <code>/</code>, <code>%</code> - (左结合)</li>
+<li> 加法、减法: <code>+</code>, <code>-</code> - (左结合)</li>
+<li> 赋值运算符: <code>=</code> - (右结合)</li>
+</ol>
+<p><strong>使用括号:</strong> 可以使用圆括号 <code>()</code> 来覆盖默认的优先级和结合性，强制按特定顺序执行运算。括号内的表达式总是最先计算。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>, b = <span class="number">8</span>, c = <span class="number">3</span>, d = <span class="number">2</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 优先级: * 高于 +</span></span><br><span class="line">    <span class="keyword">int</span> result1 = a + b * c; <span class="comment">// 等价于 a + (b * c) = 5 + (8 * 3) = 5 + 24 = 29</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;a + b * c = &quot;</span> &lt;&lt; result1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用括号改变顺序</span></span><br><span class="line">    <span class="keyword">int</span> result2 = (a + b) * c; <span class="comment">// (5 + 8) * 3 = 13 * 3 = 39</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;(a + b) * c = &quot;</span> &lt;&lt; result2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 结合性 (左结合): / 和 * 优先级相同</span></span><br><span class="line">    <span class="keyword">int</span> result3 = b / c * d; <span class="comment">// 等价于 (b / c) * d = (8 / 3) * d = 2 * d = 2 * 2 = 4 (整数除法)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;b / c * d = &quot;</span> &lt;&lt; result3 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 结合性 (右结合): 赋值</span></span><br><span class="line">    <span class="keyword">int</span> x, y, z;</span><br><span class="line">    x = y = z = <span class="number">10</span>; <span class="comment">// 等价于 x = (y = (z = 10))</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;x=&quot;</span> &lt;&lt; x &lt;&lt; <span class="string">&quot;, y=&quot;</span> &lt;&lt; y &lt;&lt; <span class="string">&quot;, z=&quot;</span> &lt;&lt; z &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 x=10, y=10, z=10</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 结合性 (右结合): 一元负号</span></span><br><span class="line">    <span class="keyword">int</span> val = - - <span class="number">5</span>; <span class="comment">// 等价于 -(-5) = 5</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;- - 5 = &quot;</span> &lt;&lt; val &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>建议:</strong> 当表达式复杂或优先级不明确时，使用括号来明确运算顺序，可以提高代码的可读性并避免错误。</p>
+<h3 id="3-4-2-除法分支"><a href="#3-4-2-除法分支" class="headerlink" title="3.4.2 除法分支"></a>3.4.2 除法分支</h3><p>C++ 的除法运算符 <code>/</code> 的行为取决于其<strong>操作数 (Operand)</strong> 的类型：</p>
+<ol>
+<li> <strong>浮点数除法:</strong> 如果操作数中至少有一个是浮点类型 (<code>float</code>, <code>double</code>, <code>long double</code>)，则执行浮点数除法，结果也是浮点类型，包含小数部分。</li>
+<li> <strong>整数除法:</strong> 如果两个操作数都是整数类型 (<code>int</code>, <code>short</code>, <code>long</code>, <code>char</code>, <code>bool</code> 等)，则执行整数除法。结果只保留商的整数部分，小数部分被**截断 (truncated)**（直接丢弃，不是四舍五入）。</li>
+</ol>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 浮点数除法</span></span><br><span class="line">    <span class="keyword">double</span> result_f1 = <span class="number">9.0</span> / <span class="number">5.0</span>; <span class="comment">// 两个 double</span></span><br><span class="line">    <span class="keyword">double</span> result_f2 = <span class="number">9.0</span> / <span class="number">5</span>;   <span class="comment">// 一个 double, 一个 int (int 被提升为 double)</span></span><br><span class="line">    <span class="keyword">double</span> result_f3 = <span class="number">9</span> / <span class="number">5.0</span>;   <span class="comment">// 一个 int, 一个 double (int 被提升为 double)</span></span><br><span class="line">    <span class="keyword">float</span> result_f4 = <span class="number">9.0f</span> / <span class="number">5.0f</span>; <span class="comment">// 两个 float</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;9.0 / 5.0 = &quot;</span> &lt;&lt; result_f1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 1.8</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;9.0 / 5   = &quot;</span> &lt;&lt; result_f2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 1.8</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;9 / 5.0   = &quot;</span> &lt;&lt; result_f3 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 1.8</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;9.0f / 5.0f = &quot;</span> &lt;&lt; result_f4 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 1.8</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 整数除法</span></span><br><span class="line">    <span class="keyword">int</span> result_i1 = <span class="number">9</span> / <span class="number">5</span>;     <span class="comment">// 两个 int</span></span><br><span class="line">    <span class="keyword">int</span> result_i2 = <span class="number">10</span> / <span class="number">3</span>;    <span class="comment">// 两个 int</span></span><br><span class="line">    <span class="keyword">int</span> result_i3 = <span class="number">13</span> / <span class="number">4</span>;    <span class="comment">// 两个 int</span></span><br><span class="line">    <span class="keyword">int</span> result_i4 = <span class="number">-10</span> / <span class="number">3</span>;   <span class="comment">// 负数整数除法 (结果通常向零截断，为 -3)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;9 / 5     = &quot;</span> &lt;&lt; result_i1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 1 (小数部分 0.8 被截断)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;10 / 3    = &quot;</span> &lt;&lt; result_i2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 3 (小数部分 0.333... 被截断)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;13 / 4    = &quot;</span> &lt;&lt; result_i3 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 3 (小数部分 0.25 被截断)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;-10 / 3   = &quot;</span> &lt;&lt; result_i4 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 -3</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 想要得到浮点结果，需要确保至少一个操作数是浮点类型</span></span><br><span class="line">    <span class="comment">// 可以使用类型转换 (见 3.4.4)</span></span><br><span class="line">    <span class="keyword">double</span> result_mixed = <span class="keyword">double</span>(<span class="number">9</span>) / <span class="number">5</span>; <span class="comment">// 将 9 转换为 double</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;double(9) / 5 = &quot;</span> &lt;&lt; result_mixed &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 1.8</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong> 进行除法运算时，务必清楚操作数的类型，以确保得到期望的结果（整数截断或浮点小数）。</p>
+<h3 id="3-4-3-求模运算符"><a href="#3-4-3-求模运算符" class="headerlink" title="3.4.3 求模运算符"></a>3.4.3 求模运算符</h3><p>求模运算符 <code>%</code> 计算整数除法的**余数 (Remainder)**。它要求两个操作数都必须是整数类型（或可以转换为整数的类型，如 <code>char</code>, <code>bool</code>）。</p>
+<p><strong>运算规则:</strong><br><code>a % b</code> 的结果是 <code>a</code> 除以 <code>b</code> 后的余数。其符号通常与被除数 <code>a</code> 的符号相同（C++11 标准规定如此）。</p>
+<p><strong>数学关系:</strong><br>对于整数 <code>a</code> 和 <code>b</code> (其中 <code>b != 0</code>)，以下关系通常成立：<br><code>(a / b) * b + (a % b) == a</code></p>
+<p><strong>用途:</strong></p>
+<ul>
+<li>  判断一个数是否能被另一个数整除（如果 <code>a % b == 0</code>，则 <code>a</code> 能被 <code>b</code> 整除）。</li>
+<li>  获取一个数的最低位数字（<code>num % 10</code>）。</li>
+<li>  将数值限制在一个范围内（例如，生成 0 到 N-1 之间的数：<code>value % N</code>）。</li>
+<li>  周期性操作（例如，每隔 M 个元素执行一次操作：<code>if (count % M == 0)</code>）。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> total_seconds = <span class="number">135</span>;</span><br><span class="line">    <span class="keyword">int</span> seconds_per_minute = <span class="number">60</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> minutes = total_seconds / seconds_per_minute; <span class="comment">// 整数除法得分钟数</span></span><br><span class="line">    <span class="keyword">int</span> remaining_seconds = total_seconds % seconds_per_minute; <span class="comment">// 求模得剩余秒数</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; total_seconds &lt;&lt; <span class="string">&quot; seconds is &quot;</span> </span><br><span class="line">              &lt;&lt; minutes &lt;&lt; <span class="string">&quot; minutes and &quot;</span> </span><br><span class="line">              &lt;&lt; remaining_seconds &lt;&lt; <span class="string">&quot; seconds.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 135 seconds is 2 minutes and 15 seconds.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断奇偶性</span></span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">21</span>;</span><br><span class="line">    <span class="keyword">if</span> (number % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; number &lt;&lt; <span class="string">&quot; is even.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; number &lt;&lt; <span class="string">&quot; is odd.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 21 is odd.</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取个位数</span></span><br><span class="line">    <span class="keyword">int</span> value = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">int</span> last_digit = value % <span class="number">10</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The last digit of &quot;</span> &lt;&lt; value &lt;&lt; <span class="string">&quot; is &quot;</span> &lt;&lt; last_digit &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 3</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 负数求模 (C++11 及以后，结果符号与被除数一致)</span></span><br><span class="line">    <span class="keyword">int</span> result1 = <span class="number">10</span> % <span class="number">3</span>;   <span class="comment">// 1</span></span><br><span class="line">    <span class="keyword">int</span> result2 = <span class="number">-10</span> % <span class="number">3</span>;  <span class="comment">// -1</span></span><br><span class="line">    <span class="keyword">int</span> result3 = <span class="number">10</span> % <span class="number">-3</span>;  <span class="comment">// 1 </span></span><br><span class="line">    <span class="keyword">int</span> result4 = <span class="number">-10</span> % <span class="number">-3</span>; <span class="comment">// -1</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;10 % 3 = &quot;</span> &lt;&lt; result1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;-10 % 3 = &quot;</span> &lt;&lt; result2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;10 % -3 = &quot;</span> &lt;&lt; result3 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;-10 % -3 = &quot;</span> &lt;&lt; result4 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不能用于浮点数</span></span><br><span class="line">    <span class="comment">// double remainder = 10.5 % 3.2; // 编译错误!</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-4-类型转换"><a href="#3-4-4-类型转换" class="headerlink" title="3.4.4 类型转换"></a>3.4.4 类型转换</h3><p>C++允许在不同数据类型之间进行转换，这称为<strong>类型转换 (Type Casting)**。转换可以</strong>隐式 (Implicitly)** 发生（由编译器自动完成），也可以<strong>显式 (Explicitly)</strong> 进行（由程序员通过代码指定）。</p>
+<p><strong>隐式类型转换 (Automatic Conversion):</strong></p>
+<p>在以下情况下，编译器会自动执行类型转换：</p>
+<ol>
+<li><strong>混合类型表达式:</strong> 当一个表达式中包含不同数值类型的操作数时，较小或较低优先级的类型通常会被<strong>提升 (Promoted)</strong> 为较大或较高优先级的类型，然后进行运算。<ul>
+<li>  <strong>整型提升 (Integral Promotion):</strong> 比 <code>int</code> 小的整型（<code>bool</code>, <code>char</code>, <code>signed char</code>, <code>unsigned char</code>, <code>short</code>, <code>unsigned short</code>）在表达式中通常会被提升为 <code>int</code> (如果 <code>int</code> 能容纳其所有值) 或 <code>unsigned int</code>。</li>
+<li>  <strong>算术转换 (Usual Arithmetic Conversions):</strong> 在涉及不同算术类型（整型和浮点型）的运算中，遵循一套规则将操作数转换为共同的类型（通常是两者中“更宽”或精度更高的类型）。例如，<code>int</code> 和 <code>double</code> 运算时，<code>int</code> 会被转换为 <code>double</code>。<code>float</code> 和 <code>double</code> 运算时，<code>float</code> 会被转换为 <code>double</code>。</li>
+</ul>
+</li>
+<li> <strong>赋值:</strong> 将一个类型的值赋给另一种类型的变量时，右侧的值会被转换为左侧变量的类型。这可能导致精度损失（如 <code>double</code> 转 <code>int</code>）或范围问题（如 <code>long</code> 转 <code>short</code>）。</li>
+<li> <strong>函数参数传递:</strong> 将参数传递给函数时，如果实参类型与形参类型不匹配，会尝试进行转换。</li>
+<li> <strong>函数返回值:</strong> 从函数返回一个值时，如果返回值类型与函数声明的返回类型不匹配，会尝试进行转换。</li>
+</ol>
+<p><strong>显式类型转换 (Explicit Casting):</strong></p>
+<p>当需要强制进行类型转换，或者为了使代码意图更清晰时，可以使用显式类型转换。C++提供了多种转换方式：</p>
+<ol>
+<li><p><strong>C 风格强制类型转换 (C-Style Cast):</strong></p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(typeName) expression</span><br><span class="line">typeName (expression) <span class="comment">// 函数式转换</span></span><br></pre></td></tr></table></figure>
+<p> 这种方式简单直接，但在某些情况下不够安全，因为它可能执行多种不同类型的转换（如 <code>static_cast</code>, <code>const_cast</code>, <code>reinterpret_cast</code> 的组合）。</p>
+</li>
+<li><p><strong>C++ 类型转换运算符 (C++ Cast Operators):</strong> (更推荐，更安全，意图更明确)</p>
+<ul>
+<li>  <code>static_cast&lt;typeName&gt;(expression)</code>: 用于比较“自然”和安全的转换，如数值类型之间的转换（整数与浮点数互转、整数与整数互转）、指针类型之间的相关转换（如 <code>void*</code> 与其他类型指针互转、基类指针与派生类指针互转，但需要谨慎）。这是最常用的 C++ 转换符。</li>
+<li>  <code>dynamic_cast&lt;typeName&gt;(expression)</code>: 主要用于处理类继承层次结构中的指针或引用转换（向下转型），并在运行时进行类型检查。如果转换无效，对于指针会返回 <code>nullptr</code>，对于引用会抛出 <code>std::bad_cast</code> 异常。需要基类是多态的（至少有一个虚函数）。</li>
+<li>  <code>const_cast&lt;typeName&gt;(expression)</code>: 用于添加或移除表达式的 <code>const</code> 或 <code>volatile</code> 限定符。通常用于去除 <code>const</code>，但修改原本是 <code>const</code> 的对象是未定义行为。主要用于处理常量性不匹配的旧 API。</li>
+<li>  <code>reinterpret_cast&lt;typeName&gt;(expression)</code>: 用于低级别的、通常与实现相关的、不安全的转换。例如，在整数和指针之间进行转换，或者在不相关的指针类型之间进行转换。应极力避免使用，除非确实理解其底层含义和风险。</li>
+</ul>
+</li>
+</ol>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 隐式转换示例</span></span><br><span class="line">    <span class="keyword">int</span> i_val = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">double</span> d_val = <span class="number">3.14</span>;</span><br><span class="line">    <span class="keyword">short</span> s_val = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 混合表达式 (算术转换)</span></span><br><span class="line">    <span class="keyword">double</span> result1 = i_val + d_val; <span class="comment">// i_val (int) 提升为 double (10.0), 结果是 double (13.14)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;int + double = &quot;</span> &lt;&lt; result1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 整型提升</span></span><br><span class="line">    <span class="keyword">char</span> c_val = <span class="string">&#x27;A&#x27;</span>; <span class="comment">// ASCII 码 65</span></span><br><span class="line">    <span class="keyword">int</span> result2 = c_val + s_val; <span class="comment">// c_val (char) 和 s_val (short) 都提升为 int, 结果是 int (70)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;char + short = &quot;</span> &lt;&lt; result2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 赋值转换 (可能丢失信息)</span></span><br><span class="line">    <span class="keyword">int</span> i_from_d = d_val; <span class="comment">// d_val (3.14) 转换为 int, 小数部分截断, i_from_d 变为 3</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;int from double = &quot;</span> &lt;&lt; i_from_d &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">short</span> s_from_i = <span class="number">100000</span>; <span class="comment">// 100000 可能超出 short 范围, 结果未定义或回绕</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;short from large int = &quot;</span> &lt;&lt; s_from_i &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显式转换示例</span></span><br><span class="line">    <span class="keyword">int</span> total = <span class="number">19</span>;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// C 风格转换 (用于浮点除法)</span></span><br><span class="line">    <span class="keyword">double</span> average1 = (<span class="keyword">double</span>)total / count; </span><br><span class="line">    <span class="keyword">double</span> average2 = <span class="keyword">double</span>(total) / count; <span class="comment">// 函数式转换</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;(double)total / count = &quot;</span> &lt;&lt; average1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 3.8</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;double(total) / count = &quot;</span> &lt;&lt; average2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 3.8</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// C++ static_cast (推荐用于数值转换)</span></span><br><span class="line">    <span class="keyword">double</span> average3 = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(total) / count;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;static_cast&lt;double&gt;(total) / count = &quot;</span> &lt;&lt; average3 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 3.8</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> char_code = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(<span class="string">&#x27;B&#x27;</span>); <span class="comment">// char 转 int</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Code for &#x27;B&#x27;: &quot;</span> &lt;&lt; char_code &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 66</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 演示 reinterpret_cast (通常不推荐)</span></span><br><span class="line">    <span class="keyword">long</span> addr = <span class="number">1000</span>;</span><br><span class="line">    <span class="comment">// int* ptr = reinterpret_cast&lt;int*&gt;(addr); // 将整数视为地址 (危险!)</span></span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; &quot;Pointer from address: &quot; &lt;&lt; ptr &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>建议:</strong></p>
+<ul>
+<li>  尽量避免不必要的类型转换。</li>
+<li>  优先使用 C++ 的 <code>static_cast</code> 进行明确且相对安全的数值或相关指针转换。</li>
+<li>  谨慎使用 C 风格转换，因为它隐藏了转换的类型和风险。</li>
+<li>  仅在绝对必要且理解后果的情况下使用 <code>const_cast</code> 和 <code>reinterpret_cast</code>。</li>
+<li>  注意隐式转换可能导致的精度损失或意外行为，尤其是在混合有符号和无符号整数时。</li>
+</ul>
+<h3 id="3-4-5-C-11中的auto声明"><a href="#3-4-5-C-11中的auto声明" class="headerlink" title="3.4.5 C++11中的auto声明"></a>3.4.5 C++11中的auto声明</h3><p>C++11 引入了 <code>auto</code> 关键字，它允许编译器根据变量的<strong>初始化表达式 (Initializer)</strong> 自动推断出变量的类型。这可以简化代码，尤其是在处理复杂类型（如 STL 迭代器或模板类型）时。</p>
+<p><strong>工作原理:</strong></p>
+<p>当你使用 <code>auto</code> 声明变量时，必须提供一个初始化表达式。编译器会查看这个表达式的类型，并将该类型赋予 <code>auto</code> 声明的变量。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> variableName = initializationExpression;</span><br></pre></td></tr></table></figure>
+
+<p><strong>要点:</strong></p>
+<ul>
+<li>  <strong>必须初始化:</strong> 使用 <code>auto</code> 声明的变量必须在声明时初始化。</li>
+<li>  <strong>类型推断:</strong> 类型是从初始化表达式推断出来的，而不是变量本身的某种默认类型。</li>
+<li><strong><code>const</code> 和引用:</strong> <code>auto</code> 通常不会自动推断出顶层的 <code>const</code> 或引用。如果需要 <code>const</code> 或引用，需要显式添加。<ul>
+<li>  <code>auto x = value;</code> // x 的类型与 value 相同 (const/引用被剥离)</li>
+<li>  <code>const auto cx = value;</code> // cx 是 const 类型</li>
+<li>  <code>auto&amp; rx = value;</code> // rx 是引用类型</li>
+<li>  <code>const auto&amp; crx = value;</code> // crx 是 const 引用类型</li>
+</ul>
+</li>
+<li><strong>列表初始化:</strong> 对于 C++11 中的列表初始化 <code>&#123;&#125;</code>，<code>auto</code> 的推断规则比较特殊。<ul>
+<li>  <code>auto x = &#123;1, 2, 3&#125;;</code> // C++11/14: x 被推断为 std::initializer_list<int></li>
+<li>  <code>auto y = &#123;1&#125;;</code> // C++11/14: y 被推断为 std::initializer_list<int></li>
+<li>  <code>auto z&#123;1&#125;;</code> // C++17: z 被推断为 int (注意没有等号)</li>
+</ul>
+</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt; // 包含 vector</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;typeinfo&gt; // 用于 typeid (仅作演示)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 基本类型推断</span></span><br><span class="line">    <span class="keyword">auto</span> i = <span class="number">10</span>;       <span class="comment">// i 被推断为 int</span></span><br><span class="line">    <span class="keyword">auto</span> d = <span class="number">3.14</span>;     <span class="comment">// d 被推断为 double</span></span><br><span class="line">    <span class="keyword">auto</span> f = <span class="number">3.14f</span>;    <span class="comment">// f 被推断为 float</span></span><br><span class="line">    <span class="keyword">auto</span> c = <span class="string">&#x27;A&#x27;</span>;      <span class="comment">// c 被推断为 char</span></span><br><span class="line">    <span class="keyword">auto</span> b = <span class="literal">true</span>;     <span class="comment">// b 被推断为 bool</span></span><br><span class="line">    <span class="keyword">auto</span> ll = <span class="number">1234567890L</span>L; <span class="comment">// ll 被推断为 long long</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of i: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(i).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of d: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(d).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of f: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(f).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of ll: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(ll).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推断表达式结果类型</span></span><br><span class="line">    <span class="keyword">auto</span> sum = i + d; <span class="comment">// i(int) + d(double) -&gt; double, sum 被推断为 double</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of sum: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(sum).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;sum = &quot;</span> &lt;&lt; sum &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推断 const 和引用 (需要显式添加)</span></span><br><span class="line">    <span class="keyword">int</span> original = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">auto</span> copy = original;         <span class="comment">// copy 是 int (非引用, 非 const)</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> const_copy = original; <span class="comment">// const_copy 是 const int</span></span><br><span class="line">    <span class="keyword">auto</span>&amp; ref = original;         <span class="comment">// ref 是 int&amp; (引用)</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">auto</span>&amp; const_ref = original; <span class="comment">// const_ref 是 const int&amp; (const 引用)</span></span><br><span class="line"></span><br><span class="line">    copy = <span class="number">200</span>; <span class="comment">// OK</span></span><br><span class="line">    <span class="comment">// const_copy = 200; // 错误! const_copy 是 const</span></span><br><span class="line">    ref = <span class="number">300</span>; <span class="comment">// OK, original 也变为 300</span></span><br><span class="line">    <span class="comment">// const_ref = 400; // 错误! const_ref 是 const 引用</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;original: &quot;</span> &lt;&lt; original &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 300</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用于复杂类型 (例如 STL 容器迭代器)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; names = &#123;<span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;Bob&quot;</span>, <span class="string">&quot;Charlie&quot;</span>&#125;;</span><br><span class="line">    <span class="keyword">auto</span> it = names.begin(); <span class="comment">// it 被推断为 std::vector&lt;std::string&gt;::iterator</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;First name: &quot;</span> &lt;&lt; *it &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of it: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(it).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// C++11 列表初始化</span></span><br><span class="line">    <span class="keyword">auto</span> list1 = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>&#125;; <span class="comment">// list1 是 std::initializer_list&lt;int&gt;</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Type of list1: &quot;</span> &lt;&lt; <span class="keyword">typeid</span>(list1).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// C++17 列表初始化 (无等号)</span></span><br><span class="line">    <span class="comment">// auto val&#123;42&#125;; // C++17: val 是 int</span></span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; &quot;Type of val: &quot; &lt;&lt; typeid(val).name() &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点:</strong></p>
+<ul>
+<li>  减少冗余代码，尤其是在类型名称很长时。</li>
+<li>  提高代码的可维护性，如果初始化表达式的类型改变，<code>auto</code> 变量的类型会自动更新。</li>
+<li>  有助于泛型编程。</li>
+</ul>
+<p><strong>缺点/注意事项:</strong></p>
+<ul>
+<li>  过度使用可能降低代码的可读性，因为读者需要查看初始化表达式才能确定类型。</li>
+<li>  <code>auto</code> 推断出的类型可能不是你期望的（例如，忘记添加 <code>&amp;</code> 得到副本而不是引用）。</li>
+<li>  对于代理类（Proxy Classes），<code>auto</code> 可能推断出代理类型而不是期望的值类型，需要小心。</li>
+</ul>
+<p><strong>建议:</strong> 在类型冗长、明显或无关紧要时使用 <code>auto</code> 可以提高效率。在类型对于理解代码逻辑很重要时，显式写出类型可能更好。</p>
+<h2 id="3-5-总结"><a href="#3-5-总结" class="headerlink" title="3.5 总结"></a>3.5 总结</h2><p>本章深入探讨了C++用于处理数据的基本内置类型。我们首先学习了简单变量的命名规则和约定，强调了名称的可读性和合法性。</p>
+<p>接着，我们详细研究了C++的<strong>整型家族</strong>，包括 <code>short</code>、<code>int</code>、<code>long</code> 和 C++11 新增的 <code>long long</code>。我们讨论了它们各自的大小、表示范围以及如何选择合适的类型。我们还介绍了 <code>unsigned</code> 类型，它们用于存储非负整数，并具有更大的正数范围。我们学习了如何书写不同进制（十进制、八进制、十六进制，以及C++14的二进制）的整型字面值，以及如何使用后缀（<code>U</code>, <code>L</code>, <code>LL</code>）来指定常量的具体类型，并了解了编译器在没有后缀时如何推断常量类型。</p>
+<p><code>char</code> 类型被介绍为一种特殊的整型，主要用于存储字符，但也可以作为小整数使用。我们学习了字符字面值（使用单引号）和转义序列。<code>bool</code> 类型也被引入，用于表示逻辑真 (<code>true</code>) 和假 (<code>false</code>)，以及它与整数（1和0）之间的转换关系。</p>
+<p>为了创建不可修改的变量（常量），我们学习了 <code>const</code> 限定符。使用 <code>const</code> 定义的常量必须在声明时初始化，它提供了类型安全和作用域控制，是比 <code>#define</code> 更受推荐的常量定义方式。</p>
+<p>然后，我们转向了<strong>浮点类型</strong> (<code>float</code>, <code>double</code>, <code>long double</code>)，用于表示带小数的数字。我们学习了书写浮点数的两种方式（标准小数点和E表示法），了解了不同浮点类型的精度和范围差异，以及如何使用后缀（<code>f</code>, <code>L</code>）指定浮点常量类型（默认为 <code>double</code>）。我们还讨论了浮点数的优点（范围广、表示小数）和固有的缺点（精度限制、比较困难）。</p>
+<p>最后，我们学习了C++的<strong>基本算术运算符</strong> (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>)。我们探讨了运算符的优先级和结合性规则，以及如何使用括号来控制运算顺序。特别地，我们区分了整数除法（结果截断）和浮点数除法，并学习了求模运算符 <code>%</code> 的用法（主要用于整数求余）。</p>
+<p><strong>类型转换</strong>是本章的另一个重点，包括编译器自动执行的隐式转换（如整型提升和算术转换）和程序员指定的显式转换（C风格转换和更安全的C++转换符 <code>static_cast</code>、<code>dynamic_cast</code>、<code>const_cast</code>、<code>reinterpret_cast</code>）。我们强调了转换中可能出现的信息丢失问题。</p>
+<p>C++11 引入的 <code>auto</code> 关键字也被介绍，它允许编译器根据初始化表达式自动推断变量类型，简化了代码，尤其是在处理复杂类型时。</p>
+<p>通过本章的学习，我们掌握了C++的基本数据类型及其用法，为后续更复杂的数据结构和算法打下了坚实的基础。</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_3/>http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_3/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2025-04-26T20:01:21+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2025年4月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Program/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Program</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C++</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_3/&title=Chapter 3 处理数据 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_3/&title=Chapter 3 处理数据 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2025/04/26/Cpp_tutorial_Chapter_3/&title=Chapter 3 处理数据 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/04/26/Cpp_tutorial_Chapter_2/'>
+          <p class='title'>Chapter 2 开始学习C++<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>2.1 进入C++本节将引导你编写第一个C++程序，并介绍一些基本概念。
+2.1.1 main()函数每个C++程序都必须包含一个名为 main 的函数。操作系统通过调用 main 函数来启动C...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E7%AE%80%E5%8D%95%E5%8F%98%E9%87%8F"><span class="toc-text">3.1 简单变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E5%8F%98%E9%87%8F%E5%90%8D"><span class="toc-text">3.1.1 变量名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E6%95%B4%E5%9E%8B"><span class="toc-text">3.1.2 整型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E6%95%B4%E5%9E%8Bshort%E3%80%81int%E3%80%81long%E5%92%8Clong-long"><span class="toc-text">3.1.3 整型short、int、long和long long</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-%E6%97%A0%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.1.4 无符号类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-5-%E9%80%89%E6%8B%A9%E6%95%B4%E5%9E%8B%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.1.5 选择整型类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-6-%E6%95%B4%E5%9E%8B%E5%AD%97%E9%9D%A2%E5%80%BC"><span class="toc-text">3.1.6 整型字面值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-7-C-%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E5%B8%B8%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.1.7 C++如何确定常量的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-8-char%E7%B1%BB%E5%9E%8B%EF%BC%9A%E5%AD%97%E7%AC%A6%E5%92%8C%E5%B0%8F%E6%95%B4%E6%95%B0"><span class="toc-text">3.1.8 char类型：字符和小整数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-9-bool%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.1.9 bool类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-const%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-text">3.2 const限定符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">3.3 浮点数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-1-%E4%B9%A6%E5%86%99%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">3.3.1 书写浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-2-%E6%B5%AE%E7%82%B9%E7%B1%BB%E5%9E%8B"><span class="toc-text">3.3.2 浮点类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-3-%E6%B5%AE%E7%82%B9%E5%B8%B8%E9%87%8F"><span class="toc-text">3.3.3 浮点常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-4-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">3.3.4 浮点数的优缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-C-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">3.4 C++算术运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7%E5%92%8C%E7%BB%93%E5%90%88%E6%80%A7"><span class="toc-text">3.4.1 运算符优先级和结合性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-%E9%99%A4%E6%B3%95%E5%88%86%E6%94%AF"><span class="toc-text">3.4.2 除法分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-%E6%B1%82%E6%A8%A1%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">3.4.3 求模运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-4-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">3.4.4 类型转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-5-C-11%E4%B8%AD%E7%9A%84auto%E5%A3%B0%E6%98%8E"><span class="toc-text">3.4.5 C++11中的auto声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-%E6%80%BB%E7%BB%93"><span class="toc-text">3.5 总结</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Chapter 3 处理数据";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='playlist'
+      id='5043500508'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6" target="_blank" class="codename">Volantis</a>
+        作为主题
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '5043500508';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+
+  loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
+
+
+</script>
+
+
+
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/valine.min.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/app.min.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/search/hexo.min.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://uniqueland.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+       
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+	 
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+	  
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
