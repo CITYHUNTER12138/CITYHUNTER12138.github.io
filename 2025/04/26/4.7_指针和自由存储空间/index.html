@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>4.7 指针和自由存储空间 - Uniqueland</title>
+  
+    <meta name="keywords" content="Program,C++">
+  
+
+  
+    <meta name="description" content="C++ tutorial">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    <link rel="shortcut icon" type='image/x-icon' href="https://www.helloimg.com/images/2022/03/27/ReozOM.png">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Uniqueland</p>
+    
+    
+      <p class="subtitle">--XR's personal Blog</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/categories/"
+              
+              
+              id="categories">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>分类</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>帮助</p>
+            </a>
+          
+            <a href="/tags/"
+              
+              
+              id="tags">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg'><p>标签</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>博客</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://s2.loli.net/2025/04/26/9F74KMasiN1YwQW.png'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        4.7 指针和自由存储空间
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年4月26日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="4.7 指针和自由存储空间" data-path="/2025/04/26/4.7_%E6%8C%87%E9%92%88%E5%92%8C%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <p>到目前为止，我们创建的变量（包括数组、结构等）在声明时，编译器会为其分配内存。这些变量的内存管理是自动的（自动存储或静态存储）。但是，有时我们需要在程序运行时根据需要动态地分配和释放内存。<strong>指针 (Pointer)</strong> 和 <strong>自由存储空间 (Free Store)**（也常称为</strong>堆 Heap**）是实现这一目标的关键。</p>
+<p><strong>指针</strong>是一种特殊的变量，它存储的是另一个变量的<strong>内存地址</strong>。通过指针，我们可以间接地访问和修改该内存地址处的数据。</p>
+<p><strong>自由存储空间</strong>是程序可以动态申请使用的内存区域。与自动变量（函数执行完就销毁）或静态变量（程序整个生命周期都存在）不同，程序员需要手动管理自由存储空间中分配的内存的生命周期。</p>
+<h2 id="4-7-1-声明和初始化指针"><a href="#4-7-1-声明和初始化指针" class="headerlink" title="4.7.1 声明和初始化指针"></a>4.7.1 声明和初始化指针</h2><p><strong>声明指针:</strong></p>
+<p>声明指针需要指定它将指向的数据类型，并在变量名前加上星号 <code>*</code>（星号可以靠近类型名、变量名或在两者之间）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeName * pointerName; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>typeName</code>: 指针将要指向的数据的类型。</li>
+<li>  <code>*</code>: 表明 <code>pointerName</code> 是一个指针。</li>
+<li>  <code>pointerName</code>: 指针变量的名称。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p_int;      <span class="comment">// 声明一个指向 int 类型的指针 p_int</span></span><br><span class="line"><span class="keyword">double</span> * p_double; <span class="comment">// 声明一个指向 double 类型的指针 p_double</span></span><br><span class="line"><span class="keyword">char</span> * p_char;    <span class="comment">// 声明一个指向 char 类型的指针 p_char</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">string</span> * p_str; <span class="comment">// 声明一个指向 string 对象的指针 p_str</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>获取地址 (<code>&amp;</code> 运算符):</strong></p>
+<p>地址运算符 <code>&amp;</code> 用于获取一个变量的内存地址。</p>
+<p><strong>初始化指针:</strong></p>
+<p>指针在声明时应被初始化，以避免指向不确定的内存地址。常见的初始化方式：</p>
+<ol>
+<li> <strong>初始化为 <code>nullptr</code> (C++11 及以后):</strong> <code>nullptr</code> 是表示空指针的关键字，表示该指针当前不指向任何有效的内存地址。这是推荐的初始化空指针的方式。</li>
+<li> <strong>初始化为 <code>0</code> 或 <code>NULL</code>:</strong> 在 C++11 之前，通常使用 <code>0</code> 或宏 <code>NULL</code> (通常定义为 0) 来表示空指针。虽然仍可用，但 <code>nullptr</code> 类型更安全。</li>
+<li> <strong>初始化为变量地址:</strong> 使用 <code>&amp;</code> 运算符获取一个已存在变量的地址来初始化指针。<strong>指针的类型必须与变量的类型匹配</strong>（或能隐式转换）。</li>
+</ol>
+<p><strong>解引用 (<code>*</code> 运算符):</strong></p>
+<p>解引用运算符 <code>*</code> 用于访问指针所指向的内存地址处存储的值。当 <code>*</code> 用于已初始化的有效指针变量前时，它表示“获取指针指向的值”。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> updates = <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">int</span> * p_updates; <span class="comment">// 声明一个指向 int 的指针，未初始化 (危险!)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化指针</span></span><br><span class="line">    <span class="keyword">int</span> * p_value = <span class="literal">nullptr</span>; <span class="comment">// 初始化为空指针 (推荐)</span></span><br><span class="line">    <span class="keyword">int</span> * p_zero = <span class="number">0</span>;      <span class="comment">// 初始化为空指针 (旧式)</span></span><br><span class="line">    <span class="comment">// NULL 宏通常在 &lt;cstddef&gt; 或其他 C 头文件中定义</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 使用地址初始化</span></span><br><span class="line">    p_updates = &amp;updates; <span class="comment">// 将 updates 变量的地址赋给 p_updates</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 访问指针信息</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Value of updates: &quot;</span> &lt;&lt; updates &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;             <span class="comment">// 输出 6</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Address of updates: &quot;</span> &lt;&lt; &amp;updates &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;          <span class="comment">// 输出 updates 的内存地址</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Value of p_updates (address): &quot;</span> &lt;&lt; p_updates &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出存储在 p_updates 中的地址 (同上)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用解引用运算符访问指针指向的值</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Value at *p_updates: &quot;</span> &lt;&lt; *p_updates &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 6 (updates 的值)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用解引用运算符修改指针指向的值</span></span><br><span class="line">    *p_updates = *p_updates + <span class="number">1</span>; <span class="comment">// 将 p_updates 指向的值 (updates) 加 1</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Now updates has value: &quot;</span> &lt;&lt; updates &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 7</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指向其他类型</span></span><br><span class="line">    <span class="keyword">double</span> price = <span class="number">99.99</span>;</span><br><span class="line">    <span class="keyword">double</span> * p_price = &amp;price; <span class="comment">// p_price 指向 price</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Value at *p_price: &quot;</span> &lt;&lt; *p_price &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 99.99</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// int * p_wrong = &amp;price; // 错误! 指针类型 (int*) 与变量类型 (double) 不匹配</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键点:</strong></p>
+<ul>
+<li>  <code>int updates;</code>: <code>updates</code> 是一个 <code>int</code> 变量。</li>
+<li>  <code>int * p_updates;</code>: <code>p_updates</code> 是一个指针变量，它存储的是一个 <code>int</code> 变量的地址。</li>
+<li>  <code>p_updates</code>: 存储的地址值。</li>
+<li>  <code>*p_updates</code>: 存储在该地址处的 <code>int</code> 值。</li>
+</ul>
+<h2 id="4-7-2-指针的危险"><a href="#4-7-2-指针的危险" class="headerlink" title="4.7.2 指针的危险"></a>4.7.2 指针的危险</h2><p>指针非常强大，但也容易出错，是 C++ 中常见的 bug 来源。</p>
+<ol>
+<li><strong>解引用未初始化的指针:</strong> 如果指针没有被初始化，它会包含一个随机的地址（垃圾值）。解引用这种指针（试图访问该随机地址处的值）会导致<strong>未定义行为</strong>，通常导致程序崩溃。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p_uninitialized;</span><br><span class="line"><span class="comment">// std::cout &lt;&lt; *p_uninitialized; // 极度危险! 程序可能崩溃</span></span><br><span class="line"><span class="comment">// *p_uninitialized = 100;      // 极度危险! 可能覆盖关键数据或导致崩溃</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>解引用空指针:</strong> 解引用 <code>nullptr</code> (或 <code>0</code>, <code>NULL</code>) 同样是未定义行为，通常也会导致程序崩溃。在使用指针前，最好检查它是否为空。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p_null = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="comment">// std::cout &lt;&lt; *p_null; // 危险! 程序可能崩溃</span></span><br><span class="line"><span class="keyword">if</span> (p_null != <span class="literal">nullptr</span>) &#123; <span class="comment">// 检查指针是否有效</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; *p_null; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><strong>悬挂指针 (Dangling Pointer):</strong> 当指针指向的内存已经被释放或不再有效时，该指针就成为悬挂指针。解引用悬挂指针也是未定义行为。这通常发生在 <code>delete</code> 之后（见 4.7.5）或指向局部变量的指针在其作用域结束后仍然存在时。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> * p_dangle;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> local_var = <span class="number">10</span>;</span><br><span class="line">    p_dangle = &amp;local_var; <span class="comment">// p_dangle 指向局部变量</span></span><br><span class="line">&#125; <span class="comment">// local_var 在这里被销毁，内存可能被回收</span></span><br><span class="line"><span class="comment">// std::cout &lt;&lt; *p_dangle; // 危险! p_dangle 是悬挂指针</span></span><br></pre></td></tr></table></figure></li>
+<li> <strong>内存泄漏 (Memory Leak):</strong> 如果使用 <code>new</code> 分配了内存（见 4.7.4），但忘记使用 <code>delete</code> 释放，或者丢失了指向该内存的唯一指针，这块内存就无法再被程序访问或释放，造成内存泄漏。程序运行时间越长，泄漏的内存越多，最终可能耗尽系统资源。</li>
+</ol>
+<p><strong>安全使用指针的建议:</strong></p>
+<ul>
+<li>  <strong>总是初始化指针:</strong> 声明指针时立即初始化为 <code>nullptr</code> 或一个有效的地址。</li>
+<li>  <strong>在使用前检查:</strong> 在解引用指针前，检查它是否为 <code>nullptr</code>。</li>
+<li>  <strong>谨慎处理指针生命周期:</strong> 确保指针指向的内存在指针使用期间是有效的。</li>
+<li>  <strong>配对 <code>new</code> 和 <code>delete</code>:</strong> 动态分配的内存必须手动释放。</li>
+</ul>
+<h2 id="4-7-3-指针和数字"><a href="#4-7-3-指针和数字" class="headerlink" title="4.7.3 指针和数字"></a>4.7.3 指针和数字</h2><p>虽然指针存储的是内存地址，而地址本质上是数字，但<strong>指针类型和整数类型是不同的</strong>。不能随意将整数赋给指针（除了 <code>0</code>/<code>nullptr</code>），也不能直接将指针当作普通整数进行算术运算（指针算术有特殊规则，见 4.8）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> value = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> * p_value = &amp;value;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指针的值是地址 (一个数字)</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Address stored in p_value: &quot;</span> &lt;&lt; p_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不能直接将任意整数赋给指针</span></span><br><span class="line">    <span class="comment">// p_value = 1000; // 错误! 类型不匹配 (除非使用 reinterpret_cast，但通常不安全)</span></span><br><span class="line">    </span><br><span class="line">    p_value = <span class="literal">nullptr</span>; <span class="comment">// 合法，赋空指针</span></span><br><span class="line">    p_value = <span class="number">0</span>;       <span class="comment">// 合法，赋空指针</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指针可以转换为整数 (通常使用 reinterpret_cast，不推荐)</span></span><br><span class="line">    <span class="comment">// uintptr_t address_as_int = reinterpret_cast&lt;uintptr_t&gt;(p_value); </span></span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; &quot;Address as integer: &quot; &lt;&lt; address_as_int &lt;&lt; std::endl;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 整数不能直接转换为指针 (除了 0)</span></span><br><span class="line">    <span class="keyword">int</span> address_int = <span class="number">2000</span>;</span><br><span class="line">    <span class="comment">// int * p_from_int = address_int; // 错误!</span></span><br><span class="line">    <span class="comment">// int * p_from_int = reinterpret_cast&lt;int*&gt;(address_int); // 可以编译，但极度危险</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将指针视为地址，而不是普通的数字，有助于避免类型错误和不安全的操作。</p>
+<h2 id="4-7-4-使用new来分配内存"><a href="#4-7-4-使用new来分配内存" class="headerlink" title="4.7.4 使用new来分配内存"></a>4.7.4 使用new来分配内存</h2><p><code>new</code> 运算符用于在程序的<strong>自由存储区 (Free Store)</strong> 或 <strong>堆 (Heap)</strong> 上动态分配内存。这允许你在运行时根据需要创建变量或对象，而不是在编译时就确定。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pointerVariable = <span class="keyword">new</span> typeName;</span><br><span class="line"><span class="comment">// 或者在声明时分配</span></span><br><span class="line">typeName * pointerVariable = <span class="keyword">new</span> typeName;</span><br><span class="line"><span class="comment">// 也可以带初始化器</span></span><br><span class="line">typeName * pointerVariable = <span class="keyword">new</span> typeName (initializer); <span class="comment">// C++98/03</span></span><br><span class="line">typeName * pointerVariable = <span class="keyword">new</span> typeName &#123;initializer&#125;; <span class="comment">// C++11 列表初始化</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>new</code>: 运算符。</li>
+<li>  <code>typeName</code>: 要分配内存的数据类型。</li>
+<li>  <code>initializer</code> (可选): 用于初始化新分配内存的值。</li>
+</ul>
+<p><strong>工作流程:</strong></p>
+<ol>
+<li> <code>new</code> 在自由存储区找到一块足够大的、未使用的内存块，以存储 <code>typeName</code> 类型的数据。</li>
+<li> <code>new</code> 返回这块内存的<strong>起始地址</strong>。</li>
+<li> 这个地址被赋给一个相应类型的指针变量。</li>
+</ol>
+<p><strong>如果 <code>new</code> 无法分配所需的内存（例如内存不足），它会抛出一个 <code>std::bad_alloc</code> 异常</strong>（除非使用了 <code>new (std::nothrow)</code> 版本，该版本在失败时返回 <code>nullptr</code>）。</p>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;new&gt; // 为了 std::bad_alloc (虽然不一定需要显式包含) 和 std::nothrow</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 分配一个 int 的内存</span></span><br><span class="line">    <span class="keyword">int</span> * p_int = <span class="keyword">new</span> <span class="keyword">int</span>; <span class="comment">// 在自由存储区分配一个 int 大小的内存</span></span><br><span class="line">    <span class="keyword">if</span> (p_int == <span class="literal">nullptr</span>) &#123; <span class="comment">// 理论检查 (对于普通 new，失败会抛异常)</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Memory allocation failed!&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    *p_int = <span class="number">101</span>; <span class="comment">// 通过指针访问并赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 分配一个 double 并初始化</span></span><br><span class="line">    <span class="keyword">double</span> * p_double = <span class="keyword">new</span> <span class="keyword">double</span> (<span class="number">99.99</span>); <span class="comment">// 分配并初始化为 99.99</span></span><br><span class="line">    <span class="comment">// 或者 C++11 列表初始化</span></span><br><span class="line">    <span class="comment">// double * p_double = new double &#123;99.99&#125;; </span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Dynamically allocated int: &quot;</span> &lt;&lt; *p_int &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Dynamically allocated double: &quot;</span> &lt;&lt; *p_double &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Address of int: &quot;</span> &lt;&lt; p_int &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Address of double: &quot;</span> &lt;&lt; p_double &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// --- 内存释放将在下一节讲解 ---</span></span><br><span class="line">    <span class="comment">// delete p_int; </span></span><br><span class="line">    <span class="comment">// delete p_double;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用 nothrow 版本 (失败时返回 nullptr)</span></span><br><span class="line">    <span class="keyword">int</span> * p_lots_of_ints = <span class="keyword">new</span> (<span class="built_in">std</span>::nothrow) <span class="keyword">int</span>[<span class="number">1000000000</span>]; <span class="comment">// 尝试分配巨大数组</span></span><br><span class="line">    <span class="keyword">if</span> (p_lots_of_ints == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Huge memory allocation failed, but program continues.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Huge memory allocation succeeded (unlikely).&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="comment">// delete[] p_lots_of_ints; // 如果成功，需要释放</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>动态分配的内存<strong>不会</strong>像自动变量那样在作用域结束时自动释放。程序员必须负责在不再需要时手动释放它。</p>
+<h2 id="4-7-5-使用delete释放内存"><a href="#4-7-5-使用delete释放内存" class="headerlink" title="4.7.5 使用delete释放内存"></a>4.7.5 使用delete释放内存</h2><p><code>delete</code> 运算符用于释放由 <code>new</code> 分配的内存，将其归还给自由存储区，以便后续可以重新分配使用。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> pointerVariable; </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>delete</code>: 运算符。</li>
+<li>  <code>pointerVariable</code>: 指向由 <code>new</code>（**不是 <code>new[]</code>**）分配的内存的指针。</li>
+</ul>
+<p><strong>工作流程:</strong></p>
+<ol>
+<li> <code>delete</code> 接收一个指针，该指针必须指向由 <code>new</code> 分配的内存块的起始地址。</li>
+<li> <code>delete</code> 释放该指针指向的内存块。</li>
+<li> 指针变量本身的值<strong>不会</strong>被自动修改（它仍然存储着那个现在无效的地址），成为**悬挂指针 (Dangling Pointer)**。</li>
+</ol>
+<p><strong>重要规则:</strong></p>
+<ul>
+<li>  <strong><code>new</code> 和 <code>delete</code> 必须配对使用:</strong> 每个 <code>new</code> 都应该对应一个 <code>delete</code>。</li>
+<li>  <strong>不要 <code>delete</code> 同一块内存两次:</strong> 对同一块内存执行两次 <code>delete</code> 是未定义行为。</li>
+<li>  <strong>不要 <code>delete</code> 不是由 <code>new</code> 分配的内存:</strong> 例如，不要 <code>delete</code> 指向自动变量（栈变量）或静态变量的指针。</li>
+<li>  <strong>不要 <code>delete</code> 空指针 (<code>nullptr</code>):</strong> 对空指针执行 <code>delete</code> 是安全且无效果的。</li>
+<li>  <strong><code>delete</code> 之后将指针设为 <code>nullptr</code>:</strong> 释放内存后，最好立即将指针设置为 <code>nullptr</code>，以防止它成为悬挂指针被意外使用。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 分配内存</span></span><br><span class="line">    <span class="keyword">int</span> * p_value = <span class="keyword">new</span> <span class="keyword">int</span> (<span class="number">42</span>);</span><br><span class="line">    <span class="keyword">double</span> * p_temp = <span class="keyword">new</span> <span class="keyword">double</span>;</span><br><span class="line">    *p_temp = <span class="number">123.45</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Before delete:&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; p_value points to: &quot;</span> &lt;&lt; *p_value &lt;&lt; <span class="string">&quot; at address &quot;</span> &lt;&lt; p_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; p_temp points to: &quot;</span> &lt;&lt; *p_temp &lt;&lt; <span class="string">&quot; at address &quot;</span> &lt;&lt; p_temp &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 释放内存</span></span><br><span class="line">    <span class="keyword">delete</span> p_value; </span><br><span class="line">    <span class="keyword">delete</span> p_temp;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\nAfter delete:&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">// p_value 和 p_temp 现在是悬挂指针!</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; p_value still holds address: &quot;</span> &lt;&lt; p_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line">    <span class="comment">// std::cout &lt;&lt; &quot; Accessing *p_value: &quot; &lt;&lt; *p_value &lt;&lt; std::endl; // 危险! 未定义行为</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 将指针设为 nullptr (好习惯)</span></span><br><span class="line">    p_value = <span class="literal">nullptr</span>;</span><br><span class="line">    p_temp = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;After setting to nullptr:&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; p_value holds: &quot;</span> &lt;&lt; p_value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出 0 或类似表示空指针的值</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对 nullptr 调用 delete 是安全的</span></span><br><span class="line">    <span class="keyword">delete</span> p_value; <span class="comment">// 无效果</span></span><br><span class="line">    <span class="keyword">delete</span> p_temp; <span class="comment">// 无效果</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误示例:</span></span><br><span class="line">    <span class="keyword">int</span> stack_var = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> * p_stack = &amp;stack_var;</span><br><span class="line">    <span class="comment">// delete p_stack; // 严重错误! 不能 delete 栈内存</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> * p1 = <span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">    <span class="keyword">int</span> * p2 = p1; <span class="comment">// p1 和 p2 指向同一块内存</span></span><br><span class="line">    <span class="keyword">delete</span> p1;</span><br><span class="line">    <span class="comment">// delete p2; // 严重错误! 删除了同一块内存两次</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>忘记 <code>delete</code> 会导致内存泄漏，而错误地使用 <code>delete</code> 则可能导致程序崩溃或数据损坏。正确管理动态内存是 C++ 编程中的一项重要技能。</p>
+<h2 id="4-7-6-使用new来创建动态数组"><a href="#4-7-6-使用new来创建动态数组" class="headerlink" title="4.7.6 使用new来创建动态数组"></a>4.7.6 使用new来创建动态数组</h2><p>除了分配单个变量的内存，<code>new</code> 也可以用来动态分配<strong>数组</strong>。这在你需要在运行时确定数组大小时非常有用。</p>
+<p><strong>语法:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pointerVariable = <span class="keyword">new</span> typeName [numberOfElements];</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">typeName * pointerVariable = <span class="keyword">new</span> typeName [numberOfElements];</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>new</code>: 运算符。</li>
+<li>  <code>typeName</code>: 数组元素的数据类型。</li>
+<li>  <code>numberOfElements</code>: 数组的大小，可以是一个变量或表达式，在运行时计算其值。</li>
+<li>  <code>[]</code>: 表明要分配的是一个数组。</li>
+</ul>
+<p><code>new[]</code> 会分配一块连续的内存，足以容纳 <code>numberOfElements</code> 个 <code>typeName</code> 类型的元素，并返回指向<strong>数组第一个元素</strong>的指针。</p>
+<p><strong>释放动态数组 (<code>delete[]</code>):</strong></p>
+<p>释放由 <code>new[]</code> 分配的数组内存<strong>必须</strong>使用 <code>delete[]</code> 运算符，而不是 <code>delete</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> [] pointerVariable;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>delete[]</code>: 用于释放数组内存的运算符。</li>
+<li>  <code>pointerVariable</code>: 指向由 <code>new[]</code> 分配的数组内存的指针。</li>
+</ul>
+<p><strong><code>delete[]</code> 和 <code>delete</code> 的区别至关重要:</strong></p>
+<ul>
+<li>  <code>delete[]</code> 知道需要释放的是一个数组，它会正确地调用数组中每个对象（如果是类类型）的析构函数（如果需要），并释放整个数组占用的内存。</li>
+<li>  如果对 <code>new[]</code> 分配的内存使用 <code>delete</code>（没有 <code>[]</code>），行为是<strong>未定义的</strong>。对于基本类型可能看似正常工作（但仍是错误的），但对于包含对象的数组，很可能只调用第一个对象的析构函数，并可能导致内存损坏或泄漏。</li>
+</ul>
+<p><strong>用法与示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter the size of the dynamic array: &quot;</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Invalid size.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 使用 new[] 分配动态数组</span></span><br><span class="line">    <span class="keyword">int</span> * dynArray = <span class="keyword">new</span> <span class="keyword">int</span>[size]; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查分配是否成功 (可选，对于普通 new[] 失败会抛异常)</span></span><br><span class="line">    <span class="keyword">if</span> (dynArray == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">         <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Memory allocation failed!&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">         <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 像普通数组一样使用指针访问动态数组元素</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">        dynArray[i] = i * <span class="number">10</span>; <span class="comment">// 使用数组下标访问</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Dynamic array elements:&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; ++i) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; dynArray[&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;] = &quot;</span> &lt;&lt; *(dynArray + i) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 也可以使用指针算术访问</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 使用 delete[] 释放动态数组内存</span></span><br><span class="line">    <span class="keyword">delete</span> [] dynArray;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 将指针设为 nullptr (好习惯)</span></span><br><span class="line">    dynArray = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Dynamic array deleted.&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 错误示例:</span></span><br><span class="line">    <span class="keyword">double</span> * p_arr = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">10</span>];</span><br><span class="line">    <span class="comment">// delete p_arr; // 错误! 应该使用 delete [] p_arr;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong></p>
+<ul>
+<li>  使用 <code>new typeName[size]</code> 分配动态数组。</li>
+<li>  使用 <code>delete [] pointerVariable</code> 释放动态数组。</li>
+<li>  <strong>必须</strong>匹配 <code>new[]</code> 和 <code>delete[]</code>，否则行为未定义。</li>
+<li>  动态数组提供了在运行时确定数组大小的灵活性，但需要程序员负责内存管理。</li>
+</ul>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2025/04/26/4.7_%E6%8C%87%E9%92%88%E5%92%8C%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4/>http://uniqueland.top/2025/04/26/4.7_%E6%8C%87%E9%92%88%E5%92%8C%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2025-04-26T19:30:02+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2025年4月26日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Program/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Program</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C++</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2025/04/26/4.7_%E6%8C%87%E9%92%88%E5%92%8C%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4/&title=4.7 指针和自由存储空间 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2025/04/26/4.7_%E6%8C%87%E9%92%88%E5%92%8C%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4/&title=4.7 指针和自由存储空间 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2025/04/26/4.7_%E6%8C%87%E9%92%88%E5%92%8C%E8%87%AA%E7%94%B1%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4/&title=4.7 指针和自由存储空间 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2025/04/26/4.8_%E6%8C%87%E9%92%88%E3%80%81%E6%95%B0%E7%BB%84%E5%92%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%9C%AF/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>4.8 指针、数组和指针算术</p>
+          <p class='content'>指针和数组在 C++ 中有着非常紧密的联系。理解这种关系以及指针算术对于有效地使用 C++ 处理内存和数据集合至关重要。
+4.8.1 程序说明指针算术允许我们对指针执行一些特殊的算术运算，主要是...</p>
+        </a>
+      
+      
+        <a class='next' href='/2025/04/26/4.6_%E6%9E%9A%E4%B8%BE/'>
+          <p class='title'>4.6 枚举<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>C++ 的 enum 工具提供了一种创建符号常量 (Symbolic Constant) 的方式，常用于定义一组相关的、具有名称的整数常量。这比使用 const int 或 #define 来定...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-1-%E5%A3%B0%E6%98%8E%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96%E6%8C%87%E9%92%88"><span class="toc-text">4.7.1 声明和初始化指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-2-%E6%8C%87%E9%92%88%E7%9A%84%E5%8D%B1%E9%99%A9"><span class="toc-text">4.7.2 指针的危险</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-3-%E6%8C%87%E9%92%88%E5%92%8C%E6%95%B0%E5%AD%97"><span class="toc-text">4.7.3 指针和数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-4-%E4%BD%BF%E7%94%A8new%E6%9D%A5%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98"><span class="toc-text">4.7.4 使用new来分配内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-5-%E4%BD%BF%E7%94%A8delete%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98"><span class="toc-text">4.7.5 使用delete释放内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-7-6-%E4%BD%BF%E7%94%A8new%E6%9D%A5%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E6%95%B0%E7%BB%84"><span class="toc-text">4.7.6 使用new来创建动态数组</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="4.7 指针和自由存储空间";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='playlist'
+      id='5043500508'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6" target="_blank" class="codename">Volantis</a>
+        作为主题
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '5043500508';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+
+  loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
+
+
+</script>
+
+
+
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/valine.min.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/app.min.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/search/hexo.min.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://uniqueland.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+       
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+	 
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+	  
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
