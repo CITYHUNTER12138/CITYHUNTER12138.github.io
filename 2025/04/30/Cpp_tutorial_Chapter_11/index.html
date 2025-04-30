@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+  <title>Chapter 11 使用类 - Uniqueland</title>
+  
+    <meta name="keywords" content="Program,C++">
+  
+
+  
+    <meta name="description" content="C++ tutorial">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  
+    <link rel="shortcut icon" type='image/x-icon' href="https://www.helloimg.com/images/2022/03/27/ReozOM.png">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/first.css">
+
+  
+
+  
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+
+  <script id="loadcss"></script>
+
+</head>
+
+<body>
+  
+
+<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone' id="pjax-header-nav-list">
+        <li><a id="s-comment" class="fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a id="s-toc" class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+  <div id="l_body">
+    <div id="l_cover">
+  
+    
+        <div id="full" class='cover-wrapper post dock' style="display: none;">
+          
+            <div class='cover-bg lazyload placeholder' data-bg="https://cdn.jsdelivr.net/gh/volantis-x/cdn-wallpaper-minimalist/2020/033.jpg"></div>
+          
+          <div class='cover-body'>
+  <div class='top'>
+    
+    
+      <p class="title">Uniqueland</p>
+    
+    
+      <p class="subtitle">--XR's personal Blog</p>
+    
+  </div>
+  <div class='bottom'>
+    <div class='menu navigation'>
+      <div class='list-h'>
+        
+          
+            <a href="/categories/"
+              
+              
+              id="categories">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f5c3.svg'><p>分类</p>
+            </a>
+          
+            <a href="/about/"
+              
+              
+              id="about">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f516.svg'><p>帮助</p>
+            </a>
+          
+            <a href="/tags/"
+              
+              
+              id="tags">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f396.svg'><p>标签</p>
+            </a>
+          
+            <a href="/archives/"
+              
+              
+              id="archives">
+              <img src='https://cdn.jsdelivr.net/gh/twitter/twemoji@13.0/assets/svg/1f4f0.svg'><p>博客</p>
+            </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        </div>
+    
+  
+  </div>
+
+    <div id='safearea'>
+      <div class='body-wrapper' id="pjax-container">
+        
+
+<div class='l_main'>
+  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
+  
+
+
+  
+    <div class='headimg-div'>
+      <a class='headimg-a'>
+        <img class='headimg' src='https://s2.loli.net/2025/04/26/9F74KMasiN1YwQW.png'/>
+      </a>
+    </div>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title">
+        Chapter 11 使用类
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author'>
+  <a class='author' href="/" rel="nofollow">
+    <img no-lazy src="https://www.helloimg.com/images/2020/11/23/8a8ba722a8cbb8dfcd3cd817f82fa69df380c420_raw83a79d7575e179a3.md.jpg">
+    <p>XR</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2025年4月30日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item browse leancloud">
+    <a class='notlink'>
+      
+      <div id="lc-pv" data-title="Chapter 11 使用类" data-path="/2025/04/30/Cpp_tutorial_Chapter_11/">
+        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
+        次浏览
+      </div>
+    </a>
+  </div>
+
+
+          
+        
+      </div>
+    
+  </div>
+
+
+  
+  <h2 id="11-1-运算符重载"><a href="#11-1-运算符重载" class="headerlink" title="11.1 运算符重载"></a>11.1 运算符重载</h2><p>C++ 允许将运算符（如 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code>, <code>==</code> 等）应用于<strong>类对象</strong>，就像它们是内置类型（如 <code>int</code> 或 <code>double</code>）一样。这种特性称为**运算符重载 (Operator Overloading)**。</p>
+<p><strong>目的:</strong></p>
+<p>运算符重载的主要目的是<strong>提高代码的可读性和直观性</strong>。通过重载运算符，我们可以让我们自己定义的类（比如表示复数、向量、时间或字符串的类）能够使用熟悉的运算符进行操作，使得代码更接近自然语言或数学表示法。</p>
+<p>例如，假设你有一个表示二维向量的类 <code>Vector</code>。如果没有运算符重载，你可能需要这样写代码来计算两个向量的和：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Vector <span class="title">v1</span><span class="params">(<span class="number">1.0</span>, <span class="number">2.0</span>)</span></span>;</span><br><span class="line"><span class="function">Vector <span class="title">v2</span><span class="params">(<span class="number">3.0</span>, <span class="number">4.0</span>)</span></span>;</span><br><span class="line">Vector sum = v1.add(v2); <span class="comment">// 使用名为 add 的成员函数</span></span><br></pre></td></tr></table></figure>
+
+<p>通过重载 <code>+</code> 运算符，你可以写出更自然、更简洁的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Vector <span class="title">v1</span><span class="params">(<span class="number">1.0</span>, <span class="number">2.0</span>)</span></span>;</span><br><span class="line"><span class="function">Vector <span class="title">v2</span><span class="params">(<span class="number">3.0</span>, <span class="number">4.0</span>)</span></span>;</span><br><span class="line">Vector sum = v1 + v2; <span class="comment">// 使用重载的 + 运算符</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>如何实现:</strong></p>
+<p>运算符重载是通过编写特殊的<strong>运算符函数 (Operator Functions)</strong> 来实现的。运算符函数的名称格式为 <code>operator</code> 关键字后跟要重载的运算符符号。例如，重载加法运算符 <code>+</code> 的函数名为 <code>operator+</code>，重载小于运算符 <code>&lt;</code> 的函数名为 <code>operator&lt;</code>。</p>
+<p>运算符函数可以被定义为：</p>
+<ol>
+<li><p><strong>类的成员函数 (Member Function):</strong></p>
+<ul>
+<li>  当运算符函数是成员函数时，它的<strong>第一个操作数</strong>隐式地是调用该函数的对象（通过 <code>this</code> 指针访问）。</li>
+<li>  对于二元运算符（如 <code>+</code>, <code>-</code>, <code>*</code>），成员函数只需要<strong>一个显式参数</strong>（代表右操作数）。</li>
+<li>  对于一元运算符（如 <code>-</code> (负号), <code>++</code> (前缀)），成员函数<strong>没有显式参数</strong>。</li>
+</ul>
+</li>
+<li><p><strong>非成员函数 (Non-member Function):</strong></p>
+<ul>
+<li>  通常将非成员运算符函数声明为类的**友元 (friend)**，以便它可以访问类的私有成员。</li>
+<li>  对于二元运算符，非成员函数需要<strong>两个显式参数</strong>（分别代表左操作数和右操作数）。</li>
+<li>  对于一元运算符，非成员函数需要<strong>一个显式参数</strong>。</li>
+</ul>
+</li>
+</ol>
+<p><strong>基本语法 (以二元运算符 <code>+</code> 为例):</strong></p>
+<p><strong>作为成员函数:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... 其他成员 ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明重载的 + 运算符 (成员函数)</span></span><br><span class="line">    <span class="comment">// other 是右操作数对象</span></span><br><span class="line">    MyClass <span class="keyword">operator</span>+(<span class="keyword">const</span> MyClass&amp; other) <span class="keyword">const</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义</span></span><br><span class="line">MyClass MyClass::<span class="keyword">operator</span>+(<span class="keyword">const</span> MyClass&amp; other) <span class="keyword">const</span> &#123;</span><br><span class="line">    MyClass result;</span><br><span class="line">    <span class="comment">// 实现加法逻辑，通常涉及 this 对象和 other 对象</span></span><br><span class="line">    <span class="comment">// result.data = this-&gt;data + other.data; // 假设有 data 成员</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">MyClass obj1, obj2;</span><br><span class="line">MyClass sum = obj1 + obj2; <span class="comment">// 实际调用 obj1.operator+(obj2)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>作为非成员函数 (通常是友元):</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... 私有成员 ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... 其他公有成员 ...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明友元函数来重载 + 运算符</span></span><br><span class="line">    <span class="keyword">friend</span> MyClass <span class="keyword">operator</span>+(<span class="keyword">const</span> MyClass&amp; left, <span class="keyword">const</span> MyClass&amp; right);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 (非成员函数，不需要 MyClass::)</span></span><br><span class="line">MyClass <span class="keyword">operator</span>+(<span class="keyword">const</span> MyClass&amp; left, <span class="keyword">const</span> MyClass&amp; right) &#123;</span><br><span class="line">    MyClass result;</span><br><span class="line">    <span class="comment">// 实现加法逻辑，访问 left 和 right 对象的成员 (需要友元权限访问私有成员)</span></span><br><span class="line">    <span class="comment">// result.data = left.data + right.data; // 假设有 data 成员</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">MyClass obj1, obj2;</span><br><span class="line">MyClass sum = obj1 + obj2; <span class="comment">// 实际调用 operator+(obj1, obj2)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项:</strong></p>
+<ul>
+<li>  <strong>不能创建新的运算符:</strong> 你只能重载 C++ 中已有的运算符，不能发明新的运算符（比如 <code>**</code> 或 <code>##</code>）。</li>
+<li>  <strong>不能改变运算符的优先级或结合性:</strong> 重载 <code>+</code> 和 <code>*</code> 后，<code>*</code> 的优先级仍然高于 <code>+</code>。</li>
+<li>  <strong>不能改变运算符的操作数个数:</strong> 不能将二元运算符重载为一元运算符，反之亦然。</li>
+<li>  <strong>至少一个操作数是用户定义类型:</strong> 不能为两个内置类型（如 <code>int</code> 和 <code>int</code>）重载运算符。运算符重载必须涉及至少一个类对象（或枚举类型）。</li>
+<li><strong>某些运算符不能重载:</strong><ul>
+<li>  <code>.</code> (成员访问运算符)</li>
+<li>  <code>.*</code> (成员指针访问运算符)</li>
+<li>  <code>::</code> (作用域解析运算符)</li>
+<li>  <code>sizeof</code> (大小运算符)</li>
+<li>  <code>?:</code> (条件运算符)</li>
+<li>  <code>typeid</code> (运行时类型识别运算符)</li>
+<li>  <code>static_cast</code>, <code>dynamic_cast</code>, <code>const_cast</code>, <code>reinterpret_cast</code> (类型转换运算符，虽然 <code>operator type()</code> 形式的转换函数可以定义)</li>
+</ul>
+</li>
+</ul>
+<p>运算符重载是 C++ 提供的一个强大工具，可以使自定义类的使用更加自然和方便。然而，也应谨慎使用，避免过度或不直观的重载，以免降低代码的可读性。接下来的章节将通过具体的例子来演示如何重载不同的运算符。</p>
+<h2 id="11-2-计算时间：一个运算符重载示例"><a href="#11-2-计算时间：一个运算符重载示例" class="headerlink" title="11.2 计算时间：一个运算符重载示例"></a>11.2 计算时间：一个运算符重载示例</h2><p>为了具体说明运算符重载的过程和用法，让我们创建一个简单的 <code>Time</code> 类来表示时间（小时和分钟），并为其重载一些运算符。</p>
+<p><strong>基础 <code>Time</code> 类:</strong></p>
+<p>首先，我们定义一个基础的 <code>Time</code> 类，包含小时和分钟，一个构造函数来初始化时间，以及一个 <code>show()</code> 方法来显示时间。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// time.h -- Time 类定义</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> TIME_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TIME_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> hours;</span><br><span class="line">    <span class="keyword">int</span> minutes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数，默认值为 0 时 0 分</span></span><br><span class="line">    Time(<span class="keyword">int</span> h = <span class="number">0</span>, <span class="keyword">int</span> m = <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// 添加分钟数的方法 (内部会处理进位)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddMin</span><span class="params">(<span class="keyword">int</span> m)</span></span>;</span><br><span class="line">    <span class="comment">// 添加小时数的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddHr</span><span class="params">(<span class="keyword">int</span> h)</span></span>;</span><br><span class="line">    <span class="comment">// 重置时间为 0 时 0 分</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Reset</span><span class="params">(<span class="keyword">int</span> h = <span class="number">0</span>, <span class="keyword">int</span> m = <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 显示时间</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Show</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// TIME_H_</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// time.cpp -- Time 类方法实现</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;time.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">Time::Time(<span class="keyword">int</span> h, <span class="keyword">int</span> m) &#123;</span><br><span class="line">    hours = h;</span><br><span class="line">    minutes = m;</span><br><span class="line">    <span class="comment">// 可以添加一些验证逻辑，例如确保分钟数小于60</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Time::AddMin</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    minutes += m;</span><br><span class="line">    hours += minutes / <span class="number">60</span>; <span class="comment">// 整数除法，计算增加的小时数</span></span><br><span class="line">    minutes %= <span class="number">60</span>;       <span class="comment">// 取模，得到剩余的分钟数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Time::AddHr</span><span class="params">(<span class="keyword">int</span> h)</span> </span>&#123;</span><br><span class="line">    hours += h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Time::Reset</span><span class="params">(<span class="keyword">int</span> h, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    hours = h;</span><br><span class="line">    minutes = m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Time::Show</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; hours &lt;&lt; <span class="string">&quot; hours, &quot;</span> &lt;&lt; minutes &lt;&lt; <span class="string">&quot; minutes&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个基础类允许我们创建 <code>Time</code> 对象并对其进行一些基本操作，但还不能直接使用 <code>+</code> 等运算符。</p>
+<h3 id="11-2-1-添加加法运算符"><a href="#11-2-1-添加加法运算符" class="headerlink" title="11.2.1 添加加法运算符"></a>11.2.1 添加加法运算符</h3><p>我们希望能够像 <code>total = time1 + time2;</code> 这样将两个 <code>Time</code> 对象相加。为此，我们需要重载 <code>+</code> 运算符。我们将它实现为 <code>Time</code> 类的<strong>成员函数</strong>。</p>
+<p><strong>在 <code>time.h</code> 中添加声明:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.h</span></span><br><span class="line"><span class="comment">// ... (包含 guards 和 iostream) ...</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> hours;</span><br><span class="line">    <span class="keyword">int</span> minutes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Time(<span class="keyword">int</span> h = <span class="number">0</span>, <span class="keyword">int</span> m = <span class="number">0</span>);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddMin</span><span class="params">(<span class="keyword">int</span> m)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddHr</span><span class="params">(<span class="keyword">int</span> h)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Reset</span><span class="params">(<span class="keyword">int</span> h = <span class="number">0</span>, <span class="keyword">int</span> m = <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Show</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重载加法运算符 (+) 作为成员函数</span></span><br><span class="line">    <span class="comment">// 参数 t 代表加号右边的 Time 对象</span></span><br><span class="line">    <span class="comment">// const 关键字表示这个函数不会修改调用它的对象 (加号左边的对象)</span></span><br><span class="line">    <span class="comment">// 返回一个新的 Time 对象作为结果</span></span><br><span class="line">    Time <span class="keyword">operator</span>+(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... (endif) ...</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>在 <code>time.cpp</code> 中添加定义:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;time.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... (构造函数和其他方法的定义) ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义重载的加法运算符</span></span><br><span class="line">Time Time::<span class="keyword">operator</span>+(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span> &#123;</span><br><span class="line">    Time sum; <span class="comment">// 创建一个临时的 Time 对象来存储结果</span></span><br><span class="line">    sum.minutes = minutes + t.minutes; <span class="comment">// 将两个对象的分钟数相加</span></span><br><span class="line">    sum.hours = hours + t.hours + sum.minutes / <span class="number">60</span>; <span class="comment">// 将小时数相加，并加上分钟进位的小时</span></span><br><span class="line">    sum.minutes %= <span class="number">60</span>; <span class="comment">// 调整结果的分钟数</span></span><br><span class="line">    <span class="keyword">return</span> sum; <span class="comment">// 返回结果对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用重载的 <code>+</code> 运算符:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp -- 使用 Time 类和重载的 +</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;time.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Time <span class="title">planning</span><span class="params">(<span class="number">2</span>, <span class="number">40</span>)</span></span>; <span class="comment">// 2 小时 40 分钟</span></span><br><span class="line">    <span class="function">Time <span class="title">coding</span><span class="params">(<span class="number">5</span>, <span class="number">55</span>)</span></span>;   <span class="comment">// 5 小时 55 分钟</span></span><br><span class="line">    <span class="function">Time <span class="title">fixing</span><span class="params">(<span class="number">1</span>, <span class="number">30</span>)</span></span>;   <span class="comment">// 1 小时 30 分钟</span></span><br><span class="line">    Time total;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Planning time = &quot;</span>;</span><br><span class="line">    planning.Show();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Coding time = &quot;</span>;</span><br><span class="line">    coding.Show();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用重载的 + 运算符</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Calculating total time...\n&quot;</span>;</span><br><span class="line">    total = planning + coding + fixing; <span class="comment">// 相当于 (planning.operator+(coding)).operator+(fixing)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 显示总时间</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Total time = &quot;</span>;</span><br><span class="line">    total.Show();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>编译和运行:</strong><br>(需要将 <code>main.cpp</code> 和 <code>time.cpp</code> 一起编译链接)</p>
+<p><strong>输出:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Planning time &#x3D; 2 hours, 40 minutes</span><br><span class="line">Coding time &#x3D; 5 hours, 55 minutes</span><br><span class="line">Calculating total time...</span><br><span class="line">Total time &#x3D; 10 hours, 5 minutes</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，通过重载 <code>+</code> 运算符，我们可以用非常自然的方式将 <code>Time</code> 对象相加。</p>
+<h3 id="11-2-2-重载限制"><a href="#11-2-2-重载限制" class="headerlink" title="11.2.2 重载限制"></a>11.2.2 重载限制</h3><p>重载运算符时必须遵守一些规则和限制：</p>
+<ol>
+<li> <strong>不能创建新运算符:</strong> 只能重载 C++ 已有的运算符。</li>
+<li> <strong>不能改变运算符优先级和结合性:</strong> <code>*</code> 总是优先于 <code>+</code>。</li>
+<li> <strong>不能改变运算符操作数个数:</strong> 二元运算符（如 <code>+</code>）必须接受两个操作数，一元运算符（如 <code>-</code> (负号)）必须接受一个操作数。</li>
+<li> <strong>至少一个操作数是用户定义类型:</strong> 不能为两个 <code>int</code> 重载 <code>+</code> 运算符。重载必须涉及至少一个类对象（或枚举）。</li>
+<li> <strong>特定运算符不能重载:</strong> 如 <code>.</code>、<code>::</code>、<code>sizeof</code>、<code>?:</code> 等。</li>
+<li> <strong>保持直观性:</strong> 重载应该符合运算符的通常含义。例如，用 <code>+</code> 来表示两个对象的相减会非常令人困惑。虽然语法上允许，但这是不良实践。</li>
+</ol>
+<h3 id="11-2-3-其他重载运算符"><a href="#11-2-3-其他重载运算符" class="headerlink" title="11.2.3 其他重载运算符"></a>11.2.3 其他重载运算符</h3><p>我们可以为 <code>Time</code> 类重载更多的运算符，使其功能更完善。</p>
+<p><strong>重载减法运算符 (<code>-</code>) 作为成员函数:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.h</span></span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... existing members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... existing methods ...</span></span><br><span class="line">    Time <span class="keyword">operator</span>+(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span>;</span><br><span class="line">    <span class="comment">// 声明重载减法运算符 (-)</span></span><br><span class="line">    Time <span class="keyword">operator</span>-(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.cpp</span></span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义重载的减法运算符</span></span><br><span class="line">Time Time::<span class="keyword">operator</span>-(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span> &#123;</span><br><span class="line">    Time diff;</span><br><span class="line">    <span class="keyword">int</span> tot1, tot2;</span><br><span class="line">    <span class="comment">// 将时间都转换为总分钟数进行计算</span></span><br><span class="line">    tot1 = t.minutes + <span class="number">60</span> * t.hours;</span><br><span class="line">    tot2 = minutes + <span class="number">60</span> * hours;</span><br><span class="line">    <span class="comment">// 确保结果非负 (简单处理，实际可能需要更复杂的逻辑)</span></span><br><span class="line">    <span class="keyword">if</span> (tot2 &lt; tot1) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Warning: subtraction result is negative. Resetting to 0.\n&quot;</span>;</span><br><span class="line">        diff.hours = diff.minutes = <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        diff.minutes = (tot2 - tot1) % <span class="number">60</span>;</span><br><span class="line">        diff.hours = (tot2 - tot1) / <span class="number">60</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> diff;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>重载乘法运算符 (<code>*</code>) - 时间乘以一个因子:</strong></p>
+<p>假设我们想计算 <code>Time</code> 对象乘以一个 <code>double</code> 因子（例如，将时间放大 1.5 倍）。这个运算符的操作数类型不同（<code>Time</code> 和 <code>double</code>），可以作为成员函数或非成员函数实现。这里我们作为成员函数实现。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.h</span></span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... existing members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... existing methods ...</span></span><br><span class="line">    Time <span class="keyword">operator</span>+(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span>;</span><br><span class="line">    Time <span class="keyword">operator</span>-(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span>;</span><br><span class="line">    <span class="comment">// 声明重载乘法运算符 (*)</span></span><br><span class="line">    Time <span class="keyword">operator</span>*(<span class="keyword">double</span> mult) <span class="keyword">const</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.cpp</span></span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义重载的乘法运算符</span></span><br><span class="line">Time Time::<span class="keyword">operator</span>*(<span class="keyword">double</span> mult) <span class="keyword">const</span> &#123;</span><br><span class="line">    Time result;</span><br><span class="line">    <span class="comment">// 将时间转换为总分钟数，乘以因子，然后转换回小时和分钟</span></span><br><span class="line">    <span class="keyword">long</span> totalminutes = hours * <span class="number">60</span> + minutes;</span><br><span class="line">    totalminutes *= mult; <span class="comment">// 乘以因子</span></span><br><span class="line">    result.hours = totalminutes / <span class="number">60</span>;</span><br><span class="line">    result.minutes = totalminutes % <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用示例:</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp (续)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;time.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Time <span class="title">t1</span><span class="params">(<span class="number">2</span>, <span class="number">30</span>)</span></span>; <span class="comment">// 2 hours, 30 minutes</span></span><br><span class="line">    <span class="function">Time <span class="title">t2</span><span class="params">(<span class="number">1</span>, <span class="number">45</span>)</span></span>; <span class="comment">// 1 hours, 45 minutes</span></span><br><span class="line">    Time diff, product;</span><br><span class="line">    <span class="keyword">double</span> factor = <span class="number">1.5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;t1 = &quot;</span>; t1.Show(); <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;t2 = &quot;</span>; t2.Show(); <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    diff = t1 - t2; <span class="comment">// 使用重载的 -</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;t1 - t2 = &quot;</span>; diff.Show(); <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    product = t1 * factor; <span class="comment">// 使用重载的 *</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;t1 * &quot;</span> &lt;&lt; factor &lt;&lt; <span class="string">&quot; = &quot;</span>; product.Show(); <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意：我们没有定义 double * Time，所以下面的写法会报错</span></span><br><span class="line">    <span class="comment">// product = factor * t1; // 错误! 需要非成员函数或转换函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 (续):</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t1 &#x3D; 2 hours, 30 minutes</span><br><span class="line">t2 &#x3D; 1 hours, 45 minutes</span><br><span class="line">t1 - t2 &#x3D; 0 hours, 45 minutes</span><br><span class="line">t1 * 1.5 &#x3D; 3 hours, 45 minutes</span><br></pre></td></tr></table></figure>
+
+<p>这个例子展示了如何通过重载运算符，让自定义的 <code>Time</code> 类能够以更自然、更符合数学直觉的方式进行运算。下一节将讨论友元函数，特别是如何使用友元函数来重载像 <code>&lt;&lt;</code> 这样的输出运算符，以及处理像 <code>double * Time</code> 这样的运算顺序问题。</p>
+<h2 id="11-3-友元"><a href="#11-3-友元" class="headerlink" title="11.3 友元"></a>11.3 友元</h2><p>通常，类的私有成员（<code>private</code>）只能被该类的成员函数访问。这是 C++ 实现封装和数据隐藏的关键机制。然而，在某些特殊情况下，允许特定的<strong>非成员函数</strong>或<strong>其他类</strong>访问一个类的私有成员会非常方便。C++ 提供了<strong>友元 (friend)</strong> 机制来实现这种受控的访问。</p>
+<p><strong>什么是友元？</strong></p>
+<p>友元是 C++ 中的一种机制，它允许一个类授予<strong>非成员函数</strong>或<strong>另一个类</strong>访问其 <code>private</code> 和 <code>protected</code> 成员的权限。被授予权限的函数或类被称为该类的<strong>友元</strong>。</p>
+<p><strong>注意:</strong> 友元关系是<strong>单向的</strong>，并且<strong>不能被继承</strong>。如果类 <code>A</code> 将函数 <code>func()</code> 声明为友元，<code>func()</code> 可以访问 <code>A</code> 的私有成员，但这并不意味着 <code>A</code> 可以访问 <code>func()</code> 的内部（如果 <code>func</code> 是另一个类的成员），也不意味着 <code>A</code> 的派生类会自动将 <code>func()</code> 视为友元。</p>
+<h3 id="11-3-1-创建友元"><a href="#11-3-1-创建友元" class="headerlink" title="11.3.1 创建友元"></a>11.3.1 创建友元</h3><p>要将一个函数或另一个类声明为当前类的友元，需要在<strong>当前类的定义内部</strong>使用 <code>friend</code> 关键字进行声明。</p>
+<p><strong>1. 友元函数 (Friend Function):</strong></p>
+<p>友元函数可以是普通的非成员函数，也可以是另一个类的成员函数。</p>
+<ul>
+<li><p><strong>声明普通非成员函数为友元:</strong></p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> secret;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    MyClass(<span class="keyword">int</span> s = <span class="number">0</span>) : secret(s) &#123;&#125;</span><br><span class="line">    <span class="comment">// 在类定义内部声明友元函数</span></span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="keyword">void</span> <span class="title">showSecret</span><span class="params">(<span class="keyword">const</span> MyClass&amp; obj)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义友元函数 (注意：它不是成员函数，没有 MyClass::)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">showSecret</span><span class="params">(<span class="keyword">const</span> MyClass&amp; obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 因为是 MyClass 的友元，所以可以访问其私有成员 secret</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;The secret is: &quot;</span> &lt;&lt; obj.secret &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">myObj</span><span class="params">(<span class="number">42</span>)</span></span>;</span><br><span class="line">    showSecret(myObj); <span class="comment">// 调用友元函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>声明另一个类的成员函数为友元:</strong> (需要注意声明顺序和前向声明)</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前向声明 ClassB，因为 ClassA 的友元声明中用到了它</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassB</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> dataA;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ClassA(<span class="keyword">int</span> d = <span class="number">0</span>) : dataA(d) &#123;&#125;</span><br><span class="line">    <span class="comment">// 声明 ClassB 的成员函数 memberB 为友元</span></span><br><span class="line">    <span class="function"><span class="keyword">friend</span> <span class="keyword">void</span> <span class="title">ClassB::memberB</span><span class="params">(<span class="keyword">const</span> ClassA&amp; a)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassB</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ClassB 的成员函数，它将是 ClassA 的友元</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">memberB</span><span class="params">(<span class="keyword">const</span> ClassA&amp; a)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 ClassB::memberB</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ClassB::memberB</span><span class="params">(<span class="keyword">const</span> ClassA&amp; a)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 可以访问 ClassA 的私有成员 dataA</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Accessing ClassA data from ClassB: &quot;</span> &lt;&lt; a.dataA &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">ClassA <span class="title">objA</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">    ClassB objB;</span><br><span class="line">    objB.memberB(objA); <span class="comment">// 调用 ClassB 的成员函数，该函数是 ClassA 的友元</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>2. 友元类 (Friend Class):</strong></p>
+<p>一个类可以将另一个<strong>整个类</strong>声明为友元。这样，友元类的<strong>所有成员函数</strong>都可以访问声明它为友元的那个类的 <code>private</code> 和 <code>protected</code> 成员。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Storage</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> value;</span><br><span class="line">    <span class="keyword">friend</span> <span class="class"><span class="keyword">class</span> <span class="title">Controller</span>;</span> <span class="comment">// 声明 Controller 为友元类</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Storage(<span class="keyword">int</span> v = <span class="number">0</span>) : value(v) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">manipulateStorage</span><span class="params">(Storage&amp; s, <span class="keyword">int</span> newValue)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 因为 Controller 是 Storage 的友元，可以访问其私有成员 value</span></span><br><span class="line">        s.value = newValue;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Storage value changed to: &quot;</span> &lt;&lt; s.value &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Storage <span class="title">myStorage</span><span class="params">(<span class="number">5</span>)</span></span>;</span><br><span class="line">    Controller myController;</span><br><span class="line">    myController.manipulateStorage(myStorage, <span class="number">99</span>); <span class="comment">// Controller 的方法可以修改 Storage 的私有数据</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-3-2-常用的友元：重载-lt-lt-运算符"><a href="#11-3-2-常用的友元：重载-lt-lt-运算符" class="headerlink" title="11.3.2 常用的友元：重载 &lt;&lt; 运算符"></a>11.3.2 常用的友元：重载 <code>&lt;&lt;</code> 运算符</h3><p>运算符重载最常见的应用之一就是重载**输出运算符 <code>&lt;&lt;</code>**，以便能够直接使用 <code>cout</code> 来打印对象的信息，例如 <code>cout &lt;&lt; myTimeObject;</code>。</p>
+<p><strong>为什么通常需要友元？</strong></p>
+<p>考虑 <code>cout &lt;&lt; myTimeObject;</code> 这个表达式。</p>
+<ul>
+<li>  它实际上是调用一个形式为 <code>operator&lt;&lt;(cout, myTimeObject)</code> 的函数。</li>
+<li>  这个运算符的<strong>左操作数</strong>是 <code>cout</code>（一个 <code>ostream</code> 类型的对象），<strong>右操作数</strong>是我们要打印的对象（比如 <code>Time</code> 类型的对象）。</li>
+</ul>
+<p>如果我们尝试将 <code>operator&lt;&lt;</code> 定义为 <code>Time</code> 类的<strong>成员函数</strong>，那么它的调用形式会是 <code>myTimeObject.operator&lt;&lt;(cout)</code>。这意味着 <code>myTimeObject</code> 必须是左操作数，而 <code>cout</code> 是右操作数，即 <code>myTimeObject &lt;&lt; cout</code>。这显然不符合我们习惯的用法。</p>
+<p>因此，<code>operator&lt;&lt;</code> 必须被重载为<strong>非成员函数</strong>。但是，这个非成员函数通常需要访问类的私有数据成员（如 <code>Time</code> 类的 <code>hours</code> 和 <code>minutes</code>）来打印它们。这就使得将 <code>operator&lt;&lt;</code> 声明为类的<strong>友元函数</strong>成为最自然、最常用的解决方案。</p>
+<p><strong>为 <code>Time</code> 类重载 <code>&lt;&lt;</code>:</strong></p>
+<ol>
+<li><p><strong>在 <code>time.h</code> 中声明友元函数:</strong></p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.h</span></span><br><span class="line"><span class="comment">// ... (包含 guards 和 iostream) ...</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... private members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... constructors and other methods ...</span></span><br><span class="line">    Time <span class="keyword">operator</span>+(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span>;</span><br><span class="line">    Time <span class="keyword">operator</span>-(<span class="keyword">const</span> Time &amp; t) <span class="keyword">const</span>;</span><br><span class="line">    Time <span class="keyword">operator</span>*(<span class="keyword">double</span> mult) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明友元函数 operator&lt;&lt;</span></span><br><span class="line">    <span class="comment">// 第一个参数是 ostream 对象的引用 (如 cout)</span></span><br><span class="line">    <span class="comment">// 第二个参数是要打印的 Time 对象的 const 引用</span></span><br><span class="line">    <span class="comment">// 返回 ostream 对象的引用，以支持链式输出 (cout &lt;&lt; t1 &lt;&lt; t2)</span></span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">std</span>::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream &amp; os, <span class="keyword">const</span> Time &amp; t);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不再需要 Show() 方法，因为 &lt;&lt; 提供了更好的方式</span></span><br><span class="line">    <span class="comment">// void Show() const;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... (endif) ...</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在 <code>time.cpp</code> 中定义友元函数:</strong> (注意：没有 <code>Time::</code> 前缀)</p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;time.h&quot;</span> <span class="comment">// 确保包含了 time.h</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ... (构造函数和其他方法的定义) ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义友元函数 operator&lt;&lt;</span></span><br><span class="line"><span class="built_in">std</span>::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream &amp; os, <span class="keyword">const</span> Time &amp; t) &#123;</span><br><span class="line">    <span class="comment">// 因为是友元，可以访问 t 的私有成员 hours 和 minutes</span></span><br><span class="line">    os &lt;&lt; t.hours &lt;&lt; <span class="string">&quot; hours, &quot;</span> &lt;&lt; t.minutes &lt;&lt; <span class="string">&quot; minutes&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> os; <span class="comment">// 返回 ostream 引用</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果删除了 Show()，需要移除它的定义</span></span><br><span class="line"><span class="comment">// void Time::Show() const &#123; ... &#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>使用重载的 <code>&lt;&lt;</code>:</strong></p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp -- 使用重载的 &lt;&lt;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;time.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Time <span class="title">t1</span><span class="params">(<span class="number">3</span>, <span class="number">45</span>)</span></span>;</span><br><span class="line">    <span class="function">Time <span class="title">t2</span><span class="params">(<span class="number">2</span>, <span class="number">15</span>)</span></span>;</span><br><span class="line">    Time sum = t1 + t2;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用重载的 &lt;&lt; 运算符输出</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Time t1: &quot;</span> &lt;&lt; t1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Time t2: &quot;</span> &lt;&lt; t2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Sum: &quot;</span> &lt;&lt; sum &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 链式输出</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;t1 + t2 = &quot;</span> &lt;&lt; t1 + t2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong>输出:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Time t1: 3 hours, 45 minutes</span><br><span class="line">Time t2: 2 hours, 15 minutes</span><br><span class="line">Sum: 6 hours, 0 minutes</span><br><span class="line">t1 + t2 &#x3D; 6 hours, 0 minutes</span><br></pre></td></tr></table></figure>
+
+<p><strong>处理 <code>double * Time</code> (友元函数方式):</strong></p>
+<p>在上一节中，我们定义了 <code>Time operator*(double mult) const;</code> 作为成员函数，可以处理 <code>time * double</code> 的情况，但不能处理 <code>double * time</code>。我们可以通过添加一个<strong>非成员友元函数</strong>来解决这个问题。</p>
+<ol>
+<li><p><strong>在 <code>time.h</code> 中添加友元声明:</strong></p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.h</span></span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... existing members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... existing methods ...</span></span><br><span class="line">    Time <span class="keyword">operator</span>*(<span class="keyword">double</span> mult) <span class="keyword">const</span>; <span class="comment">// 处理 time * double</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 友元函数处理 double * time</span></span><br><span class="line">    <span class="keyword">friend</span> Time <span class="keyword">operator</span>*(<span class="keyword">double</span> m, <span class="keyword">const</span> Time &amp; t);</span><br><span class="line">    <span class="keyword">friend</span> <span class="built_in">std</span>::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream &amp; os, <span class="keyword">const</span> Time &amp; t);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在 <code>time.cpp</code> 中添加友元定义:</strong></p>
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\time.cpp</span></span><br><span class="line"><span class="comment">// ... existing code ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义友元函数 operator* (double * Time)</span></span><br><span class="line"><span class="comment">// 通常可以简单地调用已有的成员函数版本</span></span><br><span class="line">Time <span class="keyword">operator</span>*(<span class="keyword">double</span> m, <span class="keyword">const</span> Time &amp; t) &#123;</span><br><span class="line">    <span class="comment">// return t.operator*(m); // 直接调用成员函数</span></span><br><span class="line">    <span class="keyword">return</span> t * m; <span class="comment">// 或者更简洁地使用已重载的 Time * double 运算符</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream &amp; os, <span class="keyword">const</span> Time &amp; t) &#123;</span><br><span class="line">    os &lt;&lt; t.hours &lt;&lt; <span class="string">&quot; hours, &quot;</span> &lt;&lt; t.minutes &lt;&lt; <span class="string">&quot; minutes&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> os;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>现在，<code>double * time</code> 的运算也可以正常工作了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="function">Time <span class="title">t1</span><span class="params">(<span class="number">2</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line"><span class="keyword">double</span> factor = <span class="number">2.5</span>;</span><br><span class="line">Time product1 = t1 * factor; <span class="comment">// 调用成员函数 t1.operator*(factor)</span></span><br><span class="line">Time product2 = factor * t1; <span class="comment">// 调用友元函数 operator*(factor, t1)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; product1 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出: 5 hours, 0 minutes</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; product2 &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// 输出: 5 hours, 0 minutes</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>总结:</strong></p>
+<ul>
+<li>  友元（函数或类）被授予访问声明其为友元的类的私有和保护成员的权限。</li>
+<li>  使用 <code>friend</code> 关键字在类定义内部声明友元。</li>
+<li>  友元对于重载某些运算符（尤其是需要访问私有成员且不能作为成员函数的运算符，如 <code>&lt;&lt;</code>）非常有用。</li>
+<li>  友元也用于实现需要紧密协作但又不适合放在同一个类中的功能。</li>
+<li>  虽然友元打破了纯粹的封装，但它提供了一种受控的、明确的方式来在必要时绕过访问限制。应谨慎使用，避免滥用。</li>
+</ul>
+<h2 id="11-4-重载运算符：作为成员函数还是非成员函数"><a href="#11-4-重载运算符：作为成员函数还是非成员函数" class="headerlink" title="11.4 重载运算符：作为成员函数还是非成员函数"></a>11.4 重载运算符：作为成员函数还是非成员函数</h2><p>在重载运算符时，一个关键的决定是将其实现为<strong>类的成员函数</strong>还是<strong>非成员函数</strong>（通常是友元）。这个选择会影响函数的调用方式、参数列表以及某些情况下的行为。</p>
+<p><strong>核心区别回顾:</strong></p>
+<ul>
+<li><p><strong>成员函数:</strong></p>
+<ul>
+<li>  通过类的对象调用。</li>
+<li>  左操作数隐式地是调用该函数的对象（通过 <code>this</code> 指针访问）。</li>
+<li>  对于二元运算符，它只需要一个显式参数（右操作数）。</li>
+<li>  对于一元运算符，它没有显式参数。</li>
+<li>  可以直接访问类的 <code>private</code> 和 <code>protected</code> 成员。</li>
+<li>  示例：<code>obj1 + obj2</code> 调用 <code>obj1.operator+(obj2)</code>。</li>
+</ul>
+</li>
+<li><p><strong>非成员函数:</strong></p>
+<ul>
+<li>  独立于类定义之外（但通常在同一个头文件或源文件中）。</li>
+<li>  所有操作数都必须作为显式参数传递。</li>
+<li>  对于二元运算符，它需要两个显式参数（左、右操作数）。</li>
+<li>  对于一元运算符，它需要一个显式参数。</li>
+<li>  如果需要访问类的 <code>private</code> 或 <code>protected</code> 成员，必须被声明为该类的**友元 (<code>friend</code>)**。</li>
+<li>  示例：<code>obj1 + obj2</code> 调用 <code>operator+(obj1, obj2)</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>选择指南:</strong></p>
+<p>以下是一些通用指南和特定运算符的惯例：</p>
+<ol>
+<li><p><strong>必须是成员函数的运算符:</strong><br> 以下运算符<strong>只能</strong>通过成员函数进行重载：</p>
+<ul>
+<li>  <code>=</code> (赋值运算符)</li>
+<li>  <code>[]</code> (下标运算符)</li>
+<li>  <code>()</code> (函数调用运算符)</li>
+<li>  <code>-&gt;</code> (成员访问运算符)</li>
+<li>  任何类型转换运算符 (如 <code>operator int()</code>)</li>
+</ul>
+</li>
+<li><p><strong>通常作为成员函数的运算符 (修改对象状态):</strong><br> 对于那些通常会<strong>修改其左操作数对象状态</strong>的运算符，将它们实现为成员函数通常更自然。这包括：</p>
+<ul>
+<li><p><strong>复合赋值运算符:</strong> <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>, <code>&amp;=</code>, <code>|=</code>, <code>^=</code>, <code>&lt;&lt;=</code>, <code>&gt;&gt;=</code></p>
+<ul>
+<li>  例如，<code>time1 += time2;</code> 直观地表示修改 <code>time1</code>。实现为 <code>time1.operator+=(time2)</code> 很合适。</li>
+</ul>
+</li>
+<li><p><strong>递增/递减运算符:</strong> <code>++</code>, <code>--</code> (前缀和后缀)</p>
+<ul>
+<li>  例如，<code>++myCounter;</code> 或 <code>myCounter++;</code> 修改 <code>myCounter</code> 对象。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例：重载 += 作为成员函数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... private members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... other methods ...</span></span><br><span class="line">    Time&amp; <span class="keyword">operator</span>+=(<span class="keyword">const</span> Time&amp; t); <span class="comment">// 返回引用以支持链式赋值</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Time&amp; Time::<span class="keyword">operator</span>+=(<span class="keyword">const</span> Time&amp; t) &#123;</span><br><span class="line">    <span class="comment">// 将 t 加到 *this 对象上</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;minutes += t.minutes;</span><br><span class="line">    <span class="keyword">this</span>-&gt;hours += t.hours + <span class="keyword">this</span>-&gt;minutes / <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">this</span>-&gt;minutes %= <span class="number">60</span>;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>; <span class="comment">// 返回修改后的对象自身的引用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>通常作为非成员函数 (通常是友元) 的运算符:</strong><br> 对于那些不修改操作数状态（而是创建一个新值）或者需要对称处理操作数（允许不同类型的左操作数）的运算符，通常将它们实现为非成员函数（通常是友元）。</p>
+<ul>
+<li><p><strong>二元算术运算符:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></p>
+<ul>
+<li>  虽然 <code>+</code> 也可以作为成员函数（如 11.2 节所示），但作为非成员友元函数可以提供更好的对称性。例如，如果类允许从 <code>double</code> 到 <code>Time</code> 的隐式转换（通常不推荐，但可能存在），那么友元函数 <code>operator+(const Time&amp;, const Time&amp;)</code> 可以处理 <code>time + time</code>、<code>time + double</code> 和 <code>double + time</code>（通过转换），而成员函数只能处理 <code>time + time</code> 和 <code>time + double</code>。</li>
+<li>  对于像 <code>double * Time</code> 这样的混合类型运算，如果想让 <code>double</code> 作为左操作数，则<strong>必须</strong>使用非成员函数（如 11.3 节所示）。</li>
+</ul>
+</li>
+<li><p><strong>关系运算符:</strong> <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></p>
+<ul>
+<li>  将它们实现为非成员友元可以更容易地处理对称性，并可能允许混合类型的比较（如果定义了适当的转换或重载版本）。</li>
+</ul>
+</li>
+<li><p>  <strong>位运算符:</strong> <code>&amp;</code>, <code>|</code>, <code>^</code></p>
+</li>
+<li><p>  <strong>逻辑运算符:</strong> <code>&amp;&amp;</code>, <code>||</code> (较少重载)</p>
+</li>
+<li><p><strong>输入/输出运算符:</strong> <code>&lt;&lt;</code>, <code>&gt;&gt;</code></p>
+<ul>
+<li>  <strong>必须</strong>是非成员函数，因为左操作数是 <code>ostream</code> 或 <code>istream</code> 对象，而不是你的类的对象。它们几乎总是需要成为友元以访问私有数据进行读写。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例：重载 == 作为非成员友元函数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line">    <span class="comment">// ... private members ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ... methods ...</span></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> Time&amp; t1, <span class="keyword">const</span> Time&amp; t2);</span><br><span class="line">    <span class="comment">// ... other friends ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> Time&amp; t1, <span class="keyword">const</span> Time&amp; t2) &#123;</span><br><span class="line">    <span class="keyword">return</span> (t1.hours == t2.hours &amp;&amp; t1.minutes == t2.minutes);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">运算符类型</th>
+<th align="left">推荐实现方式</th>
+<th align="left">原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>=</code>, <code>[]</code>, <code>()</code>, <code>-&gt;</code>, <code>type()</code></td>
+<td align="left"><strong>必须</strong>是成员函数</td>
+<td align="left">C++ 语言规定</td>
+</tr>
+<tr>
+<td align="left"><code>+=</code>, <code>-=</code>, <code>*=</code>, etc.</td>
+<td align="left">成员函数</td>
+<td align="left">通常修改左操作数对象的状态</td>
+</tr>
+<tr>
+<td align="left"><code>++</code>, <code>--</code></td>
+<td align="left">成员函数</td>
+<td align="left">修改对象状态</td>
+</tr>
+<tr>
+<td align="left"><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></td>
+<td align="left">非成员友元 (或成员)</td>
+<td align="left">对称性，允许混合类型左操作数 (如果需要)，通常不修改操作数</td>
+</tr>
+<tr>
+<td align="left"><code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></td>
+<td align="left">非成员友元 (或成员)</td>
+<td align="left">对称性</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;&lt;</code>, <code>&gt;&gt;</code></td>
+<td align="left"><strong>必须</strong>是非成员友元</td>
+<td align="left">左操作数是流对象 (<code>ostream</code>, <code>istream</code>)，需要访问私有成员</td>
+</tr>
+<tr>
+<td align="left">一元 <code>+</code>, <code>-</code>, <code>*</code>, <code>&amp;</code>, <code>!</code>, <code>~</code></td>
+<td align="left">成员或非成员友元</td>
+<td align="left">成员函数无参数，非成员函数一个参数</td>
+</tr>
+</tbody></table>
+<p><strong>选择依据:</strong></p>
+<ul>
+<li>  <strong>强制要求:</strong> 某些运算符必须是成员函数。</li>
+<li>  <strong>左操作数类型:</strong> 如果左操作数必须是特定类型（如 <code>ostream</code>），则必须使用非成员函数。</li>
+<li>  <strong>状态修改:</strong> 如果运算符主要目的是修改左操作数的状态，成员函数通常更自然。</li>
+<li>  <strong>对称性/类型转换:</strong> 如果希望运算符对操作数顺序具有对称性，或者希望允许对左操作数进行隐式类型转换（需谨慎），非成员函数（通常是友元）是更好的选择。</li>
+</ul>
+<p>在实践中，对于常见的二元运算符如 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>，一种常见的模式是：</p>
+<ol>
+<li> 将<strong>复合赋值运算符</strong>（如 <code>+=</code>, <code>-=</code>）实现为<strong>成员函数</strong>。</li>
+<li> 将对应的<strong>二元运算符</strong>（如 <code>+</code>, <code>-</code>）实现为<strong>非成员友元函数</strong>，并在其内部调用复合赋值运算符来完成实际工作。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 示例模式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Time</span> &#123;</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Time&amp; <span class="keyword">operator</span>+=(<span class="keyword">const</span> Time&amp; t); <span class="comment">// 成员函数</span></span><br><span class="line">    <span class="keyword">friend</span> Time <span class="keyword">operator</span>+(<span class="keyword">const</span> Time&amp; t1, <span class="keyword">const</span> Time&amp; t2); <span class="comment">// 非成员友元</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Time&amp; Time::<span class="keyword">operator</span>+=(<span class="keyword">const</span> Time&amp; t) &#123;</span><br><span class="line">    <span class="comment">// ... 实现 += 逻辑 ...</span></span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// operator+ 调用 operator+=</span></span><br><span class="line">Time <span class="keyword">operator</span>+(<span class="keyword">const</span> Time&amp; t1, <span class="keyword">const</span> Time&amp; t2) &#123;</span><br><span class="line">    Time sum = t1; <span class="comment">// 创建一个副本</span></span><br><span class="line">    sum += t2;     <span class="comment">// 使用成员函数 +=</span></span><br><span class="line">    <span class="keyword">return</span> sum;    <span class="comment">// 返回结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种模式可以减少代码重复。</p>
+<h2 id="11-5-再读重载：一个矢量类"><a href="#11-5-再读重载：一个矢量类" class="headerlink" title="11.5 再读重载：一个矢量类"></a>11.5 再读重载：一个矢量类</h2><p>本节我们将通过定义一个表示二维矢量（或向量）的类，进一步探讨运算符重载的应用。矢量既可以用直角坐标 (x, y) 表示，也可以用极坐标 (大小/模, 角度) 表示。我们的 <code>Vector</code> 类将能够存储这两种表示，并允许用户在它们之间切换。</p>
+<h3 id="11-5-1-使用状态成员"><a href="#11-5-1-使用状态成员" class="headerlink" title="11.5.1 使用状态成员"></a>11.5.1 使用状态成员</h3><p>为了同时支持直角坐标和极坐标，我们的 <code>Vector</code> 类需要包含相应的成员：</p>
+<ul>
+<li>  <code>x</code>: x 分量</li>
+<li>  <code>y</code>: y 分量</li>
+<li>  <code>mag</code>: 矢量的大小（模）</li>
+<li>  <code>ang</code>: 矢量的角度</li>
+</ul>
+<p>同时，我们需要一个状态成员来指示当前对象是以哪种模式表示的（直角坐标或极坐标），以及一些方法来根据一种表示计算另一种表示。</p>
+<p><strong>vector.h (类定义)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\vector.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> VECTOR_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VECTOR_H_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> VECTOR &#123; <span class="comment">// 将类放入命名空间</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Vector</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="comment">// 枚举类型，用于表示模式：直角坐标(RECT) 或 极坐标(POL)</span></span><br><span class="line">        <span class="class"><span class="keyword">enum</span> <span class="title">Mode</span> &#123;</span>RECT, POL&#125;;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">double</span> x;       <span class="comment">// x 分量</span></span><br><span class="line">        <span class="keyword">double</span> y;       <span class="comment">// y 分量</span></span><br><span class="line">        <span class="keyword">double</span> mag;     <span class="comment">// 矢量的大小 (模)</span></span><br><span class="line">        <span class="keyword">double</span> ang;     <span class="comment">// 矢量的角度 (弧度)</span></span><br><span class="line">        Mode mode;      <span class="comment">// 当前模式 (RECT 或 POL)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 私有辅助函数，用于根据一种表示计算另一种表示</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">set_mag</span><span class="params">()</span></span>; <span class="comment">// 根据 x, y 计算 mag</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">set_ang</span><span class="params">()</span></span>; <span class="comment">// 根据 x, y 计算 ang (弧度)</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">set_x</span><span class="params">()</span></span>;   <span class="comment">// 根据 mag, ang 计算 x</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">set_y</span><span class="params">()</span></span>;   <span class="comment">// 根据 mag, ang 计算 y</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="comment">// 构造函数</span></span><br><span class="line">        Vector(); <span class="comment">// 默认构造函数</span></span><br><span class="line">        <span class="comment">// 根据指定模式和值构造</span></span><br><span class="line">        Vector(<span class="keyword">double</span> n1, <span class="keyword">double</span> n2, Mode form = RECT);</span><br><span class="line">        <span class="comment">// 重置矢量</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">reset</span><span class="params">(<span class="keyword">double</span> n1, <span class="keyword">double</span> n2, Mode form = RECT)</span></span>;</span><br><span class="line">        ~Vector(); <span class="comment">// 析构函数</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取各分量的值</span></span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">xval</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> x; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">yval</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> y; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">magval</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> mag; &#125;</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">angval</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="comment">// 返回角度 (度)</span></span><br><span class="line">             <span class="comment">// 将弧度转换为度</span></span><br><span class="line">             <span class="keyword">if</span> (ang == <span class="number">0.0</span> &amp;&amp; x == <span class="number">0.0</span> &amp;&amp; y == <span class="number">0.0</span>) <span class="keyword">return</span> <span class="number">0.0</span>; <span class="comment">// 处理零向量</span></span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span> (ang == <span class="number">0.0</span> &amp;&amp; x &gt; <span class="number">0.0</span>) <span class="keyword">return</span> <span class="number">0.0</span>; <span class="comment">// x轴正方向</span></span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">if</span> (ang == <span class="number">0.0</span> &amp;&amp; x &lt; <span class="number">0.0</span>) <span class="keyword">return</span> <span class="number">180.0</span>; <span class="comment">// x轴负方向 (atan2会处理)</span></span><br><span class="line">             <span class="keyword">else</span> <span class="keyword">return</span> ang * <span class="number">180.0</span> / <span class="number">3.141592653589793</span>; <span class="comment">// 假设 M_PI 不可用</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置模式</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">polar_mode</span><span class="params">()</span></span>; <span class="comment">// 设置为极坐标模式</span></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">rect_mode</span><span class="params">()</span></span>;  <span class="comment">// 设置为直角坐标模式</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// --- 运算符重载 ---</span></span><br><span class="line">        <span class="comment">// 加法: Vector + Vector</span></span><br><span class="line">        Vector <span class="keyword">operator</span>+(<span class="keyword">const</span> Vector &amp; b) <span class="keyword">const</span>;</span><br><span class="line">        <span class="comment">// 减法: Vector - Vector</span></span><br><span class="line">        Vector <span class="keyword">operator</span>-(<span class="keyword">const</span> Vector &amp; b) <span class="keyword">const</span>;</span><br><span class="line">        <span class="comment">// 取反: -Vector</span></span><br><span class="line">        Vector <span class="keyword">operator</span>-() <span class="keyword">const</span>;</span><br><span class="line">        <span class="comment">// 乘法: double * Vector (友元) 或 Vector * double (成员或友元)</span></span><br><span class="line">        Vector <span class="keyword">operator</span>*(<span class="keyword">double</span> n) <span class="keyword">const</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// --- 友元函数 ---</span></span><br><span class="line">        <span class="comment">// 乘法: double * Vector</span></span><br><span class="line">        <span class="keyword">friend</span> Vector <span class="keyword">operator</span>*(<span class="keyword">double</span> n, <span class="keyword">const</span> Vector &amp; a);</span><br><span class="line">        <span class="comment">// 输出: cout &lt;&lt; Vector</span></span><br><span class="line">        <span class="keyword">friend</span> <span class="built_in">std</span>::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream &amp; os, <span class="keyword">const</span> Vector &amp; v);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// namespace VECTOR</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// VECTOR_H_</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>vector.cpp (类实现)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\vector.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt; // 为了使用 sqrt, atan, atan2, sin, cos</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;vector.h&quot;</span> <span class="comment">// 包含类定义</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> VECTOR &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 角度转换常量 (如果 cmath 没有定义 M_PI)</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">double</span> Rad_to_deg = <span class="number">180.0</span> / <span class="number">3.141592653589793</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// --- 私有辅助函数 ---</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Vector::set_mag</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mag = <span class="built_in">std</span>::<span class="built_in">sqrt</span>(x * x + y * y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Vector::set_ang</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">0.0</span> &amp;&amp; y == <span class="number">0.0</span>)</span><br><span class="line">            ang = <span class="number">0.0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ang = <span class="built_in">std</span>::<span class="built_in">atan2</span>(y, x); <span class="comment">// atan2 处理所有象限</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Vector::set_x</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        x = mag * <span class="built_in">std</span>::<span class="built_in">cos</span>(ang);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Vector::set_y</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        y = mag * <span class="built_in">std</span>::<span class="built_in">sin</span>(ang);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// --- 公有方法 ---</span></span><br><span class="line">    Vector::Vector() &#123; <span class="comment">// 默认构造函数</span></span><br><span class="line">        x = y = mag = ang = <span class="number">0.0</span>;</span><br><span class="line">        mode = RECT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 根据模式构造</span></span><br><span class="line">    Vector::Vector(<span class="keyword">double</span> n1, <span class="keyword">double</span> n2, Mode form) &#123;</span><br><span class="line">        mode = form;</span><br><span class="line">        <span class="keyword">if</span> (form == RECT) &#123;</span><br><span class="line">            x = n1;</span><br><span class="line">            y = n2;</span><br><span class="line">            set_mag();</span><br><span class="line">            set_ang();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (form == POL) &#123;</span><br><span class="line">            mag = n1;</span><br><span class="line">            ang = n2 / Rad_to_deg; <span class="comment">// 将角度转换为弧度</span></span><br><span class="line">            set_x();</span><br><span class="line">            set_y();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Incorrect 3rd argument to Vector() -- &quot;</span>;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;vector set to 0\n&quot;</span>;</span><br><span class="line">            x = y = mag = ang = <span class="number">0.0</span>;</span><br><span class="line">            mode = RECT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重置矢量</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Vector::reset</span><span class="params">(<span class="keyword">double</span> n1, <span class="keyword">double</span> n2, Mode form)</span> </span>&#123;</span><br><span class="line">        mode = form;</span><br><span class="line">        <span class="keyword">if</span> (form == RECT) &#123;</span><br><span class="line">            x = n1;</span><br><span class="line">            y = n2;</span><br><span class="line">            set_mag();</span><br><span class="line">            set_ang();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (form == POL) &#123;</span><br><span class="line">            mag = n1;</span><br><span class="line">            ang = n2 / Rad_to_deg; <span class="comment">// 角度转弧度</span></span><br><span class="line">            set_x();</span><br><span class="line">            set_y();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">             <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;Incorrect 3rd argument to Vector::reset() -- &quot;</span>;</span><br><span class="line">             <span class="built_in">std</span>::<span class="built_in">cerr</span> &lt;&lt; <span class="string">&quot;vector set to 0\n&quot;</span>;</span><br><span class="line">             x = y = mag = ang = <span class="number">0.0</span>;</span><br><span class="line">             mode = RECT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Vector::~Vector() &#123; <span class="comment">// 析构函数</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Vector::polar_mode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mode = POL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Vector::rect_mode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mode = RECT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// --- 运算符重载实现 ---</span></span><br><span class="line">    <span class="comment">// 加法 (通常在直角坐标下计算)</span></span><br><span class="line">    Vector Vector::<span class="keyword">operator</span>+(<span class="keyword">const</span> Vector &amp; b) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector(x + b.x, y + b.y); <span class="comment">// 返回一个新的 Vector 对象</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 减法</span></span><br><span class="line">    Vector Vector::<span class="keyword">operator</span>-(<span class="keyword">const</span> Vector &amp; b) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector(x - b.x, y - b.y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 取反</span></span><br><span class="line">    Vector Vector::<span class="keyword">operator</span>-() <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector(-x, -y);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 乘法 (Vector * double)</span></span><br><span class="line">    Vector Vector::<span class="keyword">operator</span>*(<span class="keyword">double</span> n) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Vector(x * n, y * n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// --- 友元函数实现 ---</span></span><br><span class="line">    <span class="comment">// 乘法 (double * Vector)</span></span><br><span class="line">    Vector <span class="keyword">operator</span>*(<span class="keyword">double</span> n, <span class="keyword">const</span> Vector &amp; a) &#123;</span><br><span class="line">        <span class="keyword">return</span> a * n; <span class="comment">// 调用成员函数 a.operator*(n)</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出 (根据模式选择输出格式)</span></span><br><span class="line">    <span class="built_in">std</span>::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(<span class="built_in">std</span>::ostream &amp; os, <span class="keyword">const</span> Vector &amp; v) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v.mode == Vector::RECT) &#123;</span><br><span class="line">            os &lt;&lt; <span class="string">&quot;(x,y) = (&quot;</span> &lt;&lt; v.x &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; v.y &lt;&lt; <span class="string">&quot;)&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (v.mode == Vector::POL) &#123;</span><br><span class="line">            os &lt;&lt; <span class="string">&quot;(m,a) = (&quot;</span> &lt;&lt; v.mag &lt;&lt; <span class="string">&quot;, &quot;</span></span><br><span class="line">               &lt;&lt; v.ang * Rad_to_deg &lt;&lt; <span class="string">&quot;)&quot;</span>; <span class="comment">// 输出角度</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            os &lt;&lt; <span class="string">&quot;Vector object mode is invalid&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> os;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="comment">// end namespace VECTOR</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="11-5-2-为-Vector-类重载算术运算符"><a href="#11-5-2-为-Vector-类重载算术运算符" class="headerlink" title="11.5.2 为 Vector 类重载算术运算符"></a>11.5.2 为 Vector 类重载算术运算符</h3><p>我们在上面的代码中已经实现了几个运算符的重载：</p>
+<ul>
+<li>  <code>operator+</code>: 两个 <code>Vector</code> 相加，返回一个新的 <code>Vector</code>。计算在直角坐标下进行。</li>
+<li>  <code>operator-</code>: 两个 <code>Vector</code> 相减，返回一个新的 <code>Vector</code>。</li>
+<li>  <code>operator-</code> (一元): 对 <code>Vector</code> 取反，返回一个新的 <code>Vector</code>。</li>
+<li>  <code>operator*</code>: <code>Vector</code> 乘以一个 <code>double</code>，返回一个新的 <code>Vector</code>。</li>
+<li>  <code>operator*</code> (友元): <code>double</code> 乘以一个 <code>Vector</code>，通过调用成员函数版本实现。</li>
+<li>  <code>operator&lt;&lt;</code> (友元): 将 <code>Vector</code> 输出到 <code>ostream</code>，根据当前模式选择输出格式。</li>
+</ul>
+<h3 id="11-5-3-对实现的说明"><a href="#11-5-3-对实现的说明" class="headerlink" title="11.5.3 对实现的说明"></a>11.5.3 对实现的说明</h3><ul>
+<li>  <strong>命名空间:</strong> 将 <code>Vector</code> 类及其相关函数放入 <code>VECTOR</code> 命名空间，以避免潜在的名称冲突。</li>
+<li>  <strong>坐标计算:</strong> 算术运算（加、减、乘）通常在直角坐标下执行更简单。即使对象是以极坐标模式创建或设置的，内部的 <code>x</code> 和 <code>y</code> 值也会被计算出来，运算基于这些值进行。结果对象默认以直角坐标模式创建，但其 <code>mag</code> 和 <code>ang</code> 也会被计算。</li>
+<li>  <strong>角度单位:</strong> 内部计算（如 <code>sin</code>, <code>cos</code>, <code>atan2</code>）使用<strong>弧度</strong>。构造函数和 <code>reset</code> 接受角度值（如果是极坐标模式），并将其转换为弧度存储。<code>angval()</code> 和 <code>operator&lt;&lt;</code> 在显示时将内部的弧度转换回<strong>角度</strong>。</li>
+<li>  <strong>友元函数:</strong> <code>operator*</code> (double * Vector) 和 <code>operator&lt;&lt;</code> 被实现为友元函数，原因与 <code>Time</code> 类中的类似：<code>operator*</code> 需要处理 <code>double</code> 作为左操作数的情况，<code>operator&lt;&lt;</code> 需要 <code>ostream</code> 作为左操作数，并且它们都需要访问 <code>Vector</code> 的私有成员。</li>
+</ul>
+<h3 id="11-5-4-使用-Vector-类来模拟随机漫步"><a href="#11-5-4-使用-Vector-类来模拟随机漫步" class="headerlink" title="11.5.4 使用 Vector 类来模拟随机漫步"></a>11.5.4 使用 Vector 类来模拟随机漫步</h3><p>现在我们可以使用 <code>Vector</code> 类来模拟一个简单的物理过程：随机漫步。假设一个人从原点出发，每次随机选择一个方向行走固定的一段距离，重复多次，我们想知道他最终的位置。</p>
+<p><strong>randwalk.cpp (主程序)</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// filepath: d:\ProgramData\files_Cpp\250424\randwalk.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;    // 提供 rand(), srand() 原型</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;      // 提供 time() 原型</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;vector.h&quot;</span>   <span class="comment">// 包含 Vector 类定义 (假设在同一目录或包含路径中)</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line">    <span class="keyword">using</span> VECTOR::Vector; <span class="comment">// 使用 VECTOR 命名空间中的 Vector</span></span><br><span class="line"></span><br><span class="line">    srand(time(<span class="number">0</span>)); <span class="comment">// 初始化随机数生成器</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> direction;</span><br><span class="line">    Vector step;      <span class="comment">// 当前一步的矢量</span></span><br><span class="line">    <span class="function">Vector <span class="title">result</span><span class="params">(<span class="number">0.0</span>, <span class="number">0.0</span>)</span></span>; <span class="comment">// 从原点开始的总位移</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> steps = <span class="number">0</span>; <span class="comment">// 总步数</span></span><br><span class="line">    <span class="keyword">double</span> target;    <span class="comment">// 目标距离</span></span><br><span class="line">    <span class="keyword">double</span> dstep;     <span class="comment">// 每步的距离</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter target distance (q to quit): &quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; target) &#123; <span class="comment">// 循环直到输入非数字</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Enter step length: &quot;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!(<span class="built_in">cin</span> &gt;&gt; dstep))</span><br><span class="line">            <span class="keyword">break</span>; <span class="comment">// 如果步长输入无效则退出</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Target Distance: &quot;</span> &lt;&lt; target &lt;&lt; <span class="string">&quot;, Step Size: &quot;</span> &lt;&lt; dstep &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; steps &lt;&lt; <span class="string">&quot;: &quot;</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 输出初始位置</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 开始随机漫步</span></span><br><span class="line">        <span class="keyword">while</span> (result.magval() &lt; target) &#123; <span class="comment">// 只要还没达到目标距离</span></span><br><span class="line">            direction = rand() % <span class="number">360</span>; <span class="comment">// 随机生成 0-359 度的方向</span></span><br><span class="line">            step.reset(dstep, direction, Vector::POL); <span class="comment">// 设置当前步的矢量 (极坐标)</span></span><br><span class="line">            result = result + step; <span class="comment">// 将当前步加到总位移上</span></span><br><span class="line">            steps++;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; steps &lt;&lt; <span class="string">&quot;: &quot;</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 输出当前位置</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出最终结果</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;After &quot;</span> &lt;&lt; steps &lt;&lt; <span class="string">&quot; steps, the subject &quot;</span></span><br><span class="line">                <span class="string">&quot;has the following location:\n&quot;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 输出最终位置 (默认直角坐标)</span></span><br><span class="line">        result.polar_mode(); <span class="comment">// 切换到极坐标模式</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot; or\n&quot;</span> &lt;&lt; result &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 输出最终位置 (极坐标)</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Average outward distance per step = &quot;</span></span><br><span class="line">             &lt;&lt; result.magval() / steps &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 计算平均每步移动的直线距离</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 重置以便下一次模拟</span></span><br><span class="line">        steps = <span class="number">0</span>;</span><br><span class="line">        result.reset(<span class="number">0.0</span>, <span class="number">0.0</span>);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;\nEnter target distance (q to quit): &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Bye!\n&quot;</span>;</span><br><span class="line">    <span class="built_in">cin</span>.clear(); <span class="comment">// 清除可能的错误状态</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span>.get() != <span class="string">&#x27;\n&#x27;</span>) <span class="comment">// 清空输入缓冲区</span></span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>编译和运行:</strong></p>
+<p>你需要将 <code>vector.cpp</code> 和 <code>randwalk.cpp</code> 一起编译链接。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ randwalk.cpp vector.cpp -o randwalk -lm <span class="comment"># 可能需要链接数学库 (-lm)</span></span><br><span class="line">./randwalk</span><br></pre></td></tr></table></figure>
+
+<p>程序会提示你输入目标距离和每步的长度，然后模拟随机漫步过程，打印每一步后的位置，直到达到目标距离，最后输出总结信息。这个例子很好地展示了如何利用运算符重载使类的使用（如 <code>result = result + step;</code>）变得直观和方便。</p>
+<h2 id="11-6-类的自动转换和强制类型转换"><a href="#11-6-类的自动转换和强制类型转换" class="headerlink" title="11.6 类的自动转换和强制类型转换"></a>11.6 类的自动转换和强制类型转换</h2><p>C++ 是一种强类型语言，但它也允许在不同类型之间进行转换。我们已经熟悉了内置类型之间的转换（例如 <code>int</code> 到 <code>double</code>）。C++ 也允许定义类类型与其它类型（包括内置类型和其他类类型）之间的转换规则。这种转换可以是自动（隐式）发生的，也可以是需要显式请求的（强制类型转换）。</p>
+<h3 id="11-6-1-隐式转换：使用构造函数"><a href="#11-6-1-隐式转换：使用构造函数" class="headerlink" title="11.6.1 隐式转换：使用构造函数"></a>11.6.1 隐式转换：使用构造函数</h3><p>如果一个类的<strong>构造函数</strong>可以用<strong>单个参数</strong>来调用（要么它只有一个参数，要么它有多个参数但第一个参数之后的所有参数都有默认值），那么这个构造函数就定义了一个从其参数类型到该类类型的<strong>隐式转换规则</strong>。</p>
+<p><strong>示例：</strong></p>
+<p>假设我们有一个简单的 <code>Stones</code> 类，表示英石（一种重量单位），并且我们想允许从 <code>double</code>（表示磅）自动转换为 <code>Stones</code>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stones.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> STONES_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STONES_H_</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stones</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> &#123;</span> Lbs_per_stn = <span class="number">14</span> &#125;; <span class="comment">// 每英石包含的磅数</span></span><br><span class="line">    <span class="keyword">int</span> stone;      <span class="comment">// 整数部分的英石</span></span><br><span class="line">    <span class="keyword">double</span> pds_left; <span class="comment">// 剩余的小数磅数</span></span><br><span class="line">    <span class="keyword">double</span> pounds;   <span class="comment">// 总磅数</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数：接受总磅数 (double)</span></span><br><span class="line">    Stones(<span class="keyword">double</span> lbs);</span><br><span class="line">    <span class="comment">// 默认构造函数</span></span><br><span class="line">    Stones();</span><br><span class="line">    ~Stones();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show_lbs</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// 以磅显示</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show_stn</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// 以英石格式显示</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// STONES_H_</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// stones.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stones.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">Stones::Stones(<span class="keyword">double</span> lbs) &#123;</span><br><span class="line">    pounds = lbs;</span><br><span class="line">    stone = <span class="keyword">int</span>(lbs) / Lbs_per_stn; <span class="comment">// 整数英石</span></span><br><span class="line">    pds_left = <span class="keyword">int</span>(lbs) % Lbs_per_stn + lbs - <span class="keyword">int</span>(lbs); <span class="comment">// 剩余磅数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Stones::Stones() &#123;</span><br><span class="line">    stone = pounds = pds_left = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Stones::~Stones() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stones::show_lbs</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; pounds &lt;&lt; <span class="string">&quot; pounds\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Stones::show_stn</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; stone &lt;&lt; <span class="string">&quot; stone, &quot;</span> &lt;&lt; pds_left &lt;&lt; <span class="string">&quot; pounds\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stones.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">const</span> Stones &amp; st, <span class="keyword">int</span> n)</span></span>; <span class="comment">// 函数接受 Stones 对象</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Stones incognito = <span class="number">275</span>; <span class="comment">// 隐式转换: 调用 Stones(275.0)</span></span><br><span class="line">    <span class="function">Stones <span class="title">wolfe</span><span class="params">(<span class="number">285.7</span>)</span></span>;    <span class="comment">// 显式调用构造函数</span></span><br><span class="line">    Stones taft = <span class="number">325</span>;      <span class="comment">// 隐式转换: 调用 Stones(325.0)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Incognito weighs &quot;</span>;</span><br><span class="line">    incognito.show_stn();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Wolfe weighs &quot;</span>;</span><br><span class="line">    wolfe.show_stn();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Taft weighs &quot;</span>;</span><br><span class="line">    taft.show_stn();</span><br><span class="line"></span><br><span class="line">    incognito = <span class="number">276.8</span>; <span class="comment">// 隐式转换: 调用 Stones(276.8), 然后赋值</span></span><br><span class="line">    taft = Stones(<span class="number">330</span>); <span class="comment">// 显式转换 (调用构造函数)</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;After dinner, Incognito weighs &quot;</span>;</span><br><span class="line">    incognito.show_stn();</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;After dinner, Taft weighs &quot;</span>;</span><br><span class="line">    taft.show_stn();</span><br><span class="line"></span><br><span class="line">    display(<span class="number">19.99</span>, <span class="number">2</span>); <span class="comment">// 隐式转换: 19.99 转换为临时 Stones 对象传递给函数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">const</span> Stones &amp; st, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Wow! &quot;</span>;</span><br><span class="line">        st.show_stn();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>main</code> 函数中：</p>
+<ul>
+<li>  <code>Stones incognito = 275;</code> 和 <code>Stones taft = 325;</code>：整数 <code>275</code> 和 <code>325</code> 首先被提升为 <code>double</code>，然后编译器使用 <code>Stones(double)</code> 构造函数创建了一个临时的 <code>Stones</code> 对象，并用这个临时对象来初始化 <code>incognito</code> 和 <code>taft</code>（在现代 C++ 中，这通常会被优化，直接在目标对象上构造，称为复制省略）。</li>
+<li>  <code>incognito = 276.8;</code>：<code>double</code> 值 <code>276.8</code> 被用来创建一个临时的 <code>Stones</code> 对象，然后该临时对象通过赋值运算符（这里是默认的赋值运算符）赋给 <code>incognito</code>。</li>
+<li>  <code>display(19.99, 2);</code>：<code>double</code> 值 <code>19.99</code> 被用来创建一个临时的 <code>Stones</code> 对象，这个临时对象作为参数传递给 <code>display</code> 函数。</li>
+</ul>
+<p>这种隐式转换有时很方便，但也可能导致意想不到的行为或错误，特别是当转换不是程序员的本意时。</p>
+<p><strong>使用 <code>explicit</code> 关键字</strong></p>
+<p>为了禁止构造函数用于隐式转换，可以在构造函数声明前加上 <code>explicit</code> 关键字。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stones.h (修改后)</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stones</span> &#123;</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 使用 explicit 禁止隐式转换</span></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Stones</span><span class="params">(<span class="keyword">double</span> lbs)</span></span>;</span><br><span class="line">    Stones();</span><br><span class="line">    ~Stones();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>如果使用了 <code>explicit</code>，那么之前的隐式转换代码将不再合法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp (使用 explicit Stones 后)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Stones incognito = 275; // 错误！不能隐式转换</span></span><br><span class="line">    <span class="comment">// Stones taft = 325;      // 错误！不能隐式转换</span></span><br><span class="line"></span><br><span class="line">    <span class="function">Stones <span class="title">wolfe</span><span class="params">(<span class="number">285.7</span>)</span></span>;    <span class="comment">// OK: 显式调用构造函数</span></span><br><span class="line">    Stones incognito = Stones(<span class="number">275</span>); <span class="comment">// OK: 显式转换 (调用构造函数)</span></span><br><span class="line">    <span class="function">Stones <span class="title">taft</span><span class="params">(<span class="number">325</span>)</span></span>;      <span class="comment">// OK: 显式调用构造函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// incognito = 276.8; // 错误！不能隐式转换后赋值</span></span><br><span class="line">    incognito = Stones(<span class="number">276.8</span>); <span class="comment">// OK: 显式转换后赋值</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// display(19.99, 2); // 错误！不能隐式转换参数</span></span><br><span class="line">    display(Stones(<span class="number">19.99</span>), <span class="number">2</span>); <span class="comment">// OK: 显式转换参数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 强制类型转换也允许</span></span><br><span class="line">    display((Stones)<span class="number">20.5</span>, <span class="number">1</span>); <span class="comment">// C 风格强制转换</span></span><br><span class="line">    display(<span class="keyword">static_cast</span>&lt;Stones&gt;(<span class="number">21.2</span>), <span class="number">1</span>); <span class="comment">// C++ 风格强制转换</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>建议:</strong> 通常建议将<strong>只接受一个参数的构造函数</strong>声明为 <code>explicit</code>，除非你确实希望进行该类型的隐式转换。这可以防止许多潜在的错误。</p>
+<h3 id="11-6-2-转换函数：operator-typeName"><a href="#11-6-2-转换函数：operator-typeName" class="headerlink" title="11.6.2 转换函数：operator typeName()"></a>11.6.2 转换函数：<code>operator typeName()</code></h3><p>构造函数提供了从其他类型到类类型的转换。如果我们想定义从<strong>类类型</strong>转换到<strong>其他类型</strong>（如 <code>double</code> 或 <code>int</code>）的规则，我们需要使用**转换函数 (Conversion Function)**。</p>
+<p>转换函数是一种特殊的类成员函数，形式为 <code>operator typeName()</code>。</p>
+<p><strong>特点:</strong></p>
+<ol>
+<li> <strong>名称:</strong> <code>operator</code> 关键字后跟目标类型名 <code>typeName</code>。</li>
+<li> <strong>无返回类型声明:</strong> 函数头不能指定返回类型（即使它确实会返回一个 <code>typeName</code> 类型的值）。</li>
+<li> <strong>无参数:</strong> 转换函数必须是<strong>没有参数</strong>的成员函数。</li>
+<li> <strong>必须是成员函数:</strong> 不能是静态成员函数或友元函数。</li>
+</ol>
+<p><strong>示例：为 <code>Stones</code> 添加转换为 <code>double</code> 和 <code>int</code> 的函数</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stones.h (添加转换函数)</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stones</span> &#123;</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Stones</span><span class="params">(<span class="keyword">double</span> lbs)</span></span>;</span><br><span class="line">    Stones();</span><br><span class="line">    ~Stones();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show_lbs</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show_stn</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 转换函数：转换为 double (总磅数)</span></span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    <span class="comment">// 转换函数：转换为 int (四舍五入的总磅数)</span></span><br><span class="line">    <span class="function"><span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// stones.cpp (添加转换函数定义)</span></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="function">Stones::<span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pounds; <span class="comment">// 返回总磅数</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Stones::<span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 四舍五入到最近的整数磅</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">int</span>(pounds + <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp (使用转换函数)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stones.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Stones <span class="title">poppins</span><span class="params">(<span class="number">9</span>, <span class="number">2.8</span>)</span></span>; <span class="comment">// 9 stone, 2.8 pounds</span></span><br><span class="line">    <span class="keyword">double</span> p_wt = poppins; <span class="comment">// 隐式转换: 调用 poppins.operator double()</span></span><br><span class="line">    <span class="keyword">int</span> int_wt = poppins;  <span class="comment">// 隐式转换: 调用 poppins.operator int()</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Poppins weighs &quot;</span> &lt;&lt; p_wt &lt;&lt; <span class="string">&quot; pounds.\n&quot;</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Poppins weighs &quot;</span> &lt;&lt; int_wt &lt;&lt; <span class="string">&quot; pounds (rounded).\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 也可以显式调用</span></span><br><span class="line">    <span class="keyword">double</span> p_wt_explicit = <span class="keyword">double</span>(poppins);</span><br><span class="line">    <span class="keyword">int</span> int_wt_explicit = <span class="keyword">int</span>(poppins);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Explicit double: &quot;</span> &lt;&lt; p_wt_explicit &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Explicit int: &quot;</span> &lt;&lt; int_wt_explicit &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Poppins weighs 128.8 pounds.</span><br><span class="line">Poppins weighs 129 pounds (rounded).</span><br><span class="line">Explicit double: 128.8</span><br><span class="line">Explicit int: 129</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>explicit</code> 转换函数 (C++11)</strong></p>
+<p>与构造函数类似，C++11 允许将转换函数声明为 <code>explicit</code>，以防止它们被用于隐式转换。如果转换函数是 <code>explicit</code> 的，那么只能在需要显式转换的上下文中使用（例如，使用 <code>static_cast</code> 或直接初始化）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stones.h (使用 explicit 转换函数)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stones</span> &#123;</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">int</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp (使用 explicit 转换函数后)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Stones <span class="title">poppins</span><span class="params">(<span class="number">9</span>, <span class="number">2.8</span>)</span></span>;</span><br><span class="line">    <span class="comment">// double p_wt = poppins; // 错误！不能隐式转换</span></span><br><span class="line">    <span class="comment">// int int_wt = poppins;  // 错误！不能隐式转换</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 需要显式转换</span></span><br><span class="line">    <span class="keyword">double</span> p_wt = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span>&gt;(poppins);</span><br><span class="line">    <span class="keyword">int</span> int_wt = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(poppins);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Poppins weighs &quot;</span> &lt;&lt; p_wt &lt;&lt; <span class="string">&quot; pounds.\n&quot;</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Poppins weighs &quot;</span> &lt;&lt; int_wt &lt;&lt; <span class="string">&quot; pounds (rounded).\n&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// if (poppins) &#123; ... &#125; // 如果 operator bool() 是 explicit，这里也会报错</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">static_cast</span>&lt;<span class="keyword">bool</span>&gt;(poppins)) &#123; <span class="comment">/* ... */</span> &#125; <span class="comment">// 需要显式转换</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将转换函数设为 <code>explicit</code> 通常也是一个好主意，除非隐式转换确实是你想要的行为（例如 <code>operator bool()</code> 在条件语句中的使用，但在 C++11 后也推荐 <code>explicit operator bool()</code>）。</p>
+<h3 id="11-6-3-转换函数和友元函数"><a href="#11-6-3-转换函数和友元函数" class="headerlink" title="11.6.3 转换函数和友元函数"></a>11.6.3 转换函数和友元函数</h3><p>转换函数和接受单参数的构造函数都可能导致二义性问题，尤其是在与重载运算符（特别是友元函数）一起使用时。</p>
+<p><strong>二义性示例:</strong></p>
+<p>考虑之前的 <code>Vector</code> 类和 <code>Vector operator*(double n, const Vector &amp; a);</code> 友元函数。如果我们为 <code>Vector</code> 添加一个接受 <code>double</code> 的构造函数（可能表示创建一个大小为 <code>double</code>、角度为 0 的向量）和一个转换为 <code>double</code> 的函数（可能返回向量的大小 <code>magval()</code>），会发生什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vector.h (假设添加了转换构造函数和函数)</span></span><br><span class="line"><span class="keyword">namespace</span> VECTOR &#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Vector</span> &#123;</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        Vector(<span class="keyword">double</span> val); <span class="comment">// 转换构造函数 (可能不 explicit)</span></span><br><span class="line">        <span class="function"><span class="keyword">operator</span> <span class="title">double</span><span class="params">()</span> <span class="keyword">const</span></span>; <span class="comment">// 转换函数 (可能不 explicit)</span></span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        <span class="keyword">friend</span> Vector <span class="keyword">operator</span>*(<span class="keyword">double</span> n, <span class="keyword">const</span> Vector &amp; a);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line">VECTOR::Vector result;</span><br><span class="line"><span class="function">VECTOR::Vector <span class="title">vec</span><span class="params">(<span class="number">10.0</span>, <span class="number">20.0</span>)</span></span>;</span><br><span class="line"><span class="keyword">double</span> factor = <span class="number">2.0</span>;</span><br><span class="line">result = factor * vec; <span class="comment">// 潜在的二义性！</span></span><br></pre></td></tr></table></figure>
+
+<p>编译器在处理 <code>factor * vec</code> 时，可能会有两种解释：</p>
+<ol>
+<li> <strong>调用友元函数:</strong> <code>operator*(factor, vec)</code>，这是我们原本期望的。</li>
+<li> <strong>使用转换函数:</strong> 将 <code>vec</code> 转换为 <code>double</code>（通过 <code>vec.operator double()</code>），然后执行 <code>double * double</code> 的内置乘法。</li>
+</ol>
+<p>如果 <code>Vector(double)</code> 和 <code>operator double()</code> 都存在且都不是 <code>explicit</code>，编译器通常会因为无法确定使用哪个转换路径而报告**二义性错误 (ambiguity error)**。</p>
+<p><strong>解决方法:</strong></p>
+<ol>
+<li> <strong>使用 <code>explicit</code>:</strong> 将转换构造函数和转换函数声明为 <code>explicit</code>，可以消除隐式转换带来的二义性。用户必须显式指定转换。</li>
+<li> <strong>提供精确匹配的函数:</strong> 如果只提供了 <code>operator*(double, const Vector&amp;)</code>，而没有提供 <code>operator double()</code>，那么编译器会优先选择精确匹配的友元函数，不会产生二义性。</li>
+<li> <strong>避免定义相互冲突的转换:</strong> 在设计类时，仔细考虑可能需要的转换，避免同时提供从类型 A 到类型 B 以及从类型 B 到类型 A 的隐式转换，或者提供多个可能导致相同结果的转换路径。</li>
+</ol>
+<p><strong>总结:</strong></p>
+<ul>
+<li>  接受单个参数的构造函数定义了从参数类型到类类型的隐式转换，除非使用 <code>explicit</code> 阻止。</li>
+<li>  转换函数 <code>operator typeName()</code> 定义了从类类型到 <code>typeName</code> 类型的转换，可以是隐式的，除非使用 <code>explicit</code> (C++11) 阻止。</li>
+<li>  隐式转换虽然方便，但可能导致意外行为和二义性。优先使用 <code>explicit</code> 来控制转换。</li>
+<li>  当存在多个转换路径（通过构造函数或转换函数）可以使表达式合法时，编译器可能会遇到二义性问题。</li>
+<li>  在设计类时，应谨慎考虑转换需求，避免引入不必要的或有歧义的转换规则。</li>
+</ul>
+<h2 id="11-7-总结"><a href="#11-7-总结" class="headerlink" title="11.7 总结"></a>11.7 总结</h2><p>本章重点介绍了如何通过运算符重载、友元和类型转换等特性来扩展类的功能，使其使用起来更自然、更强大。</p>
+<p>主要内容回顾：</p>
+<ol>
+<li><p><strong>运算符重载 (Operator Overloading):</strong></p>
+<ul>
+<li>  允许为类定义标准 C++ 运算符（如 <code>+</code>, <code>-</code>, <code>*</code>, <code>&lt;&lt;</code>）的行为。</li>
+<li>  目的是提高代码的可读性和直观性，使类对象的运算类似于内置类型。</li>
+<li>  通过定义<strong>运算符函数</strong>（<code>operator+</code>, <code>operator&lt;&lt;</code> 等）来实现。</li>
+<li>  运算符函数可以是<strong>成员函数</strong>或<strong>非成员函数</strong>（通常是友元）。</li>
+<li>  重载不能改变运算符的优先级、结合性或操作数个数，也不能创建新运算符。某些运算符（如 <code>.</code>、<code>::</code>、<code>sizeof</code>）不能被重载。</li>
+<li>  <code>Time</code> 类的示例演示了如何重载 <code>+</code>, <code>-</code>, <code>*</code> 等算术运算符。</li>
+</ul>
+</li>
+<li><p><strong>友元 (Friends):</strong></p>
+<ul>
+<li>  允许非成员函数或整个类访问另一个类的 <code>private</code> 和 <code>protected</code> 成员。</li>
+<li>  通过在类定义内部使用 <code>friend</code> 关键字声明。</li>
+<li>  <strong>友元函数</strong>常用于重载那些不能作为成员函数（如 <code>&lt;&lt;</code>, <code>&gt;&gt;</code>）或需要对称处理操作数（如 <code>double * Vector</code>）的运算符。</li>
+<li>  <strong>友元类</strong>允许一个类的所有成员函数访问另一个类的私有部分，适用于需要紧密协作的类。</li>
+</ul>
+</li>
+<li><p><strong>成员函数 vs. 非成员函数 (Operator Overloading Choice):</strong></p>
+<ul>
+<li>  赋值 (<code>=</code>)、下标 (<code>[]</code>)、函数调用 (<code>()</code>)、成员访问 (<code>-&gt;</code>) 运算符<strong>必须</strong>是成员函数。</li>
+<li>  修改对象状态的运算符（如 <code>+=</code>, <code>++</code>）通常实现为<strong>成员函数</strong>。</li>
+<li>  需要对称性或允许左操作数进行类型转换的运算符（如 <code>+</code>, <code>*</code>, <code>==</code>）以及输入/输出运算符 (<code>&lt;&lt;</code>, <code>&gt;&gt;</code>) 通常实现为<strong>非成员友元函数</strong>。</li>
+</ul>
+</li>
+<li><p><strong><code>Vector</code> 类示例:</strong></p>
+<ul>
+<li>  演示了如何设计一个包含状态（直角/极坐标模式）的类。</li>
+<li>  进一步展示了算术运算符 (<code>+</code>, <code>-</code>, unary <code>-</code>, <code>*</code>) 和输出运算符 (<code>&lt;&lt;</code>) 的重载。</li>
+<li>  通过随机漫步模拟展示了 <code>Vector</code> 类的实际应用。</li>
+</ul>
+</li>
+<li><p><strong>类的类型转换:</strong></p>
+<ul>
+<li>  <strong>构造函数转换:</strong> 接受单个参数的构造函数（除非声明为 <code>explicit</code>）定义了从参数类型到类类型的<strong>隐式转换</strong>。</li>
+<li>  <strong>转换函数:</strong> <code>operator typeName()</code> 形式的成员函数（除非声明为 <code>explicit</code>）定义了从类类型到 <code>typeName</code> 类型的<strong>隐式转换</strong>。</li>
+<li>  <strong><code>explicit</code> 关键字:</strong> 用于阻止构造函数和转换函数进行隐式转换，提高代码安全性，避免意外转换和二义性。</li>
+<li>  <strong>二义性:</strong> 当存在多个转换路径（通过构造函数或转换函数）时，可能导致编译错误。应谨慎设计转换规则或使用 <code>explicit</code>。</li>
+</ul>
+</li>
+</ol>
+<p>通过合理运用运算符重载、友元和类型转换，可以创建出功能丰富、易于使用且表达力强的 C++ 类。然而，这些特性也需要谨慎使用，以避免引入不必要的复杂性或潜在的错误。</p>
+
+  
+  
+    
+    <div class='footer'>
+      
+      
+      
+        <div class='copyright'>
+          <blockquote>
+            
+              
+                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+              
+            
+              
+                <p>本文永久链接是：<a href=http://uniqueland.top/2025/04/30/Cpp_tutorial_Chapter_11/>http://uniqueland.top/2025/04/30/Cpp_tutorial_Chapter_11/</a></p>
+              
+            
+          </blockquote>
+        </div>
+      
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2025-04-30T23:39:48+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2025年4月30日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Program/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>Program</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>C++</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://uniqueland.top/2025/04/30/Cpp_tutorial_Chapter_11/&title=Chapter 11 使用类 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://uniqueland.top/2025/04/30/Cpp_tutorial_Chapter_11/&title=Chapter 11 使用类 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://uniqueland.top/2025/04/30/Cpp_tutorial_Chapter_11/&title=Chapter 11 使用类 - Uniqueland&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2025/04/30/Cpp_tutorial_Chapter_12/'>
+          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Chapter 12 类和动态内存分配</p>
+          <p class='content'>12.1 动态内存和类当类需要使用 new 在自由存储区（堆）上分配内存时，情况会变得比之前我们看到的类（如 Stock, Time, Vector）更复杂。这些类的数据成员本身（如 int, ...</p>
+        </a>
+      
+      
+        <a class='next' href='/2025/04/26/Cpp_tutorial_Chapter_3/'>
+          <p class='title'>Chapter 3 处理数据<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>3.1 简单变量在第2章中，我们已经接触了变量的声明和使用。本章将深入探讨C++的基本数据类型，首先从用于存储数字和字符的简单变量开始。简单变量是C++中存储数据的基本单元。
+3.1.1 变量名...</p>
+        </a>
+      
+    </div>
+  
+</article>
+
+
+  
+
+  <article class="post white-box reveal shadow" id="comments">
+    <p ct><i class='fas fa-comments'></i> 评论</p>
+    
+    <div id="valine_container" class="valine_thread">
+  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+</div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+
+
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">11.1 运算符重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-%E8%AE%A1%E7%AE%97%E6%97%B6%E9%97%B4%EF%BC%9A%E4%B8%80%E4%B8%AA%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%A4%BA%E4%BE%8B"><span class="toc-text">11.2 计算时间：一个运算符重载示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-1-%E6%B7%BB%E5%8A%A0%E5%8A%A0%E6%B3%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">11.2.1 添加加法运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-2-%E9%87%8D%E8%BD%BD%E9%99%90%E5%88%B6"><span class="toc-text">11.2.2 重载限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-2-3-%E5%85%B6%E4%BB%96%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">11.2.3 其他重载运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3-%E5%8F%8B%E5%85%83"><span class="toc-text">11.3 友元</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-1-%E5%88%9B%E5%BB%BA%E5%8F%8B%E5%85%83"><span class="toc-text">11.3.1 创建友元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-3-2-%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8F%8B%E5%85%83%EF%BC%9A%E9%87%8D%E8%BD%BD-lt-lt-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">11.3.2 常用的友元：重载 &lt;&lt; 运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4-%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%9A%E4%BD%9C%E4%B8%BA%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E8%BF%98%E6%98%AF%E9%9D%9E%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-text">11.4 重载运算符：作为成员函数还是非成员函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-5-%E5%86%8D%E8%AF%BB%E9%87%8D%E8%BD%BD%EF%BC%9A%E4%B8%80%E4%B8%AA%E7%9F%A2%E9%87%8F%E7%B1%BB"><span class="toc-text">11.5 再读重载：一个矢量类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-1-%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text">11.5.1 使用状态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-2-%E4%B8%BA-Vector-%E7%B1%BB%E9%87%8D%E8%BD%BD%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">11.5.2 为 Vector 类重载算术运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-3-%E5%AF%B9%E5%AE%9E%E7%8E%B0%E7%9A%84%E8%AF%B4%E6%98%8E"><span class="toc-text">11.5.3 对实现的说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-5-4-%E4%BD%BF%E7%94%A8-Vector-%E7%B1%BB%E6%9D%A5%E6%A8%A1%E6%8B%9F%E9%9A%8F%E6%9C%BA%E6%BC%AB%E6%AD%A5"><span class="toc-text">11.5.4 使用 Vector 类来模拟随机漫步</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-6-%E7%B1%BB%E7%9A%84%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">11.6 类的自动转换和强制类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-1-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%EF%BC%9A%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">11.6.1 隐式转换：使用构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-2-%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0%EF%BC%9Aoperator-typeName"><span class="toc-text">11.6.2 转换函数：operator typeName()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-6-3-%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0%E5%92%8C%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0"><span class="toc-text">11.6.3 转换函数和友元函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-7-%E6%80%BB%E7%BB%93"><span class="toc-text">11.7 总结</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+
+        
+        
+          <!--此文件用来存放一些不方便取值的变量-->
+<!--思路大概是将值藏到重加载的区域内-->
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.postTitle="Chapter 11 使用类";
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+
+  var l_header=document.getElementById("l_header");
+  
+  l_header.classList.add("show");
+  
+</script>
+
+        
+      </div>
+      
+  
+  <footer class="footer clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='320px'
+      server='netease'
+      type='playlist'
+      id='5043500508'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        
+          <div><p><span id="lc-sv">本站总访问量为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span id="lc-uv">访客数为 <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/tree/4.1.6" target="_blank" class="codename">Volantis</a>
+        作为主题
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 XXX</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+
+      <a id="s-top" class="fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+  </div>
+  <div>
+    <script>
+window.volantis={};
+window.volantis.loadcss=document.getElementById("loadcss");
+/********************脚本懒加载函数********************************/
+function loadScript(src, cb) {
+var HEAD = document.getElementsByTagName('head')[0] || document.documentElement;
+var script = document.createElement('script');
+script.setAttribute('type','text/javascript');
+if (cb) script.onload = cb;
+script.setAttribute('src', src);
+HEAD.appendChild(script);
+}
+//https://github.com/filamentgroup/loadCSS
+var loadCSS = function( href, before, media, attributes ){
+	var doc = window.document;
+	var ss = doc.createElement( "link" );
+	var ref;
+	if( before ){
+		ref = before;
+	}
+	else {
+		var refs = ( doc.body || doc.getElementsByTagName( "head" )[ 0 ] ).childNodes;
+		ref = refs[ refs.length - 1];
+	}
+	var sheets = doc.styleSheets;
+	if( attributes ){
+		for( var attributeName in attributes ){
+			if( attributes.hasOwnProperty( attributeName ) ){
+				ss.setAttribute( attributeName, attributes[attributeName] );
+			}
+		}
+	}
+	ss.rel = "stylesheet";
+	ss.href = href;
+	ss.media = "only x";
+	function ready( cb ){
+		if( doc.body ){
+			return cb();
+		}
+		setTimeout(function(){
+			ready( cb );
+		});
+	}
+	ready( function(){
+		ref.parentNode.insertBefore( ss, ( before ? ref : ref.nextSibling ) );
+	});
+	var onloadcssdefined = function( cb ){
+		var resolvedHref = ss.href;
+		var i = sheets.length;
+		while( i-- ){
+			if( sheets[ i ].href === resolvedHref ){
+				return cb();
+			}
+		}
+		setTimeout(function() {
+			onloadcssdefined( cb );
+		});
+	};
+	function loadCB(){
+		if( ss.addEventListener ){
+			ss.removeEventListener( "load", loadCB );
+		}
+		ss.media = media || "all";
+	}
+	if( ss.addEventListener ){
+		ss.addEventListener( "load", loadCB);
+	}
+	ss.onloadcssdefined = onloadcssdefined;
+	onloadcssdefined( loadCB );
+	return ss;
+};
+</script>
+<script>
+  
+  loadCSS("https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14/css/all.min.css", window.volantis.loadcss);
+  
+  
+  
+  
+</script>
+<!-- required -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5/dist/jquery.min.js"></script>
+
+<script>
+  function pjax_fancybox() {
+    $(".md .gallery").find("img").each(function () { //渲染 fancybox
+      var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
+      $(element).attr("pjax-fancybox", "");  // 过滤 pjax
+      $(element).attr("href", $(this).attr("src"));
+      if ($(this).attr("data-original")) {
+        $(element).attr("href", $(this).attr("data-original"));
+      }
+      $(element).attr("data-fancybox", "images");
+      var caption = "";   // 描述信息
+      if ($(this).attr('alt')) {  // 判断当前页面是否存在描述信息
+        $(element).attr('data-caption', $(this).attr('alt'));
+        caption = $(this).attr('alt');
+      }
+      var div = document.createElement("div");
+      $(div).addClass("fancybox");
+      $(this).wrap(div); // 最外层套 div ，其实主要作用还是 class 样式
+      var span = document.createElement("span");
+      $(span).addClass("image-caption");
+      $(span).text(caption); // 加描述
+      $(this).after(span);  // 再套一层描述
+      $(this).wrap(element);  // 最后套 a 标签
+    })
+    $(".md .gallery").find("img").fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+      closeClick: true,
+      helpers: {
+        overlay: {closeClick: true}
+      },
+      buttons: [
+        "zoom",
+        "close"
+      ]
+    });
+  };
+  function SCload_fancybox() {
+    if ($(".md .gallery").find("img").length == 0) return;
+    loadCSS("https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", document.getElementById("loadcss"));
+    setTimeout(function() {
+      loadScript('https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js', pjax_fancybox)
+    }, 1);
+  };
+  $(function () {
+    SCload_fancybox();
+  });
+</script>
+
+
+<!-- internal -->
+
+
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+  
+    <script>
+      window.FPConfig = {
+        delay: 0,
+        ignoreKeywords: [],
+        maxRPS: 5,
+        hoverDelay: 25
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"></script>
+  
+
+
+
+
+
+
+
+
+  <script>
+  let APlayerController = new Object();
+  APlayerController.id = '5043500508';  // 设定全局音乐播放ID
+  APlayerController.volume = '0.7';
+  loadCSS("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css", window.volantis.loadcss);
+
+  loadScript("https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js")
+
+  loadScript("https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js")
+
+
+</script>
+
+
+
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/valine.min.js"></script>
+
+
+<script>
+  var GUEST_INFO = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link'.split(',').filter(function (item) {
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick', 'mail', 'link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function (item) {
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+
+  function emoji(path, idx, ext) {
+    return path + "/" + path + "-" + idx + "." + ext;
+  }
+
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+
+  function pjax_valine() {
+    if(!document.querySelectorAll("#valine_container")[0])return;
+
+    let pagePlaceholder = pdata.commentPlaceholder || "快来评论吧~";
+
+    let path = pdata.commentPath;
+    if (path.length == 0) {
+      let defaultPath = '';
+      path = defaultPath || decodeURI(window.location.pathname);
+    }
+
+    var valine = new Valine();
+    valine.init({
+      el: '#valine_container',
+      meta: meta,
+      placeholder: pagePlaceholder,
+      path: path,
+      appId: "",
+      appKey: "",
+      pageSize: '10',
+      avatar: 'robohash',
+      lang: 'zh-cn',
+      visitor: 'true',
+      highlight: 'true',
+      mathJax: 'false',
+      enableQQ: 'true',
+      recordIP: 'false',
+      requiredFields: requiredFields,
+      emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+      emojiMaps: emojiMaps
+    })
+  }
+
+  $(function () {
+    pjax_valine();
+  });
+</script>
+
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/app.min.js"></script>
+
+
+
+<!-- optional -->
+
+  <script>
+const SearchServiceimagePath="https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/img/";
+const ROOT =  ("/" || "/").endsWith('/') ? ("/" || "/") : ("//" || "/" );
+
+$('.input.u-search-input').one('focus',function(){
+	
+		loadScript('https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/search/hexo.min.js',setSearchService);
+	
+})
+
+function listenSearch(){
+  
+    customSearch = new HexoSearch({
+      imagePath: SearchServiceimagePath
+    });
+  
+}
+function setSearchService() {
+	listenSearch();
+	
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <script defer>
+
+  const LCCounter = {
+    app_id: 'u9j57bwJod4EDmXWdxrwuqQT-MdYXbMMI',
+    app_key: 'jfHtEKVE24j0IVCGHbvuFClp',
+    custom_api_server: '',
+
+    // 查询存储的记录
+    getRecord(Counter, url, title) {
+      return new Promise(function (resolve, reject) {
+        Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({url})))
+          .then(resp => resp.json())
+          .then(({results, code, error}) => {
+            if (code === 401) {
+              throw error;
+            }
+            if (results && results.length > 0) {
+              var record = results[0];
+              resolve(record);
+            } else {
+              Counter('post', '/classes/Counter', {url, title: title, times: 0})
+                .then(resp => resp.json())
+                .then((record, error) => {
+                  if (error) {
+                    throw error;
+                  }
+                  resolve(record);
+                }).catch(error => {
+                console.error('Failed to create', error);
+                reject(error);
+              });
+            }
+          }).catch((error) => {
+          console.error('LeanCloud Counter Error:', error);
+          reject(error);
+        });
+      })
+    },
+
+    // 发起自增请求
+    increment(Counter, incrArr) {
+      return new Promise(function (resolve, reject) {
+        Counter('post', '/batch', {
+          "requests": incrArr
+        }).then((res) => {
+          res = res.json();
+          if (res.error) {
+            throw res.error;
+          }
+          resolve(res);
+        }).catch((error) => {
+          console.error('Failed to save visitor count', error);
+          reject(error);
+        });
+      });
+    },
+
+    // 构建自增请求体
+    buildIncrement(objectId) {
+      return {
+        "method": "PUT",
+        "path": `/1.1/classes/Counter/${ objectId }`,
+        "body": {
+          "times": {
+            '__op': 'Increment',
+            'amount': 1
+          }
+        }
+      }
+    },
+
+    // 校验是否为有效的 UV
+    validUV() {
+      var key = 'LeanCloudUVTimestamp';
+      var flag = localStorage.getItem(key);
+      if (flag) {
+        // 距离标记小于 24 小时则不计为 UV
+        if (new Date().getTime() - parseInt(flag) <= 86400000) {
+          return false;
+        }
+      }
+      localStorage.setItem(key, new Date().getTime().toString());
+      return true;
+    },
+
+    addCount(Counter) {
+      var enableIncr = '' === 'true' && window.location.hostname !== 'localhost';
+      enableIncr = true;
+      var getterArr = [];
+      var incrArr = [];
+      // 请求 PV 并自增
+      var pvCtn = document.querySelector('#lc-sv');
+      if (pvCtn || enableIncr) {
+        var pvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-sv', 'Visits').then((record) => {
+          incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-sv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + 1;
+              if (pvCtn) {
+                pvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(pvGetter);
+      }
+
+      // 请求 UV 并自增
+      var uvCtn = document.querySelector('#lc-uv');
+      if (uvCtn || enableIncr) {
+        var uvGetter = this.getRecord(Counter, 'http://uniqueland.top' + '/#lc-uv', 'Visitors').then((record) => {
+          var vuv = this.validUV();
+          vuv && incrArr.push(this.buildIncrement(record.objectId))
+          var eles = document.querySelectorAll('#lc-uv #number');
+          if (eles.length > 0) {
+            eles.forEach((el,index,array)=>{
+              el.innerText = record.times + (vuv ? 1 : 0);
+              if (uvCtn) {
+                uvCtn.style.display = 'inline';
+              }
+            })
+          }
+        });
+        getterArr.push(uvGetter);
+      }
+
+      // 请求文章的浏览数，如果是当前页面就自增
+      var allPV = document.querySelectorAll('#lc-pv');
+      if (allPV.length > 0 || enableIncr) {
+        for (i = 0; i < allPV.length; i++) {
+          let pv = allPV[i];
+          let title = pv.getAttribute('data-title');
+          var url = 'http://uniqueland.top' + pv.getAttribute('data-path');
+          if (url) {
+            var viewGetter = this.getRecord(Counter, url, title).then((record) => {
+              // 是当前页面就自增
+              let curPath = window.location.pathname;
+              if (curPath.includes('index.html')) {
+                curPath = curPath.substring(0, curPath.lastIndexOf('index.html'));
+              }
+              if (pv.getAttribute('data-path') == curPath) {
+                incrArr.push(this.buildIncrement(record.objectId));
+              }
+              if (pv) {
+                var ele = pv.querySelector('#lc-pv #number');
+                if (ele) {
+                  if (pv.getAttribute('data-path') == curPath) {
+                    ele.innerText = (record.times || 0) + 1;
+                  } else {
+                    ele.innerText = record.times || 0;
+                  }
+                  pv.style.display = 'inline';
+                }
+              }
+            });
+            getterArr.push(viewGetter);
+          }
+        }
+      }
+
+      // 如果启动计数自增，批量发起自增请求
+      if (enableIncr) {
+        Promise.all(getterArr).then(() => {
+          incrArr.length > 0 && this.increment(Counter, incrArr);
+        })
+      }
+
+    },
+
+
+    fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${ api_server }/1.1${ url }`, {
+          method,
+          headers: {
+            'X-LC-Id': this.app_id,
+            'X-LC-Key': this.app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      this.addCount(Counter);
+    },
+
+    refreshCounter() {
+      var api_server = this.app_id.slice(-9) !== '-MdYXbMMI' ? this.custom_api_server : `https://${ this.app_id.slice(0, 8).toLowerCase() }.api.lncldglobal.com`;
+      if (api_server) {
+        this.fetchData(api_server);
+      } else {
+        fetch('https://app-router.leancloud.cn/2/route?appId=' + this.app_id)
+          .then(resp => resp.json())
+          .then(({api_server}) => {
+            this.fetchData('https://' + api_server);
+          });
+      }
+    }
+
+  };
+
+  LCCounter.refreshCounter();
+
+  document.addEventListener('pjax:complete', function () {
+    LCCounter.refreshCounter();
+  });
+</script>
+
+
+
+
+
+
+
+
+<script>
+function listennSidebarTOC() {
+  const navItems = document.querySelectorAll(".toc li");
+  if (!navItems.length) return;
+  const sections = [...navItems].map((element) => {
+    const link = element.querySelector(".toc-link");
+    const target = document.getElementById(
+      decodeURI(link.getAttribute("href")).replace("#", "")
+    );
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+		top: target.offsetTop + 100,
+		
+		behavior: "smooth"
+		
+	  });
+    });
+    return target;
+  });
+
+  function activateNavByIndex(target) {
+    if (target.classList.contains("active-current")) return;
+
+    document.querySelectorAll(".toc .active").forEach((element) => {
+      element.classList.remove("active", "active-current");
+    });
+    target.classList.add("active", "active-current");
+    let parent = target.parentNode;
+    while (!parent.matches(".toc")) {
+      if (parent.matches("li")) parent.classList.add("active");
+      parent = parent.parentNode;
+    }
+  }
+
+  function findIndex(entries) {
+    let index = 0;
+    let entry = entries[index];
+    if (entry.boundingClientRect.top > 0) {
+      index = sections.indexOf(entry.target);
+      return index === 0 ? 0 : index - 1;
+    }
+    for (; index < entries.length; index++) {
+      if (entries[index].boundingClientRect.top <= 0) {
+        entry = entries[index];
+      } else {
+        return sections.indexOf(entry.target);
+      }
+    }
+    return sections.indexOf(entry.target);
+  }
+
+  function createIntersectionObserver(marginTop) {
+    marginTop = Math.floor(marginTop + 10000);
+    let intersectionObserver = new IntersectionObserver(
+      (entries, observe) => {
+        let scrollHeight = document.documentElement.scrollHeight + 100;
+        if (scrollHeight > marginTop) {
+          observe.disconnect();
+          createIntersectionObserver(scrollHeight);
+          return;
+        }
+        let index = findIndex(entries);
+        activateNavByIndex(navItems[index]);
+      },
+      {
+        rootMargin: marginTop + "px 0px -100% 0px",
+        threshold: 0,
+      }
+    );
+    sections.forEach((element) => {
+      element && intersectionObserver.observe(element);
+    });
+  }
+  createIntersectionObserver(document.documentElement.scrollHeight);
+}
+
+document.addEventListener("DOMContentLoaded", listennSidebarTOC);
+document.addEventListener("pjax:success", listennSidebarTOC);
+</script>
+
+<!-- more -->
+
+
+
+
+    
+      
+
+
+<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
+
+
+<script>
+    var pjax;
+    document.addEventListener('DOMContentLoaded', function () {
+      pjax = new Pjax({
+        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
+        selectors: [
+          "title",
+          "#l_cover",
+          "#pjax-container",
+          "#pjax-header-nav-list"
+        ],
+        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+        timeout: 5000
+      });
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+      //window.stop(); // 相当于点击了浏览器的停止按钮
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      window.subData = null; // 移除标题（用于一二级导航栏切换处）
+      if (typeof $.fancybox != "undefined") {
+        $.fancybox.close();    // 关闭弹窗
+      }
+      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
+      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
+      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
+
+      // 解绑事件 避免重复监听
+      volantis.$topBtn.unbind('click');
+      $('.menu a').unbind('click');
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+	  
+    });
+
+    document.addEventListener('pjax:complete', function () {
+      // 关于百度统计对 SPA 页面的处理：
+      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
+      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
+       
+
+      // 关于谷歌统计对 SPA 页面的处理：
+      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
+      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
+      
+	 
+
+      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
+      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+      try{
+          if (typeof $.fancybox == "undefined") {
+            SCload_fancybox();
+          } else {
+            pjax_fancybox();
+          }
+        
+        
+        
+        
+        
+        
+          pjax_valine();
+        
+        
+        
+        
+      } catch (e) {
+        console.log(e);
+      }
+	  
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+	  
+      window.location.href = e.triggerElement.href;
+    });
+</script>
+
+    
+  </div>
+</body>
+</html>
