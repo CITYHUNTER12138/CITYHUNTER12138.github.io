@@ -358,6 +358,36 @@
   
     
     <h2 class="article-title" >
+      <a href="/2021/04/10/Operations%20between%20flash%20disk%20and%20linux%20os/">
+        Linux下利用命令行对U盘和电脑中的文件进行操作
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l			<span class="comment">#查看接入设备名称</span></span><br><span class="line">mount /dev/sda1 /mnt 	<span class="comment">#挂载U盘</span></span><br><span class="line">ls /mnt			<span class="comment">#查看U盘文件</span></span><br><span class="line">cp file directory		<span class="comment">#复制指定文件file至指定目录directory</span></span><br><span class="line">ls /mnt			<span class="comment">#再次查看U盘文件</span></span><br><span class="line">umount /mnt		<span class="comment">#卸载U盘</span></span><br></pre></td></tr></table></figure>
+<div class="note "><p><strong>标题（可选）</strong></p><p>提示：<br>若操作中出现错误，请查看权限是否正确，或在每次操作前加’sudo’<br>cp后的文件和路径需带路径(个人推荐绝对路径)</p></div>
+
+      
+    
+  </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
       <a href="/2021/04/10/Markdown_Editor%20V1.0/">
         Markdown_Editor V1.0
       </a>
